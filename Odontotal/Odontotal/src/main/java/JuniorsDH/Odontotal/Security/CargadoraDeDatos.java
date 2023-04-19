@@ -44,8 +44,12 @@ public class CargadoraDeDatos implements ApplicationRunner {
         Usuario usuarioAInsertar = new Usuario( "juan","perez","juan@gmail.com",passCifrada, UsuarioRol.ROLE_USER);
 
         // Se guarda el usuario en la base de datos utilizando el objeto usuarioRepository
-        usuarioRepository.save(usuarioAInsertar);
 
+        try{
+            usuarioRepository.save(usuarioAInsertar);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
         // Se define una contraseña para el segundo usuario y se cifra
         String passwordCifrado2= cifrador.encode("87654321");
@@ -55,7 +59,11 @@ public class CargadoraDeDatos implements ApplicationRunner {
 
 
         // Se guarda el usuario en la base de datos utilizando el objeto usuarioRepository
-        usuarioRepository.save(usuarioAInsertar);
+        try{
+            usuarioRepository.save(usuarioAInsertar);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
 
     }
