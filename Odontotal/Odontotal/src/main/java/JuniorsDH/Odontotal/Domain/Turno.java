@@ -3,65 +3,47 @@ package JuniorsDH.Odontotal.Domain;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 
-////En el contexto de Java Persistence API (JPA), las entidades son objetos que representan tablas de una base de datos relacional
-//// y se utilizan para mapear los registros de la tabla en objetos Java.
-//define una clase llamada "Turno" que representa un Turno.
-
-////La anotación "@Table" se utiliza para especificar el nombre de la tabla que se utilizará para almacenar los registros de la entidad.
 @Entity
 @Table(name="turnos")
 public class Turno {
-    //La clase tiene los siguientes campos o propiedades:
 
-    //  //La anotación "@Id" se utiliza para indicar que el campo "id" es la clave primaria de la entidad.
-    //
-    //    //Además, la anotación "@GeneratedValue" se utiliza para indicar cómo se generará el valor de la clave primaria en la base de datos.
-    //    // En este caso, se utiliza "GenerationType.IDENTITY"
-    //    // que significa que el valor de la clave primaria se generará automáticamente mediante una estrategia específica de la base de datos.
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // // Define una relación muchos-a-uno con otra entidad
     @ManyToOne
-    //Especifica la columna utilizada para la relación y el nombre de la columna en la tabla
     @JoinColumn(name = "paciente_id",referencedColumnName = "id")
     private Paciente paciente;
 
-    // Define una relación muchos-a-uno con otra entidad
     @ManyToOne
-    // Especifica la columna utilizada para la relación y el nombre de la columna en la tabla
     @JoinColumn(name = "odontologos_id" , referencedColumnName = "id")
     private Odontologo odontologo;
 
     @Column
     private LocalDate fecha;
 
+    @Column
+    private LocalTime hora;
 
-    //La clase tiene tres constructores:
 
-    //El primer constructor toma todos los campos como argumentos y los inicializa.
-    public Turno(Long id, Paciente paciente, Odontologo odontologo, LocalDate fecha) {
+    public Turno(Long id, Paciente paciente, Odontologo odontologo, LocalDate fecha, LocalTime hora) {
         this.id = id;
         this.paciente = paciente;
         this.odontologo = odontologo;
         this.fecha = fecha;
+        this.hora = hora;
     }
 
 
-    //El segundo constructor toma todos los campos excepto "id" como argumentos y los inicializa.
-// Este constructor se utiliza para crear nuevos objetos de "Turnos" que aún no tienen un "id" asignado.
-    public Turno(Paciente paciente, Odontologo odontologo, LocalDate fecha) {
+    public Turno(Paciente paciente, Odontologo odontologo, LocalDate fecha, LocalTime hora) {
         this.paciente = paciente;
         this.odontologo = odontologo;
         this.fecha = fecha;
+        this.hora = hora;
     }
-
-    //El tercer constructor es un constructor (por defecto)vacío que no toma argumentos.
-    // Este constructor se utiliza cuando no se tienen valores para inicializar los campos.
-
 
     public Turno() {
     }
@@ -70,7 +52,12 @@ public class Turno {
     }
 
 
-    //También se crean métodos "get" y "set" para cada uno de los campos de la clase, lo que permite acceder y modificar los valores de los campos.
+    public LocalTime sumarHorarioMas30Minutos(){
+        return hora.minusMinutes(30);
+    }
+
+
+
 
     public Long getId() {
         return id;
@@ -104,6 +91,17 @@ public class Turno {
         this.fecha = fecha;
     }
 
+    public LocalTime getHora() {
+        return hora;
+    }
+
+    public void setHora(LocalTime hora) {
+        this.hora = hora;
+    }
+
+
+
+
     @Override
     public String toString() {
         return "Turno{" +
@@ -111,6 +109,7 @@ public class Turno {
                 ", paciente=" + paciente +
                 ", odontologo=" + odontologo +
                 ", fecha=" + fecha +
+                ", hora=" + hora +
                 '}';
     }
 }

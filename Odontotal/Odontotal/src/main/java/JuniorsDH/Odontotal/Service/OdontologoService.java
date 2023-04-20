@@ -39,7 +39,7 @@ public class OdontologoService {
     //agregarOdontologo: recibe un objeto Odontologo, verifica que los campos nombre, apellido y matricula no estén vacíos,
     // y si están completos, guarda el objeto en la base de datos utilizando el odontologoRepository.
     public Odontologo agregarOdontologo (Odontologo odontologo)throws DataInvalidException {
-        if (odontologo.getNombre().isEmpty()||odontologo.getApellido().isEmpty()||odontologo.getMatricula().isEmpty()){
+        if (odontologo.getNombre().isEmpty()||odontologo.getApellido().isEmpty()||odontologo.getMatricula().isEmpty()|| odontologo.getEspecialidad()==null){
             throw new DataInvalidException("Error. Alguno de los campos de registro de Odontologo  se encuentran incompleto");
         }else{
             return  odontologoRepository.save(odontologo);
