@@ -148,6 +148,7 @@ public class TurnoService {
         //cargar la información de turno DTO al turno
         Odontologo odontologo= new Odontologo();
         Paciente paciente= new Paciente();
+
         odontologo.setId(turnodto.getOdontologoId());
         odontologo.setNombre(turnodto.getNombreOdontologo());
         paciente.setId(turnodto.getPacienteId());

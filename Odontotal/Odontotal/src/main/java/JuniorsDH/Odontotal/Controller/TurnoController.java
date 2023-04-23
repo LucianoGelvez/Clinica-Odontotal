@@ -95,8 +95,7 @@ public class TurnoController {
     public ResponseEntity<String> eliminarTurno(@PathVariable Long id) throws ResourceNotFoundException {
 
             turnoService.eliminarTurno(id);
-            return ResponseEntity.ok("Se eliminó el turno" +
-                    " con id= " + id);
+            return ResponseEntity.ok("Se eliminó el turno" +" con id= " + id);
 
     }
 

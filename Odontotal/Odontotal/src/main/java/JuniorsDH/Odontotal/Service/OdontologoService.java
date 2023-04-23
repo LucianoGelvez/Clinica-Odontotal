@@ -3,7 +3,9 @@ package JuniorsDH.Odontotal.Service;
 
 
 
+import JuniorsDH.Odontotal.Domain.Especialidad;
 import JuniorsDH.Odontotal.Domain.Odontologo;
+import JuniorsDH.Odontotal.Dto.OdontologoDto;
 import JuniorsDH.Odontotal.Exception.DataInvalidException;
 import JuniorsDH.Odontotal.Exception.ResourceNotFoundException;
 import JuniorsDH.Odontotal.Repository.OdontologoRepository;
@@ -38,23 +40,24 @@ public class OdontologoService {
 
     //agregarOdontologo: recibe un objeto Odontologo, verifica que los campos nombre, apellido y matricula no estén vacíos,
     // y si están completos, guarda el objeto en la base de datos utilizando el odontologoRepository.
-    public Odontologo agregarOdontologo (Odontologo odontologo)throws DataInvalidException {
-        if (odontologo.getNombre().isEmpty()||odontologo.getApellido().isEmpty()||odontologo.getMatricula().isEmpty()|| odontologo.getEspecialidad()==null){
+    public OdontologoDto agregarOdontologo (OdontologoDto odontologoDto)throws DataInvalidException {
+        Odontologo odontologoGuardado;
+        if (odontologoDto.getId()==null||odontologoDto.getNombre().isEmpty()||odontologoDto.getApellido().isEmpty()|| odontologoDto.getEspecialidad()==null){
             throw new DataInvalidException("Error. Alguno de los campos de registro de Odontologo  se encuentran incompleto");
         }else{
-            return  odontologoRepository.save(odontologo);
+            odontologoGuardado=  odontologoRepository.save(odontologoDtoAOdontologo(odontologoDto));
         }
-
+        return odontologoAOdontologoDto(odontologoGuardado);
     }
 
 
 
     //listarOdontologo: recibe un id de tipo Long, busca un objeto Odontologo en la base de datos con ese id utilizando el odontologoRepository,
     // y si lo encuentra, devuelve un objeto Optional con el Odontologo buscado. Si no lo encuentra, lanza una excepción ResourceNotFoundException.
-    public Optional<Odontologo> listarOdontologo (Long id) throws ResourceNotFoundException {
+    public Optional<OdontologoDto> listarOdontologo (Long id) throws ResourceNotFoundException {
         Optional<Odontologo> OdontologoABuscar=odontologoRepository.findById(id);
         if (OdontologoABuscar.isPresent()){
-            return  odontologoRepository.findById(id);
+          return  Optional.of(odontologoAOdontologoDto(OdontologoABuscar.get()));
         }else {
             throw new ResourceNotFoundException("Error. No se encontro el Odontologo Buscado");
         }
@@ -65,14 +68,15 @@ public class OdontologoService {
     //modificarOdontologo: recibe un objeto Odontologo, busca un objeto Odontologo en la base de datos con el id del objeto recibido utilizando el odontologoRepository,
     // y si lo encuentra, guarda el objeto recibido en la base de datos utilizando el odontologoRepository. Si no lo encuentra, lanza una excepción ResourceNotFoundException.
 
-    public Odontologo modificarOdontologo (Odontologo odontologo)throws ResourceNotFoundException{
-        Optional<Odontologo> pacienteaModificar= odontologoRepository.findById(odontologo.getId());
+    public OdontologoDto modificarOdontologo (OdontologoDto odontologoDto)throws ResourceNotFoundException{
+        Odontologo odontologoModificado;
+        Optional<Odontologo> pacienteaModificar= odontologoRepository.findById(odontologoDto.getId());
         if (pacienteaModificar.isPresent()){
-            return  odontologoRepository.save(odontologo);
+            odontologoModificado=odontologoRepository.save(odontologoDtoAOdontologo(odontologoDto));
         }else {
             throw new ResourceNotFoundException("Error. No se encontro el odontologo para actualizar");
         }
-
+        return odontologoAOdontologoDto(odontologoModificado);
     }
 
 
@@ -80,11 +84,11 @@ public class OdontologoService {
     //eliminarOdontologo: recibe un id de tipo Long, busca un objeto Odontologo en la base de datos con ese id utilizando el odontologoRepository,
     // y si lo encuentra, lo elimina de la base de datos utilizando el odontologoRepository. Si no lo encuentra, lanza una excepción ResourceNotFoundException.
     public void  eliminarOdontologo (Long id)throws ResourceNotFoundException{
-        Optional<Odontologo> pacienteAEliminar= odontologoRepository.findById(id);
+        Optional<OdontologoDto> pacienteAEliminar=listarOdontologo(id);
         if(pacienteAEliminar.isPresent()){
             odontologoRepository.deleteById(id);
         }else {
-            throw new ResourceNotFoundException("Error. No se encontro el paciente registrado con el id:  "+ id);
+            throw new ResourceNotFoundException("Error. No se encontro el Odontologo registrado con el id:  "+ id);
         }
 
     }
@@ -94,16 +98,44 @@ public class OdontologoService {
 
     //listarTodosOdontologo: busca todos los objetos Odontologo en la base de datos utilizando el odontologoRepository y si la lista no está vacía,
     // devuelve la lista de objetos Odontologo. Si la lista está vacía, lanza una excepción ResourceNotFoundException.
-    public List<Odontologo> listarTodosOdontologo ()throws ResourceNotFoundException{
-        List<Odontologo> todosPacientes = odontologoRepository.findAll();
-        if (todosPacientes.isEmpty()){
-            throw new ResourceNotFoundException("Error. No se agregaron pacientes, la lista se encuentra vacia");
+    public List<OdontologoDto> listarTodosOdontologo ()throws ResourceNotFoundException{
+       List<Odontologo> buscarTodosLosOdontologos= odontologoRepository.findAll();
+        List<OdontologoDto> todosodontologosADto = listarTodosOdontologo();
+
+        if (buscarTodosLosOdontologos.isEmpty()){
+            throw new ResourceNotFoundException("Error. No se agregaron Odontologos, la lista se encuentra vacia");
         }else {
-            return todosPacientes;
+            for (Odontologo odontologo : buscarTodosLosOdontologos) {
+                todosodontologosADto.add(odontologoAOdontologoDto(odontologo));
+            }
+            return todosodontologosADto;
         }
     }
 
 
 
+    private OdontologoDto odontologoAOdontologoDto(Odontologo odontologo){
+        OdontologoDto respuesta= new OdontologoDto();
+        respuesta.setId(odontologo.getId());
+        respuesta.setNombre(odontologo.getNombre());
+        respuesta.setApellido(odontologo.getApellido());
+        respuesta.setEspecialidad(odontologo.getEspecialidad().name());
+    return  respuesta;
+    }
+
+
+    private Odontologo odontologoDtoAOdontologo(OdontologoDto odontologoDto){
+        Odontologo respuesta=new Odontologo();
+        respuesta.setId(odontologoDto.getId());
+        respuesta.setNombre(odontologoDto.getNombre());
+        respuesta.setApellido(odontologoDto.getApellido());
+        respuesta.setEspecialidad(Especialidad.valueOf(odontologoDto.getEspecialidad()));
+        return respuesta;
+    }
+
+//Se utiliza el método valueOf() para convertir una cadena de texto (en este caso, el valor de odontologoDto.getEspecialidad()) en un objeto de tipo Enum.
+// El método valueOf() es un método estático definido en la clase del Enum, que toma un String como parámetro y devuelve el objeto de tipo Enum correspondiente.
+//En este caso, el método Especialidad.valueOf(odontologoDto.getEspecialidad()) convierte el valor de la cadena de texto que se encuentra en odontologoDto.getEspecialidad() en un objeto de tipo Especialidad.
+// El método valueOf() lanza una excepción si el valor de la cadena de texto no corresponde a uno de los valores definidos en el Enum.
 
 }

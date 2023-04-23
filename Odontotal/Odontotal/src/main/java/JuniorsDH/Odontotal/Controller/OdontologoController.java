@@ -3,6 +3,7 @@ package JuniorsDH.Odontotal.Controller;
 
 
 import JuniorsDH.Odontotal.Domain.Odontologo;
+import JuniorsDH.Odontotal.Dto.OdontologoDto;
 import JuniorsDH.Odontotal.Exception.DataInvalidException;
 import JuniorsDH.Odontotal.Exception.ResourceNotFoundException;
 import JuniorsDH.Odontotal.Service.OdontologoService;
@@ -50,13 +51,10 @@ public class OdontologoController {
 // Si encuentra el odontólogo, devuelve una respuesta HTTP 200 OK con los detalles del odontólogo en el cuerpo de la respuesta.
 // Si no se encuentra el odontólogo, devuelve una respuesta HTTP 400 BAD REQUEST.
     @GetMapping("/{id}")
-    public ResponseEntity<Odontologo> buscarOdontologo(@PathVariable Long id) throws ResourceNotFoundException {
-        Optional<Odontologo> listaOdontologo=odontologoService.listarOdontologo(id);
-        if(listaOdontologo.isPresent()){
+    public ResponseEntity<OdontologoDto> buscarOdontologo(@PathVariable Long id) throws ResourceNotFoundException {
+        Optional<OdontologoDto> listaOdontologo=odontologoService.listarOdontologo(id);
             return ResponseEntity.ok(listaOdontologo.get());
-        }else {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-        }
+
     }
 
 
@@ -69,13 +67,10 @@ public class OdontologoController {
     // Si no se puede actualizar el odontólogo, devuelve una respuesta HTTP 400 BAD REQUEST.
 
       @PutMapping
-    public ResponseEntity<Odontologo> actualizarOdontologo(@RequestBody Odontologo odontologo)throws ResourceNotFoundException{
-        Odontologo odontologoActualizado = odontologoService.modificarOdontologo(odontologo);
-        if (odontologoActualizado != null) {
+    public ResponseEntity<OdontologoDto> actualizarOdontologo(@RequestBody OdontologoDto odontologoDto)throws ResourceNotFoundException{
+        OdontologoDto odontologoActualizado = odontologoService.modificarOdontologo(odontologoDto);
             return ResponseEntity.ok(odontologoActualizado);
-        } else {
-            return ResponseEntity.badRequest().build();
-        }
+
     }
 
 
@@ -86,8 +81,8 @@ public class OdontologoController {
 // Si no hay ningún odontólogo registrado, devuelve una respuesta HTTP 400 BAD REQUEST.
 
     @GetMapping
-    public ResponseEntity<List<Odontologo>> buscarTodosOdontologos() throws ResourceNotFoundException {
-        List<Odontologo> listaOdontologos = odontologoService.listarTodosOdontologo();
+    public ResponseEntity<List<OdontologoDto>> buscarTodosOdontologos() throws ResourceNotFoundException {
+        List<OdontologoDto> listaOdontologos = odontologoService.listarTodosOdontologo();
         return ResponseEntity.ok(listaOdontologos);
     }
 
@@ -98,9 +93,9 @@ public class OdontologoController {
 // Llama al método eliminarOdontologo del servicio para eliminar el registro del odontólogo con el ID proporcionado.
 // Si se elimina correctamente, devuelve una respuesta HTTP 204 NO CONTENT. Si no se puede eliminar el odontólogo, devuelve una respuesta HTTP 400 BAD REQUEST.
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> eliminarOdontologo(@PathVariable Long id) throws ResourceNotFoundException {
+    public ResponseEntity<String> eliminarOdontologo(@PathVariable Long id) throws ResourceNotFoundException {
         odontologoService.eliminarOdontologo(id);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok("se elimino el odontologo con id : "+ id );
     }
 
 
@@ -112,8 +107,8 @@ public class OdontologoController {
     // Si se guarda correctamente, devuelve una respuesta HTTP 201 CREATED con los detalles del odontólogo agregado en el cuerpo de la respuesta.
     // Si no se puede agregar el odontólogo, devuelve una respuesta HTTP 400 BAD REQUEST.
     @PostMapping
-    public ResponseEntity<Odontologo> agregarOdontologo(@RequestBody Odontologo odontologo) throws DataInvalidException {
-        Odontologo odontologoAgregado = odontologoService.agregarOdontologo(odontologo);
+    public ResponseEntity<OdontologoDto> agregarOdontologo(@RequestBody OdontologoDto dontologo) throws DataInvalidException {
+        OdontologoDto odontologoAgregado = odontologoService.agregarOdontologo(dontologo);
         return ResponseEntity.status(HttpStatus.CREATED).body(odontologoAgregado);
     }
 }

@@ -24,7 +24,6 @@ const NavbarPatient = () => {
           <Nav.Link href={routes.Service}>Servicios</Nav.Link>
           <Nav.Link href={routes.OurTeam}>Nuestro equipo</Nav.Link>
           <Nav.Link href={routes.AboutUs}>Conocenos</Nav.Link>
-        
         </Nav>
       </Navbar.Collapse>
     </Container>
