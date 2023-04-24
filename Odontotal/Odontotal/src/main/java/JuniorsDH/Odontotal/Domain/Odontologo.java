@@ -1,9 +1,7 @@
 package JuniorsDH.Odontotal.Domain;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -25,9 +23,7 @@ public class Odontologo {
 private Especialidad especialidad;
 
 
-//    @OneToMany(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "especialidad_id", referencedColumnName = "id")
-//    private List<PruebaEspecialidad> pruebaEspecialidadList = new ArrayList<>();
+
 
 
 
