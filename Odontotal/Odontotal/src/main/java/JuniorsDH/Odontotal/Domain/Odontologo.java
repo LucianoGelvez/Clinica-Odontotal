@@ -31,21 +31,19 @@ private Especialidad especialidad;
     private Set<Turno> turnos= new HashSet<>();
 
 
-    public Odontologo(Long id, String nombre, String apellido, String matricula, Especialidad especialidad, Set<Turno> turnos) {
+    public Odontologo(Long id, String nombre, String apellido, String matricula, Especialidad especialidad) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.matricula = matricula;
         this.especialidad = especialidad;
-        this.turnos = turnos;
     }
 
-    public Odontologo(String nombre, String apellido, String matricula, Especialidad especialidad, Set<Turno> turnos) {
+    public Odontologo(String nombre, String apellido, String matricula, Especialidad especialidad) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.matricula = matricula;
         this.especialidad = especialidad;
-        this.turnos = turnos;
     }
 
     public Odontologo() {
@@ -92,14 +90,6 @@ private Especialidad especialidad;
         this.especialidad = especialidad;
     }
 
-    public Set<Turno> getTurnos() {
-        return turnos;
-    }
-
-    public void setTurnos(Set<Turno> turnos) {
-        this.turnos = turnos;
-    }
-
 
     @Override
     public String toString() {
@@ -109,7 +99,6 @@ private Especialidad especialidad;
                 ", apellido='" + apellido + '\'' +
                 ", matricula='" + matricula + '\'' +
                 ", especialidad=" + especialidad +
-                ", turnos=" + turnos +
                 '}';
     }
 }

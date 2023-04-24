@@ -24,6 +24,7 @@ import java.util.Optional;
 //en la declaración de clase del controlador,
 //se indica que todas las solicitudes que comiencen con /odontologos se manejarán en la clase OdontologoController.
 
+@CrossOrigin(origins = "http://localhost:5173/", allowCredentials = "true")
 @RestController
 @RequestMapping("/odontologos")
 public class OdontologoController {
