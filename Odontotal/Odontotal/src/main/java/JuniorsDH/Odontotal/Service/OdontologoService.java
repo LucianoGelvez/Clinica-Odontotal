@@ -11,6 +11,8 @@ import JuniorsDH.Odontotal.Exception.ResourceNotFoundException;
 import JuniorsDH.Odontotal.Repository.OdontologoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -42,7 +44,7 @@ public class OdontologoService {
     // y si están completos, guarda el objeto en la base de datos utilizando el odontologoRepository.
     public OdontologoDto agregarOdontologo (OdontologoDto odontologoDto)throws DataInvalidException {
         Odontologo odontologoGuardado;
-        if (odontologoDto.getId()==null||odontologoDto.getNombre().isEmpty()||odontologoDto.getApellido().isEmpty()|| odontologoDto.getEspecialidad()==null){
+        if (odontologoDto.getNombre().isEmpty()||odontologoDto.getApellido().isEmpty()|| odontologoDto.getEspecialidad()==null){
             throw new DataInvalidException("Error. Alguno de los campos de registro de Odontologo  se encuentran incompleto");
         }else{
             odontologoGuardado=  odontologoRepository.save(odontologoDtoAOdontologo(odontologoDto));
@@ -100,7 +102,7 @@ public class OdontologoService {
     // devuelve la lista de objetos Odontologo. Si la lista está vacía, lanza una excepción ResourceNotFoundException.
     public List<OdontologoDto> listarTodosOdontologo ()throws ResourceNotFoundException{
        List<Odontologo> buscarTodosLosOdontologos= odontologoRepository.findAll();
-        List<OdontologoDto> todosodontologosADto = listarTodosOdontologo();
+        List<OdontologoDto> todosodontologosADto =  new ArrayList<>();
 
         if (buscarTodosLosOdontologos.isEmpty()){
             throw new ResourceNotFoundException("Error. No se agregaron Odontologos, la lista se encuentra vacia");

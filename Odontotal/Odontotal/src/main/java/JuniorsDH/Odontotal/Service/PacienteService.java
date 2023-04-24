@@ -3,13 +3,16 @@ package JuniorsDH.Odontotal.Service;
 
 
 
+import JuniorsDH.Odontotal.Domain.Domicilio;
 import JuniorsDH.Odontotal.Domain.Paciente;
+import JuniorsDH.Odontotal.Dto.PacienteDto;
 import JuniorsDH.Odontotal.Exception.DataInvalidException;
 import JuniorsDH.Odontotal.Exception.ResourceNotFoundException;
 import JuniorsDH.Odontotal.Repository.PacienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -42,12 +45,14 @@ public class PacienteService {
 
     //El método agregarPaciente recibe un objeto Paciente como parámetro y lo guarda en la base de datos utilizando el método save del repositorio pacienteRepository.
     // Antes de guardar, realiza una validación de los campos del paciente y lanza una excepción DataInvalidException si alguno de ellos está vacío o nulo.
-      public Paciente agregarPaciente (Paciente paciente)throws DataInvalidException {
-        if (paciente.getDomicilio() == null|| paciente.getNombre().isEmpty()|| paciente.getDocumento().isEmpty()|| paciente.getApellido().isEmpty()|| paciente.getFechaIngreso() == null){
+      public PacienteDto agregarPaciente (PacienteDto pacienteDto)throws DataInvalidException {
+        Paciente respuesta;
+        if (pacienteDto.getIdDomicilio() == null|| pacienteDto.getNombre().isEmpty()|| pacienteDto.getApellido().isEmpty()||pacienteDto.getIdPaciente()==null||pacienteDto.getProvincia().isEmpty()){
             throw new DataInvalidException("Error. Alguno de los campos de registro del paciente  se encuentran incompleto");
         }else{
-            return  pacienteRepository.save(paciente);
+          respuesta=pacienteRepository.save(pacienteDtoAPaciente(pacienteDto));
         }
+        return pacienteApacienteDTO(respuesta);
     }
 
 
@@ -55,10 +60,10 @@ public class PacienteService {
 //El método listarPaciente recibe un parámetro id de tipo Long que identifica al paciente que se quiere buscar en la base de datos.
 // Utiliza el método findById del repositorio pacienteRepository para buscar el paciente.
 // Si lo encuentra, devuelve un objeto Optional con el paciente encontrado. Si no lo encuentra, lanza una excepción ResourceNotFoundException.
-    public Optional<Paciente> listarPaciente (Long id) throws ResourceNotFoundException {
+    public Optional<PacienteDto> listarPaciente (Long id) throws ResourceNotFoundException {
         Optional<Paciente> pacienteABuscar=pacienteRepository.findById(id);
         if (pacienteABuscar.isPresent()){
-            return  pacienteRepository.findById(id);
+            return  Optional.of(pacienteApacienteDTO(pacienteABuscar.get()));
         }else {
             throw new ResourceNotFoundException("Error. No se encontro el paciente Buscado");
         }
@@ -69,13 +74,15 @@ public class PacienteService {
     //El método modificarPaciente recibe un objeto Paciente como parámetro y lo actualiza en la base de datos utilizando el método save del repositorio pacienteRepository.
     // Antes de actualizar, busca el paciente en la base de datos utilizando el método findById del repositorio y si lo encuentra, lo actualiza.
     // Si no lo encuentra, lanza una excepción ResourceNotFoundException.
-    public Paciente modificarPaciente (Paciente paciente)throws ResourceNotFoundException{
-        Optional<Paciente> pacienteaModificar= pacienteRepository.findById(paciente.getId());
+    public PacienteDto modificarPaciente (PacienteDto pacienteDto)throws ResourceNotFoundException{
+        Paciente pacienteModificado;
+        Optional<Paciente> pacienteaModificar= pacienteRepository.findById(pacienteDto.getIdPaciente());
         if (pacienteaModificar.isPresent()){
-            return  pacienteRepository.save(paciente);
+            pacienteModificado=  pacienteRepository.save(pacienteDtoAPaciente(pacienteDto) );
         }else {
             throw new ResourceNotFoundException("Error. No se encontro el paciente para actualizar");
         }
+        return pacienteApacienteDTO(pacienteModificado);
 
     }
 
@@ -85,7 +92,7 @@ public class PacienteService {
     // Utiliza el método findById del repositorio pacienteRepository para buscar el paciente.
     // Si lo encuentra, utiliza el método deleteById del repositorio para eliminarlo. Si no lo encuentra, lanza una excepción ResourceNotFoundException.
     public void  eliminarPaciente (Long id) throws ResourceNotFoundException {
-        Optional<Paciente> pacienteAEliminar= pacienteRepository.findById(id);
+        Optional<PacienteDto> pacienteAEliminar= listarPaciente(id);
         if(pacienteAEliminar.isPresent()){
             pacienteRepository.deleteById(id);
         }else {
@@ -97,15 +104,63 @@ public class PacienteService {
 
 //El método listarTodosPacientes busca todos los pacientes registrados en la base de datos utilizando el método findAll del repositorio pacienteRepository.
 // Si encuentra pacientes, devuelve una lista de objetos Paciente. Si la lista está vacía, lanza una excepción ResourceNotFoundException.
-    public List<Paciente>  listarTodosPacientes ()throws ResourceNotFoundException{
-        List<Paciente> todosPacientes = pacienteRepository.findAll();
-        if (todosPacientes.isEmpty()){
+    public List<PacienteDto>  listarTodosPacientes ()throws ResourceNotFoundException{
+        List<Paciente> buscarTodosPacientes = pacienteRepository.findAll();
+        List<PacienteDto> todosPacientesDto = new ArrayList<>();
+        if (buscarTodosPacientes.isEmpty()){
             throw new ResourceNotFoundException("Error. No se agregaron pacientes, la lista se encuentra vacia");
         }else {
-           return todosPacientes;
+            for ( Paciente paciente : buscarTodosPacientes) {
+                todosPacientesDto.add(pacienteApacienteDTO(paciente));
+
+            }
         }
+    return todosPacientesDto;
+    }
+
+
+
+
+
+    private Long idPaciente;
+    private String apellido;
+    private String nombre;
+    private Long idDomicilio;
+    private String provincia;
+
+    private PacienteDto pacienteApacienteDTO(Paciente paciente ){
+
+        PacienteDto pacienteDto=new PacienteDto();
+
+        pacienteDto.setIdPaciente(paciente.getId());
+        pacienteDto.setApellido(paciente.getApellido());
+        pacienteDto.setNombre(paciente.getNombre());
+        pacienteDto.setIdDomicilio(paciente.getDomicilio().getId());
+        pacienteDto.setProvincia(paciente.getDomicilio().getProvincia());
+
+        return pacienteDto;
+
 
     }
+
+
+    private Paciente pacienteDtoAPaciente(PacienteDto pacienteDto){
+
+        Paciente paciente=new Paciente();
+        Domicilio domicilio= new Domicilio();
+
+        paciente.setId(pacienteDto.getIdPaciente());
+        paciente.setApellido(pacienteDto.getApellido());
+        paciente.setNombre(pacienteDto.getNombre());
+
+        domicilio.setId(pacienteDto.getIdDomicilio());
+        domicilio.setProvincia(pacienteDto.getProvincia());
+        paciente.setDomicilio(domicilio);
+
+        return paciente;
+
+    }
+
 
 
 }
