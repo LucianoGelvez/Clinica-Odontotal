@@ -42,7 +42,7 @@ public class OdontologoService {
     // y si están completos, guarda el objeto en la base de datos utilizando el odontologoRepository.
     public OdontologoDto agregarOdontologo (OdontologoDto odontologoDto)throws DataInvalidException {
         Odontologo odontologoGuardado;
-        if (odontologoDto.getId()==null||odontologoDto.getNombre().isEmpty()||odontologoDto.getApellido().isEmpty()|| odontologoDto.getEspecialidad()==null){
+        if (odontologoDto.getNombre().isEmpty()||odontologoDto.getApellido().isEmpty()|| odontologoDto.getEspecialidad()==null){
             throw new DataInvalidException("Error. Alguno de los campos de registro de Odontologo  se encuentran incompleto");
         }else{
             odontologoGuardado=  odontologoRepository.save(odontologoDtoAOdontologo(odontologoDto));
