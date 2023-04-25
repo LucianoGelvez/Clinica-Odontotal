@@ -2,6 +2,7 @@ package JuniorsDH.Odontotal.Controller;
 
 
 import JuniorsDH.Odontotal.Domain.Paciente;
+import JuniorsDH.Odontotal.Dto.PacienteDto;
 import JuniorsDH.Odontotal.Exception.DataInvalidException;
 import JuniorsDH.Odontotal.Exception.ResourceNotFoundException;
 import JuniorsDH.Odontotal.Service.PacienteService;
@@ -46,8 +47,8 @@ public class PacienteController {
 // y devuelve una respuesta HTTP con el objeto Paciente actualizado.
 
 @PutMapping
-public ResponseEntity<Paciente> actualizarPaciente(@RequestBody Paciente paciente)throws ResourceNotFoundException {
-    Paciente pacienteActualizado = pacienteService.modificarPaciente(paciente);
+public ResponseEntity<PacienteDto> actualizarPaciente(@RequestBody PacienteDto pacienteDto)throws ResourceNotFoundException {
+    PacienteDto pacienteActualizado = pacienteService.modificarPaciente(pacienteDto);
     return ResponseEntity.ok(pacienteActualizado);
 }
 
@@ -58,13 +59,9 @@ public ResponseEntity<Paciente> actualizarPaciente(@RequestBody Paciente pacient
 // y devuelve una respuesta HTTP con el objeto Paciente correspondiente si se encuentra, o devuelve una respuesta HTTP sin contenido si no se encuentra el Paciente.
 
     @GetMapping ("/{id}")
-    public ResponseEntity<Paciente> buscarPaciente(@PathVariable Long id)throws ResourceNotFoundException {
-        Optional<Paciente> paciente = pacienteService.listarPaciente(id);
-        if(paciente.isPresent()) {
-            return ResponseEntity.ok(paciente.get());
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+    public ResponseEntity<PacienteDto> buscarPaciente(@PathVariable Long id)throws ResourceNotFoundException {
+        Optional<PacienteDto> listarPaciente = pacienteService.listarPaciente(id);
+            return ResponseEntity.ok( listarPaciente.get());
     }
 
 
@@ -73,7 +70,7 @@ public ResponseEntity<Paciente> actualizarPaciente(@RequestBody Paciente pacient
     // y devuelve una respuesta HTTP con el objeto Paciente agregado.
 
     @PostMapping
-    ResponseEntity <Paciente> registrarPaciente(@RequestBody Paciente paciente) throws DataInvalidException {
+    ResponseEntity <PacienteDto> registrarPaciente(@RequestBody PacienteDto paciente) throws DataInvalidException {
         return ResponseEntity.ok(pacienteService.agregarPaciente(paciente)) ;}
 
 
@@ -83,8 +80,8 @@ public ResponseEntity<Paciente> actualizarPaciente(@RequestBody Paciente pacient
     // busca en la base de datos todos los pacientes utilizando el servicio "pacienteService.listarTodosPacientes",
     // y devuelve una respuesta HTTP con una lista de objetos Paciente correspondientes.
     @GetMapping
-    public ResponseEntity<List<Paciente>> buscarTodos()throws ResourceNotFoundException{
-        List<Paciente> pacientes = pacienteService.listarTodosPacientes();
+    public ResponseEntity<List<PacienteDto>> buscarTodos()throws ResourceNotFoundException{
+        List<PacienteDto> pacientes = pacienteService.listarTodosPacientes();
         return ResponseEntity.ok(pacientes);
     }
 
@@ -95,9 +92,9 @@ public ResponseEntity<Paciente> actualizarPaciente(@RequestBody Paciente pacient
 // busca en la base de datos el Paciente correspondiente utilizando el servicio "pacienteService.eliminarPaciente",
 // elimina el Paciente de la base de datos si se encuentra, y devuelve una respuesta HTTP sin contenido.
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> eliminarPaciente(@PathVariable Long id)throws ResourceNotFoundException {
+    public ResponseEntity<String> eliminarPaciente(@PathVariable Long id)throws ResourceNotFoundException {
         pacienteService.eliminarPaciente(id);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok("se elimino el odontologo con id : "+ id );
     }
 
 

@@ -18,34 +18,37 @@ public class Odontologo {
     private String apellido;
     @Column
     private String matricula;
+    @Column
+    private String email;
+    @Column
+    private int telefono;
 
 @Enumerated(EnumType.STRING)
 private Especialidad especialidad;
-
-
-
-
-
 
     @OneToMany(mappedBy = "odontologo")
     private Set<Turno> turnos= new HashSet<>();
 
 
-    public Odontologo(Long id, String nombre, String apellido, String matricula, Especialidad especialidad, Set<Turno> turnos) {
+    public Odontologo(Long id, String nombre, String apellido, String matricula, String email , int telefono , Especialidad especialidad) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.matricula = matricula;
+        this.email=email;
+        this.telefono=telefono;
         this.especialidad = especialidad;
-        this.turnos = turnos;
+
     }
 
-    public Odontologo(String nombre, String apellido, String matricula, Especialidad especialidad, Set<Turno> turnos) {
+    public Odontologo(String nombre, String apellido, String matricula,String email , int telefono, Especialidad especialidad) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.matricula = matricula;
+        this.email=email;
+        this.telefono=telefono;
         this.especialidad = especialidad;
-        this.turnos = turnos;
+
     }
 
     public Odontologo() {
@@ -84,6 +87,22 @@ private Especialidad especialidad;
         this.matricula = matricula;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public int getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(int telefono) {
+        this.telefono = telefono;
+    }
+
     public Especialidad getEspecialidad() {
         return especialidad;
     }
@@ -92,13 +111,6 @@ private Especialidad especialidad;
         this.especialidad = especialidad;
     }
 
-    public Set<Turno> getTurnos() {
-        return turnos;
-    }
-
-    public void setTurnos(Set<Turno> turnos) {
-        this.turnos = turnos;
-    }
 
 
     @Override
@@ -108,6 +120,8 @@ private Especialidad especialidad;
                 ", nombre='" + nombre + '\'' +
                 ", apellido='" + apellido + '\'' +
                 ", matricula='" + matricula + '\'' +
+                ", email='" + email + '\'' +
+                ", telefono=" + telefono +
                 ", especialidad=" + especialidad +
                 ", turnos=" + turnos +
                 '}';

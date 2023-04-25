@@ -23,6 +23,10 @@ public class Paciente {
     private String documento;
     @Column
     private LocalDate fechaIngreso;
+    @Column
+    private LocalDate fechaNacimiento;
+    @Column
+    private int telefono;
 
 
     @OneToOne(cascade = CascadeType.ALL)
@@ -35,22 +39,26 @@ public class Paciente {
     private Set<Turno> turnos= new HashSet<>();
 
 
-    public Paciente(Long id, String apellido, String nombre, String documento, LocalDate fechaIngreso, Domicilio domicilio) {
+    public Paciente(Long id, String apellido, String nombre, String documento, LocalDate fechaIngreso, LocalDate fechaNacimiento, int telefono, Domicilio domicilio) {
         this.id = id;
         this.apellido = apellido;
         this.nombre = nombre;
         this.documento = documento;
         this.fechaIngreso = fechaIngreso;
+        this.fechaNacimiento=fechaNacimiento;
+        this.telefono=telefono;
         this.domicilio = domicilio;
     }
 
 
 
-    public Paciente(String apellido, String nombre, String documento, LocalDate fechaIngreso, Domicilio domicilio) {
+    public Paciente(String apellido, String nombre, String documento, LocalDate fechaIngreso, LocalDate fechaNacimiento, int telefono, Domicilio domicilio) {
         this.apellido = apellido;
         this.nombre = nombre;
         this.documento = documento;
         this.fechaIngreso = fechaIngreso;
+        this.fechaNacimiento=fechaNacimiento;
+        this.telefono=telefono;
         this.domicilio = domicilio;
     }
 
@@ -103,6 +111,22 @@ public class Paciente {
         this.fechaIngreso = fechaIngreso;
     }
 
+    public LocalDate getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+    public void setFechaNacimiento(LocalDate fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
+    public int getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(int telefono) {
+        this.telefono = telefono;
+    }
+
     public Domicilio getDomicilio() {
         return domicilio;
     }
@@ -120,7 +144,10 @@ public class Paciente {
                 ", nombre='" + nombre + '\'' +
                 ", documento='" + documento + '\'' +
                 ", fechaIngreso=" + fechaIngreso +
-                ", domicilio=" + domicilio +'\''+
+                ", fechaNacimiento=" + fechaNacimiento +
+                ", telefono=" + telefono +
+                ", domicilio=" + domicilio +
+                ", turnos=" + turnos +
                 '}';
     }
 }
