@@ -2,7 +2,6 @@ package JuniorsDH.Odontotal.Controller;
 
 
 
-import JuniorsDH.Odontotal.Domain.Odontologo;
 import JuniorsDH.Odontotal.Dto.OdontologoDto;
 import JuniorsDH.Odontotal.Exception.DataInvalidException;
 import JuniorsDH.Odontotal.Exception.ResourceNotFoundException;
@@ -52,7 +51,7 @@ public class OdontologoController {
 // Si no se encuentra el odontólogo, devuelve una respuesta HTTP 400 BAD REQUEST.
     @GetMapping("/{id}")
     public ResponseEntity<OdontologoDto> buscarOdontologo(@PathVariable Long id) throws ResourceNotFoundException {
-        Optional<OdontologoDto> listaOdontologo=odontologoService.listarOdontologo(id);
+        Optional<OdontologoDto> listaOdontologo= odontologoService.listarOdontologo(id);
             return ResponseEntity.ok(listaOdontologo.get());
 
     }

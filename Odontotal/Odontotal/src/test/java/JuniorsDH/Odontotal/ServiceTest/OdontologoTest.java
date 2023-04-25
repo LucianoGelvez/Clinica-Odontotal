@@ -1,5 +1,6 @@
 package JuniorsDH.Odontotal.ServiceTest;
 
+import JuniorsDH.Odontotal.Domain.Especialidad;
 import JuniorsDH.Odontotal.Domain.Odontologo;
 import JuniorsDH.Odontotal.Exception.DataInvalidException;
 import JuniorsDH.Odontotal.Exception.ResourceNotFoundException;
@@ -17,13 +18,13 @@ import static org.junit.jupiter.api.Assertions.*;
 public class OdontologoTest {
 
     @Autowired
-    private OdontologoService odontologoService ;
+    private OdontologoService odontologoService;
 
     @Test
     @Order(1)
     public void agregarOdontologo() throws DataInvalidException {
 
-        Odontologo odontologo1= new Odontologo("rafael", "luciano", "123456");
+        Odontologo odontologo1= new Odontologo("rafael", "luciano", "123456","rl@gmail.com",123444555, Especialidad.ESPECIALIDAD_CIRUGIA_MAXILOFACIAL);
 
         Odontologo odontologoAgregado= odontologoService.agregarOdontologo(odontologo1);
 
@@ -58,7 +59,7 @@ public class OdontologoTest {
 
         odontologoService.agregarOdontologo(odontologo1);
 
-        List<Odontologo> odontologosList =odontologoService.listarTodosOdontologo();
+        List<Odontologo> odontologosList = odontologoService.listarTodosOdontologo();
 
         assertEquals(2,odontologosList.size());
 
@@ -71,7 +72,7 @@ public class OdontologoTest {
 
 
         Odontologo odontologo= new Odontologo(1L,"rafael", "luciano", "123456");
-        Odontologo odontologoGuardado=odontologoService.agregarOdontologo(odontologo);
+        Odontologo odontologoGuardado= odontologoService.agregarOdontologo(odontologo);
 
         Odontologo odontologoModificado= new Odontologo(1L,"ra", "luciano", "123456");
 

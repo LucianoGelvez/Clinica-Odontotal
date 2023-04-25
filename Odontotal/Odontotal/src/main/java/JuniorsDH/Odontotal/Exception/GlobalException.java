@@ -1,10 +1,13 @@
 package JuniorsDH.Odontotal.Exception;
-
-
+import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+
+import static org.apache.logging.log4j.LogManager.getLogger;
+
+
 
 //, este controlador de excepciones global maneja excepciones específicas y devuelve una respuesta HTTP apropiada con un mensaje de error cuando ocurren en toda la aplicación.
 
@@ -18,10 +21,10 @@ public class GlobalException {
 
 
     //El primer método maneja excepciones de tipo ResourceNotFoundException y devuelve una respuesta de ResponseEntity con un mensaje de error y un estado NOT_FOUND (404).
-//    Logger logger= Logger.getLogger(GlobalException.class);
+    Logger logger= getLogger(GlobalException.class);
     @ExceptionHandler (ResourceNotFoundException.class)
     public ResponseEntity<String> ProcesarRNFE(ResourceNotFoundException ex){
-//        logger.error(ex.getMessage());
+       logger.error(ex.getMessage());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
     }
 
@@ -30,7 +33,7 @@ public class GlobalException {
    // El segundo método maneja excepciones de tipo DataInvalidException y devuelve una respuesta de ResponseEntity con un mensaje de error y un estado BAD_REQUEST (400).
     @ExceptionHandler(DataInvalidException.class)
     public ResponseEntity<String> procesaDIE(DataInvalidException ex){
-//        logger.error(ex.getMessage());
+        logger.error(ex.getMessage());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
     }
 }
