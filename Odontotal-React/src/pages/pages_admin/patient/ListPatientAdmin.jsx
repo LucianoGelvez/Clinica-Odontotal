@@ -15,7 +15,7 @@ const ListPatientAdmin = () => {
       <ul>
         {information.map((patient) => (
           <li key={patient.id}>
-            {patient.nombre} {patient.apellido} 
+            {patient.nombre} {patient.apellido} {} 
           </li>
         ))}
       </ul>
