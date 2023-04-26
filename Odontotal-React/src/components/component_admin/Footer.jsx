@@ -1,8 +1,9 @@
 import React from 'react'
+import '../../styles/componentStyles/footer.css'
 
 const Footer = () => {
   return (
-    <div style={{backgroundColor: "grey", width: "100%"}}>Footer</div>
+    <div className='footer'>Footer</div>
   )
 }
 

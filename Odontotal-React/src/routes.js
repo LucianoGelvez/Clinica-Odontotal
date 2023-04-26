@@ -11,7 +11,7 @@ export const routes = {
     AddDentistAdmin: "/AgregarOdontologo",
     ListDentistAdmin: "/ListaDeOdontologos",
     AddPatientAdmin: "/AgregarPaciente",
-    ListPatientAdmin: "/ListaPacientes",
+    ListPatientAdmin: "/ListaDePacientes",
     AddDentalHygienists:"/AgregarProtecistas",
-    ListDentalHygienists: "/ListaProtecistas"
+    ListDentalHygienists: "/ListaDeProtecistas"
 }

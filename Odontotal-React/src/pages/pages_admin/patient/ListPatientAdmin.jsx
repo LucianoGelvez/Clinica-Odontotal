@@ -1,17 +1,15 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import NavbarAdmin from '../../../components/component_admin/NavbarAdmin'
-import { ContextGlobal } from '../../../components/utils/global.context'
+import { useContext } from "react";
+import { ContextGlobal } from '../../../components/utils/global.context';
 
-const ListDentistAdmin = () => {
 
+const ListPatientAdmin = () => {
   const { information } = useContext(ContextGlobal)
-
   console.log(information)
-  
-
 
   return (
-    <div>ListDentistAdmin
+    <div>ListPatientAdmin
       <NavbarAdmin/>
       <h1>Lista de Pacientes</h1>
       <ul>
@@ -26,4 +24,4 @@ const ListDentistAdmin = () => {
   )
 }
 
-export default ListDentistAdmin
+export default ListPatientAdmin
