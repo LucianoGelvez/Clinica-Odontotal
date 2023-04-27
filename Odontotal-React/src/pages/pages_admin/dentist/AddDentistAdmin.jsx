@@ -6,6 +6,8 @@ const AddDentistAdmin = () => {
     apellido: '',
     nombre: '',
     matricula: '',
+    email: '',
+    especialidad: '',
   });
   const [response, setResponse] = useState('');
 

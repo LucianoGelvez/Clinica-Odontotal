@@ -9,18 +9,18 @@ const ListPatientAdmin = () => {
   console.log(information)
 
   return (
-    <div>ListPatientAdmin
-      <NavbarAdmin/>
-      <h1>Lista de Pacientes</h1>
-      <ul>
-        {information.map((patient) => (
-          <li key={patient.id}>
-            {patient.nombre} {patient.apellido} {} 
-          </li>
-        ))}
-      </ul>
-        <h2>dsasadasdsaasd</h2>
-    </div>
+    <div>ListDentistAdmin
+    <NavbarAdmin/>
+    <h1>Lista de Pacientes</h1>
+   
+      {information.map((dentist) => (
+        <li key={dentist.idPaciente}>
+        {dentist.nombre}, {dentist.apellido}, {dentist.especialidad} 
+        </li>
+      ))}
+   
+      <h2>dsasadasdsaasd</h2>
+  </div>
   )
 }
 

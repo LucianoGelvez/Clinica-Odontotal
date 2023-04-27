@@ -9,7 +9,7 @@ import Logo from '../../images/Logo.png'
 
 function NavbarAdmin() {
   return (
-    <Navbar bg="light" expand="lg" width={"100vw"}>
+    <Navbar className='nadvar' bg="light" expand="lg" width={"100vw"}>
       <Container>
         <Navbar.Brand href="#home"><img src={Logo} alt="" width={"100px"}/></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
