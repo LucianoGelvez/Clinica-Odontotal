@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import NavbarPatient from '../../components/component-patient/NavbarPatient'
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { ContextGlobal } from '../../components/utils/global.context';
 
 const Turns = () => {
 
@@ -21,12 +22,14 @@ const Turns = () => {
   }
 
   let url = "http://localhost:8080/odontologos"
-
   useEffect(() => {
     fetch(url)
       .then((res) => res.json())
       .then((data) => console.log(data));
   }, []);
+
+  const { odontologos } = useContext(ContextGlobal)
+  console.log(odontologos);
 
   return (
     <div className='turn'>Turns
