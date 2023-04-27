@@ -47,7 +47,7 @@ public class ProtecistaController {
     @DeleteMapping ("/{id}")
     ResponseEntity<String> eliminarProtecista (@PathVariable Long id ) throws ResourceNotFoundException {
         protecistaService.eliminarProtecista(id);
-        return ResponseEntity.ok("se elimino el odontologo con id : "+ id );
+        return ResponseEntity.ok("se elimino el Protecista con id : "+ id );
     }
 
     @GetMapping
