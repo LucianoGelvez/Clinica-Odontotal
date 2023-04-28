@@ -1,21 +1,26 @@
 
 .container-dentists{
-    
+  
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    background-color: aqua;
+    align-items: self-start;
+    margin-left: 50px;
+    
+    .container-dentists_type-of-date{
+        width: 40%;
+        display: flex;
+        background-color: aqua;
+        justify-content: space-evenly;
+    }
  
     .container-dentists_list{
+        width: 40%;
         display: flex;
-        justify-content: center;
-        align-items: center;
-        .container-dentists {
-        background-color: red;
-            
-        }
-        .container-dentists_btnDelete {
-            background-color: red;
+         justify-content: space-evenly;
+        .container-dentists_list_btn-delete {
+            background-color: rgb(193, 144, 47);
             width: 80px;
         }
+        
+        
 }   }

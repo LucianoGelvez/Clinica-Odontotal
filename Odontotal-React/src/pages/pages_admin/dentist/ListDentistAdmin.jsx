@@ -2,41 +2,54 @@ import React, { useContext, useEffect, useState } from 'react'
 import NavbarAdmin from '../../../components/component_admin/NavbarAdmin'
 import { ContextGlobal } from '../../../components/utils/global.context'
 import '../../../styles/pagesStyles/ListDentistAdminStyle.css'
+import Table from 'react-bootstrap/Table';
 
 const ListDentistAdmin = () => {
 
   const { information } = useContext(ContextGlobal)
   console.log(information)
 
-  const deleteDentist = (dentist) => {
-      console.log(dentist)
-      // document.querySelector('#' + `${dentist.id}`).remove();
-
-      // const url = 'http://localhost:8080/odontologos'+ dentist.id;
-      // const settings = {
-      //     method: 'DELETE'
-      // }
-      // fetch(url,settings)
-      // .then(response => response.json())
-      // .then(error => console.log(error))
+  const deleteDentist = (id) => {
+      console.log(id)
+      document.getElementById(`${id}`).remove();
+      const url = 'http://localhost:8080/odontologos/'+ id;
+      const settings = {
+          method: 'DELETE'
+      }
+      fetch(url,settings)
+      .then(response => response.json())
+      .then(error => console.log(error))
   }
   return (
     <div>
       <NavbarAdmin/>
       <h1>Lista de Odontologos</h1>
-      <table className='container-dentists'>
-      <thead>
-        <tr>
+      <Table striped bordered hover>
+      <thead className='container-dentists'>
+           <tr className='container-dentists_type-of-date'>
+           <th>Nombre</th>
+           <th>Apellido</th>
+           <th>Especialidad</th>
+         </tr>
         {information.map(dentist => (
-          <th className='container-dentists_list' id={dentist.id} key={dentist.id}>
-          {dentist.nombre}, {dentist.apellido}, {dentist.especialidad} 
-          <button className='container-dentists_btn-delete'  onClick={deleteDentist(dentist.id)}>Borrar</button>
-          </th>
-          
-        ))}
+        
+       <tbody className='container-dentists_list' id={dentist.id} key={dentist.id}>
+      <tr>
+        <td>{dentist.nombre}</td> 
         </tr>
-        </thead>
-      </table>
+      <tr>
+        <td>{dentist.apellido}</td>
+        </tr>
+       <tr>
+        <td>{dentist.especialidad}</td> 
+        </tr>
+      <button className='container-dentists_list_btn-delete' onClick={() => deleteDentist(dentist.id)}>Borrar</button>
+        </tbody>
+         )
+         )
+         }
+         </thead>
+      </Table>
         
     </div>
   )

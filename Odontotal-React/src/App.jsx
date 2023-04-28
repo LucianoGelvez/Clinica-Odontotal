@@ -24,11 +24,10 @@ import MyTurns from './pages/pages_patient/MyTurns'
 
 function App() {
  
-  const [render, setRender] = useState(false)
+  const [render, setRender] = useState(true)
   return (
     <div className="App">
 
-  
     <Routes>
     <Route path={routes.Home} element={render ? <AddTurnAdmin/> : <Home/>} />
     <Route path={routes.Service} element={<Service/>} />
