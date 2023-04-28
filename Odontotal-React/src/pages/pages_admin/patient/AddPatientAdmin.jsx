@@ -2,85 +2,98 @@ import React, { useState } from 'react'
 import NavbarAdmin from '../../../components/component_admin/NavbarAdmin'
 
 const AddPatientAdmin = () => {
+  const [domicilio, setDomicilio] = useState({
+    calle: '',
+    numero: '',
+    localidad: '',
+    provincia: '',
+  });
 
-    const [formData, setFormData] = useState({
-      apellido: "",
-      nombre: "",
-      documento: "",
-      fechaIngreso: "",
-      fechaNacimiento: "",
-      telefono: "",
-      formDataDomicilio,
-      email: ""
-    })
-    
-    const [formDataDomicilio, setFormDataDomicilio] = useState({
-        calle: "",
-        numero: "",
-        localidad: "",
-        provincia: ""
-    })
+  const [formData, setFormData] = useState({
+    apellido: '',
+    nombre: '',
+    documento: '',
+    fechaIngreso: '',
+    fechaNacimiento: '',
+    telefono: '',
+    email: '',
+  });
 
-    const [response, setResponse] = useState('');
+  const [response, setResponse] = useState('');
 
-    const handleInputChange = (event) => {
-      const { name, value } = event.target;
-      // setFormData({
-      //   ...formData,
-      //   [name]: value
-      // });}
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+
+    if (name === 'calle' || name === 'numero' || name === 'localidad' || name === 'provincia') {
+      setDomicilio({
+        ...domicilio,
+        [name]: value,
+      });
       setFormData({
         ...formData,
-        formDataDomicilio: {
-          ...formData.domicilio,
+        domicilio: {
+          ...domicilio,
           [name]: value,
         },
-      });}
-
-    const handleSubmit = (event) => {
-      event.preventDefault();
-      const url = '/pacientes';
-      const settings = {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData)
-      };
-    
-      fetch(url, settings)
-        .then((response) => response.json())
-        .then((data) => {
-          setResponse('Paciente Registrado');
-          resetUploadForm();
-        })
-        .catch((error) => {
-          setResponse('Error intente nuevamente');
-          resetUploadForm();
-        });
-    };
-
-
-    const resetUploadForm = () => {
-      setFormData({
-        apellido: "",
-        nombre: "",
-        documento: "",
-        fechaIngreso: "",
-        fechaNacimiento: "",
-        telefono: "",
-        domicilio: {
-          calle: "",
-          numero: "",
-          localidad: "",
-          provincia: "",
-        },
-        email: ""
       });
-  
-      console.log(formData)
+    } else {
+      setFormData({
+        ...formData,
+        [name]: value,
+      });
+    }
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(formData);
+    const url = 'http://localhost:8080/pacientes';
+    const settings = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
     };
 
+    fetch(url, settings)
+      .then((response) => response.json())
+      .then((data) => {
+        setResponse();
+        resetUploadForm();
+      })
+      .catch((error) => {
+        setResponse(error);
+        resetUploadForm();
+      });
+  };
+
+  const resetUploadForm = () => {
+    setFormData({
+      apellido: '',
+      nombre: '',
+      documento: '',
+      fechaIngreso: '',
+      fechaNacimiento: '',
+      telefono: '',
+      domicilio: {
+        calle: '',
+        numero: '',
+        localidad: '',
+        provincia: '',
+      },
+      email: '',
+    });
+
+    setDomicilio({
+      calle: '',
+      numero: '',
+      localidad: '',
+      provincia: '',
+    });
+  };
+
+  console.log(response);
   return (
     <div>
       <NavbarAdmin/>
@@ -93,7 +106,6 @@ const AddPatientAdmin = () => {
             padding: '10px',
             borderRadius: '3px',
             width: "80%",
-            
           }}
         >
           <h3>Agregar Paciente</h3>
@@ -109,6 +121,12 @@ const AddPatientAdmin = () => {
     <input type="text" className="form-control" id="nombre"
         placeholder="Ingrese el nombre" name="nombre" 
         value={formData.nombre} onChange={handleInputChange} required/>
+</div>
+<div className="form-group">
+    <label className="control-label" htmlFor="documento">documento:</label>
+    <input type="text" className="form-control" id="documento"
+        placeholder="Ingrese el documento" name="documento" 
+        value={formData.documento} onChange={handleInputChange} required/>
 </div>
             <div className="form-group">
               <label className="control-label" htmlFor="nombre">FechaIngreso:</label>
@@ -138,25 +156,25 @@ const AddPatientAdmin = () => {
               <label className="control-label" htmlFor="calle">calle:</label>
               <input type="text" className="form-control" id="calle"
                 placeholder="Ingrese el calle" name="calle" 
-                value={formData.domicilio.calle} onChange={handleInputChange} required/>
+                value={domicilio.calle} onChange={handleInputChange} required/>
             </div>
             <div className="form-group">
               <label className="control-label" htmlFor="numero">numero:</label>
               <input type="number" className="form-control" id="numero"
                 placeholder="Ingrese el numero" name="numero" 
-                value={formData.domicilio.numero} onChange={handleInputChange} required/>
+                value={domicilio.numero} onChange={handleInputChange} required/>
             </div>
             <div className="form-group">
               <label className="control-label" htmlFor="localidad">localidad:</label>
               <input type="text" className="form-control" id="localidad"
                 placeholder="Ingrese el localidad" name="localidad" 
-                value={formData.domicilio.localidad} onChange={handleInputChange} required/>
+                value={domicilio.localidad} onChange={handleInputChange} required/>
             </div>
             <div className="form-group">
               <label className="control-label" htmlFor="provincia">provincia:</label>
               <input type="text" className="form-control" id="provincia"
                 placeholder="Ingrese el provincia" name="provincia" 
-                value={formData.domicilio.provincia} onChange={handleInputChange} required/>
+                value={domicilio.provincia} onChange={handleInputChange} required/>
             </div>
             
                 <button>Agregar</button>

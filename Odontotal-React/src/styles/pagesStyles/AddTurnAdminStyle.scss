@@ -1,0 +1,17 @@
+.horario {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .horario button {
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border: none;
+    background-color: #eee;
+    cursor: pointer;
+  }
+  
+  .horario button:hover {
+    background-color: #ccc;
+  }
