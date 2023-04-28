@@ -1,41 +1,43 @@
 import React, { useContext, useEffect, useState } from 'react'
 import NavbarAdmin from '../../../components/component_admin/NavbarAdmin'
 import { ContextGlobal } from '../../../components/utils/global.context'
+import '../../../styles/pagesStyles/ListDentistAdminStyle.css'
 
 const ListDentistAdmin = () => {
 
   const { information } = useContext(ContextGlobal)
-
   console.log(information)
-  // const url_ListDentists = "http://localhost:8080/odontologos";
-  
-  
-  // const [information, setInformation] = useState([]);
 
-  // useEffect(()=>{
- 
-  //   fetch(url_ListDentists)
-  //     .then((response) => response.json())
-  //     .then((data) => setInformation(data))
-  //     .catch((error) => console.log(error));
-  // }, []);
+  const deleteDentist = (dentist) => {
+      console.log(dentist)
+      // document.querySelector('#' + `${dentist.id}`).remove();
 
-  // console.log(information)
-
-
-
+      // const url = 'http://localhost:8080/odontologos'+ dentist.id;
+      // const settings = {
+      //     method: 'DELETE'
+      // }
+      // fetch(url,settings)
+      // .then(response => response.json())
+      // .then(error => console.log(error))
+  }
   return (
-    <div>ListDentistAdmin
+    <div>
       <NavbarAdmin/>
-      <h1>Lista de Pacientes</h1>
-      <ul>
-        {information.map((dentist, id) => (
-          <li key={dentist.id}>
+      <h1>Lista de Odontologos</h1>
+      <table className='container-dentists'>
+      <thead>
+        <tr>
+        {information.map(dentist => (
+          <th className='container-dentists_list' id={dentist.id} key={dentist.id}>
           {dentist.nombre}, {dentist.apellido}, {dentist.especialidad} 
-          </li>
+          <button className='container-dentists_btn-delete'  onClick={deleteDentist(dentist.id)}>Borrar</button>
+          </th>
+          
         ))}
-      </ul>
-        <h2>dsasadasdsaasd</h2>
+        </tr>
+        </thead>
+      </table>
+        
     </div>
   )
 }

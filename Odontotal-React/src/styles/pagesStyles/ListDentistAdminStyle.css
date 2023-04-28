@@ -1,0 +1,18 @@
+.container-dentists {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: aqua;
+}
+.container-dentists .container-dentists_list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container-dentists .container-dentists_list .container-dentists {
+  background-color: red;
+}
+.container-dentists .container-dentists_list .container-dentists_btnDelete {
+  background-color: red;
+  width: 80px;
+}/*# sourceMappingURL=ListDentistAdminStyle.css.map */

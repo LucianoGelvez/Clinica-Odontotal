@@ -1,6 +1,5 @@
 
 import { Route, Routes } from 'react-router-dom'
-import './App.css'
 import { routes } from './routes'
 import AddTurnAdmin from './pages/pages_admin/turns/AddTurnAdmin'
 import ListTurnsAdmin from './pages/pages_admin/turns/ListTurnsAdmin'
@@ -12,7 +11,7 @@ import ListDentistAdmin from './pages/pages_admin/dentist/ListDentistAdmin'
 import { useState } from 'react'
 // import NavbarPatient from './components/component-patient/NavbarPatient'
 import Home from './pages/pages_patient/Home'
-import NavbarPatient from './components/component-patient/NavbarPatient'
+import NavbarPatient from './components/componentPatient/NavbarPatient'
 import Service from './pages/pages_patient/Service'
 import AddAddDentalHygienists from './pages/pages_admin/dentalHygienists/AddAddDentalHygienists'
 import ListDentalHygienists from './pages/pages_admin/dentalHygienists/ListDentalHygienists'
@@ -25,7 +24,7 @@ import MyTurns from './pages/pages_patient/MyTurns'
 
 function App() {
  
-  const [render, setRender] = useState(true)
+  const [render, setRender] = useState(false)
   return (
     <div className="App">
 
