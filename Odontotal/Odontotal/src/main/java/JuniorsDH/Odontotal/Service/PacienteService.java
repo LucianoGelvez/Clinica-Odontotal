@@ -99,11 +99,7 @@ public class PacienteService {
 
 
 
-    private Long idPaciente;
-    private String apellido;
-    private String nombre;
-    private Long idDomicilio;
-    private String provincia;
+
 
     private PacienteDto pacienteApacienteDTO(Paciente paciente ){
 

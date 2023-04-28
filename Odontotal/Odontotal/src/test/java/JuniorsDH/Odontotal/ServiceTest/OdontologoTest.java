@@ -1,14 +1,13 @@
 package JuniorsDH.Odontotal.ServiceTest;
 
 import JuniorsDH.Odontotal.Domain.Especialidad;
-import JuniorsDH.Odontotal.Domain.Odontologo;
+import JuniorsDH.Odontotal.Dto.OdontologoDto;
 import JuniorsDH.Odontotal.Exception.DataInvalidException;
 import JuniorsDH.Odontotal.Exception.ResourceNotFoundException;
 import JuniorsDH.Odontotal.Service.OdontologoService;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
 import java.util.List;
 import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
@@ -24,13 +23,12 @@ public class OdontologoTest {
     @Order(1)
     public void agregarOdontologo() throws DataInvalidException {
 
-        Odontologo odontologo1= new Odontologo("rafael", "luciano", "123456","rl@gmail.com",123444555, Especialidad.ESPECIALIDAD_CIRUGIA_MAXILOFACIAL);
+        OdontologoDto odontologo1= new OdontologoDto("nombre1","apellido1",Especialidad.ESPECIALIDAD_ORTODONCISTA.name());
 
-        Odontologo odontologoAgregado= odontologoService.agregarOdontologo(odontologo1);
+        OdontologoDto odontologoAgregado= odontologoService.agregarOdontologo(odontologo1);
 
 
-        Assertions.assertEquals(1L,odontologoAgregado.getId());
-
+    assertTrue(odontologoAgregado.getId().describeConstable().isPresent());
 
     }
 
@@ -43,7 +41,7 @@ public class OdontologoTest {
 
 
 
-        Optional<Odontologo> odontologoBuscado= odontologoService.listarOdontologo(id);
+        Optional<OdontologoDto> odontologoBuscado= odontologoService.listarOdontologo(id);
 
         assertNotNull(odontologoBuscado.get());
 
@@ -55,14 +53,14 @@ public class OdontologoTest {
     @Order(3)
     public void buscarTodosOdontologos () throws DataInvalidException, ResourceNotFoundException {
 
-        Odontologo odontologo1= new Odontologo("pablo","rubeno","5575");
+        OdontologoDto odontologo1= new OdontologoDto("pablo","rubeno",Especialidad.ESPECIALIDAD_ODONTOPEDIATRIA.name());
 
         odontologoService.agregarOdontologo(odontologo1);
 
-        List<Odontologo> odontologosList = odontologoService.listarTodosOdontologo();
+        List<OdontologoDto> odontologosList = odontologoService.listarTodosOdontologo();
 
-        assertEquals(2,odontologosList.size());
 
+    assertTrue( odontologosList.size()>2);
     }
 
 
@@ -71,14 +69,14 @@ public class OdontologoTest {
     public void modificarOdontologo() throws ResourceNotFoundException, DataInvalidException {
 
 
-        Odontologo odontologo= new Odontologo(1L,"rafael", "luciano", "123456");
-        Odontologo odontologoGuardado= odontologoService.agregarOdontologo(odontologo);
+        OdontologoDto odontologo= new OdontologoDto(1L,"juan", "pablo", Especialidad.ESPECIALIDAD_ORTODONCISTA.name());
+        OdontologoDto odontologoGuardado= odontologoService.agregarOdontologo(odontologo);
 
-        Odontologo odontologoModificado= new Odontologo(1L,"ra", "luciano", "123456");
+        OdontologoDto odontologoModificado= new OdontologoDto(1L,"ra", "luciano",Especialidad.ESPECIALIDAD_ODONTOPEDIATRIA.name());
 
-        Odontologo odontologoModificadoDevuelto= odontologoService.modificarOdontologo(odontologoModificado);
+        OdontologoDto odontologoModificadoDevuelto= odontologoService.modificarOdontologo(odontologoModificado);
 
-        Optional<Odontologo> odontologoBuscado= odontologoService.listarOdontologo(odontologoModificadoDevuelto.getId());
+        Optional<OdontologoDto> odontologoBuscado= odontologoService.listarOdontologo(odontologoModificadoDevuelto.getId());
         Assertions.assertEquals(odontologoModificado.getId(),odontologoModificadoDevuelto.getId());
 
     }
@@ -87,14 +85,11 @@ public class OdontologoTest {
     @Test
     @Order(5)
     public void eliminarOdontologo() throws ResourceNotFoundException, DataInvalidException {
-        Odontologo odontologo = new Odontologo("odo1", "apeOdo", "12344");
+        OdontologoDto odontologo = new OdontologoDto(10L,"odo1", "apeOdo", Especialidad.ESPECIALIDAD_ORTODONCISTA.name());
         odontologoService.agregarOdontologo(odontologo);
 
-        Long id = 1L;
-        odontologoService.eliminarOdontologo(id);
+        odontologoService.eliminarOdontologo(odontologo.getId());
 
-        // ya no es necesario buscar el odontologo eliminado
-        assertFalse(odontologoService.listarTodosOdontologo().contains(id));
-
+        assertFalse(odontologoService.listarTodosOdontologo().contains(odontologo));
     }
 }

@@ -3,6 +3,7 @@ package JuniorsDH.Odontotal.Service;
 import JuniorsDH.Odontotal.Domain.Odontologo;
 import JuniorsDH.Odontotal.Domain.Paciente;
 import JuniorsDH.Odontotal.Domain.Turno;
+import JuniorsDH.Odontotal.Dto.PacienteDto;
 import JuniorsDH.Odontotal.Dto.TurnoDto;
 import JuniorsDH.Odontotal.Exception.DataInvalidException;
 import JuniorsDH.Odontotal.Exception.ResourceNotFoundException;
@@ -34,7 +35,7 @@ public class TurnoService {
     public TurnoDto agregarTurno (TurnoDto turnoDto)throws DataInvalidException {
 
         Turno turnoGuardado;
-        if (turnoDto.getOdontologoId() == null || turnoDto.getPacienteId() == null) {
+        if (turnoDto.getOdontologoId() == null || turnoDto.getPacienteId() == null||turnoDto.getFecha()==null||turnoDto.getHora()==null) {
             throw new DataInvalidException("Error. No se puede registrar turno, es necesario registrar un paciente y un odontologo");
         } else {
             turnoGuardado = turnoRepository.save(turnoDTOATurno(turnoDto));
@@ -58,14 +59,18 @@ public class TurnoService {
     }
 
 
-    public void modificarTurno (TurnoDto turnoDto)throws ResourceNotFoundException{
+
+
+    public TurnoDto modificarTurno (TurnoDto turnoDto)throws ResourceNotFoundException{
+        Turno turnoModificado;
        Optional<Turno> turnoAModificar=turnoRepository.findById(turnoDto.getId());
        if (turnoAModificar.isPresent()){
-           turnoRepository.save(turnoDTOATurno(turnoDto));
+           turnoModificado=turnoRepository.save(turnoDTOATurno(turnoDto));
        }else {
            throw new ResourceNotFoundException("Error. No se puede modificar el turno, revisar registro del mismo ");
        }
 
+        return turnoATurnoDTO(turnoModificado);
     }
 
 
