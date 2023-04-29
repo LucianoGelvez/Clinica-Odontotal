@@ -10,12 +10,13 @@ import JuniorsDH.Odontotal.Exception.DataInvalidException;
 import JuniorsDH.Odontotal.Exception.ResourceNotFoundException;
 import JuniorsDH.Odontotal.Repository.OdontologoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
+import java.util.logging.Logger;
 
 
 @Service
@@ -100,6 +101,16 @@ public class OdontologoService {
     }
 
 
+    public Long obtenerUltimoIdAsc() throws ResourceNotFoundException{
+        List<Odontologo> odontologos = odontologoRepository.findAll(Sort.by(Sort.Direction.ASC, "id"));
+        if (!odontologos.isEmpty()) {
+            return odontologos.get(odontologos.size() - 1).getId();
+        } else {
+            throw new ResourceNotFoundException("No existen ID registrados");
+        }
+    }
+
+
 
     private OdontologoDto odontologoAOdontologoDto(Odontologo odontologo){
         OdontologoDto respuesta= new OdontologoDto();
@@ -119,5 +130,8 @@ public class OdontologoService {
         respuesta.setEspecialidad(Especialidad.valueOf(odontologoDto.getEspecialidad()));
         return respuesta;
     }
+
+
+
 
 }

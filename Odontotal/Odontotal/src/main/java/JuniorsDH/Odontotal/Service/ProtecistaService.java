@@ -1,10 +1,12 @@
 package JuniorsDH.Odontotal.Service;
+import JuniorsDH.Odontotal.Domain.Paciente;
 import JuniorsDH.Odontotal.Domain.Protecista;
 import JuniorsDH.Odontotal.Dto.ProtecistaDto;
 import JuniorsDH.Odontotal.Exception.DataInvalidException;
 import JuniorsDH.Odontotal.Exception.ResourceNotFoundException;
 import JuniorsDH.Odontotal.Repository.ProtecistaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -87,7 +89,14 @@ public class ProtecistaService {
     }
 
 
-
+    public Long obtenerUltimoIdAsc() throws ResourceNotFoundException{
+        List<Protecista> odontologos = protecistaRepository.findAll(Sort.by(Sort.Direction.ASC, "id"));
+        if (!odontologos.isEmpty()) {
+            return odontologos.get(odontologos.size() - 1).getId();
+        } else {
+            throw new ResourceNotFoundException("No existen ID registrados");
+        }
+    }
 
 
     private ProtecistaDto protecistaAProtecistaDto(Protecista protecista){

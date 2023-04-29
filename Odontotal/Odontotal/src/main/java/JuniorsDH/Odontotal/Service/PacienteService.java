@@ -4,12 +4,14 @@ package JuniorsDH.Odontotal.Service;
 
 
 import JuniorsDH.Odontotal.Domain.Domicilio;
+import JuniorsDH.Odontotal.Domain.Odontologo;
 import JuniorsDH.Odontotal.Domain.Paciente;
 import JuniorsDH.Odontotal.Dto.PacienteDto;
 import JuniorsDH.Odontotal.Exception.DataInvalidException;
 import JuniorsDH.Odontotal.Exception.ResourceNotFoundException;
 import JuniorsDH.Odontotal.Repository.PacienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -35,7 +37,7 @@ public class PacienteService {
 
       public PacienteDto agregarPaciente (PacienteDto pacienteDto)throws DataInvalidException {
         Paciente respuesta;
-        if (pacienteDto.getNombre().isEmpty()|| pacienteDto.getApellido().isEmpty() || pacienteDto.getDomicilio() == null){
+        if (pacienteDto.getNombre().isEmpty()|| pacienteDto.getApellido().isEmpty() || pacienteDto.getDomicilio() == null|| pacienteDto.getDocumento().isEmpty()){
             throw new DataInvalidException("Error. Alguno de los campos de registro del paciente  se encuentran incompleto");
         }else{
           respuesta=pacienteRepository.save(pacienteDtoAPaciente(pacienteDto));
@@ -97,13 +99,16 @@ public class PacienteService {
 
 
 
+    public Long obtenerUltimoIdAsc() throws ResourceNotFoundException{
+        List<Paciente> odontologos = pacienteRepository.findAll(Sort.by(Sort.Direction.ASC, "id"));
+        if (!odontologos.isEmpty()) {
+            return odontologos.get(odontologos.size() - 1).getId();
+        } else {
+            throw new ResourceNotFoundException("No existen ID registrados");
+        }
+    }
 
 
-    private Long idPaciente;
-    private String apellido;
-    private String nombre;
-    private Long idDomicilio;
-    private String provincia;
 
     private PacienteDto pacienteApacienteDTO(Paciente paciente ){
 
@@ -113,6 +118,7 @@ public class PacienteService {
         pacienteDto.setApellido(paciente.getApellido());
         pacienteDto.setNombre(paciente.getNombre());
         pacienteDto.setDomicilio(paciente.getDomicilio());
+        pacienteDto.setDocumento(paciente.getDocumento());
 
         return pacienteDto;
 
@@ -128,10 +134,8 @@ public class PacienteService {
         paciente.setId(pacienteDto.getIdPaciente());
         paciente.setApellido(pacienteDto.getApellido());
         paciente.setNombre(pacienteDto.getNombre());
-
-
         paciente.setDomicilio(pacienteDto.getDomicilio());
-
+        paciente.setDocumento(pacienteDto.getDocumento());
 
         return paciente;
 

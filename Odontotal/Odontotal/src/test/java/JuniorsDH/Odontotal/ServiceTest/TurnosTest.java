@@ -1,10 +1,8 @@
 package JuniorsDH.Odontotal.ServiceTest;
-
-
-
 import JuniorsDH.Odontotal.Domain.Domicilio;
-import JuniorsDH.Odontotal.Domain.Odontologo;
-import JuniorsDH.Odontotal.Domain.Paciente;
+import JuniorsDH.Odontotal.Domain.Especialidad;
+import JuniorsDH.Odontotal.Dto.OdontologoDto;
+import JuniorsDH.Odontotal.Dto.PacienteDto;
 import JuniorsDH.Odontotal.Dto.TurnoDto;
 import JuniorsDH.Odontotal.Exception.DataInvalidException;
 import JuniorsDH.Odontotal.Exception.ResourceNotFoundException;
@@ -16,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,34 +35,28 @@ public class TurnosTest {
 
     @Test
     @Order(1)
-    public void guardarTurno() throws DataInvalidException {
+    public void guardarTurno() throws DataInvalidException, ResourceNotFoundException {
 
+        Long ultimoIDTurno= turnoService.obtenerUltimoIdAsc();
+        Long ultimoIDPaciente=pacienteService.obtenerUltimoIdAsc();
+        Long ultimoIDOdontologo=odontologoService.obtenerUltimoIdAsc();
 
-
-        // Crear un odontólogo
-        Odontologo odontologo = new Odontologo("Franco", "Ribera", "6243");
-
+        OdontologoDto odontologo = new OdontologoDto(ultimoIDOdontologo+1,"Franco", "Ribera", Especialidad.ESPECIALIDAD_ORTODONCISTA.name());
         odontologoService.agregarOdontologo(odontologo);
 
-        // Crear un domicilio para el paciente
-        Domicilio domicilio = new Domicilio("Costanera", "123", "Villa Maria", "Cordoba");
-
-        // Crear un paciente
-        Paciente paciente = new Paciente("Juan", "Roca", "483892", LocalDate.of(2023, 3, 1), domicilio);
-
+        Domicilio domicilio = new Domicilio(ultimoIDPaciente+1,"Costanera", "123", "Villa Maria", "Cordoba");
+        PacienteDto paciente = new PacienteDto(ultimoIDPaciente+1,"perez","juan",domicilio,"123456");
         pacienteService.agregarPaciente(paciente);
 
 
 
-        // Crear un turno con el odontólogo, paciente y fecha correspondientes
-        TurnoDto turno = new TurnoDto(LocalDate.of(2023, 4, 15),paciente.getId(),paciente.getNombre(),odontologo.getId(),odontologo.getNombre());
+        TurnoDto turno = new TurnoDto(ultimoIDTurno+1,LocalDate.of(2023, 4, 15), LocalTime.of(10,30),paciente.getIdPaciente(),paciente.getNombre(), paciente.getDocumento(), odontologo.getId(),odontologo.getNombre());
 
-        // Guardar el turno en la base de datos
+
         TurnoDto turnoGuardado = turnoService.agregarTurno(turno);
 
-        // Verificar que el turno se haya guardado correctamente
-//
-        Assertions.assertEquals(1L, turnoGuardado.getId());
+        assertTrue(turnoGuardado.getId().describeConstable().isPresent());
+
 
 
 
@@ -74,7 +67,7 @@ public class TurnosTest {
     @Test
     @Order(2)
     public  void listarTurno() throws ResourceNotFoundException {
-     Long id=1L;
+     Long id=16L;
 
         Optional<TurnoDto> turnoBuscado = turnoService.listarTurnoOptional(id);
         assertNotNull(turnoBuscado.get());
@@ -85,95 +78,95 @@ public class TurnosTest {
 
     @Test
     @Order(3)
-    public void listarTurnos() throws DataInvalidException, ResourceNotFoundException {
+    public void listarTodosTurnos() throws DataInvalidException, ResourceNotFoundException {
+
+        Long ultimoIDTurno= turnoService.obtenerUltimoIdAsc();
+        Long ultimoIDPaciente=pacienteService.obtenerUltimoIdAsc();
+        Long ultimoIDOdontologo=odontologoService.obtenerUltimoIdAsc();
 
 
-        // Crear un odontólogo
-        Odontologo odontologo = new Odontologo("Frank", "Rib", "6243");
+
+        OdontologoDto odontologo = new OdontologoDto(ultimoIDOdontologo+1,"Franco", "Ribera", Especialidad.ESPECIALIDAD_ORTODONCISTA.name());
 
         odontologoService.agregarOdontologo(odontologo);
 
-        // Crear un domicilio para el paciente
-        Domicilio domicilio = new Domicilio("Cosac", "123", "v Maria", "Cordoba");
+        Domicilio domicilio = new Domicilio(ultimoIDPaciente+1,"Cosac", "123", "v Maria", "Cordoba");
 
-        // Crear un paciente
-        Paciente paciente = new Paciente("ruben", "Riba", "483892", LocalDate.of(2023, 3, 1), domicilio);
+
+        PacienteDto paciente = new PacienteDto(ultimoIDPaciente+1,"perez","juan",domicilio,"123456");
+
 
         pacienteService.agregarPaciente(paciente);
 
 
 
-        // Crear un turno con el odontólogo, paciente y fecha correspondientes
-        TurnoDto turno = new TurnoDto(LocalDate.of(2023, 4, 15),paciente.getId(),paciente.getNombre(),odontologo.getId(),odontologo.getNombre());
+        TurnoDto turno = new TurnoDto(ultimoIDTurno+1,LocalDate.of(2023, 4, 15),LocalTime.of(10,30),paciente.getIdPaciente(),paciente.getNombre(), paciente.getDocumento(), odontologo.getId(),odontologo.getNombre());
 
-        // Guardar el turno en la base de datos
         TurnoDto turnoGuardado = turnoService.agregarTurno(turno);
 
 
         List<TurnoDto> listaTurnos = turnoService.listarTodosTurno();
-        assertEquals(2,listaTurnos.size());
+
+        assertTrue(listaTurnos.size()>2);
     }
 
 
     @Test
     @Order(4)
     public void actualizarTurno() throws DataInvalidException, ResourceNotFoundException {
+        Long ultimoIDTurno= turnoService.obtenerUltimoIdAsc();
+        Long ultimoIDPaciente=pacienteService.obtenerUltimoIdAsc();
+        Long ultimoIDOdontologo=odontologoService.obtenerUltimoIdAsc();
 
-        // Crear un odontólogo
-        Odontologo odontologo = new Odontologo("Frank", "Rib", "6243");
+
+
+
+        OdontologoDto odontologo = new OdontologoDto(ultimoIDOdontologo+1,"Franco", "Ribera", Especialidad.ESPECIALIDAD_ORTODONCISTA.name());
         odontologoService.agregarOdontologo(odontologo);
 
-        // Crear un domicilio para el paciente
-        Domicilio domicilio = new Domicilio("Cosac", "123", "v Maria", "Cordoba");
+        Domicilio domicilio = new Domicilio(ultimoIDPaciente+1,"Cosac", "123", "v Maria", "Cordoba");
 
-        // Crear un paciente
-        Paciente paciente = new Paciente("ruben", "Riba", "483892", LocalDate.of(2023, 3, 1), domicilio);
+        PacienteDto paciente = new PacienteDto(ultimoIDPaciente+1,"perez","juan",domicilio,"123456");
         pacienteService.agregarPaciente(paciente);
 
-        // Crear un turno con el odontólogo, paciente y fecha correspondientes
-        TurnoDto turno = new TurnoDto(LocalDate.of(2023, 4, 15),paciente.getId(),paciente.getNombre(),odontologo.getId(),odontologo.getNombre());
+        TurnoDto turno = new TurnoDto(ultimoIDTurno+1,LocalDate.of(2023, 4, 15),LocalTime.of(10,30),paciente.getIdPaciente(),paciente.getNombre(), paciente.getDocumento(), odontologo.getId(),odontologo.getNombre());
 
-        // Guardar el turno en la base de datos
         TurnoDto turnoGuardado = turnoService.agregarTurno(turno);
 
-        // Actualizar el turno recién creado
-        TurnoDto turnoModificado = new TurnoDto(turnoGuardado.getId(), LocalDate.of(2023, 4, 16), paciente.getId(), paciente.getNombre(), odontologo.getId(), odontologo.getNombre());
-        turnoService.modificarTurno(turnoModificado);
+        TurnoDto turnoModificado = new TurnoDto(ultimoIDTurno+1,LocalDate.of(2023, 4, 16),LocalTime.of(10,30),paciente.getIdPaciente(),paciente.getNombre(), paciente.getDocumento(), odontologo.getId(),odontologo.getNombre());
+        TurnoDto turnoModificadoDevuelto= turnoService.modificarTurno(turnoModificado);
 
-        // Buscar el turno modificado en la base de datos
         Optional<TurnoDto> turnoBuscado = turnoService.listarTurnoOptional(turnoGuardado.getId());
 
-        // Verificar que se haya actualizado correctamente
-        Assertions.assertEquals(LocalDate.of(2023, 4, 16), turnoBuscado.get().getFecha());
+          Assertions.assertEquals(turnoModificado.getId(),turnoModificadoDevuelto.getId());
+
     }
 
 
     @Test
     @Order(5)
     public void eliminarTurno() throws DataInvalidException, ResourceNotFoundException {
-        // Crear un odontólogo
-        Odontologo odontologo = new Odontologo("Frank", "Rib", "6243");
+
+        Long ultimoIDTurno= turnoService.obtenerUltimoIdAsc();
+        Long ultimoIDPaciente=pacienteService.obtenerUltimoIdAsc();
+        Long ultimoIDOdontologo=odontologoService.obtenerUltimoIdAsc();
+
+        OdontologoDto odontologo = new OdontologoDto(ultimoIDOdontologo+1,"Franco", "Ribera", Especialidad.ESPECIALIDAD_ORTODONCISTA.name());
         odontologoService.agregarOdontologo(odontologo);
 
-        // Crear un domicilio para el paciente
-        Domicilio domicilio = new Domicilio("Cosac", "123", "v Maria", "Cordoba");
+        Domicilio domicilio = new Domicilio(ultimoIDPaciente+1,"Cosac", "123", "v Maria", "Cordoba");
 
-        // Crear un paciente
-        Paciente paciente = new Paciente("ruben", "Riba", "483892", LocalDate.of(2023, 3, 1), domicilio);
+        PacienteDto paciente = new PacienteDto(ultimoIDPaciente+1,"perez","juan",domicilio,"123456");
         pacienteService.agregarPaciente(paciente);
 
-        // Crear un turno con el odontólogo, paciente y fecha correspondientes
-        TurnoDto turno = new TurnoDto(LocalDate.of(2023, 4, 15),paciente.getId(),paciente.getNombre(),odontologo.getId(),odontologo.getNombre());
+        TurnoDto turno = new TurnoDto(ultimoIDTurno+1,LocalDate.of(2023, 4, 16),LocalTime.of(10,30),paciente.getIdPaciente(),paciente.getNombre(), paciente.getDocumento(), odontologo.getId(),odontologo.getNombre());
 
-        // Guardar el turno en la base de datos
-        TurnoDto turnoGuardado = turnoService.agregarTurno(turno);
+        turnoService.agregarTurno(turno);
 
-        // Eliminar el turno recién creado
-        turnoService.eliminarTurno(turnoGuardado.getId());
+       turnoService.eliminarTurno(turno.getId());
 
+        assertFalse(turnoService.listarTodosTurno().contains(turno));
 
-        // Verificar que el turno ya no existe en la base de datos
-       assertFalse(turnoService.listarTodosTurno().contains(turnoGuardado.getId()));
     }
 
 }

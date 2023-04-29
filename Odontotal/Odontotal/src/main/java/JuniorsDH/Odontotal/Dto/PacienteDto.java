@@ -8,26 +8,26 @@ public class PacienteDto {
     private String apellido;
     private String nombre;
     private Domicilio domicilio;
+    private String documento;
 
-
-    public PacienteDto(Long idPaciente, String apellido, String nombre, Domicilio domicilio) {
+    public PacienteDto(Long idPaciente, String apellido, String nombre, Domicilio domicilio, String documento) {
         this.idPaciente = idPaciente;
         this.apellido = apellido;
         this.nombre = nombre;
         this.domicilio = domicilio;
-
+        this.documento = documento;
     }
 
-
-    public PacienteDto(String apellido, String nombre, Domicilio domicilio) {
+    public PacienteDto(String apellido, String nombre, Domicilio domicilio, String documento) {
         this.apellido = apellido;
         this.nombre = nombre;
         this.domicilio = domicilio;
-
+        this.documento = documento;
     }
 
     public PacienteDto() {
     }
+
 
     public Long getIdPaciente() {
         return idPaciente;
@@ -53,13 +53,20 @@ public class PacienteDto {
         this.nombre = nombre;
     }
 
-
     public Domicilio getDomicilio() {
         return domicilio;
     }
 
     public void setDomicilio(Domicilio domicilio) {
         this.domicilio = domicilio;
+    }
+
+    public String getDocumento() {
+        return documento;
+    }
+
+    public void setDocumento(String documento) {
+        this.documento = documento;
     }
 
     @Override
@@ -69,6 +76,7 @@ public class PacienteDto {
                 ", apellido='" + apellido + '\'' +
                 ", nombre='" + nombre + '\'' +
                 ", domicilio=" + domicilio +
+                ", documento='" + documento + '\'' +
                 '}';
     }
 }
