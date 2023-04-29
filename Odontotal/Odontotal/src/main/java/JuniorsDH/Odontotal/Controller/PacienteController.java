@@ -16,7 +16,7 @@ import java.util.Optional;
 
 
 
-@CrossOrigin(origins = "http://127.0.0.1:5173/", allowCredentials = "true")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/pacientes")
 public class PacienteController {
