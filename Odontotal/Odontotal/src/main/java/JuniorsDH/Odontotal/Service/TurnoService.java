@@ -2,6 +2,7 @@ package JuniorsDH.Odontotal.Service;
 
 import JuniorsDH.Odontotal.Domain.Odontologo;
 import JuniorsDH.Odontotal.Domain.Paciente;
+import JuniorsDH.Odontotal.Domain.Protecista;
 import JuniorsDH.Odontotal.Domain.Turno;
 import JuniorsDH.Odontotal.Dto.PacienteDto;
 import JuniorsDH.Odontotal.Dto.TurnoDto;
@@ -9,6 +10,7 @@ import JuniorsDH.Odontotal.Exception.DataInvalidException;
 import JuniorsDH.Odontotal.Exception.ResourceNotFoundException;
 import JuniorsDH.Odontotal.Repository.TurnoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -35,7 +37,7 @@ public class TurnoService {
     public TurnoDto agregarTurno (TurnoDto turnoDto)throws DataInvalidException {
 
         Turno turnoGuardado;
-        if (turnoDto.getOdontologoId() == null || turnoDto.getPacienteId() == null||turnoDto.getFecha()==null||turnoDto.getHora()==null) {
+        if (turnoDto.getOdontologoId() == null || turnoDto.getPacienteId() == null||turnoDto.getFecha()==null||turnoDto.getHora()==null||turnoDto.getDocumentoPaciente().isEmpty()) {
             throw new DataInvalidException("Error. No se puede registrar turno, es necesario registrar un paciente y un odontologo");
         } else {
             turnoGuardado = turnoRepository.save(turnoDTOATurno(turnoDto));
@@ -101,7 +103,14 @@ public class TurnoService {
 
     }
 
-
+    public Long obtenerUltimoIdAsc() throws ResourceNotFoundException{
+        List<Turno> odontologos = turnoRepository.findAll(Sort.by(Sort.Direction.ASC, "id"));
+        if (!odontologos.isEmpty()) {
+            return odontologos.get(odontologos.size() - 1).getId();
+        } else {
+            throw new ResourceNotFoundException("No existen ID registrados");
+        }
+    }
 
 
     private TurnoDto turnoATurnoDTO(Turno turno){
@@ -109,6 +118,7 @@ public class TurnoService {
         respuesta.setId(turno.getId());
         respuesta.setPacienteId(turno.getPaciente().getId());
         respuesta.setNombrePaciente(turno.getPaciente().getNombre());
+        respuesta.setDocumentoPaciente(turno.getPaciente().getDocumento());
         respuesta.setOdontologoId(turno.getOdontologo().getId());
         respuesta.setNombreOdontologo(turno.getOdontologo().getNombre());
         respuesta.setFecha(turno.getFecha());
@@ -128,6 +138,7 @@ public class TurnoService {
         odontologo.setNombre(turnodto.getNombreOdontologo());
         paciente.setId(turnodto.getPacienteId());
         paciente.setNombre(turnodto.getNombrePaciente());
+        paciente.setDocumento(turnodto.getDocumentoPaciente());
         respuesta.setFecha(turnodto.getFecha());
         respuesta.setHora(turnodto.getHora());
         respuesta.setId(turnodto.getId());

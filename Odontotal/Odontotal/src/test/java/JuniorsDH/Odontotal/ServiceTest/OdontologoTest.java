@@ -21,9 +21,10 @@ public class OdontologoTest {
 
     @Test
     @Order(1)
-    public void agregarOdontologo() throws DataInvalidException {
+    public void agregarOdontologo() throws DataInvalidException, ResourceNotFoundException {
+        Long ultimoID= odontologoService.obtenerUltimoIdAsc();
 
-        OdontologoDto odontologo1= new OdontologoDto("nombre1","apellido1",Especialidad.ESPECIALIDAD_ORTODONCISTA.name());
+        OdontologoDto odontologo1= new OdontologoDto(ultimoID+1,"nombre1","apellido1",Especialidad.ESPECIALIDAD_ORTODONCISTA.name());
 
         OdontologoDto odontologoAgregado= odontologoService.agregarOdontologo(odontologo1);
 
@@ -35,13 +36,15 @@ public class OdontologoTest {
 
     @Test
     @Order(2)
-    public void buscarOdontologo() throws ResourceNotFoundException {
+    public void buscarOdontologo() throws ResourceNotFoundException, DataInvalidException {
 
-        Long id=1L;
+        OdontologoDto odontologo1= new OdontologoDto(1L,"nombre1","apellido1",Especialidad.ESPECIALIDAD_ORTODONCISTA.name());
+
+        OdontologoDto odontologoAgregado= odontologoService.agregarOdontologo(odontologo1);
 
 
 
-        Optional<OdontologoDto> odontologoBuscado= odontologoService.listarOdontologo(id);
+        Optional<OdontologoDto> odontologoBuscado= odontologoService.listarOdontologo(odontologoAgregado.getId());
 
         assertNotNull(odontologoBuscado.get());
 
@@ -52,8 +55,8 @@ public class OdontologoTest {
     @Test
     @Order(3)
     public void buscarTodosOdontologos () throws DataInvalidException, ResourceNotFoundException {
-
-        OdontologoDto odontologo1= new OdontologoDto("pablo","rubeno",Especialidad.ESPECIALIDAD_ODONTOPEDIATRIA.name());
+        Long ultimoID= odontologoService.obtenerUltimoIdAsc();
+        OdontologoDto odontologo1= new OdontologoDto(ultimoID+1,"pablo","rubeno",Especialidad.ESPECIALIDAD_ODONTOPEDIATRIA.name());
 
         odontologoService.agregarOdontologo(odontologo1);
 
@@ -68,24 +71,28 @@ public class OdontologoTest {
     @Order(4)
     public void modificarOdontologo() throws ResourceNotFoundException, DataInvalidException {
 
+        Long ultimoID= odontologoService.obtenerUltimoIdAsc();
 
-        OdontologoDto odontologo= new OdontologoDto(1L,"juan", "pablo", Especialidad.ESPECIALIDAD_ORTODONCISTA.name());
+        OdontologoDto odontologo= new OdontologoDto(ultimoID+1,"juan", "pablo", Especialidad.ESPECIALIDAD_ORTODONCISTA.name());
         OdontologoDto odontologoGuardado= odontologoService.agregarOdontologo(odontologo);
 
-        OdontologoDto odontologoModificado= new OdontologoDto(1L,"ra", "luciano",Especialidad.ESPECIALIDAD_ODONTOPEDIATRIA.name());
+        OdontologoDto odontologoModificado= new OdontologoDto(ultimoID+1,"ra", "luciano",Especialidad.ESPECIALIDAD_ODONTOPEDIATRIA.name());
 
         OdontologoDto odontologoModificadoDevuelto= odontologoService.modificarOdontologo(odontologoModificado);
 
-        Optional<OdontologoDto> odontologoBuscado= odontologoService.listarOdontologo(odontologoModificadoDevuelto.getId());
+
         Assertions.assertEquals(odontologoModificado.getId(),odontologoModificadoDevuelto.getId());
 
     }
 
 
+
+
     @Test
     @Order(5)
     public void eliminarOdontologo() throws ResourceNotFoundException, DataInvalidException {
-        OdontologoDto odontologo = new OdontologoDto(10L,"odo1", "apeOdo", Especialidad.ESPECIALIDAD_ORTODONCISTA.name());
+        Long ultimoID= odontologoService.obtenerUltimoIdAsc();
+        OdontologoDto odontologo = new OdontologoDto(ultimoID+1,"odo1", "apeOdo", Especialidad.ESPECIALIDAD_ORTODONCISTA.name());
         odontologoService.agregarOdontologo(odontologo);
 
         odontologoService.eliminarOdontologo(odontologo.getId());
