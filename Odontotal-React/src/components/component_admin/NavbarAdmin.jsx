@@ -6,12 +6,14 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
 import { routes } from '../../routes';
 import Logo from '../../images/Logo.png'
+import '../../styles/componentStyles/NavbarAdmin.css'
 
 function NavbarAdmin() {
   return (
-    <Navbar bg="light" expand="lg" width={"100vw"}>
+    <Navbar className='navbar'>
+       
       <Container>
-        <Navbar.Brand href="#home"><img src={Logo} alt="" width={"100px"}/></Navbar.Brand>
+       <Navbar.Brand><img className='navbar_logo' src={Logo} alt=""/></Navbar.Brand> 
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">

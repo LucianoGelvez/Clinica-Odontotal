@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import NavbarPatient from '../../components/component-patient/NavbarPatient'
+import NavbarPatient from '../../components/componentPatient/NavbarPatient'
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 

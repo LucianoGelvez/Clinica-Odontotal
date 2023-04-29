@@ -1,5 +1,5 @@
 import React from 'react'
-import NavbarPatient from '../../components/component-patient/NavbarPatient'
+import NavbarPatient from '../../components/componentPatient/NavbarPatient'
 
 const Service = () => {
   return (
