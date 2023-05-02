@@ -12,33 +12,36 @@ public class TurnoDto {
     private LocalTime hora;
     private Long pacienteId;
     private String nombrePaciente;
+    private String documentoPaciente;
     private Long odontologoId;
     private String nombreOdontologo;
 
 
-
-    public TurnoDto() {
-    }
-
-    public TurnoDto(Long id, LocalDate fecha, LocalTime hora, Long pacienteId, String nombrePaciente, Long odontologoId, String nombreOdontologo) {
+    public TurnoDto(Long id, LocalDate fecha, LocalTime hora, Long pacienteId, String nombrePaciente, String documentoPaciente, Long odontologoId, String nombreOdontologo) {
         this.id = id;
         this.fecha = fecha;
         this.hora = hora;
         this.pacienteId = pacienteId;
         this.nombrePaciente = nombrePaciente;
+        this.documentoPaciente = documentoPaciente;
         this.odontologoId = odontologoId;
         this.nombreOdontologo = nombreOdontologo;
     }
 
-    public TurnoDto(LocalDate fecha, LocalTime hora, Long pacienteId, String nombrePaciente, Long odontologoId, String nombreOdontologo) {
+
+    public TurnoDto(LocalDate fecha, LocalTime hora, Long pacienteId, String nombrePaciente, String documentoPaciente, Long odontologoId, String nombreOdontologo) {
         this.fecha = fecha;
         this.hora = hora;
         this.pacienteId = pacienteId;
         this.nombrePaciente = nombrePaciente;
+        this.documentoPaciente = documentoPaciente;
         this.odontologoId = odontologoId;
         this.nombreOdontologo = nombreOdontologo;
     }
-    // la clase proporciona getters y setters para acceder y modificar los atributos, y un método toString() que devuelve una cadena que representa el objeto en forma de texto.
+
+
+    public TurnoDto() {
+    }
 
 
     public Long getId() {
@@ -81,6 +84,14 @@ public class TurnoDto {
         this.nombrePaciente = nombrePaciente;
     }
 
+    public String getDocumentoPaciente() {
+        return documentoPaciente;
+    }
+
+    public void setDocumentoPaciente(String documentoPaciente) {
+        this.documentoPaciente = documentoPaciente;
+    }
+
     public Long getOdontologoId() {
         return odontologoId;
     }
@@ -97,7 +108,6 @@ public class TurnoDto {
         this.nombreOdontologo = nombreOdontologo;
     }
 
-
     @Override
     public String toString() {
         return "TurnoDto{" +
@@ -106,6 +116,7 @@ public class TurnoDto {
                 ", hora=" + hora +
                 ", pacienteId=" + pacienteId +
                 ", nombrePaciente='" + nombrePaciente + '\'' +
+                ", documentoPaciente='" + documentoPaciente + '\'' +
                 ", odontologoId=" + odontologoId +
                 ", nombreOdontologo='" + nombreOdontologo + '\'' +
                 '}';

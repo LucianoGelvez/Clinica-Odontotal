@@ -26,11 +26,11 @@ public class PacienteTest {
 
     @Test
     @Order(1)
-    public void guardarPaciente() throws DataInvalidException {
+    public void guardarPaciente() throws DataInvalidException, ResourceNotFoundException {
+        Long ultimoID= pacienteService.obtenerUltimoIdAsc();
 
-
-        Domicilio domicilio1=new Domicilio("rubi","123","trompso","oslo");
-        PacienteDto paciente1=new PacienteDto("ruiz","tomas",domicilio1);
+        Domicilio domicilio1=new Domicilio(ultimoID+1,"rubi","123","trompso","oslo");
+        PacienteDto paciente1=new PacienteDto(ultimoID+1,"ruiz","tomas",domicilio1,"123456");
        PacienteDto pacienteaGuardar= pacienteService.agregarPaciente(paciente1);
         assertTrue(pacienteaGuardar.getIdPaciente().describeConstable().isPresent());
 
@@ -54,9 +54,9 @@ public class PacienteTest {
     @Test
     @Order(3)
     public void listarTodosPacientes() throws ResourceNotFoundException, DataInvalidException {
-
-        Domicilio domicilio1 = new Domicilio("Algala", "111", "vn", "ny");
-        PacienteDto paciente1=new PacienteDto("ruiz","tomas",domicilio1);
+        Long ultimoID= pacienteService.obtenerUltimoIdAsc();
+        Domicilio domicilio1 = new Domicilio(ultimoID+1,"Algala", "111", "vn", "ny");
+        PacienteDto paciente1=new PacienteDto(ultimoID+1,"ruiz","tomas",domicilio1,"123456");
         pacienteService.agregarPaciente(paciente1);
 
 
@@ -73,11 +73,13 @@ public class PacienteTest {
     @Order(4)
     public void modificarPaciente() throws ResourceNotFoundException, DataInvalidException {
 
-        Domicilio domicilio1=new Domicilio(1L,"rubi","123","trompso","oslo");
-        PacienteDto paciente1=new PacienteDto(1L,"ruiz","tomas",domicilio1);
+        Long ultimoID= pacienteService.obtenerUltimoIdAsc();
+
+        Domicilio domicilio1=new Domicilio(ultimoID+1,"rubi","123","trompso","oslo");
+        PacienteDto paciente1=new PacienteDto(ultimoID+1,"ruiz","tomas",domicilio1,"123456");
         PacienteDto pacienteGuardado= pacienteService.agregarPaciente(paciente1);
 
-        PacienteDto pacienteModificado= new PacienteDto(1L,"ruiz","tomas",domicilio1);
+        PacienteDto pacienteModificado= new PacienteDto(ultimoID+1,"ruiz","tomas",domicilio1,"145623");
         PacienteDto pacienteModificadoDevuelto= pacienteService.modificarPaciente(pacienteModificado);
 
 
@@ -94,11 +96,14 @@ public class PacienteTest {
     @Order(5)
     public void eliminarPaciente() throws ResourceNotFoundException, DataInvalidException {
 
-        Domicilio domicilio1 = new Domicilio("Algala", "111", "vn", "ny");
-        PacienteDto paciente1 = new PacienteDto("ruiz","tomas",domicilio1);
+        Long ultimoID= pacienteService.obtenerUltimoIdAsc();
+        Domicilio domicilio1 = new Domicilio(ultimoID+1,"Algala", "111", "vn", "ny");
+        PacienteDto paciente1 = new PacienteDto(ultimoID+1,"ruiz","tomas",domicilio1,"123456");
         PacienteDto pacienteGuardado = pacienteService.agregarPaciente(paciente1);
 
+
         pacienteService.eliminarPaciente(pacienteGuardado.getIdPaciente());
+
 
         assertThrows(ResourceNotFoundException.class, () -> {
             pacienteService.listarPaciente(pacienteGuardado.getIdPaciente());

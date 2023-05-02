@@ -1,6 +1,8 @@
 package JuniorsDH.Odontotal.ServiceTest;
 
 
+import JuniorsDH.Odontotal.Domain.Especialidad;
+import JuniorsDH.Odontotal.Dto.OdontologoDto;
 import JuniorsDH.Odontotal.Dto.ProtecistaDto;
 import JuniorsDH.Odontotal.Exception.DataInvalidException;
 import JuniorsDH.Odontotal.Exception.ResourceNotFoundException;
@@ -23,9 +25,10 @@ public class ProtecistaTest {
 
     @Test
     @Order(1)
-    public void agregarProtecista()throws DataInvalidException {
+    public void agregarProtecista() throws DataInvalidException, ResourceNotFoundException {
+        Long ultimoID= protecistaService.obtenerUltimoIdAsc();
 
-        ProtecistaDto protecistaDto =new ProtecistaDto(1L,"juan","perez","espeA");
+        ProtecistaDto protecistaDto =new ProtecistaDto(ultimoID+1,"juan","perez","espeA");
 
         ProtecistaDto protecistaAgregado= protecistaService.agregarProtecista(protecistaDto);
 
@@ -40,13 +43,12 @@ public class ProtecistaTest {
     @Test
     @Order(2)
     public void buscarProtecista() throws ResourceNotFoundException {
+        Long id=3L;
 
-        Long id=1L;
 
         Optional<ProtecistaDto> protecistaBuscado= protecistaService.listarProtecista(id);
 
         assertNotNull(protecistaBuscado.get());
-
 
     }
 
@@ -55,7 +57,9 @@ public class ProtecistaTest {
     @Order(3)
     public void buscarTodosProtecista () throws DataInvalidException, ResourceNotFoundException {
 
-        ProtecistaDto protecistaDto1 =new ProtecistaDto("juan","perez","espeA");
+        Long ultimoID= protecistaService.obtenerUltimoIdAsc();
+
+        ProtecistaDto protecistaDto1 =new ProtecistaDto(ultimoID+1,"juan","perez","espeA");
 
         protecistaService.agregarProtecista(protecistaDto1);
 
@@ -70,11 +74,12 @@ public class ProtecistaTest {
     @Order(4)
     public void modificarProtecista() throws ResourceNotFoundException, DataInvalidException {
 
+        Long ultimoID= protecistaService.obtenerUltimoIdAsc();
 
-        ProtecistaDto protecistaDto1 =new ProtecistaDto(1L,"juan","perez","espeA");
+        ProtecistaDto protecistaDto1 =new ProtecistaDto(ultimoID+1,"juan","perez","espeA");
         ProtecistaDto protecistaGuardado=  protecistaService.agregarProtecista(protecistaDto1);
 
-        ProtecistaDto protecistaModificado= new ProtecistaDto(1L,"pablo","duarte","espex");
+        ProtecistaDto protecistaModificado= new ProtecistaDto(ultimoID+1,"pablo","duarte","espex");
 
         ProtecistaDto protecistaModificadoDevuelto= protecistaService.modificarProtecista(protecistaModificado);
 
@@ -87,7 +92,10 @@ public class ProtecistaTest {
     @Test
     @Order(5)
     public void eliminarProtecista() throws ResourceNotFoundException, DataInvalidException {
-        ProtecistaDto protecistaDto1 =new ProtecistaDto(1L,"juan","perez","espeA");
+
+        Long ultimoID= protecistaService.obtenerUltimoIdAsc();
+
+        ProtecistaDto protecistaDto1 =new ProtecistaDto(ultimoID+1,"juan","perez","espeA");
         protecistaService.agregarProtecista(protecistaDto1);
 
         protecistaService.eliminarProtecista(protecistaDto1.getId());
