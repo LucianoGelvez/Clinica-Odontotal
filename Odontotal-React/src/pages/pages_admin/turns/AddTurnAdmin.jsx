@@ -24,7 +24,7 @@ const AddTurnAdmin = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const url = 'http://localhost:8080/turnos';
+    const url = 'http://34.228.53.131:8080/turnos';
     const settings = {
       method: 'POST',
       headers: {

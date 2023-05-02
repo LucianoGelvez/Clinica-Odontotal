@@ -47,7 +47,7 @@ const AddPatientAdmin = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(formData);
-    const url = 'http://localhost:8080/pacientes';
+    const url = 'http://34.228.53.131:8080/pacientes';
     const settings = {
       method: 'POST',
       headers: {

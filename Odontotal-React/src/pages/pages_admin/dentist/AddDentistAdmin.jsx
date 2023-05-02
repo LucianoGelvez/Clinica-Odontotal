@@ -19,7 +19,7 @@ const AddDentistAdmin = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const url = 'http://localhost:8080/odontologos';
+    const url = 'http://34.228.53.131:8080/odontologos';
     const settings = {
       method: 'POST',
       headers: {

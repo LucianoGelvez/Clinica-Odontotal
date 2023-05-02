@@ -21,7 +21,7 @@ const Turns = () => {
     setSelectedDoctor(event.target.value);
   }
 
-  let url = "http://localhost:8080/odontologos"
+  let url = "http://34.228.53.131:8080/odontologos"
   useEffect(() => {
     fetch(url)
       .then((res) => res.json())

@@ -19,7 +19,7 @@ const AddAddDentalHygienists = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const url = 'http://localhost:8080/protecistas';
+    const url = 'http://34.228.53.131:8080/protecistas';
     const settings = {
       method: 'POST',
       headers: {

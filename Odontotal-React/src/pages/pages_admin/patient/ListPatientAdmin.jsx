@@ -10,7 +10,7 @@ const ListPatientAdmin = () => {
   const deletePatient = (id) => {
     console.log(id)
     document.getElementById(`${id}`).remove();
-    const url = 'http://localhost:8080/pacientes/'+ id;
+    const url = 'http://34.228.53.131:8080/pacientes/'+ id;
     const settings = {
         method: 'DELETE'
     }

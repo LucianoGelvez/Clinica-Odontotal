@@ -12,7 +12,7 @@ const ListDentistAdmin = () => {
   const deleteDentist = (id) => {
       console.log(id)
       document.getElementById(`${id}`).remove();
-      const url = 'http://localhost:8080/odontologos/'+ id;
+      const url = 'http://34.228.53.131:8080/odontologos/'+ id;
       const settings = {
           method: 'DELETE'
       }

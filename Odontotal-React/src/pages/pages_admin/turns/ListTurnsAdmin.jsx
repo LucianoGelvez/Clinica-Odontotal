@@ -9,7 +9,7 @@ const ListTurnsAdmin = () => {
   const deleteTurn = (id) => {
     console.log(id)
     document.getElementById(`${id}`).remove();
-    const url = 'http://localhost:8080/turnos/'+ id;
+    const url = 'http://34.228.53.131:8080/turnos/'+ id;
     const settings = {
         method: 'DELETE'
     }
