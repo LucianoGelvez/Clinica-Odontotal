@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import NavbarAdmin from '../../../components/component_admin/NavbarAdmin';
 
 const AddDentistAdmin = () => {
+
   const [formData, setFormData] = useState({
     apellido: '',
       nombre: '',
@@ -97,6 +98,7 @@ const AddDentistAdmin = () => {
               <label className="control-label" htmlFor="especialidad"> Especialidad:</label>
               
                <select name="especialidad" id="especialidad" value={formData.especialidad} onChange={handleInputChange} required>
+               <option selected>Selecciona una especialidad</option>
                 <option >ESPECIALIDAD_ORTODONCISTA</option>
                 <option >ESPECIALIDAD_PERIODONCISTA</option>
                 <option >ESPECIALIDAD_ENDODONCISTA</option>

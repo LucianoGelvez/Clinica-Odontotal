@@ -1,38 +1,68 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import NavbarAdmin from '../../../components/component_admin/NavbarAdmin'
-import { useContext } from "react";
-import { ContextGlobal } from '../../../components/utils/global.context';
-
+import { ContextGlobal } from '../../../components/utils/global.context'
+// import '../../../styles/pagesStyles/ListDentalHygienists.css'
+import Form from './FormToUpdatePatient'
+import List from './List'
 
 const ListPatientAdmin = () => {
-  const { information } = useContext(ContextGlobal)
-  console.log(information)
-  const deletePatient = (id) => {
-    console.log(id)
-    document.getElementById(`${id}`).remove();
-    const url = 'http://localhost:8080/pacientes/'+ id;
+  const { information } = useContext(ContextGlobal);
+
+  const [data, serData] = useState(information);
+  const [edition, setedition] = useState(null);
+
+  useEffect(() => {
+    serData(information);
+  }, [information]);
+  
+  const handleEditar = (item) => {
+    setedition(item);
+  };
+    
+  const handleEliminar = (item) => {
+    
+    serData((prevState) => prevState.filter((x) => x.idPaciente !== item.idPaciente));
+    const url = "http://localhost:8080/pacientes/" + item.idPaciente;
+    console.log(url)
     const settings = {
-        method: 'DELETE'
+      method: "DELETE",
+    };
+    fetch(url, settings)
+      .then((response) => response.json())
+      .then((error) => console.log(error));
+  };
+
+  const handleGuardar = (item) => {
+    console.log(item)
+    console.log(item.idPaciente)
+    if (edition) {
+      serData((prevState) =>
+        prevState.map((x) => (x.idPaciente === item.idPaciente ? item : x))
+       
+      );
+      console.log(data)
+      console.log(data)
+      setedition(null);
+    } else {
+      serData((prevState) => [...prevState, { ...item, id: Date.now() }]);
     }
-    fetch(url,settings)
-    .then(response => response.json())
-    .then(error => console.log(error))
-}
+  };
+
+  const handleCancelar = () => {
+    setedition(false)
+  }
 
   return (
-    <div>ListDentistAdmin
-    <NavbarAdmin/>
-    <h1>Lista de Pacientes</h1>
-      {information.map((patient) => (
-        <li id={patient.idPaciente} key={patient.idPaciente}>
-        {patient.nombre}, {patient.apellido}, {patient.especialidad} 
-        <button onClick={() => deletePatient(patient.idPaciente)}>Borrar</button>
-        </li>
-      ))}
-   
-      <h2>dsasadasdsaasd</h2>
-  </div>
-  )
+    <div style={{display: "flex", flexDirection: "column"}}>
+      <NavbarAdmin/>  
+      {edition ? (
+        <Form data={edition} onGuardar={handleGuardar} informacionCompleta={data}  onCancelar={handleCancelar} />
+      ) : (
+        <List data={data} onEditar={handleEditar} onEliminar={handleEliminar} />
+      )}
+     
+    </div>
+  );
 }
 
-export default ListPatientAdmin
+export default ListPatientAdmin;

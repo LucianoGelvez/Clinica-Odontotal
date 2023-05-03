@@ -6,35 +6,36 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
 import { routes } from '../../routes';
 import Logo from '../../images/Logo.png'
-import '../../styles/componentStyles/NavbarAdmin.css'
+import '../../styles/componentStyles/Navbar.css'
 
 function NavbarAdmin() {
   return (
-    <Navbar className='navbar'>
-       
-      <Container>
-       <Navbar.Brand><img className='navbar_logo' src={Logo} alt=""/></Navbar.Brand> 
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <NavDropdown title="Turnos" id="basic-nav-dropdown">
+
+    <Navbar expand="lg" className='navbar large'>  
+    <img className='navbar_logo' src={Logo} alt=""/>
+      <Container className='navbar_container'>
+       <Navbar.Brand></Navbar.Brand> 
+        <Navbar.Toggle aria-controls="basic-navbar-nav"  />
+        <Navbar.Collapse id="basic-navbar-nav" className='navbar_container_collapse'>
+          <Nav  className="me-auto navbar_container_collapse_nav">
+            <NavDropdown title="Turnos" id="basic-nav-dropdown" className='navbar_container_collapse_nav-navDropdown'>
               <NavDropdown.Item href={routes.AddTurnAdmin}> Añadir Turno</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href={routes.ListTurnsAdmin}> Listar Turnos</NavDropdown.Item>
             </NavDropdown>
-            <NavDropdown title="Odontologo" id="basic-nav-dropdown">
+            <NavDropdown title="Odontologo" id="basic-nav-dropdown" className='navbar_container_collapse_nav-navDropdown'>
               <NavDropdown.Item href={routes.AddDentistAdmin}> Añadir Odontologo</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href={routes.ListDentistAdmin}> Listar Odontologos</NavDropdown.Item>
       
             </NavDropdown>
-            <NavDropdown title="Protecistas" id="basic-nav-dropdown">
-              <NavDropdown.Item href={routes.AddDentalHygienists}>Añadir Protecista</NavDropdown.Item>
+            <NavDropdown title="Protecistas" id="basic-nav-dropdown" className='navbar_container_collapse_nav-navDropdown'>
+              <NavDropdown.Item href={routes.AddDentalProsthetist}>Añadir Protecista</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href={routes.ListDentalHygienists}> Listar Protecistas</NavDropdown.Item>
+              <NavDropdown.Item href={routes.ListDentalProsthetist}> Listar Protecistas</NavDropdown.Item>
       
             </NavDropdown>
-            <NavDropdown title="Pacientes" id="basic-nav-dropdown">
+            <NavDropdown title="Pacientes" id="basic-nav-dropdown" className='navbar_container_collapse_nav-navDropdown'>
               <NavDropdown.Item href={routes.AddPatientAdmin}>Añadir Paciente</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href={routes.ListPatientAdmin}>Listar Pacientes</NavDropdown.Item>
@@ -44,6 +45,7 @@ function NavbarAdmin() {
         </Navbar.Collapse>
       </Container>
     </Navbar>
+
   );
 }
 

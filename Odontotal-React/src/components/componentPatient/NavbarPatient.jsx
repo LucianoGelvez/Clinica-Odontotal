@@ -6,6 +6,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
 import { routes } from '../../routes';
 import Logo from '../../images/Logo.png'
+import '../../styles/componentStyles/Navbar.css'
 
 const NavbarPatient = () => {
   return (

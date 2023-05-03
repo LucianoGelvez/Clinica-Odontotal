@@ -1,8 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
-
 export const ContextGlobal = createContext();
-
 export const ContextProvider = ({ children }) => {
 
   const url_ListDentists = "http://localhost:8080/odontologos";
@@ -25,9 +23,9 @@ export const ContextProvider = ({ children }) => {
     const path = window.location.pathname;
     if (path === "/ListaDeOdontologos") {
       fetchData(url_ListDentists);
-    } else if (path === "/ListaDePacientes") {
+    } else if (path === "/ListaDePacientes" || path === "/AgregarTurno") {
       fetchData(url_ListPatients);
-    } else if (path === "/ListaDeProtecistas") {
+    } else if (path === "/ListaDeProtecistas" ) {
       fetchData(url_ListDentalHygienists);
     } else if (path === "/ListaDeTurnos") {
       fetchData(url_ListTurn);

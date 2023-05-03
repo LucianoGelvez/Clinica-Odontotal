@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import NavbarAdmin from '../../../components/component_admin/NavbarAdmin'
 
-const AddAddDentalHygienists = () => {
+const AddDentalProsthetist = () => {
   const [formData, setFormData] = useState({
     nombre: '',
     apellido: '',
@@ -95,4 +95,4 @@ const AddAddDentalHygienists = () => {
   )
 }
 
-export default AddAddDentalHygienists
+export default AddDentalProsthetist

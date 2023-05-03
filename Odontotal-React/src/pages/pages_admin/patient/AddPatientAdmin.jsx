@@ -1,7 +1,11 @@
 import React, { useState } from 'react'
 import NavbarAdmin from '../../../components/component_admin/NavbarAdmin'
 
+
+
 const AddPatientAdmin = () => {
+
+
   const [domicilio, setDomicilio] = useState({
     calle: '',
     numero: '',
