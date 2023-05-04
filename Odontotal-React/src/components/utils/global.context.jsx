@@ -27,7 +27,7 @@ export const ContextProvider = ({ children }) => {
       fetchData(url_ListPatients);
     } else if (path === "/ListaDeProtecistas" ) {
       fetchData(url_ListDentalHygienists);
-    } else if (path === "/ListaDeTurnos") {
+    } else if (path === "/ListaDeTurnos" || path === "/MisTurnos") {
       fetchData(url_ListTurn);
     }
   }, []);

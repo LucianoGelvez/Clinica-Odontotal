@@ -10,11 +10,14 @@ import Dent from '../../images/Dent.png'
 import Dentist from '../../images/Dentist.png'
 import Plan from '../../images/Plan.png'
 import Presentation from '../../images/Presentation.png'
+import Login from '../../components/Login';
 
 
 const Turns = () => {
   const { information } = useContext(ContextGlobal);
   // console.log(information)
+
+  const [show,setShow] = useState(true)
 
   const [selectedSpecialty, setSelectedSpecialty] = useState(null)
   const [selectedDoctor, setSelectedDoctor] = useState("")
@@ -128,6 +131,10 @@ const [dataResponse, setResponse] = useState({})
     <div>
       <NavbarPatient/> 
 
+      {show && <Login/> }
+
+      {!show &&
+      <>
       <div className='turns_information'>
         <h3>Agenda hoy mismo tu cita de valoración</h3>
         <p>En Odontotal trabajamos para siempre darte lo mejor, conoce los diferentes canales para que puedas agendar tu cita de valoración</p>
@@ -248,8 +255,11 @@ const [dataResponse, setResponse] = useState({})
           </div>
         </div>
       </div>
-    
+      
+      </>
+      }
     </div>
+  
   
   )
 }
