@@ -1,7 +1,11 @@
 import React, { useState } from 'react'
 import NavbarAdmin from '../../../components/component_admin/NavbarAdmin'
 
+
+
 const AddPatientAdmin = () => {
+
+
   const [domicilio, setDomicilio] = useState({
     calle: '',
     numero: '',
@@ -47,7 +51,7 @@ const AddPatientAdmin = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(formData);
-    const url = 'http://34.228.53.131:8080/pacientes';
+    const url = 'http://localhost:8080/pacientes';
     const settings = {
       method: 'POST',
       headers: {

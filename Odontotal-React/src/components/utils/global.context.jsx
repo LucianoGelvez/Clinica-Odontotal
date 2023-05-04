@@ -1,14 +1,12 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
-
 export const ContextGlobal = createContext();
-
 export const ContextProvider = ({ children }) => {
 
-  const url_ListDentists = "http://34.228.53.131:8080/odontologos";
-  const url_ListPatients = "http://34.228.53.131:8080/pacientes";
-  const url_ListDentalHygienists = "http://34.228.53.131:8080/protecistas";
-  const url_ListTurn = "http://34.228.53.131:8080/turnos";
+  const url_ListDentists = "http://localhost:8080/odontologos";
+  const url_ListPatients = "http://localhost:8080/pacientes";
+  const url_ListDentalHygienists = "http://localhost:8080/protecistas";
+  const url_ListTurn = "http://localhost:8080/turnos";
   
 
   const [information, setInformation] = useState([]);
@@ -25,9 +23,9 @@ export const ContextProvider = ({ children }) => {
     const path = window.location.pathname;
     if (path === "/ListaDeOdontologos") {
       fetchData(url_ListDentists);
-    } else if (path === "/ListaDePacientes") {
+    } else if (path === "/ListaDePacientes" || path === "/AgregarTurno" || path === "/ReservarTurno") {
       fetchData(url_ListPatients);
-    } else if (path === "/ListaDeProtecistas") {
+    } else if (path === "/ListaDeProtecistas" ) {
       fetchData(url_ListDentalHygienists);
     } else if (path === "/ListaDeTurnos") {
       fetchData(url_ListTurn);

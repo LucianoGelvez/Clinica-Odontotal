@@ -13,25 +13,26 @@ import { useState } from 'react'
 import Home from './pages/pages_patient/Home'
 import NavbarPatient from './components/componentPatient/NavbarPatient'
 import Service from './pages/pages_patient/Service'
-import AddAddDentalHygienists from './pages/pages_admin/dentalHygienists/AddAddDentalHygienists'
-import ListDentalHygienists from './pages/pages_admin/dentalHygienists/ListDentalHygienists'
+import AddAddDentalHygienists from './pages/pages_admin/dentalProsthetist/AddDentalProsthetist'
+
 import Footer from './components/component_admin/Footer'
 import Turns from './pages/pages_patient/Turns'
 import AboutUs from './pages/pages_patient/AboutUs'
 import OurTeam from './pages/pages_patient/OurTeam'
 import MyTurns from './pages/pages_patient/MyTurns'
+import ListDentalProsthetist from './pages/pages_admin/dentalProsthetist/ListDentalProsthetist'
 
 
 function App() {
- 
-  const [render, setRender] = useState(true)
+
+  const [render, setRender] = useState(false)
   return (
     <div className="App">
 
     <Routes>
     <Route path={routes.Home} element={render ? <AddTurnAdmin/> : <Home/>} />
     <Route path={routes.Service} element={<Service/>} />
-   
+  
     <Route path={routes.ReserveTurn} element={<Turns/>} />
     <Route path={routes.MyTurn} element={<MyTurns/>} />
     <Route path={routes.OurTeam} element={<OurTeam/>} />
@@ -42,8 +43,8 @@ function App() {
       <Route path={routes.ListDentistAdmin} element={<ListDentistAdmin/>} />
       <Route path={routes.AddPatientAdmin} element={<AddPatientAdmin/>} />
       <Route path={routes.ListPatientAdmin} element={<ListPatientAdmin/>}/>
-      <Route path={routes.AddDentalHygienists} element={<AddAddDentalHygienists/>}/>
-      <Route path={routes.ListDentalHygienists} element={<ListDentalHygienists/>}/>
+      <Route path={routes.AddDentalProsthetist} element={<AddAddDentalHygienists/>}/>
+      <Route path={routes.ListDentalProsthetist} element={<ListDentalProsthetist/>}/>
     </Routes>
 
     <Footer/>

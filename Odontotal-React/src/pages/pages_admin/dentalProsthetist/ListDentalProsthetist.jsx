@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react'
 import NavbarAdmin from '../../../components/component_admin/NavbarAdmin'
 import { ContextGlobal } from '../../../components/utils/global.context'
-// import '../../../styles/pagesStyles/ListDentalHygienists.css'
-import Form from './FormToUpdateDentist'
+import '../../../styles/pagesStyles/ListDentalHygienists.css'
+import Form from './FormToUpdateProsthetist'
 import List from './List'
 
 const ListDentalProsthetist = () => {
@@ -22,8 +22,7 @@ const ListDentalProsthetist = () => {
     
   const handleEliminar = (item) => {
     serData((prevState) => prevState.filter((x) => x.id !== item.id));
-    const url = "http://localhost:8080/odontologos/" + item.id;
-    
+    const url = "http://localhost:8080/protecistas/" + item.id;
     const settings = {
       method: "DELETE",
     };

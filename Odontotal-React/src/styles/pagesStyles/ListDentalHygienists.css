@@ -1,0 +1,70 @@
+@charset "UTF-8";
+section {
+  width: 80%;
+  align-self: center;
+}
+section table {
+  border-collapse: collapse; /* Combina las celdas que no tienen bordes definidos */
+  width: 100%;
+  margin: 20px 0; /* Agrega un margen alrededor de la tabla */
+  font-family: sans-serif; /* Define una fuente adecuada para la tabla */
+  background-color: #f8f8f8; /* Establece un color de fondo para la tabla */
+  border: 1px solid #ddd; /* Agrega un borde a la tabla */
+}
+section th, section td {
+  text-align: left;
+  padding: 12px; /* Agrega un relleno a las celdas */
+  border: none; /* Elimina los bordes de las celdas */
+}
+section tr:nth-child(even) {
+  background-color: #ebe8e8; /* Establece un color de fondo alternativo para las filas pares */
+}
+section button {
+  background-color: #4CAF50; /* Agrega un color de fondo al botón */
+  color: white;
+  padding: 6px 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Agrega una transición al color de fondo */
+  margin-right: 10px;
+}
+section .update {
+  margin: 100px;
+}
+section button:hover {
+  background-color: #3e8e41;
+}
+section .btn-delete {
+  background-color: rgb(169, 28, 28);
+}
+section .btn-delete:hover {
+  background-color: red;
+}
+section .cancel-change {
+  background-color: #353535;
+}
+
+@media only screen and (min-width: 768px) {
+  table {
+    margin: 50px 0; /* Aumenta el margen de la tabla */
+  }
+  th, td {
+    padding: 16px; /* Aumenta el relleno de las celdas */
+  }
+  button {
+    padding: 12px 20px; /* Aumenta el relleno del botón */
+  }
+}
+/* Estilos para pantallas pequeñas */
+@media only screen and (max-width: 767px) {
+  table {
+    font-size: 14px; /* Reduce el tamaño de fuente de la tabla */
+  }
+  th, td {
+    padding: 10px; /* Reduce el relleno de las celdas */
+  }
+  button {
+    padding: 8px 16px; /* Reduce el relleno del botón */
+  }
+}/*# sourceMappingURL=ListDentalHygienists.css.map */
