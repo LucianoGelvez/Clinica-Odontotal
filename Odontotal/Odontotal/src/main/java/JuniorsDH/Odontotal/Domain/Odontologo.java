@@ -28,7 +28,7 @@ public class Odontologo {
 @Enumerated(EnumType.STRING)
 private Especialidad especialidad;
 
-    @OneToMany(mappedBy = "odontologo")
+    @OneToMany(mappedBy = "odontologo",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<Turno> turnos= new HashSet<>();
 

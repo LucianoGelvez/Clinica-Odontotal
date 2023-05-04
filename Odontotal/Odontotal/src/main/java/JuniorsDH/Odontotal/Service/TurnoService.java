@@ -37,7 +37,7 @@ public class TurnoService {
     public TurnoDto agregarTurno (TurnoDto turnoDto)throws DataInvalidException {
 
         Turno turnoGuardado;
-        if (turnoDto.getOdontologoId() == null || turnoDto.getPacienteId() == null||turnoDto.getFecha()==null||turnoDto.getHora()==null||turnoDto.getDocumentoPaciente().isEmpty()) {
+        if (turnoDto.getOdontologoId() == null || turnoDto.getPacienteId() == null||turnoDto.getFecha()==null||turnoDto.getHora()==null) {
             throw new DataInvalidException("Error. No se puede registrar turno, es necesario registrar un paciente y un odontologo");
         } else {
             turnoGuardado = turnoRepository.save(turnoDTOATurno(turnoDto));
