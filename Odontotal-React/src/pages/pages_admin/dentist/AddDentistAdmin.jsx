@@ -1,7 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import NavbarAdmin from '../../../components/component_admin/NavbarAdmin';
+import Login from '../../../components/Login';
+import Register from '../../../components/Register';
+import { ContextGlobal } from '../../../components/utils/global.context';
 
 const AddDentistAdmin = () => {
+
+  const {showLogin, showRegister, setShowLogin, setShowRegister } = useContext(ContextGlobal);
 
   const [formData, setFormData] = useState({
     apellido: '',
@@ -57,6 +62,10 @@ const AddDentistAdmin = () => {
   return (
     <div className="AddDentistAdmin">
       <NavbarAdmin />
+
+      {showLogin && <Login/> }
+      {showRegister && <Register/> }
+      {!showLogin && !showRegister &&
      
       <div className="row">
         <div
@@ -116,6 +125,7 @@ const AddDentistAdmin = () => {
                 </form>
                 </div>
                 </div>
+          }
                 </div>
                 )}
 export default AddDentistAdmin

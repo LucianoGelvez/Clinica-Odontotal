@@ -2,12 +2,14 @@ import React, { useContext, useEffect, useState } from 'react'
 import NavbarPatient from '../../components/componentPatient/NavbarPatient'
 import { ContextGlobal } from '../../components/utils/global.context'
 import List from './List'
+import Login from '../../components/Login'
+import Register from '../../components/Register'
 
 
 const MyTurns = () => {
-  const pacienteId = 2 // traer Id del paciente desde el LocalStorage
+  const pacienteId = 1 // traer Id del paciente desde el LocalStorage
 
-  const { information } = useContext(ContextGlobal);
+  const { information, showLogin, showRegister, setShowLogin, setShowRegister } = useContext(ContextGlobal);
 
   const [data, serData] = useState(information);
   const [edition, setedition] = useState(null);
@@ -60,8 +62,12 @@ const MyTurns = () => {
     <div style={{display: "flex", flexDirection: "column"}}>
       <NavbarPatient/> 
       
-        <List data={data} onEditar={handleEditar} onEliminar={handleEliminar} />
+      {showLogin && <Login/> }
+      {showRegister && <Register/> }
+      {!showLogin && !showRegister &&
       
+        <List data={data} onEditar={handleEditar} onEliminar={handleEliminar} />
+      }
      
     </div>
   );

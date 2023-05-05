@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import '../styles/componentStyles/Login.css';
 import Logo from '../images/Logo.png'
 import { Link } from 'react-router-dom';
+import { ContextGlobal } from './utils/global.context';
 
 const Login = () => {
+
+  const { showLogin, showRegister, setShowLogin, setShowRegister } = useContext(ContextGlobal);
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -19,6 +23,11 @@ const Login = () => {
     setEmail(event.target.value);
     setForm({...form, email:event.target.value});
   };
+
+  const handleShowLogin = () => {
+    setShowLogin(false)
+    setShowRegister(true)
+  }
   
 
   const handlePasswordChange = (event) => {
@@ -87,7 +96,7 @@ const Login = () => {
         </div>
         <button type="submit">Iniciar sesión</button>
         <br />
-        <Link>No tienes cuenta, ¡Registrate aqui!</Link>
+        <Link onClick={handleShowLogin}>No tienes cuenta, ¡Registrate aquí!</Link>
       </form>
       
     </div>

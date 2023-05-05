@@ -2,9 +2,11 @@ import React, { useContext, useEffect, useState } from 'react'
 import NavbarAdmin from '../../../components/component_admin/NavbarAdmin'
 import '../../../styles/pagesStyles/AddTurnAdminStyle.css'
 import { ContextGlobal } from '../../../components/utils/global.context';
+import Login from '../../../components/Login';
+import Register from '../../../components/Register';
 
 const AddTurnAdmin = () => {
-  const { information } = useContext(ContextGlobal);
+  const { information, showLogin, showRegister, setShowLogin, setShowRegister } = useContext(ContextGlobal);
   // console.log(information)
 
   const [selectedSpecialty, setSelectedSpecialty] = useState(null)
@@ -119,82 +121,90 @@ const [dataResponse, setResponse] = useState({})
     
     <div>
       <NavbarAdmin/> 
-      <h3>Agregar Turno</h3>
-          <form onSubmit={handleSubmit}>
-          <div className="form-group perro" >
-              <label className="control-label" htmlFor="documento">Paciente:</label>
-              <input type="text"className="form-control" id="documento" placeholder="Ingrese el documento"
-               name="documento" value={formData.documento} onChange={handleInputChange} required/>
-            </div>
-              <div className="dropdown">
-     
-              <select name="selectedSpecialty" id="selectedSpecialty" onChange={handleSpecialtySelect} required>
-    <option>Selecciona una especialidad</option>
-    <option value="ESPECIALIDAD_ORTODONCISTA">Ortodoncia</option>
-    <option value="ESPECIALIDAD_PERIODONCISTA">Periodoncia</option>
-    <option value="ESPECIALIDAD_ENDODONCISTA">Endodoncia</option>
-    <option value="ESPECIALIDAD_ODONTOPEDIATRIA">Odontopediatría</option>
-    <option value="ESPECIALIDAD_CIRUGIA_ORAL">Cirugía oral</option>
-    <option value="ESPECIALIDAD_CIRUGIA_MAXILOFACIAL">Cirugía maxilofacial</option>
-    <option value="ESPECIALIDAD_PROTESISTA">Prótesis</option>
-  </select>
-      </div>
 
-      {selectedSpecialty && 
-        <div className="dropdown">
-          <select className="form-select" aria-label="Dropdown example" onChange={handleDoctorSelect}>
-            <option selected>Selecciona un especialista</option>
-            {selectedSpecialty === "ESPECIALIDAD_ORTODONCISTA" && 
-              <>
-              {especilistaFiltrado.map(odontologo => <option value={odontologo.id} key={odontologo.id}>{odontologo.nombre} {odontologo.apellido}</option>)}    
-              </>
-            }
-            {selectedSpecialty === "ESPECIALIDAD_PERIODONCISTA" &&
-              <>
-                {especilistaFiltrado.map(odontologo => <option value={odontologo.id} key={odontologo.id}>{odontologo.nombre}</option>)} 
-              </>
-            }
-            {selectedSpecialty === "ESPECIALIDAD_ENDODONCISTA" &&
-              <>
-                {especilistaFiltrado.map(odontologo => <option value={odontologo.id} key={odontologo.id}>{odontologo.nombre}</option>)} 
-              </>
-            }
-             {selectedSpecialty === "ESPECIALIDAD_ODONTOPEDIATRIA" &&
-              <>
-                {especilistaFiltrado.map(odontologo => <option key={odontologo.id}>{odontologo.nombre}</option>)} 
-              </>
-            }
-             {selectedSpecialty === "ESPECIALIDAD_CIRUGIA_ORAL" &&
-              <>
-                {especilistaFiltrado.map(odontologo => <option key={odontologo.id}>{odontologo.nombre}</option>)} 
-              </>
-            }
-             {selectedSpecialty === "ESPECIALIDAD_CIRUGIA_MAXILOFACIAL" &&
-              <>
-                {especilistaFiltrado.map(odontologo => <option key={odontologo.id}>{odontologo.nombre}</option>)} 
-              </>
-            }
-                {selectedSpecialty === "ESPECIALIDAD_PROTESISTA" &&
-              <>
-                {especilistaFiltrado.map(odontologo => <option key={odontologo.id}>{odontologo.nombre}</option>)} 
-              </>
-            }
-          </select>
-        </div>
+      {showLogin && <Login/> }
+      {showRegister && <Register/> }
+      {!showLogin && !showRegister &&
+      <>
+      <h3>Agregar Turno</h3>
+        <form onSubmit={handleSubmit}>
+          <div className="form-group perro" >
+            <label className="control-label" htmlFor="documento">Paciente:</label>
+            <input type="text"className="form-control" id="documento" placeholder="Ingrese el documento"
+            name="documento" value={formData.documento} onChange={handleInputChange} required/>
+          </div>
+
+          <div className="dropdown">
+              <select name="selectedSpecialty" id="selectedSpecialty" onChange={handleSpecialtySelect} required>
+                <option>Selecciona una especialidad</option>
+                <option value="ESPECIALIDAD_ORTODONCISTA">Ortodoncia</option>
+                <option value="ESPECIALIDAD_PERIODONCISTA">Periodoncia</option>
+                <option value="ESPECIALIDAD_ENDODONCISTA">Endodoncia</option>
+                <option value="ESPECIALIDAD_ODONTOPEDIATRIA">Odontopediatría</option>
+                <option value="ESPECIALIDAD_CIRUGIA_ORAL">Cirugía oral</option>
+                <option value="ESPECIALIDAD_CIRUGIA_MAXILOFACIAL">Cirugía maxilofacial</option>
+                <option value="ESPECIALIDAD_PROTESISTA">Prótesis</option>
+              </select>
+          </div>
+
+          {selectedSpecialty && 
+            <div className="dropdown">
+              <select className="form-select" aria-label="Dropdown example" onChange={handleDoctorSelect}>
+                <option selected>Selecciona un especialista</option>
+                {selectedSpecialty === "ESPECIALIDAD_ORTODONCISTA" && 
+                  <>
+                  {especilistaFiltrado.map(odontologo => <option value={odontologo.id} key={odontologo.id}>{odontologo.nombre} {odontologo.apellido}</option>)}    
+                  </>
+                }
+                {selectedSpecialty === "ESPECIALIDAD_PERIODONCISTA" &&
+                  <>
+                    {especilistaFiltrado.map(odontologo => <option value={odontologo.id} key={odontologo.id}>{odontologo.nombre}</option>)} 
+                  </>
+                }
+                {selectedSpecialty === "ESPECIALIDAD_ENDODONCISTA" &&
+                  <>
+                    {especilistaFiltrado.map(odontologo => <option value={odontologo.id} key={odontologo.id}>{odontologo.nombre}</option>)} 
+                  </>
+                }
+                {selectedSpecialty === "ESPECIALIDAD_ODONTOPEDIATRIA" &&
+                  <>
+                    {especilistaFiltrado.map(odontologo => <option key={odontologo.id}>{odontologo.nombre}</option>)} 
+                  </>
+                }
+                {selectedSpecialty === "ESPECIALIDAD_CIRUGIA_ORAL" &&
+                  <>
+                    {especilistaFiltrado.map(odontologo => <option key={odontologo.id}>{odontologo.nombre}</option>)} 
+                  </>
+                }
+                {selectedSpecialty === "ESPECIALIDAD_CIRUGIA_MAXILOFACIAL" &&
+                  <>
+                    {especilistaFiltrado.map(odontologo => <option key={odontologo.id}>{odontologo.nombre}</option>)} 
+                  </>
+                }
+                    {selectedSpecialty === "ESPECIALIDAD_PROTESISTA" &&
+                  <>
+                    {especilistaFiltrado.map(odontologo => <option key={odontologo.id}>{odontologo.nombre}</option>)} 
+                  </>
+                }
+              </select>
+            </div>
+          }
+
+          <div className="form-group">
+            <label className="control-label" htmlFor="fecha"> Fecha:</label>
+            <input type="date"className="form-control" id="fecha" placeholder="Ingrese el fecha"
+             name="fecha" value={formData.fecha} onChange={handleInputChange} required/>
+            <select className="hora" name="hora" id="hora" value={formData.hora} onChange={handleInputChange} required>
+              {intervals.map((interval, index) => (
+              <option key={index} >{interval}</option>  
+              ))}
+            </select>
+          </div>
+          <button>Cargar</button>
+        </form>
+      </>
       }
-            <div className="form-group">
-              <label className="control-label" htmlFor="fecha"> Fecha:</label>
-              <input type="date"className="form-control" id="fecha" placeholder="Ingrese el fecha"
-               name="fecha" value={formData.fecha} onChange={handleInputChange} required/>
-    <select className="hora" name="hora" id="hora" value={formData.hora} onChange={handleInputChange} required>
-  {intervals.map((interval, index) => (
-    <option key={index} >{interval}</option>  
-  ))}
-  </select>
-</div>
-<button>Cargar</button>
-</form>
-    </div>
+      </div>
   )
 }
 
