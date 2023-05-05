@@ -1,0 +1,83 @@
+.information-container {
+  width: 80vw;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 10vw;
+  padding: 10px;
+}
+.information-container .information-container_aboutus {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-content: center;
+}
+.information-container .information-container_schedule {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  background-color: rgba(2, 175, 246, 0.3);
+  text-align: center;
+  width: 20vw;
+  height: 100%;
+  padding: 15px;
+  border-radius: 10px;
+}
+.information-container .information-container_contact {
+  background-color: rgba(2, 175, 246, 0.3);
+  width: 25%;
+  height: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
+  font-size: 15px;
+  padding: 15px;
+  border-radius: 10px;
+}
+.information-container .information-container_contact .information-container_contact_location {
+  display: flex;
+  margin: 10px;
+  width: 100%;
+  justify-content: space-evenly;
+}
+.information-container .information-container_contact .information-container_contact_location .contact-icon {
+  margin-top: 3px;
+}
+.information-container .information-container_contact .information-container_contact_phone {
+  display: flex;
+  margin: 10px;
+  width: 100%;
+  justify-content: space-evenly;
+}
+.information-container .information-container_contact .information-container_contact_phone .contact-icon {
+  margin-top: 4px;
+}
+.information-container .information-container_contact .information-container_contact_email {
+  display: flex;
+  margin: 10px;
+  width: 100%;
+  justify-content: space-evenly;
+}
+.information-container .information-container_contact .information-container_contact_email .contact-icon {
+  margin-top: 4px;
+}
+
+@media (max-width: 480px) {
+  .information-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: space-between;
+  }
+  .information-container .information-container_aboutus {
+    width: 80%;
+  }
+  .information-container .information-container_schedule {
+    width: 80%;
+    margin-bottom: 5%;
+  }
+  .information-container .information-container_contact {
+    width: 80%;
+  }
+}/*# sourceMappingURL=Info.css.map */

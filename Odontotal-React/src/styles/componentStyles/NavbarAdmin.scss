@@ -1,5 +1,44 @@
 .navbar{
-    background-color: aquamarine;
-.navbar_logo {
-    width:150px;
-}}
+    .navbar_logo{
+        margin-left: 100px;
+        width: 200px;
+    }
+    .navbar_container {
+    .navbar_container_collapse{
+        justify-content: flex-end;
+        width: 90%;
+            .navbar_container_collapse_nav{
+                display: flex;
+                width: 100vw;
+                justify-content: flex-end;
+                .navbar_container_collapse_nav-navDropdown{
+                    margin-left: 50px;
+                }
+            }
+        }
+    }}
+@media screen and (max-width: 480px) {
+        .navbar{
+            .navbar_logo{
+                position: absolute;
+                left: 0;
+                top: 12px;
+                right: 0px;
+                width: 170px;
+            }
+            .navbar_container {
+                margin-top: 7%;
+            .navbar_container_collapse{
+                justify-content: center;
+                width: 90%;
+                    .navbar_container_collapse_nav{
+                        display: flex;
+                        width: 100vw;
+                        justify-content: center;
+                        .navbar_container_collapse_nav-navDropdown{
+                            margin-left: 10px;
+                        }
+                    }
+                }
+            }}
+    }

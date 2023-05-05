@@ -1,0 +1,50 @@
+.line1 {
+  color: #02AFF6;
+  width: 80%;
+  margin: 40px 10%;
+}
+
+.text-initial {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  background-color: rgba(0, 224, 200, 0.1);
+  font-family: "Montserrat", sans-serif;
+  margin: 20px 30px;
+  padding: 20px;
+  font-size: 14px;
+  border-radius: 10px;
+}
+
+.text-responsive {
+  background-color: rgba(2, 175, 246, 0.1);
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin: 30px;
+  font-family: "Montserrat", sans-serif;
+  display: none;
+}
+
+.line2 {
+  color: #00E0C8;
+  width: 80%;
+  margin: 40px 10%;
+}
+
+.map {
+  width: 70%;
+  height: 40%;
+  display: flex;
+  padding: 5px;
+  margin: 20px 15%;
+}
+
+@media (max-width: 480px) {
+  .text-initial {
+    display: none;
+  }
+  .text-responsive {
+    display: flex;
+  }
+}/*# sourceMappingURL=Home.css.map */

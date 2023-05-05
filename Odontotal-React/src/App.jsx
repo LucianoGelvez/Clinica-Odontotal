@@ -20,19 +20,19 @@ import Turns from './pages/pages_patient/Turns'
 import AboutUs from './pages/pages_patient/AboutUs'
 import OurTeam from './pages/pages_patient/OurTeam'
 import MyTurns from './pages/pages_patient/MyTurns'
+import fondo from './images/fondo.jpg'
 
 
 function App() {
  
   const [render, setRender] = useState(false)
   return (
-    <div className="App">
+    <div className="App" >
 
   
     <Routes>
     <Route path={routes.Home} element={render ? <AddTurnAdmin/> : <Home/>} />
     <Route path={routes.Service} element={<Service/>} />
-   
     <Route path={routes.ReserveTurn} element={<Turns/>} />
     <Route path={routes.MyTurn} element={<MyTurns/>} />
     <Route path={routes.OurTeam} element={<OurTeam/>} />

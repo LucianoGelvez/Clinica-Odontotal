@@ -1,0 +1,46 @@
+.navbar-container {
+  width: 100%;
+  margin: 0;
+  padding: 5;
+}
+.navbar-container .navbar-container_div {
+  display: flex;
+  width: 100vw;
+  justify-content: space-between;
+  align-items: center;
+}
+.navbar-container .navbar-container_div .navbar-container_div_in {
+  display: flex;
+  justify-content: space-between;
+  width: 100vw;
+  margin: auto;
+}
+.navbar-container .navbar-container_div .navbar-container_div_in .me-auto {
+  display: flex;
+  width: 75vw;
+  justify-content: flex-end;
+}
+.navbar-container .navbar-container_div .navbar-container_div_in .me-auto .navbar-container_div_in_menu {
+  width: 40vw;
+  display: flex;
+  justify-content: space-around;
+}
+
+@media (max-width: 480px) {
+  .navbar-container .navbar-container_div .navbar-container_div_in {
+    align-items: center;
+  }
+  .navbar-container .navbar-container_div .navbar-container_div_in .navbar-container_div_in_toggler {
+    background-color: aliceblue;
+    font-size: smaller;
+    height: 50%;
+    position: absolute;
+    right: 10%;
+  }
+  .navbar-container .navbar-container_div .navbar-container_div_in .navbar-container_div_in_menu {
+    background-color: aqua;
+    display: inline-flex;
+    flex-direction: column;
+    width: 100vw;
+  }
+}/*# sourceMappingURL=Navbar.css.map */
