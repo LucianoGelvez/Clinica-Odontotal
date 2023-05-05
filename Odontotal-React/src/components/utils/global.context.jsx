@@ -21,13 +21,13 @@ export const ContextProvider = ({ children }) => {
 
   useEffect(() => {
     const path = window.location.pathname;
-    if (path === "/ListaDeOdontologos") {
+    if (path === "/ListaDeOdontologos" || path === "/NuestroEquipo") {
       fetchData(url_ListDentists);
-    } else if (path === "/ListaDePacientes" || path === "/AgregarTurno") {
+    } else if (path === "/ListaDePacientes" || path === "/AgregarTurno" || path === "/ReservarTurno") {
       fetchData(url_ListPatients);
     } else if (path === "/ListaDeProtecistas" ) {
       fetchData(url_ListDentalHygienists);
-    } else if (path === "/ListaDeTurnos") {
+    } else if (path === "/ListaDeTurnos" || path === "/MisTurnos") {
       fetchData(url_ListTurn);
     }
   }, []);

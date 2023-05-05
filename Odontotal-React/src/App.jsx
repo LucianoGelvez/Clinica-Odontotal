@@ -14,16 +14,12 @@ import Home from './pages/pages_patient/Home'
 import NavbarPatient from './components/componentPatient/NavbarPatient'
 import Service from './pages/pages_patient/Service'
 import AddAddDentalHygienists from './pages/pages_admin/dentalProsthetist/AddDentalProsthetist'
-
 import Footer from './components/component_admin/Footer'
 import Turns from './pages/pages_patient/Turns'
 import AboutUs from './pages/pages_patient/AboutUs'
 import OurTeam from './pages/pages_patient/OurTeam'
 import MyTurns from './pages/pages_patient/MyTurns'
 import ListDentalProsthetist from './pages/pages_admin/dentalProsthetist/ListDentalProsthetist'
-import Login from './components/Login'
-import Register from './components/Register'
-
 
 
 function App() {
@@ -32,8 +28,7 @@ function App() {
   return (
     <div className="App">
       {/* <Register></Register> */}
-      <Login></Login>
-      <Register></Register>
+     
     <Routes>
     <Route path={routes.Home} element={render ? <AddTurnAdmin/> : <Home/>} />
     <Route path={routes.Service} element={<Service/>} />

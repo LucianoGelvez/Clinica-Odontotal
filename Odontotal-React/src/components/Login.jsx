@@ -8,12 +8,22 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
+  const [dataResponse, setResponse] = useState({})
+
+  const [form,setForm] = useState({
+    email:'',
+    password:''
+  })
+
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
-  }
+    setForm({...form, email:event.target.value});
+  };
+  
 
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
+    setForm({...form, password:event.target.value});
   }
 
   const handleShowPassword = () => {
@@ -23,9 +33,37 @@ const Login = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const url = ""
-    fetch(url, set)
-    console.log(`Email: ${email} \nPassword: ${password}`);
+    const settings = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(form),
+    };
+
+    fetch(url, settings)
+      .then((response) => response.json())
+      .then((data) => {
+        setResponse(data);
+        resetUploadForm();
+      })
+      .catch((error) => {
+        setResponse(error);
+        resetUploadForm();
+      });
+
+    console.log("formulario")
+    console.log(form)
+
+    console.log(dataResponse)
   }
+
+  const resetUploadForm = () => {
+    setForm({
+      email:'',
+      password:''
+    });
+  };
 
   return (
     <div className="login">
@@ -43,7 +81,7 @@ const Login = () => {
             <input type={showPassword ? 'text' : 'password'} name="password" 
               id="password" value={password} onChange={handlePasswordChange} required />
             <button type="button" className="show-password-button" 
-            onClick={handleShowPassword}> {showPassword ? "🐱‍👤" : "👀"}
+            onClick={handleShowPassword}>
             </button>
           </div>
         </div>
