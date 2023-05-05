@@ -27,12 +27,11 @@ function App() {
 
   const [render, setRender] = useState(false)
   return (
-    <div className="App">
+    <div className="App" >
 
     <Routes>
     <Route path={routes.Home} element={render ? <AddTurnAdmin/> : <Home/>} />
     <Route path={routes.Service} element={<Service/>} />
-  
     <Route path={routes.ReserveTurn} element={<Turns/>} />
     <Route path={routes.MyTurn} element={<MyTurns/>} />
     <Route path={routes.OurTeam} element={<OurTeam/>} />

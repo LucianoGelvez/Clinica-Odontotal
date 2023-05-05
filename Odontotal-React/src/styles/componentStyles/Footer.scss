@@ -1,5 +1,61 @@
 .footer{
-    background-color: rgb(12, 119, 158);
-    font-size: 25px;
-    color: red;
+   background-color: rgba($color:  #F1F1F1, $alpha: 0.7);
+    font-size: 30px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    
+    .footer-logo{
+        
+        .footer-logo_img{
+            width: 200px;
+            
+            margin: 10px;
+        }
+    }
+    .footer-rules{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .footer-rules_text{
+            font-size: 14px;
+        }
+        
+    }
+    
+    .footer-redes{
+        
+        
+
+        .footer-redes_icon{
+            color: grey;
+            font-size: 40px;
+            margin-right: 5px;
+
+            
+            
+        }
+        .twitter{
+            color: rgba($color: #02AFF6, $alpha: 0.8);
+        }
+        .fb{
+            color: rgba($color: #00E0C8, $alpha:0.8);
+        }
+        .insta{
+            color: rgba($color: #02AFF6, $alpha: 0.8);
+        }
+        .whats{
+            color: rgba($color: #00E0C8, $alpha:0.8);
+        }
+
+    }
+}
+
+@media (max-width: 480px) {
+    .footer{
+        display: flex;
+        flex-direction: column;
+    }
+
 }
