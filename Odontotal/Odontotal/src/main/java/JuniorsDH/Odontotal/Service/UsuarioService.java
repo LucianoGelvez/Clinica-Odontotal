@@ -1,40 +1,28 @@
 //package JuniorsDH.Odontotal.Service;
-//
-//
 //import JuniorsDH.Odontotal.Domain.Usuario;
 //import JuniorsDH.Odontotal.Repository.UsuarioRepository;
 //import org.springframework.beans.factory.annotation.Autowired;
-//
 //import org.springframework.security.core.userdetails.UserDetails;
 //import org.springframework.security.core.userdetails.UserDetailsService;
 //import org.springframework.security.core.userdetails.UsernameNotFoundException;
 //import org.springframework.stereotype.Service;
-//
 //import java.util.Optional;
 //
 //
-////@Service  indica que esta clase es un servicio
+//
 //@Service
 //public class UsuarioService implements UserDetailsService {
 //
 //
-//    // declara una instancia de UsuarioRepository
 //    private UsuarioRepository usuarioRepository;
 //
-//    //@Autowired  indica que la instancia de UsuarioRepository se inyecta por dependencia
-//    // constructor que recibe una instancia de UsuarioRepository
-//    // inicializa la instancia de UsuarioRepository
+//
 //    @Autowired
 //    public UsuarioService(UsuarioRepository usuarioRepository) {
 //        this.usuarioRepository = usuarioRepository;
 //    }
 //
 //
-//    // busca un Usuario en la base de datos por email
-//    // si el Usuario fue encontrado
-//    // devuelve el Usuario encontrado
-//    // si el Usuario no fue encontrado
-//    // lanza una excepción informando que el Usuario no fue encontrado
 //    @Override
 //    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 //        Optional<Usuario> usuarioBuscado = usuarioRepository.findByEmail(username);

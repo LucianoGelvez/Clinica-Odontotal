@@ -1,1 +1,1 @@
-{"version":3,"sources":["TurnsStyle.scss","TurnsStyle.css"],"names":[],"mappings":"AACA;EAEI,aAAA;EACA,sBAAA;EACA,uBAAA;EACA,iBAAA;ACDJ;ADGI;EACI,UAAA;EACA,aAAA;EACA,sBAAA;EACA,6BAAA;ACDR;ADII;EACI,UAAA;EACA,aAAA;EACC,6BAAA;ACFT;ADGQ;EACI,mCAAA;EACA,WAAA;ACDZ","file":"TurnsStyle.css"}
+{"version":3,"sources":["TurnsStyle.scss","TurnsStyle.css"],"names":[],"mappings":"AAAA;EACI,sBAAA;ACCJ","file":"TurnsStyle.css"}

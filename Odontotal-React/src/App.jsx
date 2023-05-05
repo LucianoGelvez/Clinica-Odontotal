@@ -14,7 +14,6 @@ import Home from './pages/pages_patient/Home'
 import NavbarPatient from './components/componentPatient/NavbarPatient'
 import Service from './pages/pages_patient/Service'
 import AddAddDentalHygienists from './pages/pages_admin/dentalProsthetist/AddDentalProsthetist'
-
 import Footer from './components/component_admin/Footer'
 import Turns from './pages/pages_patient/Turns'
 import AboutUs from './pages/pages_patient/AboutUs'
