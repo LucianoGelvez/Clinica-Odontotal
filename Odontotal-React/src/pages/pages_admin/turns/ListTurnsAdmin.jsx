@@ -2,10 +2,12 @@ import React, { useContext, useEffect, useState } from 'react'
 import NavbarAdmin from '../../../components/component_admin/NavbarAdmin'
 import { ContextGlobal } from '../../../components/utils/global.context'
 import List from './List'
+import Login from '../../../components/Login'
+import Register from '../../../components/Register'
 
 
 const ListTurnsAdmin = () => {
-  const { information } = useContext(ContextGlobal);
+  const { information, showLogin, showRegister, setShowLogin, setShowRegister } = useContext(ContextGlobal);
 
   const [data, serData] = useState(information);
   const [edition, setedition] = useState(null);
@@ -54,9 +56,13 @@ const ListTurnsAdmin = () => {
   return (
     <div style={{display: "flex", flexDirection: "column"}}>
       <NavbarAdmin/> 
-      
+      {showLogin && <Login/> }
+      {showRegister && <Register/> }
+      {!showLogin && !showRegister &&
+      <>
         <List data={data} onEditar={handleEditar} onEliminar={handleEliminar} />
-      
+      </>
+      }
      
     </div>
   );

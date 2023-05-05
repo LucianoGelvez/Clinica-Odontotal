@@ -10,6 +10,8 @@ export const ContextProvider = ({ children }) => {
   
 
   const [information, setInformation] = useState([]);
+  const [showLogin,setShowLogin] = useState(false)
+  const [showRegister,setShowRegister] = useState(false)
 
     const fetchData = (url) => {
       fetch(url)
@@ -40,7 +42,7 @@ export const ContextProvider = ({ children }) => {
   
 
   return (
-    <ContextGlobal.Provider value={{information}}>
+    <ContextGlobal.Provider value={{information,showLogin, showRegister, setShowLogin, setShowRegister}}>
       {children}
     </ContextGlobal.Provider>
   );

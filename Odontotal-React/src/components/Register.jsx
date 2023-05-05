@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import '../styles/componentStyles/Login.css';
 import Logo from '../images/Logo.png'
+import { ContextGlobal } from './utils/global.context';
+import { Link } from 'react-router-dom';
 
 const Register = () => {
+
+  const { showLogin, showRegister, setShowLogin, setShowRegister } = useContext(ContextGlobal);
 
     const [domicilio, setDomicilio] = useState({
         calle: '',
@@ -45,6 +49,11 @@ const Register = () => {
           });
         }
       };
+
+      const handleShowLogin = () => {
+        setShowLogin(true)
+        setShowRegister(false)
+      }
     
       const handleSubmit = (event) => {
         event.preventDefault();
@@ -101,13 +110,13 @@ const Register = () => {
         <div
           className="col-sm-7"
           style={{
-            backgroundColor: '#e2f0fa',
+            // backgroundColor: '#e2f0fa',
             padding: '10px',
             borderRadius: '3px',
             width: "80%",
           }}
         >
-          <h3>Agregar Paciente</h3>
+          {/* <h3>Agregar Paciente</h3> */}
           <form onSubmit={handleSubmit}>
           <img src={Logo} alt="" />
         <h2>Registrarse</h2>
@@ -162,6 +171,7 @@ const Register = () => {
             </div>
             
                 <button>Agregar</button>
+                <Link onClick={handleShowLogin}>Si tienes cuenta, ¡Inicia sesión aquí!</Link>
                 </form>
                 </div>
                 </div>

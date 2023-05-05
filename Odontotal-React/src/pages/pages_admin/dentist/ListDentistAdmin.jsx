@@ -4,9 +4,11 @@ import { ContextGlobal } from '../../../components/utils/global.context'
 // import '../../../styles/pagesStyles/ListDentalHygienists.css'
 import Form from './FormToUpdateDentist'
 import List from './List'
+import Login from '../../../components/Login'
+import Register from '../../../components/Register'
 
 const ListDentalProsthetist = () => {
-  const { information } = useContext(ContextGlobal);
+  const { information, showLogin, showRegister, setShowLogin, setShowRegister } = useContext(ContextGlobal);
 
   const [data, serData] = useState(information);
   const [edition, setedition] = useState(null);
@@ -50,12 +52,17 @@ const ListDentalProsthetist = () => {
   return (
     <div style={{display: "flex", flexDirection: "column"}}>
       <NavbarAdmin/>  
+      {showLogin && <Login/> }
+      {showRegister && <Register/> }
+      {!showLogin && !showRegister &&
+      <>
       {edition ? (
         <Form data={edition} onGuardar={handleGuardar} informacionCompleta={data}  onCancelar={handleCancelar} />
       ) : (
         <List data={data} onEditar={handleEditar} onEliminar={handleEliminar} />
       )}
-     
+      </>
+      }
     </div>
   );
 }
