@@ -1,0 +1,58 @@
+.service{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+    h1{
+        margin-top: 50px;
+        margin-bottom: 50px;   
+    }
+  
+    .grid-container {
+
+        width: 80vw;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+  
+        div {
+            background-color: aliceblue;
+            width: 30%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 100px;
+
+            img {
+                height: 300px;
+                width: 100%; /* Hace que la imagen se ajuste a la altura fija del contenedor */
+                object-fit: cover; /* Ajusta la imagen para cubrir todo el contenedor */
+                margin-bottom: 15px;
+            }
+      
+            p {
+                margin-top: 5px;
+                width: 90%;
+                text-align: justify;
+            }
+        }
+    }    
+}
+  /* Estilos para pantallas pequeñas */
+  @media only screen and (max-width: 767px) {
+    .grid-container{
+      border: 2px rgb(0, 136, 255) solid;
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .grid-container div {
+      border: 2px red solid;
+      background-color: aliceblue;
+      width: 80%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 100px;
+    }
+  }
