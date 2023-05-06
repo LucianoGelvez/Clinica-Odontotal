@@ -7,11 +7,21 @@ export const ContextProvider = ({ children }) => {
   const url_ListPatients = "http://localhost:8080/pacientes";
   const url_ListDentalHygienists = "http://localhost:8080/protecistas";
   const url_ListTurn = "http://localhost:8080/turnos";
-  
+
+
+  const usuarioEncontrado = localStorage.getItem('usuarioEncontrado')
+  console.log(1312312312332);
+  console.log(usuarioEncontrado);
 
   const [information, setInformation] = useState([]);
-  const [showLogin,setShowLogin] = useState(false)
+  const [showLogin,setShowLogin] = useState(!(usuarioEncontrado === 'true'))
   const [showRegister,setShowRegister] = useState(false)
+
+  if(usuarioEncontrado === 'true'){
+    console.log("usuarioEncontrado"); // true o false como booleano
+    //setShowLogin(false)
+  }
+  
 
     const fetchData = (url) => {
       fetch(url)

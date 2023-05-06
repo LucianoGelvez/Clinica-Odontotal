@@ -17,7 +17,10 @@ import Register from '../../components/Register';
 const Turns = () => {
   const { information, showLogin, showRegister, setShowLogin, setShowRegister } = useContext(ContextGlobal);
   // console.log(information)
-
+  if(showLogin || showRegister){
+    localStorage.setItem("patient",JSON.stringify({documento:''}))
+  }
+  const documentPatient = JSON.parse(localStorage.getItem("patient")).documento
 
   const [selectedSpecialty, setSelectedSpecialty] = useState(null)
   const [selectedDoctor, setSelectedDoctor] = useState("")
@@ -30,7 +33,8 @@ const Turns = () => {
   }
 
   useEffect(() => {
-    console.log(especilistaFiltrado)
+    console.log(especilistaFiltrado) 
+    console.log(newFormData);
   }, [ especilistaFiltrado]);
   useEffect(() => {
     console.log(selectedDoctor)
@@ -57,7 +61,7 @@ const [dataResponse, setResponse] = useState({})
 
   const [formData, setFormData] = useState({
     odontologoId: '',
-    documento: '4654', //Traer valor del LocalStorage
+    documento: documentPatient, //Traer valor del LocalStorage
     fecha: '',
     
   });
@@ -109,7 +113,7 @@ const [dataResponse, setResponse] = useState({})
     window.location.reload();
     setFormData({
       odontologoId: '',
-      documento: '4654', //Traer valor del LocalStorage
+      documento: documentPatient, //Traer valor del LocalStorage
       fecha: '',   
     });
     setNewFormData({

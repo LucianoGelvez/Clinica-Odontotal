@@ -7,8 +7,8 @@ import Register from '../../components/Register'
 
 
 const MyTurns = () => {
-  const pacienteId = 1 // traer Id del paciente desde el LocalStorage
-
+  const pacienteId = JSON.parse(localStorage.getItem("patient")).idPaciente // traer Id del paciente desde el LocalStorage
+  console.log(pacienteId);
   const { information, showLogin, showRegister, setShowLogin, setShowRegister } = useContext(ContextGlobal);
 
   const [data, serData] = useState(information);

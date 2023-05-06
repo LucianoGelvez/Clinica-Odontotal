@@ -9,6 +9,13 @@ import Logo from '../../images/Logo.png'
 import '../../styles/componentStyles/Navbar.css'
 
 const NavbarPatient = () => {
+  const usuarioEncontrado = localStorage.getItem('usuarioEncontrado')
+  const handleButton = () => {
+    localStorage.setItem("usuarioEncontrado", false)
+    localStorage.setItem("user", null)
+    localStorage.setItem("patient", JSON.stringify({documento: ''}))
+    window.location.href="http://localhost:5173/"
+  }
   return (
 <Navbar expand="lg" className='navbar large'>  
     <img className='navbar_logo' src={Logo} alt=""/>
@@ -29,6 +36,7 @@ const NavbarPatient = () => {
           </Nav>
         </Navbar.Collapse>
       </Container>
+      {usuarioEncontrado==='true' && <button onClick={handleButton}>Cerrar Sesión</button>}
     </Navbar>
   )
 }

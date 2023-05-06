@@ -119,6 +119,7 @@ public class PacienteService {
         pacienteDto.setNombre(paciente.getNombre());
         pacienteDto.setDomicilio(paciente.getDomicilio());
         pacienteDto.setDocumento(paciente.getDocumento());
+        pacienteDto.setEmail(paciente.getEmail());
 
         return pacienteDto;
 
@@ -136,6 +137,7 @@ public class PacienteService {
         paciente.setNombre(pacienteDto.getNombre());
         paciente.setDomicilio(pacienteDto.getDomicilio());
         paciente.setDocumento(pacienteDto.getDocumento());
+        paciente.setEmail(pacienteDto.getEmail());
 
         return paciente;
 

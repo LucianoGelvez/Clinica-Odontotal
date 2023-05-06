@@ -8,6 +8,13 @@ import { routes } from '../../routes';
 import Logo from '../../images/Logo.png'
 import '../../styles/componentStyles/NavbarAdmin.css'
 function NavbarAdmin() {
+  const usuarioEncontrado = localStorage.getItem('usuarioEncontrado')
+  const handleButton = () => {
+    localStorage.setItem("usuarioEncontrado", false)
+    localStorage.setItem("user", null)
+    localStorage.setItem("patient", JSON.stringify({documento: ''}))
+    window.location.href="http://localhost:5173/"
+  }
   return (
     <Navbar expand="lg" className='navbar large'>
     <img className='navbar_logo' src={Logo} alt=""/>
@@ -27,9 +34,9 @@ function NavbarAdmin() {
               <NavDropdown.Item href={routes.ListDentistAdmin}> Listar Odontologos</NavDropdown.Item>
             </NavDropdown>
             <NavDropdown title="Protecistas" id="basic-nav-dropdown" className='navbar_container_collapse_nav-navDropdown'>
-              <NavDropdown.Item href={routes.AddDentalHygienists}>Añadir Protecista</NavDropdown.Item>
+              <NavDropdown.Item href={routes.AddDentalProsthetist}>Añadir Protecista</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href={routes.ListDentalHygienists}> Listar Protecistas</NavDropdown.Item>
+              <NavDropdown.Item href={routes.ListDentalProsthetist}> Listar Protecistas</NavDropdown.Item>
             </NavDropdown>
             <NavDropdown title="Pacientes" id="basic-nav-dropdown" className='navbar_container_collapse_nav-navDropdown'>
               <NavDropdown.Item href={routes.AddPatientAdmin}>Añadir Paciente</NavDropdown.Item>
@@ -39,6 +46,7 @@ function NavbarAdmin() {
           </Nav>
         </Navbar.Collapse>
       </Container>
+      {usuarioEncontrado==='true' && <button onClick={handleButton}>Cerrar Sesión</button>}
     </Navbar>
 
   );

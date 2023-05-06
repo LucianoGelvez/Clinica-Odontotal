@@ -5,24 +5,37 @@ import JuniorsDH.Odontotal.Domain.Domicilio;
 public class PacienteDto {
 
     private Long idPaciente;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     private String apellido;
     private String nombre;
     private Domicilio domicilio;
     private String documento;
 
-    public PacienteDto(Long idPaciente, String apellido, String nombre, Domicilio domicilio, String documento) {
+    private String email;
+
+    public PacienteDto(Long idPaciente, String apellido, String nombre, Domicilio domicilio, String documento, String email ) {
         this.idPaciente = idPaciente;
         this.apellido = apellido;
         this.nombre = nombre;
         this.domicilio = domicilio;
         this.documento = documento;
+        this.email = email;
     }
 
-    public PacienteDto(String apellido, String nombre, Domicilio domicilio, String documento) {
+    public PacienteDto(String apellido, String nombre, Domicilio domicilio, String documento, String email ) {
         this.apellido = apellido;
         this.nombre = nombre;
         this.domicilio = domicilio;
         this.documento = documento;
+        this.email = email;
     }
 
     public PacienteDto() {
@@ -77,6 +90,7 @@ public class PacienteDto {
                 ", nombre='" + nombre + '\'' +
                 ", domicilio=" + domicilio +
                 ", documento='" + documento + '\'' +
+                ", email='" + email + '\'' +
                 '}';
     }
 }
