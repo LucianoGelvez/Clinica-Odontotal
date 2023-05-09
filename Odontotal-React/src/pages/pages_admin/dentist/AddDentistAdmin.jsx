@@ -6,7 +6,7 @@ import { ContextGlobal } from '../../../components/utils/global.context';
 
 const AddDentistAdmin = () => {
 
-  const {showLogin, showRegister, setShowLogin, setShowRegister } = useContext(ContextGlobal);
+  const {showLogin, showRegister, setShowLogin, setShowRegister, showDentist,setShowDentist } = useContext(ContextGlobal);
 
   const [formData, setFormData] = useState({
     apellido: '',
@@ -65,7 +65,7 @@ const AddDentistAdmin = () => {
 
       {showLogin && <Login/> }
       {showRegister && <Register/> }
-      {!showLogin && !showRegister &&
+      {!showLogin && !showRegister && !showDentist &&
      
       <div className="row">
         <div

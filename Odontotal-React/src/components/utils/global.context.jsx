@@ -10,12 +10,12 @@ export const ContextProvider = ({ children }) => {
 
 
   const usuarioEncontrado = localStorage.getItem('usuarioEncontrado')
-  console.log(1312312312332);
   console.log(usuarioEncontrado);
 
   const [information, setInformation] = useState([]);
   const [showLogin,setShowLogin] = useState(!(usuarioEncontrado === 'true'))
   const [showRegister,setShowRegister] = useState(false)
+  const [showDentist,setShowDentist] = useState(true)
 
   if(usuarioEncontrado === 'true'){
     console.log("usuarioEncontrado"); // true o false como booleano
@@ -52,7 +52,7 @@ export const ContextProvider = ({ children }) => {
   
 
   return (
-    <ContextGlobal.Provider value={{information,showLogin, showRegister, setShowLogin, setShowRegister}}>
+    <ContextGlobal.Provider value={{information,showLogin, showRegister, setShowLogin, setShowRegister, showDentist,setShowDentist}}>
       {children}
     </ContextGlobal.Provider>
   );

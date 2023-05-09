@@ -16,6 +16,7 @@ import Register from '../../components/Register';
 
 const Turns = () => {
   const { information, showLogin, showRegister, setShowLogin, setShowRegister } = useContext(ContextGlobal);
+  const usuarioEncontrado = localStorage.getItem('usuarioEncontrado')
   // console.log(information)
   if(showLogin || showRegister){
     localStorage.setItem("patient",JSON.stringify({documento:''}))
@@ -133,8 +134,7 @@ const [dataResponse, setResponse] = useState({})
 
   return (
     <div>
-      <NavbarPatient/> 
-
+      {usuarioEncontrado === 'true' && <NavbarPatient/>}
       {showLogin && <Login/> }
       {showRegister && <Register/> }
       {!showLogin && !showRegister &&

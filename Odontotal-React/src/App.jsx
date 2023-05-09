@@ -20,6 +20,8 @@ import AboutUs from './pages/pages_patient/AboutUs'
 import OurTeam from './pages/pages_patient/OurTeam'
 import MyTurns from './pages/pages_patient/MyTurns'
 import ListDentalProsthetist from './pages/pages_admin/dentalProsthetist/ListDentalProsthetist'
+import Login from './components/Login'
+import Register from './components/Register'
 
 
 function App() {
@@ -35,14 +37,16 @@ function App() {
     <Route path={routes.MyTurn} element={<MyTurns/>} />
     <Route path={routes.OurTeam} element={<OurTeam/>} />
     <Route path={routes.AboutUs} element={<AboutUs/>} />
-      <Route path={routes.AddTurnAdmin} element={<AddTurnAdmin/>} />
-      <Route path={routes.ListTurnsAdmin} element={<ListTurnsAdmin/>} />
-      <Route path={routes.AddDentistAdmin} element={<AddDentistAdmin/>} />
-      <Route path={routes.ListDentistAdmin} element={<ListDentistAdmin/>} />
-      <Route path={routes.AddPatientAdmin} element={<AddPatientAdmin/>} />
-      <Route path={routes.ListPatientAdmin} element={<ListPatientAdmin/>}/>
-      <Route path={routes.AddDentalProsthetist} element={<AddAddDentalHygienists/>}/>
-      <Route path={routes.ListDentalProsthetist} element={<ListDentalProsthetist/>}/>
+    <Route path={routes.AddTurnAdmin} element={<AddTurnAdmin/>} />
+    <Route path={routes.ListTurnsAdmin} element={<ListTurnsAdmin/>} />
+    <Route path={routes.AddDentistAdmin} element={<AddDentistAdmin/>} />
+    <Route path={routes.ListDentistAdmin} element={<ListDentistAdmin/>} />
+    <Route path={routes.AddPatientAdmin} element={<AddPatientAdmin/>} />
+    <Route path={routes.ListPatientAdmin} element={<ListPatientAdmin/>}/>
+    <Route path={routes.AddDentalProsthetist} element={<AddAddDentalHygienists/>}/>
+    <Route path={routes.ListDentalProsthetist} element={<ListDentalProsthetist/>}/>
+    <Route path={routes.Login} element={<Login/>}/>
+    <Route path={routes.Register} element={<Register/>}/>
     </Routes>
 
     <Footer/>

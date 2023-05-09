@@ -6,7 +6,7 @@ import Register from '../../../components/Register';
 
 const AddDentalProsthetist = () => {
 
-  const {showLogin, showRegister, setShowLogin, setShowRegister } = useContext(ContextGlobal);
+  const {showLogin, showRegister, setShowLogin, setShowRegister, showDentist,setShowDentist } = useContext(ContextGlobal);
 
   const [formData, setFormData] = useState({
     nombre: '',
@@ -64,7 +64,7 @@ const AddDentalProsthetist = () => {
       <NavbarAdmin/>
       {showLogin && <Login/> }
       {showRegister && <Register/> }
-      {!showLogin && !showRegister &&
+      {!showLogin && !showRegister && !showDentist && 
       <>
         <h3>Agregar Protecista</h3>
         <form onSubmit={handleSubmit}>

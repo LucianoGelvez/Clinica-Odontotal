@@ -7,6 +7,7 @@ import Register from '../../components/Register'
 
 
 const MyTurns = () => {
+  const usuarioEncontrado = localStorage.getItem('usuarioEncontrado')
   const pacienteId = JSON.parse(localStorage.getItem("patient")).idPaciente // traer Id del paciente desde el LocalStorage
   console.log(pacienteId);
   const { information, showLogin, showRegister, setShowLogin, setShowRegister } = useContext(ContextGlobal);
@@ -60,8 +61,8 @@ const MyTurns = () => {
 
   return (
     <div style={{display: "flex", flexDirection: "column"}}>
-      <NavbarPatient/> 
-      
+  
+      {usuarioEncontrado === 'true' && <NavbarPatient/>}
       {showLogin && <Login/> }
       {showRegister && <Register/> }
       {!showLogin && !showRegister &&

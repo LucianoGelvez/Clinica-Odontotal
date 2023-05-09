@@ -8,7 +8,7 @@ import Register from '../../../components/Register';
 
 const AddPatientAdmin = () => {
 
-  const { showLogin, showRegister, setShowLogin, setShowRegister } = useContext(ContextGlobal);
+  const { showLogin, showRegister, setShowLogin, setShowRegister, showDentist,setShowDentist } = useContext(ContextGlobal);
 
   const [domicilio, setDomicilio] = useState({
     calle: '',
@@ -108,7 +108,7 @@ const AddPatientAdmin = () => {
       
       {showLogin && <Login/> }
       {showRegister && <Register/> }
-      {!showLogin && !showRegister &&
+      {!showLogin && !showRegister && !showDentist &&
       <>
       <div className="row">
         <div

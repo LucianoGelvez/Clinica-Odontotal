@@ -6,7 +6,7 @@ import Login from '../../../components/Login';
 import Register from '../../../components/Register';
 
 const AddTurnAdmin = () => {
-  const { information, showLogin, showRegister, setShowLogin, setShowRegister } = useContext(ContextGlobal);
+  const { information, showLogin, showRegister, setShowLogin, setShowRegister, showDentist,setShowDentist } = useContext(ContextGlobal);
   // console.log(information)
 
   const [selectedSpecialty, setSelectedSpecialty] = useState(null)
@@ -124,7 +124,7 @@ const [dataResponse, setResponse] = useState({})
 
       {showLogin && <Login/> }
       {showRegister && <Register/> }
-      {!showLogin && !showRegister &&
+      {!showLogin && !showRegister && !showDentist &&
       <>
       <h3>Agregar Turno</h3>
         <form onSubmit={handleSubmit}>

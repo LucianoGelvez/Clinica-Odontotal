@@ -3,10 +3,11 @@ import '../styles/componentStyles/Login.css';
 import Logo from '../images/Logo.png'
 import { Link } from 'react-router-dom';
 import { ContextGlobal } from './utils/global.context';
+import NavbarPatient from './componentPatient/NavbarPatient';
 
 const Login = () => {
 
-  const { showLogin, showRegister, setShowLogin, setShowRegister } = useContext(ContextGlobal);
+  const { showLogin, showRegister, setShowLogin, setShowRegister, showDentist,setShowDentist} = useContext(ContextGlobal);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -16,6 +17,7 @@ const Login = () => {
   const [users, setUsers] = useState([])
   const [patients, setPatients] = useState([])
   const [showAlert, setShowAlert] = useState(false)
+  const [toRegister, setToRegister] = useState(true)
 
   const [form,setForm] = useState({
     email:'',
@@ -39,7 +41,9 @@ const Login = () => {
       .catch((error) => console.log(error));
 
     console.log(patients);
-  }, [ selectedRol]);
+  }, [ selectedRol, showDentist]);
+
+
 
 
   const handleEmailChange = (event) => {
@@ -48,9 +52,15 @@ const Login = () => {
   };
 
   const handleShowLogin = () => {
-    setShowLogin(false)
-    setShowRegister(true)
-  }
+    const path = window.location.pathname;
+    if (path === "/IniciarSesion") {
+      window.location.href = "http://localhost:5173/Registro";
+    } else {
+      setShowLogin(false);
+      setShowRegister(true);
+    }
+  };
+  
   
 
   const handlePasswordChange = (event) => {
@@ -114,13 +124,18 @@ const Login = () => {
       if(form.rol==='ROLE_ADMIN'){
         window.location.href="http://localhost:5173/ListaDeOdontologos"
       }else if(form.rol==='ROLE_USER'){
-        window.location.href="http://localhost:5173"
+        window.location.href="http://localhost:5173/ReservarTurno"
         const pacienteEncontrado = patients.find(paciente => (
           paciente.email === form.email
         ));
         console.log("filtrer");
         localStorage.setItem('patient', JSON.stringify(pacienteEncontrado))
         setShowAlert(false)
+      } else if(form.rol === "ROLE_ODONTOLOGY"){
+        setShowDentist(false)
+        console.log("showDentist")
+        console.log(showDentist)
+        window.location.href="http://localhost:5173/ListaDeOdontologos"
       }
     } else{
       setShowAlert(true)
@@ -140,43 +155,44 @@ const Login = () => {
   };
 
   return (
-    <div className="login">
-      <form onSubmit={handleSubmit}>
-        <img src={Logo} alt="" />
-        <h2>Iniciar sesión</h2>
-        <div className="form-group">
-          <label htmlFor="email">Email</label>
-          <input type="email" name="email" id="email" 
-            value={email} onChange={handleEmailChange} required />
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">Contraseña</label>
-          <div className="password-input-container">
-            <input type={showPassword ? 'text' : 'password'} name="password" 
-              id="password" value={password} onChange={handlePasswordChange} required />
-            <button type="button" className="show-password-button" 
-            onClick={handleShowPassword}>
-            </button>
+    <div> 
+      <NavbarPatient/>
+      <div className="login">
+        <form onSubmit={handleSubmit}>
+          <img src={Logo} alt="" />
+          <h2>Iniciar sesión</h2>
+          <div className="form-group">
+            <label htmlFor="email">Email</label>
+            <input type="email" name="email" id="email" 
+              value={email} onChange={handleEmailChange} required />
           </div>
           <div className="form-group">
-          <label htmlFor="password">Rol</label>
-            <select name="selectedSpecialty" id="selectedSpecialty" onChange={handleRolSelect} required>
-              <option>Selecciona un rol</option>
-              <option value="ROLE_ADMIN">Administrador</option>
-              <option value="ROLE_USER">Paciente</option>
-            </select>
+            <label htmlFor="password">Contraseña</label>
+            <div className="password-input-container">
+              <input type={showPassword ? 'text' : 'password'} name="password" 
+                id="password" value={password} onChange={handlePasswordChange} required />
+              <button type="button" className="show-password-button" 
+              onClick={handleShowPassword}>
+              </button>
+            </div>
+            <div className="form-group">
+            <label htmlFor="password">Rol</label>
+              <select name="selectedSpecialty" id="selectedSpecialty" onChange={handleRolSelect} required>
+                <option>Selecciona un rol</option>
+                <option value="ROLE_ADMIN">Administrador</option>
+                <option value="ROLE_USER">Paciente</option>
+                <option value="ROLE_ODONTOLOGY">Odontologo</option>
+              </select>
+            </div>
           </div>
-        </div>
-        <button type="submit">Iniciar sesión</button>
-        <br />
-        <Link onClick={handleShowLogin}>No tienes cuenta, ¡Registrate aquí!</Link>
-        {showAlert && <div style={{
-          color: "red"
-          }}>¡Credenciales inválidas!, verifique de nuevo</div>}
-      </form>
-
-      
-      
+          <button type="submit">Iniciar sesión</button>
+          <br />
+          <Link onClick={handleShowLogin}>No tienes cuenta, ¡Registrate aquí!</Link>
+          {showAlert && <div style={{
+            color: "red"
+            }}>¡Credenciales inválidas!, verifique de nuevo</div>}
+        </form>           
+      </div>
     </div>
   );
 }
