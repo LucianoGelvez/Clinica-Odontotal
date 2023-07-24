@@ -1,15 +1,12 @@
 package JuniorsDH.Odontotal.Domain;
 
-
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-
 @Entity
 @Table(name="turnos")
 public class Turno {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -28,7 +25,6 @@ public class Turno {
     @Column
     private LocalTime hora;
 
-
     public Turno(Long id, Paciente paciente, Odontologo odontologo, LocalDate fecha, LocalTime hora) {
         this.id = id;
         this.paciente = paciente;
@@ -36,8 +32,6 @@ public class Turno {
         this.fecha = fecha;
         this.hora = hora;
     }
-
-
     public Turno(Paciente paciente, Odontologo odontologo, LocalDate fecha, LocalTime hora) {
         this.paciente = paciente;
         this.odontologo = odontologo;
@@ -51,13 +45,9 @@ public class Turno {
     public Turno(Odontologo odontologo, Paciente paciente, LocalDate of) {
     }
 
-
     public LocalTime sumarHorarioMas30Minutos(){
         return hora.minusMinutes(30);
     }
-
-
-
 
     public Long getId() {
         return id;
@@ -98,9 +88,6 @@ public class Turno {
     public void setHora(LocalTime hora) {
         this.hora = hora;
     }
-
-
-
 
     @Override
     public String toString() {

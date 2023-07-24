@@ -8,7 +8,7 @@
 }
 .navbar .navbar_container .navbar_container_collapse .navbar_container_collapse_nav {
   display: flex;
-  width: 100vw;
+  width: 65vw;
   justify-content: flex-end;
 }
 .navbar .navbar_container .navbar_container_collapse .navbar_container_collapse_nav .navbar_container_collapse_nav-navDropdown {

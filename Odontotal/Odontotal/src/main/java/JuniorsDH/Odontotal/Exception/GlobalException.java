@@ -7,13 +7,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import static org.apache.logging.log4j.LogManager.getLogger;
 
-
-
-
 @ControllerAdvice
 public class GlobalException {
-
-
     Logger logger= getLogger(GlobalException.class);
     @ExceptionHandler (ResourceNotFoundException.class)
     public ResponseEntity<String> ProcesarRNFE(ResourceNotFoundException ex){
@@ -21,10 +16,14 @@ public class GlobalException {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
     }
 
-
-
     @ExceptionHandler(DataInvalidException.class)
     public ResponseEntity<String> procesaDIE(DataInvalidException ex){
+        logger.error(ex.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+    }
+
+    @ExceptionHandler(BadRequestException.class)
+    public ResponseEntity<String> procesaDIE(BadRequestException ex){
         logger.error(ex.getMessage());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
     }

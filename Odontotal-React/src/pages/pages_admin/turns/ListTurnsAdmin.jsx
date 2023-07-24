@@ -4,10 +4,11 @@ import { ContextGlobal } from '../../../components/utils/global.context'
 import List from './List'
 import Login from '../../../components/Login'
 import Register from '../../../components/Register'
+import baseUrl from '../../../components/utils/baseUrl.json'
 
 
 const ListTurnsAdmin = () => {
-  const { information, showLogin, showRegister, setShowLogin, setShowRegister } = useContext(ContextGlobal);
+  const { information, user} = useContext(ContextGlobal);
 
   const [data, serData] = useState(information);
   const [edition, setedition] = useState(null);
@@ -23,7 +24,7 @@ const ListTurnsAdmin = () => {
   const handleEliminar = (item) => {
     
     serData((prevState) => prevState.filter((x) => x.id !== item.id));
-    const url = "http://localhost:8080/turnos/" + item.id;
+    const url = baseUrl.url + "/turnos/" + item.id;
     console.log(url)
     const settings = {
       method: "DELETE",
@@ -56,9 +57,7 @@ const ListTurnsAdmin = () => {
   return (
     <div style={{display: "flex", flexDirection: "column"}}>
       <NavbarAdmin/> 
-      {showLogin && <Login/> }
-      {showRegister && <Register/> }
-      {!showLogin && !showRegister &&
+      { (user?.rol === "ADMIN" || user?.rol === "ODONTOLOGY")  &&
       <>
         <List data={data} onEditar={handleEditar} onEliminar={handleEliminar} />
       </>

@@ -17,23 +17,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-
 @Service
 public class TurnoService {
-
-
-
-
     private TurnoRepository turnoRepository;
-
-
-
     @Autowired
     public TurnoService(TurnoRepository turnoRepository) {
         this.turnoRepository = turnoRepository;
     }
-
-
     public TurnoDto agregarTurno (TurnoDto turnoDto)throws DataInvalidException {
 
         Turno turnoGuardado;
@@ -44,10 +34,6 @@ public class TurnoService {
         }
         return turnoATurnoDTO(turnoGuardado);
     }
-
-
-
-
 
     public Optional<TurnoDto> listarTurnoOptional(Long id) throws ResourceNotFoundException {
         Optional<Turno> turnoListado= turnoRepository.findById(id);
@@ -60,9 +46,6 @@ public class TurnoService {
 
     }
 
-
-
-
     public TurnoDto modificarTurno (TurnoDto turnoDto)throws ResourceNotFoundException{
         Turno turnoModificado;
        Optional<Turno> turnoAModificar=turnoRepository.findById(turnoDto.getId());
@@ -74,8 +57,6 @@ public class TurnoService {
 
         return turnoATurnoDTO(turnoModificado);
     }
-
-
 
     public void  eliminarTurno (Long id) throws ResourceNotFoundException {
 
@@ -146,11 +127,5 @@ public class TurnoService {
         respuesta.setPaciente(paciente);
         return respuesta;
     }
-
-
-
-
-
-
 
 }

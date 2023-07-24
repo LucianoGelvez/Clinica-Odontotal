@@ -1,74 +1,33 @@
 package JuniorsDH.Odontotal.Domain;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "protecistas")
-public class Protecista {
+public class Protecista extends Usuario{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @Column
-    private String nombre;
-    @Column
-    private String apellido;
+    @GeneratedValue(strategy = GenerationType.AUTO) // O GenerationType.SEQUENCE
+    private Long Id;
     @Column
     private String matricula;
     @Column
-    private String email;
-    @Column
-    private Integer telefono;
-    @Column
     private String especialidadProtecista;
 
-
-    public Protecista(Long id, String nombre, String apellido, String matricula, String email, Integer telefono, String especialidadProtecista) {
-        this.id = id;
-        this.nombre = nombre;
-        this.apellido = apellido;
+    public Protecista(Long id, String email, String password, String nombre, String apellido, String documento, LocalDate fechaNacimiento, Genero genero, int telefono, Domicilio domicilio, UsuarioRol rol, String matricula, String especialidadProtecista) {
+        super(id, email, password, nombre, apellido, documento, fechaNacimiento, genero, telefono, domicilio, rol);
         this.matricula = matricula;
-        this.email = email;
-        this.telefono = telefono;
         this.especialidadProtecista = especialidadProtecista;
     }
 
-
-    public Protecista(String nombre, String apellido, String matricula, String email, Integer telefono, String especialidadProtecista) {
-        this.nombre = nombre;
-        this.apellido = apellido;
+    public Protecista(String email, String password, String nombre, String apellido, String documento, LocalDate fechaNacimiento, Genero genero, int telefono, Domicilio domicilio, UsuarioRol rol, String matricula, String especialidadProtecista) {
+        super(email, password, nombre, apellido, documento, fechaNacimiento, genero, telefono, domicilio, rol);
         this.matricula = matricula;
-        this.email = email;
-        this.telefono = telefono;
         this.especialidadProtecista = especialidadProtecista;
     }
 
     public Protecista() {
-    }
-
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getApellido() {
-        return this.apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
     }
 
     public String getMatricula() {
@@ -79,21 +38,6 @@ public class Protecista {
         this.matricula = matricula;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public Integer getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(Integer telefono) {
-        this.telefono = telefono;
-    }
 
     public String getEspecialidadProtecista() {
         return especialidadProtecista;
@@ -106,12 +50,7 @@ public class Protecista {
     @Override
     public String toString() {
         return "Protecista{" +
-                "id=" + id +
-                ", nombre='" + nombre + '\'' +
-                ", apellido='" + apellido + '\'' +
                 ", matricula='" + matricula + '\'' +
-                ", email='" + email + '\'' +
-                ", telefono=" + telefono +
                 ", especialidadProtecista='" + especialidadProtecista + '\'' +
                 '}';
     }

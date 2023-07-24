@@ -4,9 +4,10 @@ import '../../../styles/pagesStyles/AddTurnAdminStyle.css'
 import { ContextGlobal } from '../../../components/utils/global.context';
 import Login from '../../../components/Login';
 import Register from '../../../components/Register';
+import baseUrl from '../../../components/utils/baseUrl.json'
 
 const AddTurnAdmin = () => {
-  const { information, showLogin, showRegister, setShowLogin, setShowRegister, showDentist,setShowDentist } = useContext(ContextGlobal);
+  const { information, user } = useContext(ContextGlobal);
   // console.log(information)
 
   const [selectedSpecialty, setSelectedSpecialty] = useState(null)
@@ -32,7 +33,7 @@ const AddTurnAdmin = () => {
     console.log(selectedDoctor)
   }
 
-  const url = "http://localhost:8080/odontologos"
+  const url = baseUrl.url + "/odontologos"
   useEffect(() => {
     fetch(url)
       .then((res) => res.json())
@@ -75,7 +76,7 @@ const [dataResponse, setResponse] = useState({})
     event.preventDefault();
     console.log("formulario")
     console.log(newFormData)
-    const url = 'http://localhost:8080/turnos';
+    const url = baseUrl.url + '/turnos';
     const settings = {
       method: 'POST',
       headers: {
@@ -122,9 +123,7 @@ const [dataResponse, setResponse] = useState({})
     <div>
       <NavbarAdmin/> 
 
-      {showLogin && <Login/> }
-      {showRegister && <Register/> }
-      {!showLogin && !showRegister && !showDentist &&
+      { user?.rol === "ADMIN" &&
       <>
       <h3>Agregar Turno</h3>
         <form onSubmit={handleSubmit}>

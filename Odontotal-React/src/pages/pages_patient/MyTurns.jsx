@@ -4,21 +4,17 @@ import { ContextGlobal } from '../../components/utils/global.context'
 import List from './List'
 import Login from '../../components/Login'
 import Register from '../../components/Register'
-
+import baseUrl from '../../components/utils/baseUrl.json'
 
 const MyTurns = () => {
   const usuarioEncontrado = localStorage.getItem('usuarioEncontrado')
-  const pacienteId = JSON.parse(localStorage.getItem("patient")).idPaciente // traer Id del paciente desde el LocalStorage
-  console.log(pacienteId);
+
   const { information, showLogin, showRegister, setShowLogin, setShowRegister } = useContext(ContextGlobal);
 
   const [data, serData] = useState(information);
   const [edition, setedition] = useState(null);
 
   useEffect(() => {
-    //console.log("Information");
-    //console.log(information.filter(item => pacienteId === item.pacienteId))
-    //console.log("-----------");
     serData(information.filter(item => pacienteId === item.pacienteId))
   }, [information]);
   
@@ -29,7 +25,7 @@ const MyTurns = () => {
   const handleEliminar = (item) => {
     
     serData((prevState) => prevState.filter((x) => x.id !== item.id));
-    const url = "http://localhost:8080/turnos/" + item.id;
+    const url = baseUrl.url + "/turnos/" + item.id;
     console.log(url)
     const settings = {
       method: "DELETE",
@@ -62,11 +58,9 @@ const MyTurns = () => {
   return (
     <div style={{display: "flex", flexDirection: "column"}}>
   
-      {usuarioEncontrado === 'true' && <NavbarPatient/>}
-      {showLogin && <Login/> }
-      {showRegister && <Register/> }
-      {!showLogin && !showRegister &&
-      
+    <NavbarPatient/>
+
+      {
         <List data={data} onEditar={handleEditar} onEliminar={handleEliminar} />
       }
      

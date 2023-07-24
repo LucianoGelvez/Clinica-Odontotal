@@ -21,7 +21,7 @@ const List = ({ data, onEditar, onEliminar }) => {
             <td>{item.nombre}</td>
             <td>{item.apellido}</td>
             <td>{item.documento}</td>
-            <td>{item.domicilio.provincia}</td>
+            <td>{item.provincia}</td>
            
             <td>
               <button onClick={() => onEditar(item)}>Editar</button>

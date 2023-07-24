@@ -14,8 +14,8 @@ const Detail = () => {
         image:<FontAwesomeIcon icon={faUsers}  /> ,
         title: "Profesionales" ,
         description:"Nuestra clínica cuenta con especialistas odontológicos altamente capacitados"+
-         "dedicados a brindar atención personalizada y de calidad. Confía en nosotros para el cuidado"+
-         "de tu sonrisa y la mejora de tu salud dental."
+        "dedicados a brindar atención personalizada y de calidad. Confía en nosotros para el cuidado"+
+        "de tu sonrisa y la mejora de tu salud dental."
     },
     {
         image:<FontAwesomeIcon icon={faCreditCard} /> ,

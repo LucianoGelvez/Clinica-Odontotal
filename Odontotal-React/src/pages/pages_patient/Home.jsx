@@ -4,7 +4,6 @@ import Slider from '../../components/componentPatient/Slider'
 import '../../styles/pagesStyles/Home.css'
 import Detail from '../../components/componentPatient/Detail'
 import SliderService from '../../components/componentPatient/SliderService'
-
 import Info from '../../components/componentPatient/Info'
 import image1 from '../../images/fondo.jpg'
 
