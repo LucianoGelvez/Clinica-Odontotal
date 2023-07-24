@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import baseUrl from '../../../components/utils/baseUrl.json'
 
 const FormToUpdateDentist =({ data, onGuardar, onCancelar, informacionCompleta  }) => {
   const [id, setId] = useState(data.id);
@@ -17,7 +18,7 @@ const FormToUpdateDentist =({ data, onGuardar, onCancelar, informacionCompleta  
       especialidad: especialidad,
     };
 
-    const url = `http://localhost:8080/odontologos`;
+    const url = baseUrl.url + `/odontologos`;
     const settings = {
       method: "PUT",
       headers: {

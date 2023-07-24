@@ -3,10 +3,11 @@ import NavbarAdmin from '../../../components/component_admin/NavbarAdmin';
 import Login from '../../../components/Login';
 import Register from '../../../components/Register';
 import { ContextGlobal } from '../../../components/utils/global.context';
+import baseUrl from '../../../components/utils/baseUrl.json'
 
 const AddDentistAdmin = () => {
 
-  const {showLogin, showRegister, setShowLogin, setShowRegister, showDentist,setShowDentist } = useContext(ContextGlobal);
+  const { user } = useContext(ContextGlobal);
 
   const [formData, setFormData] = useState({
     apellido: '',
@@ -25,7 +26,7 @@ const AddDentistAdmin = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const url = 'http://localhost:8080/odontologos';
+    const url = baseUrl.url + '/odontologos';
     const settings = {
       method: 'POST',
       headers: {
@@ -63,9 +64,7 @@ const AddDentistAdmin = () => {
     <div className="AddDentistAdmin">
       <NavbarAdmin />
 
-      {showLogin && <Login/> }
-      {showRegister && <Register/> }
-      {!showLogin && !showRegister && !showDentist &&
+      {user?.rol === "ADMIN" &&
      
       <div className="row">
         <div

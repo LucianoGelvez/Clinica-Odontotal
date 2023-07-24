@@ -6,9 +6,10 @@ import Form from './FormToUpdatePatient'
 import List from './List'
 import Login from '../../../components/Login'
 import Register from '../../../components/Register'
+import baseUrl from '../../../components/utils/baseUrl.json'
 
 const ListPatientAdmin = () => {
-  const { information, showLogin, showRegister, setShowLogin, setShowRegister } = useContext(ContextGlobal);
+  const { information, user } = useContext(ContextGlobal);
 
   const [data, serData] = useState(information);
   const [edition, setedition] = useState(null);
@@ -24,7 +25,7 @@ const ListPatientAdmin = () => {
   const handleEliminar = (item) => {
     
     serData((prevState) => prevState.filter((x) => x.idPaciente !== item.idPaciente));
-    const url = "http://localhost:8080/pacientes/" + item.idPaciente;
+    const url = baseUrl.url + "/pacientes/" + item.idPaciente;
     console.log(url)
     const settings = {
       method: "DELETE",
@@ -57,9 +58,7 @@ const ListPatientAdmin = () => {
   return (
     <div style={{display: "flex", flexDirection: "column"}}>
       <NavbarAdmin/> 
-      {showLogin && <Login/> }
-      {showRegister && <Register/> }
-      {!showLogin && !showRegister &&
+      {user?.rol === "ADMIN" &&
       <>
       {edition ? (
         <Form data={edition} onGuardar={handleGuardar} informacionCompleta={data}  onCancelar={handleCancelar} />

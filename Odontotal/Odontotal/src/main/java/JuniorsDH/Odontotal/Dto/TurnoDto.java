@@ -3,10 +3,7 @@ package JuniorsDH.Odontotal.Dto;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-
 public class TurnoDto {
-
-
     private Long id;
     private LocalDate fecha;
     private LocalTime hora;
@@ -15,7 +12,6 @@ public class TurnoDto {
     private String documentoPaciente;
     private Long odontologoId;
     private String nombreOdontologo;
-
 
     public TurnoDto(Long id, LocalDate fecha, LocalTime hora, Long pacienteId, String nombrePaciente, String documentoPaciente, Long odontologoId, String nombreOdontologo) {
         this.id = id;
@@ -28,7 +24,6 @@ public class TurnoDto {
         this.nombreOdontologo = nombreOdontologo;
     }
 
-
     public TurnoDto(LocalDate fecha, LocalTime hora, Long pacienteId, String nombrePaciente, String documentoPaciente, Long odontologoId, String nombreOdontologo) {
         this.fecha = fecha;
         this.hora = hora;
@@ -39,10 +34,8 @@ public class TurnoDto {
         this.nombreOdontologo = nombreOdontologo;
     }
 
-
     public TurnoDto() {
     }
-
 
     public Long getId() {
         return id;

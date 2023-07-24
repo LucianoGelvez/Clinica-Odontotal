@@ -3,10 +3,11 @@ import NavbarAdmin from '../../../components/component_admin/NavbarAdmin'
 import { ContextGlobal } from '../../../components/utils/global.context';
 import Login from '../../../components/Login';
 import Register from '../../../components/Register';
+import baseUrl from '../../../components/utils/baseUrl.json'
 
 const AddDentalProsthetist = () => {
 
-  const {showLogin, showRegister, setShowLogin, setShowRegister, showDentist,setShowDentist } = useContext(ContextGlobal);
+  const {user } = useContext(ContextGlobal);
 
   const [formData, setFormData] = useState({
     nombre: '',
@@ -25,7 +26,7 @@ const AddDentalProsthetist = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const url = 'http://localhost:8080/protecistas';
+    const url = baseUrl.url + '/protecistas';
     const settings = {
       method: 'POST',
       headers: {
@@ -62,9 +63,7 @@ const AddDentalProsthetist = () => {
   return (
     <div>AddAddDentalHygienists
       <NavbarAdmin/>
-      {showLogin && <Login/> }
-      {showRegister && <Register/> }
-      {!showLogin && !showRegister && !showDentist && 
+      {user?.rol === "ADMIN" &&
       <>
         <h3>Agregar Protecista</h3>
         <form onSubmit={handleSubmit}>

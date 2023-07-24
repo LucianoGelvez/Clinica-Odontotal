@@ -8,11 +8,10 @@ import { routes } from '../../routes';
 import Logo from '../../images/Logo.png'
 import '../../styles/componentStyles/NavbarAdmin.css'
 function NavbarAdmin() {
-  const usuarioEncontrado = localStorage.getItem('usuarioEncontrado')
+  const usuarioEncontrado = localStorage.getItem('user')
   const handleButton = () => {
-    localStorage.setItem("usuarioEncontrado", false)
-    localStorage.setItem("user", null)
-    localStorage.setItem("patient", JSON.stringify({documento: ''}))
+    localStorage.removeItem("jwt")
+    localStorage.removeItem("user")
     window.location.href="http://localhost:5173/"
   }
   return (
@@ -46,7 +45,7 @@ function NavbarAdmin() {
           </Nav>
         </Navbar.Collapse>
       </Container>
-      {usuarioEncontrado==='true' && <button onClick={handleButton}>Cerrar Sesión</button>}
+      {usuarioEncontrado && <button onClick={handleButton}>Cerrar Sesión</button>}
     </Navbar>
 
   );

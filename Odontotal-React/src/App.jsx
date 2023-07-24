@@ -1,4 +1,3 @@
-
 import { Route, Routes } from 'react-router-dom'
 import { routes } from './routes'
 import AddTurnAdmin from './pages/pages_admin/turns/AddTurnAdmin'
@@ -8,7 +7,7 @@ import ListPatientAdmin from './pages/pages_admin/patient/ListPatientAdmin'
 import NavbarAdmin from './components/component_admin/NavbarAdmin'
 import AddDentistAdmin from './pages/pages_admin/dentist/AddDentistAdmin'
 import ListDentistAdmin from './pages/pages_admin/dentist/ListDentistAdmin'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 // import NavbarPatient from './components/component-patient/NavbarPatient'
 import Home from './pages/pages_patient/Home'
 import NavbarPatient from './components/componentPatient/NavbarPatient'
@@ -22,11 +21,17 @@ import MyTurns from './pages/pages_patient/MyTurns'
 import ListDentalProsthetist from './pages/pages_admin/dentalProsthetist/ListDentalProsthetist'
 import Login from './components/Login'
 import Register from './components/Register'
+import { ContextGlobal } from './components/utils/global.context';
 
 
 function App() {
 
-  const [render, setRender] = useState(false)
+  const { user, showNavbarAdmin} = useContext(ContextGlobal);
+  //Cambiar el valor de useState(showNavbarAdmin) a useState(true) si es
+  //necesario mostrar navbar admin, con useState(false) muestra el navbar patient
+  //o iniciar sesión con admin u otro usuario servirá para evitar cambiar el useState manualmente
+  const [render, setRender] = useState(showNavbarAdmin)
+
   return (
     <div className="App" >
 

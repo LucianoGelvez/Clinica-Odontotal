@@ -1,163 +1,91 @@
 package JuniorsDH.Odontotal.Domain;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-
 @Entity
 @Table(name="pacientes")
-public class Paciente {
-
+public class Paciente extends Usuario {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @Column
-    private String apellido;
-    @Column
-    private String nombre;
-    @Column
-    private String documento;
-    @Column
-    private LocalDate fechaIngreso;
-    @Column
-    private LocalDate fechaNacimiento;
-    @Column
-    private int telefono;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "domicilio_id",referencedColumnName = "id")
-    private Domicilio domicilio;
-    @Column
-    private String email;
-
+    @GeneratedValue(strategy = GenerationType.AUTO) // O GenerationType.SEQUENCE
+    private Long Id;
 
     @OneToMany(mappedBy = "paciente",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<Turno> turnos= new HashSet<>();
 
+    @Column
+    private String historial;
 
-    public Paciente(Long id, String apellido, String nombre, String documento, LocalDate fechaIngreso, LocalDate fechaNacimiento, int telefono, Domicilio domicilio, String email) {
-        this.id = id;
-        this.apellido = apellido;
-        this.nombre = nombre;
-        this.documento = documento;
-        this.fechaIngreso = fechaIngreso;
-        this.fechaNacimiento = fechaNacimiento;
-        this.telefono = telefono;
-        this.domicilio = domicilio;
-        this.email = email;
+    @Column
+    private Boolean validado;
+
+    @Column
+    private LocalDate fechaCreacion;
+
+    public Paciente(Long id, String email, String password, String nombre, String apellido, String documento, LocalDate fechaNacimiento, Genero genero, int telefono, Domicilio domicilio, UsuarioRol rol, String historial, Boolean validado, LocalDate fechaCreacion) {
+        super(id, email, password, nombre, apellido, documento, fechaNacimiento, genero, telefono, domicilio, rol);
+        this.historial = historial;
+        this.validado = validado;
+        this.fechaCreacion = fechaCreacion;
     }
 
-    public Paciente(String apellido, String nombre, String documento, LocalDate fechaIngreso, LocalDate fechaNacimiento, int telefono, Domicilio domicilio, String email) {
-        this.apellido = apellido;
-        this.nombre = nombre;
-        this.documento = documento;
-        this.fechaIngreso = fechaIngreso;
-        this.fechaNacimiento = fechaNacimiento;
-        this.telefono = telefono;
-        this.domicilio = domicilio;
-        this.email = email;
+    public Paciente(String email, String password, String nombre, String apellido, String documento, LocalDate fechaNacimiento, Genero genero, int telefono, Domicilio domicilio, UsuarioRol rol, String historial, Boolean validado, LocalDate fechaCreacion) {
+        super(email, password, nombre, apellido, documento, fechaNacimiento, genero, telefono, domicilio, rol);
+        this.historial = historial;
+        this.validado = validado;
+        this.fechaCreacion = fechaCreacion;
     }
 
     public Paciente() {
     }
 
-
-
-
-
-    public Long getId() {
-        return id;
+    public Set<Turno> getTurnos() {
+        return turnos;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setTurnos(Set<Turno> turnos) {
+        this.turnos = turnos;
     }
 
-    public String getApellido() {
-        return apellido;
+    public String getHistorial() {
+        return historial;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    public void setHistorial(String historial) {
+        this.historial = historial;
     }
 
-    public String getNombre() {
-        return nombre;
+    public Boolean getValidado() {
+        return validado;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setValidado(Boolean validado) {
+        this.validado = validado;
     }
 
-    public String getDocumento() {
-        return documento;
+    public LocalDate getFechaCreacion() {
+        return fechaCreacion;
     }
 
-    public void setDocumento(String documento) {
-        this.documento = documento;
+    public void setFechaCreacion(LocalDate fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
     }
-
-    public LocalDate getFechaIngreso() {
-        return fechaIngreso;
-    }
-
-    public void setFechaIngreso(LocalDate fechaIngreso) {
-        this.fechaIngreso = fechaIngreso;
-    }
-
-    public LocalDate getFechaNacimiento() {
-        return fechaNacimiento;
-    }
-
-    public void setFechaNacimiento(LocalDate fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
-    }
-
-    public int getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(int telefono) {
-        this.telefono = telefono;
-    }
-
-    public Domicilio getDomicilio() {
-        return domicilio;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setDomicilio(Domicilio domicilio) {
-        this.domicilio = domicilio;
-    }
-
 
     @Override
     public String toString() {
         return "Paciente{" +
-                "id=" + id +
-                ", apellido='" + apellido + '\'' +
-                ", nombre='" + nombre + '\'' +
-                ", documento='" + documento + '\'' +
-                ", fechaIngreso=" + fechaIngreso +
-                ", fechaNacimiento=" + fechaNacimiento +
-                ", telefono=" + telefono +
-                ", domicilio=" + domicilio +
-                ", turnos=" + turnos +
-                ", email=" + email +
+                "turnos=" + turnos +
+                ", historial='" + historial + '\'' +
+                ", validado=" + validado +
+                ", fechaCreacion=" + fechaCreacion +
                 '}';
     }
 }

@@ -1,14 +1,15 @@
 import React, { useState } from 'react'
+import baseUrl from '../../../components/utils/baseUrl.json'
 
 const FormToUpdatePatient =({ data, onGuardar, onCancelar, informacionCompleta  }) => {
   const [idPaciente, setid] = useState(data.idPaciente);
   const [nombre, setNombre] = useState(data.nombre);
   const [apellido, setApellido] = useState(data.apellido);
   const [documento, setDocumento] = useState(data.documento);
-  const [calle, setCalle] = useState(data.domicilio.calle);
-  const [localidad, setLocalidad] = useState(data.domicilio.localidad);
-  const [numero, setNumero] = useState(data.domicilio.numero);
-  const [provincia, setProvincia] = useState(data.domicilio.provincia);
+  const [calle, setCalle] = useState(data.calle);
+  const [localidad, setLocalidad] = useState(data.localidad);
+  const [numero, setNumero] = useState(data.numero);
+  const [provincia, setProvincia] = useState(data.provincia);
   const [email, setEmail] = useState(data.email);
   const [fechaIngreso, setFechaIngreso] = useState(data.fechaNacimiento);
   const [fechaNacimiento, setFechaNacimiento] = useState(data.fechaNacimiento);
@@ -36,7 +37,7 @@ const FormToUpdatePatient =({ data, onGuardar, onCancelar, informacionCompleta  
     };
     console.log(formData)
 
-    const url = `http://localhost:8080/pacientes`;
+    const url = baseUrl.url + `/pacientes`;
     const settings = {
       method: "PUT",
       headers: {
@@ -141,7 +142,7 @@ const FormToUpdatePatient =({ data, onGuardar, onCancelar, informacionCompleta  
             <td>{item.nombre}</td>
             <td>{item.apellido}</td>
             <td>{item.documento}</td>
-            <td>{item.domicilio.provincia}</td>
+            <td>{item.provincia}</td>
             <td>
             </td>
           </tr>

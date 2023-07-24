@@ -12,16 +12,12 @@ import Plan from '../../images/Plan.png'
 import Presentation from '../../images/Presentation.png'
 import Login from '../../components/Login';
 import Register from '../../components/Register';
-
+import baseUrl from '../../components/utils/baseUrl.json'
 
 const Turns = () => {
   const { information, showLogin, showRegister, setShowLogin, setShowRegister } = useContext(ContextGlobal);
-  const usuarioEncontrado = localStorage.getItem('usuarioEncontrado')
+  const usuarioEncontrado = localStorage.getItem('user')
   // console.log(information)
-  if(showLogin || showRegister){
-    localStorage.setItem("patient",JSON.stringify({documento:''}))
-  }
-  const documentPatient = JSON.parse(localStorage.getItem("patient")).documento
 
   const [selectedSpecialty, setSelectedSpecialty] = useState(null)
   const [selectedDoctor, setSelectedDoctor] = useState("")
@@ -47,7 +43,7 @@ const Turns = () => {
     console.log(selectedDoctor)
   }
 
-  const url = "http://localhost:8080/odontologos"
+  const url = baseUrl.url + "/odontologos"
   useEffect(() => {
     fetch(url)
       .then((res) => res.json())
@@ -62,7 +58,6 @@ const [dataResponse, setResponse] = useState({})
 
   const [formData, setFormData] = useState({
     odontologoId: '',
-    documento: documentPatient, //Traer valor del LocalStorage
     fecha: '',
     
   });
@@ -87,7 +82,7 @@ const [dataResponse, setResponse] = useState({})
     event.preventDefault();
     console.log("formulario")
     console.log(newFormData)
-    const url = 'http://localhost:8080/turnos';
+    const url = baseUrl.url + '/turnos';
     const settings = {
       method: 'POST',
       headers: {
@@ -130,14 +125,10 @@ const [dataResponse, setResponse] = useState({})
     
   };
 
-
-
   return (
     <div>
-      {usuarioEncontrado === 'true' && <NavbarPatient/>}
-      {showLogin && <Login/> }
-      {showRegister && <Register/> }
-      {!showLogin && !showRegister &&
+      <NavbarPatient/>
+      {usuarioEncontrado &&
       <div className='turns'>
       <div className='turns_information'>
         <h3>Agenda hoy mismo tu cita de valoración</h3>

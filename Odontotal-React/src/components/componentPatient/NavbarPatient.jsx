@@ -11,11 +11,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLocationDot, faPhoneVolume, faEnvelope, faUser  } from '@fortawesome/free-solid-svg-icons'
 
 const NavbarPatient = () => {
-  const usuarioEncontrado = localStorage.getItem('usuarioEncontrado')
+  const usuarioEncontrado = localStorage.getItem('user')
   const handleButton = () => {
-    localStorage.setItem("usuarioEncontrado", false)
-    localStorage.setItem("user", null)
-    localStorage.setItem("patient", JSON.stringify({documento: ''}))
+    localStorage.removeItem("user")
+    localStorage.removeItem("jwt")
     window.location.href="http://localhost:5173/"
   }
   return (
@@ -27,9 +26,9 @@ const NavbarPatient = () => {
         <Navbar.Collapse id="basic-navbar-nav" className='navbar_container_collapse'>
           <Nav  className="me-auto navbar_container_collapse_nav">
           <Nav.Link className='navbar_container_collapse_nav-navDropdown' href={routes.Home}>Inicio</Nav.Link>
-          {usuarioEncontrado === 'false' &&
-          <Nav.Link className='navbar_container_collapse_nav-navDropdown' href={routes.ReserveTurn}>Turnos</Nav.Link>}
-          {usuarioEncontrado === 'true' &&
+          {!usuarioEncontrado &&
+          <Nav.Link className='navbar_container_collapse_nav-navDropdown' href={routes.Login}>Turnos</Nav.Link>}
+          {usuarioEncontrado &&
           <NavDropdown title="Turnos" id="basic-nav-dropdown" className='navbar_container_collapse_nav-navDropdown'>
           <NavDropdown.Item href={routes.ReserveTurn}> Añadir Turno</NavDropdown.Item>
             <NavDropdown.Divider />
@@ -38,7 +37,7 @@ const NavbarPatient = () => {
             <Nav.Link className='navbar_container_collapse_nav-navDropdown' href={routes.Service}>Servicios</Nav.Link>
               <Nav.Link className='navbar_container_collapse_nav-navDropdown' href={routes.OurTeam}>Nuestro equipo</Nav.Link>
               <Nav.Link className='navbar_container_collapse_nav-navDropdown' href={routes.AboutUs}>Conocenos</Nav.Link>
-          {usuarioEncontrado === "false" && 
+          {!usuarioEncontrado &&
           <div>
           <NavDropdown title={<FontAwesomeIcon icon={faUser} />} id="basic-nav-dropdown" className='navbar_container_collapse_nav-navDropdown'>
             <NavDropdown.Item href={routes.Login}>Iniciar Sesión</NavDropdown.Item>
@@ -49,7 +48,7 @@ const NavbarPatient = () => {
           </Nav>
         </Navbar.Collapse>
       </Container>
-      {usuarioEncontrado==='true' && <button onClick={handleButton}>Cerrar Sesión</button>}
+      {usuarioEncontrado && <button onClick={handleButton}>Cerrar Sesión</button>}
     </Navbar>
   )
 }

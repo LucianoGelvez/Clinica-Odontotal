@@ -1,35 +1,39 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import baseUrl from './baseUrl.json'
 
 export const ContextGlobal = createContext();
 export const ContextProvider = ({ children }) => {
 
-  const url_ListDentists = "http://localhost:8080/odontologos";
-  const url_ListPatients = "http://localhost:8080/pacientes";
-  const url_ListDentalHygienists = "http://localhost:8080/protecistas";
-  const url_ListTurn = "http://localhost:8080/turnos";
+  const url_ListDentists = baseUrl.url + "/odontologos";
+  const url_ListPatients = baseUrl.url + "/pacientes";
+  const url_ListDentalHygienists = baseUrl.url + "/protecistas";
+  const url_ListTurn = baseUrl.url + "/turnos";
 
+  const [jwt, setJwt] = useState(localStorage.getItem('jwt'));
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
 
-  const usuarioEncontrado = localStorage.getItem('usuarioEncontrado')
-  console.log(usuarioEncontrado);
+  const [showNavbarAdmin, setShowNavbarAdmin] = useState((user?.rol === "ADMIN" ? true : false))
+  useEffect(() => {
+    if (user?.rol === "ADMIN") {
+      setShowNavbarAdmin(true);
+    }
+  }, [user]);
 
   const [information, setInformation] = useState([]);
-  const [showLogin,setShowLogin] = useState(!(usuarioEncontrado === 'true'))
+  const [showLogin,setShowLogin] = useState(true)
   const [showRegister,setShowRegister] = useState(false)
   const [showDentist,setShowDentist] = useState(true)
 
-  if(usuarioEncontrado === 'true'){
-    console.log("usuarioEncontrado"); // true o false como booleano
-    //setShowLogin(false)
-  }
-  
-
     const fetchData = (url) => {
-      fetch(url)
+      fetch(url, {
+        headers: {
+          'Authorization': `Bearer ${jwt}`,
+        },
+      })
         .then((response) => response.json())
         .then((data) => setInformation(data))
         .catch((error) => console.log(error));
     };
-
 
   useEffect(() => {
     const path = window.location.pathname;
@@ -52,7 +56,7 @@ export const ContextProvider = ({ children }) => {
   
 
   return (
-    <ContextGlobal.Provider value={{information,showLogin, showRegister, setShowLogin, setShowRegister, showDentist,setShowDentist}}>
+    <ContextGlobal.Provider value={{information,showLogin, showRegister, setShowLogin, setShowRegister, showDentist,setShowDentist, user, setUser, jwt, setJwt,showNavbarAdmin, setShowNavbarAdmin}}>
       {children}
     </ContextGlobal.Provider>
   );

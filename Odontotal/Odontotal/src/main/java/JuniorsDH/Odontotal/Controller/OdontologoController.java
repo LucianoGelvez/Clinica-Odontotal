@@ -1,8 +1,7 @@
 package JuniorsDH.Odontotal.Controller;
 
-
-
 import JuniorsDH.Odontotal.Dto.OdontologoDto;
+import JuniorsDH.Odontotal.Exception.BadRequestException;
 import JuniorsDH.Odontotal.Exception.DataInvalidException;
 import JuniorsDH.Odontotal.Exception.ResourceNotFoundException;
 import JuniorsDH.Odontotal.Service.OdontologoService;
@@ -14,43 +13,27 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/odontologos")
 public class OdontologoController {
-
-
     private OdontologoService odontologoService;
-
-
-
     @Autowired
     public OdontologoController(OdontologoService odontologoService) {
         this.odontologoService = odontologoService;
     }
 
-
-
     @GetMapping("/{id}")
     public ResponseEntity<OdontologoDto> buscarOdontologo(@PathVariable Long id) throws ResourceNotFoundException {
         Optional<OdontologoDto> listaOdontologo= odontologoService.listarOdontologo(id);
             return ResponseEntity.ok(listaOdontologo.get());
-
     }
-
-
-
-
-
 
       @PutMapping
     public ResponseEntity<OdontologoDto> actualizarOdontologo(@RequestBody OdontologoDto odontologoDto)throws ResourceNotFoundException{
         OdontologoDto odontologoActualizado = odontologoService.modificarOdontologo(odontologoDto);
-            return ResponseEntity.ok(odontologoActualizado);
-
+        return ResponseEntity.ok(odontologoActualizado);
     }
-
 
     @GetMapping
     public ResponseEntity<List<OdontologoDto>> buscarTodosOdontologos() throws ResourceNotFoundException {
@@ -58,19 +41,14 @@ public class OdontologoController {
         return ResponseEntity.ok(listaOdontologos);
     }
 
-
-
     @DeleteMapping("/{id}")
     public ResponseEntity<String> eliminarOdontologo(@PathVariable Long id) throws ResourceNotFoundException {
         odontologoService.eliminarOdontologo(id);
-        return ResponseEntity.ok("se elimino el odontologo con id : "+ id );
+        return ResponseEntity.ok("se eliminó el odontologo con id : "+ id );
     }
 
-
-
-
     @PostMapping
-    public ResponseEntity<OdontologoDto> agregarOdontologo(@RequestBody OdontologoDto dontologo) throws DataInvalidException {
+    public ResponseEntity<OdontologoDto> agregarOdontologo(@RequestBody OdontologoDto dontologo) throws BadRequestException {
         OdontologoDto odontologoAgregado = odontologoService.agregarOdontologo(dontologo);
         return ResponseEntity.status(HttpStatus.CREATED).body(odontologoAgregado);
     }

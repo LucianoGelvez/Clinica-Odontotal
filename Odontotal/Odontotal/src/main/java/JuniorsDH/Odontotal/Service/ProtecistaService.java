@@ -15,16 +15,11 @@ import java.util.Optional;
 
 @Service
 public class ProtecistaService {
-
-
     private ProtecistaRepository protecistaRepository;
-
-
     @Autowired
     public ProtecistaService(ProtecistaRepository protecistaRepository) {
         this.protecistaRepository = protecistaRepository;
     }
-
 
     public ProtecistaDto agregarProtecista(ProtecistaDto protecistaDto)throws DataInvalidException {
         Protecista protecistaAGuardar;
@@ -36,8 +31,6 @@ public class ProtecistaService {
        }
        return protecistaAProtecistaDto(protecistaAGuardar);
     }
-
-
 
     public Optional<ProtecistaDto> listarProtecista(Long id)throws ResourceNotFoundException {
 
