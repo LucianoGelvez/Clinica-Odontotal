@@ -11,6 +11,7 @@ export const ContextProvider = ({ children }) => {
 
   const [jwt, setJwt] = useState(localStorage.getItem('jwt'));
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
+  const [formData, setFormData] = useState({})
 
   const [showNavbarAdmin, setShowNavbarAdmin] = useState((user?.rol === "ADMIN" ? true : false))
   useEffect(() => {
@@ -56,7 +57,7 @@ export const ContextProvider = ({ children }) => {
   
 
   return (
-    <ContextGlobal.Provider value={{information,showLogin, showRegister, setShowLogin, setShowRegister, showDentist,setShowDentist, user, setUser, jwt, setJwt,showNavbarAdmin, setShowNavbarAdmin}}>
+    <ContextGlobal.Provider value={{formData, setFormData ,information,showLogin, showRegister, setShowLogin, setShowRegister, showDentist,setShowDentist, user, setUser, jwt, setJwt,showNavbarAdmin, setShowNavbarAdmin}}>
       {children}
     </ContextGlobal.Provider>
   );

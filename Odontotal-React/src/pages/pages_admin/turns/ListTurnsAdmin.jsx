@@ -5,6 +5,7 @@ import List from './List'
 import Login from '../../../components/Login'
 import Register from '../../../components/Register'
 import baseUrl from '../../../components/utils/baseUrl.json'
+import NavbarDentist from '../../../components/componentDentist/NavbarDentist'
 
 
 const ListTurnsAdmin = () => {
@@ -56,7 +57,7 @@ const ListTurnsAdmin = () => {
 
   return (
     <div style={{display: "flex", flexDirection: "column"}}>
-      <NavbarAdmin/> 
+      {user?.rol === "ADMIN" ? <NavbarAdmin/> : <NavbarDentist/>} 
       { (user?.rol === "ADMIN" || user?.rol === "ODONTOLOGY")  &&
       <>
         <List data={data} onEditar={handleEditar} onEliminar={handleEliminar} />

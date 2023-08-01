@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Optional;
@@ -51,6 +52,20 @@ public class UsuarioController {
     @GetMapping
     public ResponseEntity<List<UsuarioDto>> buscarTodos() throws ResourceNotFoundException {
         return ResponseEntity.ok(usuarioService.buscarTodos());
+    }
+
+
+    @PutMapping("/uploadImage")
+    public ResponseEntity<String> uploadImage(@ModelAttribute("file") MultipartFile file, @RequestParam("id") Long id)
+    {
+        usuarioService.uploadImageProfile(file, id);
+        return ResponseEntity.ok("Image uploaded");
+    }
+
+    @DeleteMapping("/deleteImage/{id}")
+    public ResponseEntity<UsuarioDto> deleteImage(@PathVariable Long id)
+    {
+        return ResponseEntity.ok(usuarioService.deleteImage(id));
     }
 
 }

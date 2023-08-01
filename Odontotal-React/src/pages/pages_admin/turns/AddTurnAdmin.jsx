@@ -5,6 +5,9 @@ import { ContextGlobal } from '../../../components/utils/global.context';
 import Login from '../../../components/Login';
 import Register from '../../../components/Register';
 import baseUrl from '../../../components/utils/baseUrl.json'
+import NavbarDentist from '../../../components/componentDentist/NavbarDentist';
+import Footer from '../../../components/component_admin/Footer';
+import NavbarPatient from '../../../components/componentPatient/NavbarPatient';
 
 const AddTurnAdmin = () => {
   const { information, user } = useContext(ContextGlobal);
@@ -121,9 +124,10 @@ const [dataResponse, setResponse] = useState({})
   return (
     
     <div>
-      <NavbarAdmin/> 
+      <NavbarPatient></NavbarPatient>
+      {/* {user.rol === "Patient" ? <NavbarAdmin/> : <Footer/>}  */}
 
-      { user?.rol === "ADMIN" &&
+      { user?.rol === "ADMIN" || user?.rol === "ODONTOLOGY" ? (
       <>
       <h3>Agregar Turno</h3>
         <form onSubmit={handleSubmit}>
@@ -202,7 +206,7 @@ const [dataResponse, setResponse] = useState({})
           <button>Cargar</button>
         </form>
       </>
-      }
+      ) : null} 
       </div>
   )
 }

@@ -62,7 +62,7 @@ const Login = () => {
         }
       ).then(() => {
         if(userData?.rol === "ADMIN" || userData.rol === "ODONTOLOGY"){
-          navigate("/ListaDeTurnos")
+            navigate("/ListaDeTurnos")
         }else{
           navigate("/")
         }

@@ -16,18 +16,11 @@ a:hover {
 
 body {
   margin: 0;
-<<<<<<< HEAD
   display: flex;
   width: 100%;
   font-family: 'Montserrat', sans-serif;
  
   
-=======
-  /* display: flex; */
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
->>>>>>> 5ed7f95649244b326c6df093476c6681a59b1d14
 }
 
 h1 {

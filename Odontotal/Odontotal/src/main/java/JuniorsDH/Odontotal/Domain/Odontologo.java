@@ -20,28 +20,35 @@ public class Odontologo extends Usuario{
     @Enumerated(EnumType.STRING)
     private Especialidad especialidad;
 
-    @Column
-    private String urlImagen;
 
-    @OneToMany(mappedBy = "odontologo",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+
+    @OneToMany(mappedBy = "odontologo",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<Turno> turnos= new HashSet<>();
 
     public Odontologo(Long id, String email, String password, String nombre, String apellido, String documento, LocalDate fechaNacimiento, Genero genero, int telefono, Domicilio domicilio, UsuarioRol rol, String matricula, Especialidad especialidad, String urlImagen) {
-        super(id, email, password, nombre, apellido, documento, fechaNacimiento, genero, telefono, domicilio, rol);
+        super(id, email, password, nombre, apellido, documento, fechaNacimiento, genero, telefono, urlImagen, domicilio, rol);
         this.matricula = matricula;
         this.especialidad = especialidad;
-        this.urlImagen = urlImagen;
     }
 
     public Odontologo(String email, String password, String nombre, String apellido, String documento, LocalDate fechaNacimiento, Genero genero, int telefono, Domicilio domicilio, UsuarioRol rol, String matricula, Especialidad especialidad, String urlImagen) {
-        super(email, password, nombre, apellido, documento, fechaNacimiento, genero, telefono, domicilio, rol);
+        super(email, password, nombre, apellido, documento, fechaNacimiento, genero, telefono, urlImagen,domicilio, rol);
         this.matricula = matricula;
         this.especialidad = especialidad;
-        this.urlImagen = urlImagen;
     }
 
     public Odontologo() {
+    }
+
+    @Override
+    public Long getId() {
+        return Id;
+    }
+
+    @Override
+    public void setId(Long id) {
+        Id = id;
     }
 
     public String getMatricula() {
@@ -60,13 +67,6 @@ public class Odontologo extends Usuario{
         this.especialidad = especialidad;
     }
 
-    public String getUrlImagen() {
-        return urlImagen;
-    }
-
-    public void setUrlImagen(String urlImagen) {
-        this.urlImagen = urlImagen;
-    }
 
     public Set<Turno> getTurnos() {
         return turnos;
@@ -81,7 +81,6 @@ public class Odontologo extends Usuario{
         return "Odontologo{" +
                 "matricula='" + matricula + '\'' +
                 ", especialidad=" + especialidad +
-                ", urlImagen='" + urlImagen + '\'' +
                 ", turnos=" + turnos +
                 '}';
     }

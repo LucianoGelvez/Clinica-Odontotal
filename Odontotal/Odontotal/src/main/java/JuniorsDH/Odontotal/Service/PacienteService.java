@@ -2,11 +2,15 @@ package JuniorsDH.Odontotal.Service;
 
 import JuniorsDH.Odontotal.Domain.*;
 import JuniorsDH.Odontotal.Dto.PacienteDto;
+import JuniorsDH.Odontotal.Dto.UsuarioDto;
 import JuniorsDH.Odontotal.Exception.BadRequestException;
 import JuniorsDH.Odontotal.Exception.DataInvalidException;
 import JuniorsDH.Odontotal.Exception.ResourceNotFoundException;
 import JuniorsDH.Odontotal.Repository.PacienteRepository;
 import JuniorsDH.Odontotal.Repository.UsuarioRolRepository;
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.model.ObjectMetadata;
+import com.amazonaws.services.s3.model.PutObjectRequest;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -15,7 +19,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -25,6 +32,9 @@ import java.util.Optional;
 public class PacienteService {
     private PacienteRepository pacienteRepository;
     private UsuarioRolRepository usuarioRolRepository;
+
+    @Autowired
+    private AmazonS3 s3Client;
     @Autowired
     public PacienteService(PacienteRepository pacienteRepository, UsuarioRolRepository usuarioRolRepository) {
         this.pacienteRepository = pacienteRepository;
@@ -128,6 +138,7 @@ public class PacienteService {
         pacienteDto.setHistorial(paciente.getHistorial());
         pacienteDto.setValidado(paciente.getValidado());
         pacienteDto.setGenero(paciente.getGenero().name());
+        pacienteDto.setUrlImagen(paciente.getUrlImagen());
 
         return pacienteDto;
     }
@@ -149,8 +160,40 @@ public class PacienteService {
         UsuarioRol rol = usuarioRolRepository.findByRol(pacienteDto.getRol()).get();
         paciente.setRol(rol);
         paciente.setGenero(Genero.valueOf(pacienteDto.getGenero()));
+        paciente.setUrlImagen(pacienteDto.getUrlImagen());
 
         return paciente;
+    }
+
+    public void uploadImageProfile(MultipartFile file, Long id) {
+        Paciente paciente = pacienteRepository.findById(id).get();
+        String bucketName = "odontotal-images";
+        String uniqueFilename = "profile/" + id + ".png";
+        String s3Url = "https://" + bucketName + ".s3" + ".amazonaws.com/" + uniqueFilename;
+
+        try {
+            byte[] bytes = file.getBytes();
+            ByteArrayInputStream inputStream = new ByteArrayInputStream(bytes);
+            ObjectMetadata metadata = new ObjectMetadata();
+            metadata.setContentLength(bytes.length);
+            metadata.setContentType("profile/png");
+
+            PutObjectRequest putObjectRequest = new PutObjectRequest(bucketName, uniqueFilename, inputStream, metadata);
+            s3Client.putObject(putObjectRequest);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        paciente.setUrlImagen(s3Url);
+        pacienteRepository.save(paciente);
+    }
+
+
+    public UsuarioDto deleteImage(Long id)
+    {
+        Paciente paciente = pacienteRepository.findById(id).get();
+        paciente.setUrlImagen(null);
+        return pacienteApacienteDTO(pacienteRepository.save(paciente));
     }
 
 }

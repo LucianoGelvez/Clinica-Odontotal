@@ -8,16 +8,28 @@ import profilePic from '../../images/profilePic.svg'
 import { routes } from '../../routes';
 import Logo from '../../images/Logo.png'
 import '../../styles/componentStyles/NavbarAdmin.css'
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { ContextGlobal } from '../utils/global.context';
-function NavbarAdmin() {
+import Profile from '../../pages/Profile';
+function NavbarDentist() {
   const { user, jwt } = useContext(ContextGlobal);
-  const usuarioEncontrado = localStorage.getItem('user')
+  const [dataPesonal, setData] = useState({})
+
+
+  // const usuarioEncontrado = localStorage.getItem('user')
+
+
   const handleButton = () => {
     localStorage.removeItem("jwt")
     localStorage.removeItem("user")
     window.location.href="http://localhost:5173/"
   }
+
+  useEffect(() => {
+    setData(JSON.parse(localStorage.getItem('user')))
+  },[])
+ 
+
   return (
     <Navbar expand="lg" className='navbar large'>
     <img className='navbar_logo' src={Logo} alt=""/>
@@ -26,9 +38,8 @@ function NavbarAdmin() {
         <Navbar.Toggle aria-controls="basic-navbar-nav"  />
         <Navbar.Collapse id="basic-navbar-nav" className='navbar_container_collapse'>
           <Nav  className="me-auto navbar_container_collapse_nav">
+          <Nav.Link className='navbar_container_collapse_nav-navDropdown' href={routes.profile}>Perfil</Nav.Link>
             <NavDropdown title="Turnos" id="basic-nav-dropdown" className='navbar_container_collapse_nav-navDropdown'>
-              <NavDropdown.Item href={routes.AddTurnAdmin}> Añadir Turno</NavDropdown.Item>
-              <NavDropdown.Divider />
               <NavDropdown.Item href={routes.ListTurnsAdmin}> Listar Turnos</NavDropdown.Item>
             </NavDropdown>
             <NavDropdown title="Odontologo" id="basic-nav-dropdown" className='navbar_container_collapse_nav-navDropdown'>
@@ -49,10 +60,36 @@ function NavbarAdmin() {
           </Nav>
         </Navbar.Collapse>
       </Container>
-     
-      {usuarioEncontrado && <button onClick={handleButton}>Cerrar Sesión</button>}
+      {dataPesonal?.urlImagen ?
+          <div className='profile_image'> <Link to={routes.profile}>
+            <img src={dataPesonal.urlImagen} style={{
+                 width: "3vw",
+                borderRadius: "200px",
+                height: "3vw",
+                // boxShadow: "1px 6px 6px rgba(149, 56, 13, 0.5)"             
+            }} /> </Link>
+          </div> :
+          <div style={{display: "flex",
+          flexDirection: "column",
+          width: "3vw",
+          borderRadius: "200px",
+          height: "3vh",
+          backgroundColor: "#76767b",
+          padding: "0",
+          margin: "0"
+          }}>
+            <img src={profilePic} style={{
+                width: "100%",
+                borderRadius: "200px",
+                height: "100%",
+                boxShadow: "1px 6px 6px rgba(149, 56, 13, 0.5)"
+            }} /> 
+          </div>
+        }
+      {dataPesonal && <button onClick={handleButton}>Cerrar Sesión</button>}
+      {/* <Profile dataPesonal={dataPesonal}></Profile> */}
     </Navbar>
 
   );
 }
-export default NavbarAdmin;
+export default NavbarDentist;

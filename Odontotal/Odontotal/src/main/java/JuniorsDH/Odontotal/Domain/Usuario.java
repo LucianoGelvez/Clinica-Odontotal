@@ -41,6 +41,9 @@ public class Usuario implements UserDetails {
     @Column
     private int telefono;
 
+    @Column
+    private String urlImagen;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "domicilio_id",referencedColumnName = "id")
     private Domicilio domicilio;
@@ -49,7 +52,7 @@ public class Usuario implements UserDetails {
     @JoinColumn(name = "rol_id" ,referencedColumnName = "id")
     private UsuarioRol rol;
 
-    public Usuario(Long id, String email, String password, String nombre, String apellido, String documento, LocalDate fechaNacimiento, Genero genero, int telefono, Domicilio domicilio, UsuarioRol rol) {
+    public Usuario(Long id, String email, String password, String nombre, String apellido, String documento, LocalDate fechaNacimiento, Genero genero, int telefono, String urlImagen, Domicilio domicilio, UsuarioRol rol) {
         Id = id;
         this.email = email;
         this.password = password;
@@ -59,11 +62,12 @@ public class Usuario implements UserDetails {
         this.fechaNacimiento = fechaNacimiento;
         this.genero = genero;
         this.telefono = telefono;
+        this.urlImagen = urlImagen;
         this.domicilio = domicilio;
         this.rol = rol;
     }
 
-    public Usuario(String email, String password, String nombre, String apellido, String documento, LocalDate fechaNacimiento, Genero genero, int telefono, Domicilio domicilio, UsuarioRol rol) {
+    public Usuario(String email, String password, String nombre, String apellido, String documento, LocalDate fechaNacimiento, Genero genero, int telefono, String urlImagen, Domicilio domicilio, UsuarioRol rol) {
         this.email = email;
         this.password = password;
         this.nombre = nombre;
@@ -72,8 +76,17 @@ public class Usuario implements UserDetails {
         this.fechaNacimiento = fechaNacimiento;
         this.genero = genero;
         this.telefono = telefono;
+        this.urlImagen = urlImagen;
         this.domicilio = domicilio;
         this.rol = rol;
+    }
+
+    public String getUrlImagen() {
+        return urlImagen;
+    }
+
+    public void setUrlImagen(String urlImgen) {
+        this.urlImagen = urlImgen;
     }
 
     public Usuario() {

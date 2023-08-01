@@ -99,6 +99,7 @@ public class ProtecistaService {
         protecistaDto.setNombre(protecista.getNombre());
         protecistaDto.setApellido(protecista.getApellido());
         protecistaDto.setEspecialidadProtecista(protecista.getEspecialidadProtecista());
+        protecistaDto.setUrlImagen(protecista.getUrlImagen());
 
         return protecistaDto;
 
@@ -112,6 +113,7 @@ public class ProtecistaService {
         protecista.setNombre(protecistaDto.getNombre());
         protecista.setApellido(protecistaDto.getApellido());
         protecista.setEspecialidadProtecista(protecistaDto.getEspecialidadProtecista());
+        protecista.setUrlImagen(protecistaDto.getUrlImagen());
 
         return protecista;
     }

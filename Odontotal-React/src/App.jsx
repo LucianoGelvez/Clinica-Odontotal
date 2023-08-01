@@ -22,6 +22,7 @@ import ListDentalProsthetist from './pages/pages_admin/dentalProsthetist/ListDen
 import Login from './components/Login'
 import Register from './components/Register'
 import { ContextGlobal } from './components/utils/global.context';
+import Profile from './pages/Profile'
 
 
 function App() {
@@ -52,6 +53,7 @@ function App() {
     <Route path={routes.ListDentalProsthetist} element={<ListDentalProsthetist/>}/>
     <Route path={routes.Login} element={<Login/>}/>
     <Route path={routes.Register} element={<Register/>}/>
+    <Route path={routes.profile} element={<Profile></Profile>}/>
     </Routes>
 
     <Footer/>

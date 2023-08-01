@@ -7,14 +7,13 @@ import List from './List'
 import Login from '../../../components/Login'
 import Register from '../../../components/Register'
 import baseUrl from '../../../components/utils/baseUrl.json'
+import NavbarDentist from '../../../components/componentDentist/NavbarDentist'
 
 const ListDentalProsthetist = () => {
   const { information, user, jwt} = useContext(ContextGlobal);
 
   const [data, serData] = useState(information);
   const [edition, setedition] = useState(null);
-
-  const token = jwt
 
   useEffect(() => {
     // Actualiza el estado de `data` cuando `information` cambia en el contexto global
@@ -32,7 +31,7 @@ const ListDentalProsthetist = () => {
     const settings = {
       method: "DELETE",
       headers: {
-        'Authorization': `Bearer ${token}`
+        'Authorization': 'Bearer ' + jwt
       },
     };
     fetch(url, settings)
@@ -57,11 +56,11 @@ const ListDentalProsthetist = () => {
 
   return (
     <div style={{display: "flex", flexDirection: "column"}}>
-      <NavbarAdmin/>  
+      {user.rol === "ADMIN" ? <NavbarAdmin/> : <NavbarDentist></NavbarDentist> }
       {user?.rol === "ADMIN" &&
       <>
       {edition ? (
-        <Form data={edition} onGuardar={handleGuardar} informacionCompleta={data}  onCancelar={handleCancelar} />
+        <Form data={edition} onGuardar={handleGuardar} informacionCompleta={data}  onCancelar={handleCancelar} jwt = {jwt} />
       ) : (
         <List data={data} onEditar={handleEditar} onEliminar={handleEliminar} />
       )}

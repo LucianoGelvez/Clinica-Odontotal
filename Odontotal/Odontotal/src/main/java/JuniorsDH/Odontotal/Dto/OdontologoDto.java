@@ -13,17 +13,15 @@ public class OdontologoDto extends UsuarioDto {
     private String urlImagen;
 
     public OdontologoDto(Long id, String nombre, String apellido, String email, String password, String documento, LocalDate fechaNacimiento, String genero, int telefono, String calle, String numero, String localidad, String provincia, String rol, String matricula, String especialidad, String urlImagen) {
-        super(id, nombre, apellido, email, password, documento, fechaNacimiento, genero, telefono, calle, numero, localidad, provincia, rol);
+        super(id, nombre, apellido, email, password, documento, fechaNacimiento, genero, telefono, calle, numero, localidad, provincia, rol, urlImagen);
         this.matricula = matricula;
         this.especialidad = especialidad;
-        this.urlImagen = urlImagen;
     }
 
     public OdontologoDto(String nombre, String apellido, String email, String password, String documento, LocalDate fechaNacimiento, String genero, int telefono, String calle, String numero, String localidad, String provincia, String rol, String matricula, String especialidad, String urlImagen) {
-        super(nombre, apellido, email, password, documento, fechaNacimiento, genero, telefono, calle, numero, localidad, provincia, rol);
+        super(nombre, apellido, email, password, documento, fechaNacimiento, genero, telefono, calle, numero, localidad, provincia, rol, urlImagen);
         this.matricula = matricula;
         this.especialidad = especialidad;
-        this.urlImagen = urlImagen;
     }
 
     public OdontologoDto() {
@@ -45,20 +43,12 @@ public class OdontologoDto extends UsuarioDto {
         this.especialidad = especialidad;
     }
 
-    public String getUrlImagen() {
-        return urlImagen;
-    }
-
-    public void setUrlImagen(String urlImagen) {
-        this.urlImagen = urlImagen;
-    }
 
     @Override
     public String toString() {
         return "OdontologoDto{" +
                 "matricula='" + matricula + '\'' +
                 ", especialidad='" + especialidad + '\'' +
-                ", urlImagen='" + urlImagen + '\'' +
                 '}';
     }
 }
