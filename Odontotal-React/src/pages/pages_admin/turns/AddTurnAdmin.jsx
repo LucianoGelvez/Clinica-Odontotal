@@ -5,9 +5,6 @@ import { ContextGlobal } from '../../../components/utils/global.context';
 import Login from '../../../components/Login';
 import Register from '../../../components/Register';
 import baseUrl from '../../../components/utils/baseUrl.json'
-import NavbarDentist from '../../../components/componentDentist/NavbarDentist';
-import Footer from '../../../components/component_admin/Footer';
-import NavbarPatient from '../../../components/componentPatient/NavbarPatient';
 
 const AddTurnAdmin = () => {
   const { information, user } = useContext(ContextGlobal);

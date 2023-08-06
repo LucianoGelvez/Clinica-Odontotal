@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import { ContextGlobal } from '../components/utils/global.context'
-import NavbarDentist from '../components/componentDentist/NavbarDentist';
 import baseUrl from '../components/utils/baseUrl.json'
 import Swal from 'sweetalert2';
 import profilePic from '../images/profilePic.svg'

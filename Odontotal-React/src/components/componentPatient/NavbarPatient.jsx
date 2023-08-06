@@ -34,7 +34,7 @@ const NavbarPatient = () => {
             <NavDropdown.Divider />
             <NavDropdown.Item href={routes.MyTurn}> Listar Turnos</NavDropdown.Item>
           </NavDropdown>}
-            <Nav.Link className='navbar_container_collapse_nav-navDropdown' href={routes.Service}>Servicios</Nav.Link>
+              <Nav.Link className='navbar_container_collapse_nav-navDropdown' href={routes.Service}>Servicios</Nav.Link>
               <Nav.Link className='navbar_container_collapse_nav-navDropdown' href={routes.OurTeam}>Nuestro equipo</Nav.Link>
               <Nav.Link className='navbar_container_collapse_nav-navDropdown' href={routes.AboutUs}>Conocenos</Nav.Link>
           {!usuarioEncontrado &&

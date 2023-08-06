@@ -120,7 +120,7 @@ const Register = () => {
 
   return (
     <div>
-      {window.location.pathname === "/Registro" && <NavbarPatient/>}
+      {/* {window.location.pathname === "/Registro" && <NavbarPatient/>} */}
       <div className="login">
         <div className="row">
           <div

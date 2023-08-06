@@ -5,7 +5,6 @@ import List from './List'
 import Login from '../../../components/Login'
 import Register from '../../../components/Register'
 import baseUrl from '../../../components/utils/baseUrl.json'
-import NavbarDentist from '../../../components/componentDentist/NavbarDentist'
 
 
 const ListTurnsAdmin = () => {

@@ -20,7 +20,7 @@ function NavbarAdmin() {
   }
   return (
     <Navbar expand="lg" className='navbar large'>
-    <img className='navbar_logo' src={Logo} alt=""/>
+    <img className='navbar_logo' src={Logo} alt="Logo"/>
       <Container className='navbar_container'>
        <Navbar.Brand></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav"  />

@@ -23,8 +23,8 @@ import Login from './components/Login'
 import Register from './components/Register'
 import { ContextGlobal } from './components/utils/global.context';
 import Profile from './pages/Profile'
-import NavbarDentist from './components/componentDentist/NavbarDentist'
 import { Navbar } from 'react-bootstrap'
+import Header from './components/Header'
 
 
 function App() {
@@ -34,9 +34,10 @@ function App() {
 
   return (
     <div className="App" >
-    {user?.rol === "ADMIN" && <NavbarAdmin/>}
-    {user?.rol === "ODONTOLOGY" && <NavbarDentist/>}
-    {(user?.rol === "PATIENT" || user?.rol === undefined) && <NavbarPatient/>}
+    {/* {user?.rol === "ADMIN" && <NavbarAdmin/>}
+    {user?.rol === "ODONTOLOGY" && <NavbarDentist/>} */}
+    {/* {(user?.rol === "PATIENT" || user?.rol === undefined) && <NavbarPatient/>} */}
+    <Header/>
 
     <Routes>
     <Route path={routes.Home} element={render ? <ListTurnsAdmin/> : <Home/>} />
