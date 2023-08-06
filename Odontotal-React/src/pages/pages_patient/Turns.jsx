@@ -127,7 +127,7 @@ const [dataResponse, setResponse] = useState({})
 
   return (
     <div>
-      <NavbarPatient/>
+
       {usuarioEncontrado &&
       <div className='turns'>
       <div className='turns_information'>

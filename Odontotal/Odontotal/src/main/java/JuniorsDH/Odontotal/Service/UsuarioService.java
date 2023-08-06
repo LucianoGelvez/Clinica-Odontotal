@@ -75,7 +75,12 @@ public class UsuarioService implements UserDetailsService {
         Usuario usuarioModificado;
         Optional<Usuario> usuarioaModificar= usuarioRepository.findById(usuarioDto.getId());
         if (usuarioaModificar.isPresent()){
+            if(usuarioDto.getPassword() == null)
+            {
+                usuarioDto.setPassword(usuarioaModificar.get().getPassword());
+            }
             usuarioModificado= usuarioRepository.save(usuarioDtoAUsuario(usuarioDto));
+
         }else {
             throw new ResourceNotFoundException("Error. No se encontró el usuario para actualizar");
         }

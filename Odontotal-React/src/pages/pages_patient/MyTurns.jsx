@@ -44,7 +44,6 @@ const MyTurns = () => {
        
       );
       console.log(data)
-      console.log(data)
       setedition(null);
     } else {
       serData((prevState) => [...prevState, { ...item, id: Date.now() }]);
@@ -57,8 +56,6 @@ const MyTurns = () => {
 
   return (
     <div style={{display: "flex", flexDirection: "column"}}>
-  
-    <NavbarPatient/>
 
       {
         <List data={data} onEditar={handleEditar} onEliminar={handleEliminar} />

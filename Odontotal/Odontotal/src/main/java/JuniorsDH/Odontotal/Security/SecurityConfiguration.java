@@ -32,13 +32,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
        http
                .csrf().disable()
                .authorizeRequests()
-               .antMatchers("/odontologos/**").hasAnyAuthority( "ADMIN","ODONTOLOGY")
+               .antMatchers("/odontologos/{id}").hasAnyAuthority( "ADMIN","ODONTOLOGY")
+               .antMatchers( "/login", "/pacientes/registrar","/usuarios", "odontologos/listAll").permitAll()
                .antMatchers("/pacientes").hasAnyAuthority("ADMIN","PATIENT")
                .antMatchers("/protecistas/**").hasAnyAuthority("ADMIN")
                .antMatchers("/turnos/**").hasAnyAuthority("ADMIN","ODONTOLOGY","PATIENT")
                .antMatchers(HttpMethod.GET, "/protecistas/{id}","/protecistas").hasAnyAuthority("ODONTOLOGY")
                .antMatchers(HttpMethod.PUT, "/protecistas/{id}").hasAnyAuthority("ODONTOLOGY")
-               .antMatchers( "/login", "/pacientes/registrar","/usuarios").permitAll()
+
                .anyRequest().authenticated()
                .and()
                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
@@ -51,4 +52,5 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
+
 }

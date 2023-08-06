@@ -57,7 +57,7 @@ const ListPatientAdmin = () => {
 
   return (
     <div style={{display: "flex", flexDirection: "column"}}>
-      <NavbarAdmin/> 
+      {/* <NavbarAdmin/>  */}
       {user?.rol === "ADMIN" &&
       <>
       {edition ? (

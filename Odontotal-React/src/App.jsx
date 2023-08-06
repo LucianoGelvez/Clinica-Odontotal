@@ -23,21 +23,23 @@ import Login from './components/Login'
 import Register from './components/Register'
 import { ContextGlobal } from './components/utils/global.context';
 import Profile from './pages/Profile'
+import NavbarDentist from './components/componentDentist/NavbarDentist'
+import { Navbar } from 'react-bootstrap'
 
 
 function App() {
 
   const { user, showNavbarAdmin} = useContext(ContextGlobal);
-  //Cambiar el valor de useState(showNavbarAdmin) a useState(true) si es
-  //necesario mostrar navbar admin, con useState(false) muestra el navbar patient
-  //o iniciar sesión con admin u otro usuario servirá para evitar cambiar el useState manualmente
   const [render, setRender] = useState(showNavbarAdmin)
 
   return (
     <div className="App" >
+    {user?.rol === "ADMIN" && <NavbarAdmin/>}
+    {user?.rol === "ODONTOLOGY" && <NavbarDentist/>}
+    {(user?.rol === "PATIENT" || user?.rol === undefined) && <NavbarPatient/>}
 
     <Routes>
-    <Route path={routes.Home} element={render ? <AddTurnAdmin/> : <Home/>} />
+    <Route path={routes.Home} element={render ? <ListTurnsAdmin/> : <Home/>} />
     <Route path={routes.Service} element={<Service/>} />
     <Route path={routes.ReserveTurn} element={<Turns/>} />
     <Route path={routes.MyTurn} element={<MyTurns/>} />

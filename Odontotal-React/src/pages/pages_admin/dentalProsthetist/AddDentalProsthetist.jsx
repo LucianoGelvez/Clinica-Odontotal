@@ -62,7 +62,7 @@ const AddDentalProsthetist = () => {
     console.log(response)
   return (
     <div>AddAddDentalHygienists
-      <NavbarAdmin/>
+      {/* <NavbarAdmin/> */}
       {user?.rol === "ADMIN" &&
       <>
         <h3>Agregar Protecista</h3>

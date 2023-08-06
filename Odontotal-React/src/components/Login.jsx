@@ -62,9 +62,12 @@ const Login = () => {
         }
       ).then(() => {
         if(userData?.rol === "ADMIN" || userData.rol === "ODONTOLOGY"){
+          
             navigate("/ListaDeTurnos")
+            window.location.reload()
         }else{
           navigate("/")
+          window.location.reload()
         }
         
       })
@@ -96,7 +99,7 @@ const Login = () => {
 
   return (
     <div> 
-      {window.location.pathname === "/IniciarSesion" && <NavbarPatient/>}
+      {/* {window.location.pathname === "/IniciarSesion" && <NavbarPatient/>} */}
       <div className="login">
         <form onSubmit={handleSubmit}>
           <img src={Logo} alt="" />

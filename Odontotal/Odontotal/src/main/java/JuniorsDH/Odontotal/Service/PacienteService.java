@@ -78,6 +78,10 @@ public class PacienteService {
         Paciente pacienteModificado;
         Optional<Paciente> pacienteaModificar= pacienteRepository.findById(pacienteDto.getId());
         if (pacienteaModificar.isPresent()){
+            if(pacienteDto.getPassword() == null)
+            {
+                pacienteDto.setPassword(pacienteaModificar.get().getPassword());
+            }
             pacienteModificado=  pacienteRepository.save(pacienteDtoAPaciente(pacienteDto) );
         }else {
             throw new ResourceNotFoundException("Error. No se encontro el paciente para actualizar");

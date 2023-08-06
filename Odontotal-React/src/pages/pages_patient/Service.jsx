@@ -14,7 +14,7 @@ import CaleTeethWhiteningndar from '../../images/TeethWhitening.jpg'
 const Service = () => {
   return (
     <div>
-      <NavbarPatient/>
+
       <div className='service'>
         <h1>SERVICIOS</h1>
 

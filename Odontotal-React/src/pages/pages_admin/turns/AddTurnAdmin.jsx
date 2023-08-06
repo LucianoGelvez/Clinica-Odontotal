@@ -124,7 +124,7 @@ const [dataResponse, setResponse] = useState({})
   return (
     
     <div>
-      <NavbarPatient></NavbarPatient>
+
       {/* {user.rol === "Patient" ? <NavbarAdmin/> : <Footer/>}  */}
 
       { user?.rol === "ADMIN" || user?.rol === "ODONTOLOGY" ? (

@@ -4,7 +4,7 @@ import baseUrl from './baseUrl.json'
 export const ContextGlobal = createContext();
 export const ContextProvider = ({ children }) => {
 
-  const url_ListDentists = baseUrl.url + "/odontologos";
+  const url_ListDentists = baseUrl.url + "/odontologos/listAll";
   const url_ListPatients = baseUrl.url + "/pacientes";
   const url_ListDentalHygienists = baseUrl.url + "/protecistas";
   const url_ListTurn = baseUrl.url + "/turnos";
@@ -13,7 +13,7 @@ export const ContextProvider = ({ children }) => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
   const [formData, setFormData] = useState({})
 
-  const [showNavbarAdmin, setShowNavbarAdmin] = useState((user?.rol === "ADMIN" ? true : false))
+  const [showNavbarAdmin, setShowNavbarAdmin] = useState(((user?.rol === "ADMIN" || user?.rol === "ODONTOLOGY") ? true : false))
   useEffect(() => {
     if (user?.rol === "ADMIN") {
       setShowNavbarAdmin(true);
@@ -57,7 +57,7 @@ export const ContextProvider = ({ children }) => {
   
 
   return (
-    <ContextGlobal.Provider value={{formData, setFormData ,information,showLogin, showRegister, setShowLogin, setShowRegister, showDentist,setShowDentist, user, setUser, jwt, setJwt,showNavbarAdmin, setShowNavbarAdmin}}>
+    <ContextGlobal.Provider value={{formData, setFormData , information ,showLogin, showRegister, setShowLogin, setShowRegister, showDentist,setShowDentist, user, setUser, jwt, setJwt,showNavbarAdmin, setShowNavbarAdmin}}>
       {children}
     </ContextGlobal.Provider>
   );

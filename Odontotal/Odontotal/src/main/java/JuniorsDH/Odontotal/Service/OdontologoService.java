@@ -78,9 +78,13 @@ public class OdontologoService {
 
     public OdontologoDto modificarOdontologo (OdontologoDto odontologoDto)throws ResourceNotFoundException{
         Odontologo odontologoModificado;
-        Optional<Odontologo> pacienteaModificar= odontologoRepository.findById(odontologoDto.getId());
-        if (pacienteaModificar.isPresent()){
-            odontologoModificado=odontologoRepository.save(odontologoDtoAOdontologo(odontologoDto));
+        Optional<Odontologo> odontoloaModificar= odontologoRepository.findById(odontologoDto.getId());
+        if (odontoloaModificar.isPresent()){
+            if(odontologoDto.getPassword() == null)
+            {
+                odontologoDto.setPassword(odontoloaModificar.get().getPassword());
+            }
+            odontologoModificado= odontologoRepository.save(odontologoDtoAOdontologo(odontologoDto));
         }else {
             throw new ResourceNotFoundException("Error. No se encontro el odontologo para actualizar");
         }

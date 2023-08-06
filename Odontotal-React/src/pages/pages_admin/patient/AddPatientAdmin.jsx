@@ -102,9 +102,7 @@ const AddPatientAdmin = () => {
 
   console.log(response);
   return (
-    <div>
-      <NavbarAdmin/>
-      
+    <div>    
       {user?.rol === "ADMIN" &&
       <>
       <div className="row">

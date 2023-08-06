@@ -9,7 +9,6 @@ const AboutUs = () => {
   return (
 
     <div>
-      <NavbarPatient/>
 
       <div className='about-us'>
         <img className='image' src={PeopleSmiling} alt="" />

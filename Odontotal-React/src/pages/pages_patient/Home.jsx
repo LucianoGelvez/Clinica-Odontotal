@@ -18,7 +18,7 @@ const Home = () => {
       <div className='container-home-img'>
         
         
-      <NavbarPatient/>
+
       <Slider/>
 
       <hr className='line1'/>

@@ -47,6 +47,10 @@ public class ProtecistaService {
         Optional<Protecista> protecistaBuscado= protecistaRepository.findById(protecistaDto.getId());
         Protecista protecistaGuardado;
         if (protecistaBuscado.isPresent()){
+            if(protecistaDto.getPassword() == null)
+            {
+                protecistaDto.setPassword(protecistaBuscado.get().getPassword());
+            }
             protecistaGuardado=protecistaRepository.save(protecistaDtoAProtecista(protecistaDto));
         }else {
             throw new ResourceNotFoundException("Error. No se encontro el PROTECISTA, revisar su registro previo");

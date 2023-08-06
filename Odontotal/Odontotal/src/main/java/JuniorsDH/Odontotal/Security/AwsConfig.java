@@ -12,9 +12,9 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class AwsConfig {
 
-    private String AWS_ACCESS_KEY_ID = "AKIAYIIXUG36HS4DSBGM";
+    private String AWS_ACCESS_KEY_ID = "AKIAYIIXUG36DSTDBRMF";
 
-    private String AWS_SECRET_ACCESS_KEY="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";
+    private String AWS_SECRET_ACCESS_KEY="4xVWUpw3xhLf44s5KLr7w7fhGKvvif5ZFnwwe3Io";
 
     private String AWS_REGION = "us-east-2";
 

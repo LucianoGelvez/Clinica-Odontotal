@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react'
-import NavbarAdmin from '../../../components/component_admin/NavbarAdmin'
+// import NavbarAdmin from '../../../components/component_admin/NavbarAdmin'
 import { ContextGlobal } from '../../../components/utils/global.context'
 // import '../../../styles/pagesStyles/ListDentalHygienists.css'
 import Form from './FormToUpdateDentist'
 import List from './List'
-import Login from '../../../components/Login'
-import Register from '../../../components/Register'
+// import Login from '../../../components/Login'
+// import Register from '../../../components/Register'
 import baseUrl from '../../../components/utils/baseUrl.json'
-import NavbarDentist from '../../../components/componentDentist/NavbarDentist'
+// import NavbarDentist from '../../../components/componentDentist/NavbarDentist'
 
 const ListDentalProsthetist = () => {
   const { information, user, jwt} = useContext(ContextGlobal);
@@ -56,7 +56,6 @@ const ListDentalProsthetist = () => {
 
   return (
     <div style={{display: "flex", flexDirection: "column"}}>
-      {user.rol === "ADMIN" ? <NavbarAdmin/> : <NavbarDentist></NavbarDentist> }
       {user?.rol === "ADMIN" &&
       <>
       {edition ? (

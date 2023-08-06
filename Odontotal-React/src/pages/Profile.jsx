@@ -4,6 +4,7 @@ import NavbarDentist from '../components/componentDentist/NavbarDentist';
 import baseUrl from '../components/utils/baseUrl.json'
 import Swal from 'sweetalert2';
 import profilePic from '../images/profilePic.svg'
+import "../styles/pagesStyles/Profile.css"
 
 const Profile = () => {
     const { user, jwt } = useContext(ContextGlobal);
@@ -67,15 +68,18 @@ const Profile = () => {
           });
     
           if (!response.ok) {
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Something went wrong!',
+            })
             throw new Error("Failed to fetch data");
           }
     
           const data = await response.json();
           console.log(data);
-          console.log(data);
-          console.log(data);
-
           setData(data);
+          localStorage.setItem('user', JSON.stringify(data));
           // console.log(possibleCities)
         } catch (error) {
           console.log(error);
@@ -83,7 +87,7 @@ const Profile = () => {
       };
     
       fetchData();
-    }, []);
+    }, [user]);
 
 
     const handleDocumentClick = (event) => {
@@ -93,6 +97,10 @@ const Profile = () => {
         !buttonRef.current.contains(event.target)
       ) {
         setChangeImage(false);
+        let listEdit = document.querySelectorAll(".edit")
+        listEdit.forEach(element => {
+          element.classList.remove("dispel");
+        });
       }
   
       if (
@@ -151,29 +159,9 @@ const Profile = () => {
       setFechaNacimiento(dataPesonal.fechaNacimiento || '');
       }, [dataPesonal]);
       
-
-
-  // const handleEditar = (item) => {
-  //   setedition(item);
-  //   setShowNombre(true)
-  // };
-
-  // const handleGuardar = (item) => {
-  //   if (edition) {
-  //     setData((prevState) =>
-  //       prevState.map((x) => (x.id === item.id ? item : x))
-  //     );
-  //     setedition(null);
-  //   } else {
-  //     setData((prevState) => [...prevState, { ...item, id: Date.now() }]);
-  //   }
-  // };
-
   
   const handleSubmit = (e) => {
- 
     e.preventDefault();
-    // handleGuardar({ ...datePersonal, e});
 
     const formData = {
       id: id,
@@ -191,7 +179,7 @@ const Profile = () => {
       numero: numero,
       localidad: localidad,
       provincia: provincia,
-      urlImagen: urlImagen
+      urlImagen: urlImagen,
     };
     const url = baseUrl.url + `/odontologos/`;
     const settings = {
@@ -226,21 +214,7 @@ const Profile = () => {
   };
   
 
- const  handleCancelar = () => {
-  console.log(dataPesonal.nombre)
-  setShowNombre(false)
-  setShowApellido(false)
-  setShowFechaDeNacimiento(false)
-  setShowGenero(false)
-  setShowDocumento(false)
-  setShowTelefono(false)
-  setShowMatricula(false)
-  setShowEspecialidad(false)
-  setShowCalle(false)
-  setShowNumero(false)
-  setShowLocalidad(false)
-  setShowProvincia(false)
-  }
+
 
   const handleSaveChanges = () => {
     const formData = new FormData();
@@ -259,16 +233,30 @@ const Profile = () => {
     })
       .then(response => {
         if (response.ok) {
-          window.location.reload()
-          localStorage.setItem('user', JSON.stringify(dataPesonal));
+           Swal.fire(
+          'La modificacion fue exitosa',
+        )
           console.log('Image uploaded successfully');
+          localStorage.setItem('user', JSON.stringify(""));
+          setTimeout(() => {
+            window.location.reload()
+          }, 1500)
+          localStorage.setItem('user', JSON.stringify(dataPesonal));
+      
         } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Algo salio mal!',
+            footer: '<p>Probablemente la imagen excede el limite de tamaño permitido</p>'
+          })
           console.error('Error uploading image');
         }
       })
       .catch(error => {
         console.error('Error uploading image:', error);
       });
+      
   };
 
   function deleteImage() {
@@ -282,8 +270,18 @@ const Profile = () => {
     })
       .then(response => {
         if (response.ok) {
-          setChangeImage(false)
-          return response.json()
+          localStorage.setItem('user', JSON.stringify(""));
+          setChangeImage(false);
+          
+          Swal.fire(
+            'Se elimino correctamente.',
+          )
+
+            setTimeout(() => {
+              window.location.reload()
+            }, 1000)
+            localStorage.setItem('user', JSON.stringify(dataPesonal));
+
         } else {
           throw new Error('Error en la solicitud DELETE');
         }
@@ -302,85 +300,153 @@ const Profile = () => {
 
   }
 
+
+  const handleActivateButton = (setShowFunction) => {
+    setShowFunction(true);
+    let listEdit = document.querySelectorAll(".edit")
+    listEdit.forEach(edit => {
+      edit.classList.add("dispel");
+    });
+  };
+
+
+  const  handleCancelar = (setShowFunction) => {
+    setShowFunction(false);
+    let listEdit = document.querySelectorAll(".edit")
+    listEdit.forEach(element => {
+      element.classList.remove("dispel");
+    });
+   
+    }
+
+  const handleDeactivateButton = () => {
+    setButtonActive(false);
+  };
+
+
   return (
-    <div>
-    <NavbarDentist></NavbarDentist>
-        <div>
+    <div className='general'>
+          <div className='general_info'>
             <h1>Datos personales</h1>
-            <h2>Actualizá tus datos para poder estar en contacto en caso de urgencia</h2>
-            <div>
-            {dataPesonal?.urlImagen ?
+            <h2>Manten tus datos para poder estar en contacto en caso de urgencia</h2>
+            </div>
+            <div className='general_imagen'>
+            {dataPesonal?.urlImagen ? 
           <div className='profile_image'>
-            <img style={{width: "100px", height: "100px"}} src={dataPesonal.urlImagen} />
-            <button ref={buttonRef} onClick={() => setChangeImage(true)}>Change image</button>
+            <img src={dataPesonal?.urlImagen} />
+            <button className='edit' ref={buttonRef} onClick={() => handleActivateButton(setChangeImage)}>Change image</button>
+            <p>Tu imagen se expondra a nuestros usuarios para generar confiaza en los pacientes</p>
           </div> :
           <div className='profile_image'>
-            <img src={profilePic} style={{width: "100px", height: "100px"}}/>
-            <button ref={buttonRef} onClick={() => setChangeImage(true)}>Change image</button>
+            <img src={profilePic}/>
+            <button className='edit' ref={buttonRef} onClick={() => setChangeImage(true)}>Change image</button>
+            <p>Por favor coloca una imagen personal, lo mas profesional que puedas para general en los pacientes</p>
           </div>
         }
             {changeImage && (
           <div className='profile_change_pic'>
+            {/* <h2>Elija una imagen para subir</h2> */}
             {dataPesonal?.urlImagen || selectedImage != null ? (
               <div ref={imageRef}>
                 {
                   selectedImage == null ?
-                    <img style={{width: "100px", height: "100px"}} src={dataPesonal.urlImagen} />
+                  <>
+                    <img  src={dataPesonal?.urlImagen}/>
+                    <h5>Elija una imagen para subir</h5>
+                    </>
                     :
-                    <img style={{width: "100px", height: "100px"}} src={filePreview} />
+                    <>
+                    <img  src={filePreview} />
+                    <h5>Elija una imagen para subir</h5>
+                    </>
                 }
-                <input type="file" accept="image/*" onChange={handleImageChange} />
+                <input className='file_image' type="file" accept="image/*" onChange={handleImageChange} />
                 <article>
-                  <button className='profile_change_pic_delete' onClick={deleteImage}>Delete Image</button>
+                  <button className='profile_change_pic_delete' onClick={deleteImage}>Delete</button>
                   <button onClick={handleSaveChanges}>Save changes</button>
                 </article>
               </div>
             ) : (
-              <div ref={imageRef}>
+              <div ref={imageRef}>    
                 <img src={profilePic} />
-                <input type="file" accept="image/*" onChange={handleImageChange} />
+                <h5>Elija una imagen para subir</h5>
+                <input className='file_image' type="file" accept="image/*" onChange={handleImageChange} />
                 <article>
                   <button onClick={handleSaveChanges}>Save changes</button>
                 </article>
               </div>
             )}
           </div>
-        )}
-            <form style={{ display: "flex", justifyContent: "center", flexWrap: "wrap" }}>
+        )}  </div>
+            <form>
+            {/* <h2>Actualizá tus datos para poder estar en contacto en caso de urgencia</h2> */}
             <table>
-            {/* <thead>
-        <th>Foto</th>
-        <img src={urlImagen} style={{width: "50px", height: "50px"}} alt="" />
-        {showApellido ? <label>Foto:<input type="text" value={urlImagen} onChange={(e) => setUrlImagen(e.target.value)}/></label>  : <button onClick={() => setShowApellido(true)}>Editar</button>} 
-        {showApellido && <button onClick={handleCancelar}>Cancelar</button>}
-        {showApellido && <button onClick={handleSubmit}>Guardar</button>}
-        </thead> */}
+            <thead>
+  <th id='nombre' className='especial'>Apellido</th>
+  {!showApellido && (
+    <>
+      <th className='complet'>Apellido</th>
+      <td>{dataPesonal.apellido}</td>
+      <button className='edit' onClick={() => handleActivateButton(setShowApellido)}>Editar</button>
+    </>
+  )}
+  {showApellido && (
+    <div className='nombre'>
+      <label>
+        <input type="text" value={apellido} onChange={(e) => setApellido(e.target.value)}/>
+      </label>
+      <button className='cancel' onClick={()=> handleCancelar(setShowApellido)}>Cancelar</button>
+      <button className='send' onClick={handleSubmit}>Guardar</button>
+    </div>
+  )}
+</thead>
 
         <thead>
-        <th>Apellido</th>
-        <td> {dataPesonal.apellido}</td>
-        {showApellido ? <label>Apellido:<input type="text" value={apellido} onChange={(e) => setApellido(e.target.value)}/></label>  : <button onClick={() => setShowApellido(true)}>Editar</button>} 
-        {showApellido && <button onClick={handleCancelar}>Cancelar</button>}
-        {showApellido && <button onClick={handleSubmit}>Guardar</button>}
-        </thead>
+  <th id='nombre' className='especial'>Nombre</th>
+  {!showNombre ? (
+    <>
+      <th className='complet'>Nombre</th>
+      <td>{dataPesonal.nombre}</td>
+      <button className="edit" onClick={() => handleActivateButton(setShowNombre)}>Editar</button>
+    </>
+  ) : (
+    <div className='nombre'>
+      <label>
+        <input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} />
+      </label>
+      <button className='cancel' onClick={()=> handleCancelar(setShowNombre)}>Cancelar</button>
+      <button className='send' onClick={handleSubmit}>Guardar</button>
+    </div>
+  )}
+      </thead>
         <thead>
-        <th>Nombre</th>
-        <td> {dataPesonal.nombre}</td>
-        {showNombre ? <label>Nombre:<input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)}/></label>  : <button onClick={() => setShowNombre(true)}>Editar</button>} 
-        {showNombre && <button onClick={handleCancelar}>Cancelar</button>}
-        {showNombre && <button onClick={handleSubmit}>Guardar</button>}
-        </thead>
-        <thead>
-        <th>Fecha de Nacimiento</th>
+        < th id='nombre' className='especial'>Fecha Nacimiento</th>
+        {!showFechaDeNacimiento ? (
+           <> 
+           < th className='complet'>Fecha Nacimiento</th>
         <td> {dataPesonal.fechaNacimiento}</td>
-        {showFechaDeNacimiento ? <label>Fecha Nacimiento:<input type="text" value={fechaNacimiento} onChange={(e) => setFechaNacimiento(e.target.value)}/></label>  : <button onClick={() => setShowFechaDeNacimiento(true)}>Editar</button>} 
-        {showFechaDeNacimiento && <button onClick={handleCancelar}>Cancelar</button>}
-        {showFechaDeNacimiento && <button onClick={handleSubmit}>Guardar</button>}
+        <button className='edit' onClick={() => handleActivateButton(setShowFechaDeNacimiento)}>Editar</button>
+       </> 
+       ) : (
+        <div className='nombre'> 
+        <label><input type="date" value={fechaNacimiento} onChange={(e) => setFechaNacimiento(e.target.value)}/></label>
+        <button className='cancel' onClick={()=> handleCancelar(setShowFechaDeNacimiento)}>Cancelar</button>
+        <button className='send' onClick={handleSubmit}>Guardar</button>
+        </div>
+        )}
         </thead>
         <thead>
-        <th>Genero</th>
-        <td> {dataPesonal.genero}</td>
-        {showGenero ?  <label className="control-label" htmlFor="genero"> Genero:   
+        < th id='nombre' className='especial'>Genero</th>
+        {!showGenero ? (
+        <>
+        < th className='complet'>Genero</th>
+        
+      <td> {dataPesonal.genero}</td>
+         <button className='edit' onClick={() => handleActivateButton(setShowGenero)}>Editar</button>
+         </>
+         ) : (
+       <div className='nombre'> 
+        <label className="control-label" htmlFor="genero">   
               <select name="genero" id="genero" value={genero} onChange={(e) => setGenero(e.target.value)} required>
               <option selected>Selecciona una especialidad</option>
                <option >Femenino</option>
@@ -388,35 +454,62 @@ const Profile = () => {
                <option >NoBinario</option>
                <option >Transgenero</option>
                <option >Otro</option>
-              </select> </label>   : <button onClick={() => setShowGenero(true)}>Editar</button>} 
-        {showGenero && <button onClick={handleCancelar}>Cancelar</button>}
-        {showGenero && <button onClick={handleSubmit}>Guardar</button>}
+              </select> </label>  
+       <button className='cancel' onClick={()=> handleCancelar(setShowGenero)}>Cancelar</button>
+       <button className='send' onClick={handleSubmit}>Guardar</button>
+        </div>
+         )}
         </thead>
         <thead>
-        <th>Documento</th>
+        < th className='especial'>Documento</th>
+        {!showDocumento ? ( <> < th className='complet'>Documento</th>
         <td> {dataPesonal.documento}</td>
-        {showDocumento ? <label>Documento:<input type="text" value={documento} onChange={(e) => setDocumento(e.target.value)}/></label>  : <button onClick={() => setShowDocumento(true)}>Editar</button>} 
-        {showDocumento && <button onClick={handleCancelar}>Cancelar</button>}
-        {showDocumento && <button onClick={handleSubmit}>Guardar</button>}
+        <button className='edit' onClick={() => handleActivateButton(setShowDocumento)}>Editar</button>
+        </>
+      ) : (
+      <div className='nombre'> 
+      <label><input type="text" value={documento} onChange={(e) => setDocumento(e.target.value)}/></label>
+      <button className='cancel' onClick={()=> handleCancelar(setShowDocumento)}>Cancelar</button>
+      <button className='send' onClick={handleSubmit}>Guardar</button>
+        </div>
+        )}
         </thead>
         <thead>
-        <th>Matricula</th>
-        <td> {dataPesonal.matricula}</td>
-        {showMatricula ? <label>Matricula:<input type="text" value={matricula} onChange={(e) => setMatricula(e.target.value)}/></label>  : <button onClick={() => setShowMatricula(true)}>Editar</button>} 
-        {showMatricula && <button onClick={handleCancelar}>Cancelar</button>}
-        {showMatricula && <button onClick={handleSubmit}>Guardar</button>}
+        < th className='especial'>Matricula</th>
+        {!showMatricula ? (<> < th className='complet'>Matricula</th>
+          <td> {dataPesonal.matricula}</td>
+          <button className='edit' onClick={() => handleActivateButton(setShowMatricula)}>Editar</button>
+          </>
+        ) : (
+        <div className='nombre'> 
+        <label><input type="text" value={matricula} onChange={(e) => setMatricula(e.target.value)}/></label>  
+        <button className='cancel' onClick={()=> handleCancelar(setShowMatricula)}>Cancelar</button>
+        <button className='send' onClick={handleSubmit}>Guardar</button>
+        </div>)}
         </thead>
         <thead>
-        <th>Telefono</th>
+        < th className='especial'>Telefono</th>
+        {!showTelefono ? ( <> <th className='complet'>Telefono</th>
         <td> {dataPesonal.telefono}</td>
-        {showTelefono ? <label>Telefono:<input type="text" value={telefono} onChange={(e) => setTelefono(e.target.value)}/></label>  : <button onClick={() => setShowTelefono(true)}>Editar</button>} 
-        {showTelefono && <button onClick={handleCancelar}>Cancelar</button>}
-        {showTelefono && <button onClick={handleSubmit}>Guardar</button>}
+        <button className='edit' onClick={() => handleActivateButton(setShowTelefono)}>Editar</button>
+        </>
+        ) : (
+        <div className='nombre'> 
+        <label><input type="text" value={telefono} onChange={(e) => setTelefono(e.target.value)}/></label> 
+        <button className='cancel' onClick={() => handleCancelar(setShowTelefono)}>Cancelar</button>
+        <button className='send' onClick={handleSubmit}>Guardar</button>
+        </div> 
+        )}
         </thead>
         <thead>
-        <th>Especialidad</th>
-        <td> {dataPesonal.especialidad}</td>
-        {showEspecialidad ?        <label>Especialidad:
+        < th className='especial'>Especialidad</th>
+        {/* {!showEspecialidad && < th className='complet'>Especialidad</th>} */}
+        {!showEspecialidad ? ( <> <td> {dataPesonal.especialidad}</td>
+        <button className='edit' onClick={() => handleActivateButton(setShowEspecialidad)}>Editar</button>
+        </>
+  ) : (
+        <div className='nombre'> 
+        <label>
       <select name="especialidad" id="especialidad" value={especialidad} onChange={(e) => setEspecialidad(e.target.value)} required>
         <option>ESPECIALIDAD_ORTODONCISTA</option>
         <option>ESPECIALIDAD_PERIODONCISTA</option>
@@ -426,52 +519,80 @@ const Profile = () => {
         <option>ESPECIALIDAD_CIRUGIA_MAXILOFACIAL</option>
         <option>ESPECIALIDAD_PROTESISTA</option>
       </select>
-    </label>  : <button onClick={() => setShowEspecialidad(true)}>Editar</button>} 
-        {showEspecialidad && <button onClick={handleCancelar}>Cancelar</button>}
-        {showEspecialidad && <button onClick={handleSubmit}>Guardar</button>}
+    </label>
+        <button className='cancel' onClick={()=> handleCancelar(setShowEspecialidad)}>Cancelar</button>
+        <button className='send' onClick={handleSubmit}>Guardar</button>
+        </div>
+        )}
         </thead>
 
         <thead>
-          <h3>Domicilio</h3>
+          <h4>Domicilio</h4>
           </thead>
         <thead>
-        <th>Calle</th>
+        < th className='especial'>Calle</th>
+        {!showCalle ? (<> < th className='complet'>Calle</th>
         <td> {dataPesonal.calle}</td>
-        {showCalle ? <label>Calle:<input type="text" value={calle} onChange={(e) => setCalle(e.target.value)}/></label>  : <button onClick={() => setShowCalle(true)}>Editar</button>} 
-        {showCalle && <button onClick={handleCancelar}>Cancelar</button>}
-        {showCalle && <button onClick={handleSubmit}>Guardar</button>}
+        <button className='edit' onClick={() => handleActivateButton(setShowCalle)}>Editar</button> 
+        </>
+          ) : (
+         <div className='nombre'> 
+         <label><input type="text" value={calle} onChange={(e) => setCalle(e.target.value)}/></label> 
+         <button className='cancel' onClick={()=> handleCancelar(setShowCalle)}>Cancelar</button>
+         <button className='send' onClick={handleSubmit}>Guardar</button>
+        </div>
+  )}
         </thead>
         
         <thead>
-        <th>Numero</th>
-        <td> {dataPesonal.numero}</td>
-        {showNumero ? <label>Numero:<input type="text" value={numero} onChange={(e) => setNumero(e.target.value)}/></label>  : <button onClick={() => setShowNumero(true)}>Editar</button>} 
-        {showNumero && <button onClick={handleCancelar}>Cancelar</button>}
-        {showNumero && <button onClick={handleSubmit}>Guardar</button>}
+        < th className='especial'>Numero</th>
+        {!showNumero ? (<> <th className='complet'>Numero</th>
+         <td> {dataPesonal.numero}</td>
+        <button className='edit' onClick={() => handleActivateButton(setShowNumero)}>Editar</button>
+        </>
+        ) : (
+        <div className='nombre'>
+        <label><input type="text" value={numero} onChange={(e) => setNumero(e.target.value)}/></label>
+        <button className='cancel' onClick={()=> handleCancelar(setShowNumero)}>Cancelar</button>
+        <button className='send' onClick={handleSubmit}>Guardar</button>
+        </div>)}
+        </thead>
+
+        <thead>
+        < th className='especial'>Localidad</th>
+        {!showLocalidad ? (<> < th className='complet'>Localidad</th>
+         <td> {dataPesonal.localidad}</td>
+         <button className='edit' onClick={() => handleActivateButton(setShowLocalidad)}>Editar</button>
+         </>
+        ):(
+        <div className='nombre'> 
+        <label><input type="text" value={localidad} onChange={(e) => setLocalidad(e.target.value)}/></label>  
+        <button className='cancel' onClick={()=> handleCancelar(setShowLocalidad)}>Cancelar</button>
+        <button className='send' onClick={handleSubmit}>Guardar</button>
+        </div>)}
         </thead>
         <thead>
-        <th>Localidad</th>
-        <td> {dataPesonal.localidad}</td>
-        {showLocalidad ? <label>Localidad:<input type="text" value={localidad} onChange={(e) => setLocalidad(e.target.value)}/></label>  : <button onClick={() => setShowLocalidad(true)}>Editar</button>} 
-        {showLocalidad && <button onClick={handleCancelar}>Cancelar</button>}
-        {showLocalidad && <button onClick={handleSubmit}>Guardar</button>}
-        </thead>
-        <thead>
-        <th>Provincia</th>
-        <td> {dataPesonal.provincia}</td>
-        {showProvincia ? <label>Provincia:<input type="text" value={provincia} onChange={(e) => setNombre(e.target.value)}/></label>  : <button onClick={() => setShowProvincia(true)}>Editar</button>} 
-        {showProvincia && <button onClick={handleCancelar}>Cancelar</button>}
-        {showProvincia && <button onClick={handleSubmit}>Guardar</button>}
+        < th className='especial'>Provincia</th>
+        {!showProvincia ? (<>< th className='complet'>Provincia</th>
+         <td> {dataPesonal.provincia}</td>
+         <button className='edit' onClick={() => handleActivateButton(setShowProvincia)}>Editar</button> 
+         </>
+         ) : (
+        <div className='nombre'> 
+        <label><input type="text" value={provincia} onChange={(e) => setNombre(e.target.value)}/></label>
+        <button className='cancel' onClick={()=> handleCancelar(setShowProvincia)}>Cancelar</button>
+        <button className='send' onClick={handleSubmit}>Guardar</button>
+        </div>)}
         </thead>
         <tbody>
      
         </tbody>
       </table>
 </form>
-            </div>
+          
         </div>
 
-      </div>
+ 
   )
 }
 
