@@ -1,25 +1,20 @@
-.service{
+@charset "UTF-8";
+.service {
   display: flex;
   flex-direction: column;
   align-items: center;
-  
 }
-
-.service h1{
+.service h1 {
   margin-top: 50px;
   margin-bottom: 50px;
-  
 }
-
-.grid-container {
-  
+.service .grid-container {
   width: 80vw;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
 }
-
-.grid-container div {
+.service .grid-container div {
   background-color: aliceblue;
   width: 30%;
   display: flex;
@@ -27,15 +22,14 @@
   align-items: center;
   margin-bottom: 100px;
 }
-
-.grid-container img {
+.service .grid-container div img {
   height: 300px;
   width: 100%; /* Hace que la imagen se ajuste a la altura fija del contenedor */
-  object-fit: cover; /* Ajusta la imagen para cubrir todo el contenedor */
+  -o-object-fit: cover;
+     object-fit: cover; /* Ajusta la imagen para cubrir todo el contenedor */
   margin-bottom: 15px;
 }
-
-.grid-container p {
+.service .grid-container div p {
   margin-top: 5px;
   width: 90%;
   text-align: justify;
@@ -43,12 +37,11 @@
 
 /* Estilos para pantallas pequeñas */
 @media only screen and (max-width: 767px) {
-  .grid-container{
+  .grid-container {
     border: 2px rgb(0, 136, 255) solid;
     flex-direction: column;
     align-items: center;
   }
-
   .grid-container div {
     border: 2px red solid;
     background-color: aliceblue;
@@ -58,7 +51,4 @@
     align-items: center;
     margin-bottom: 100px;
   }
-}
-
-
-  
+}/*# sourceMappingURL=ServiceStyle.css.map */

@@ -1,18 +1,40 @@
 .navbar{  
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+
+    
+    
     .navbar_logo{
-        margin-left: 100px;
         width: 200px;
+        margin: 0;
     }
     .navbar_container {
+        width: 60%;
+        margin: 0;
     .navbar_container_collapse{
         justify-content: flex-end;
         width: 90%;
             .navbar_container_collapse_nav{
                 display: flex;
-                width: 100vw;
+                width: 90vw;
                 justify-content: flex-end;
+
+                
                 .navbar_container_collapse_nav-navDropdown{
-                    margin-left: 50px;                          
+                    margin-left: 20px;
+
+                        .dropdown-menu{
+                            width:100px;
+                            left: -50px;
+                            top: 70px;
+                            border-radius: 0;
+                            border: none;
+                            
+                            
+                        }
+                    
                 }         
             }
         }

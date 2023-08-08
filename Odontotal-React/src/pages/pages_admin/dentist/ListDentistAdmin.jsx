@@ -56,8 +56,7 @@ const ListDentalProsthetist = () => {
   }
 
   return (
-    <div style={{display: "flex", flexDirection: "column"}}>
-      <NavbarAdmin/>  
+    <div className='list-odonto-container' style={{display: "flex", flexDirection: "column"}}>
       {user?.rol === "ADMIN" &&
       <>
       {edition ? (

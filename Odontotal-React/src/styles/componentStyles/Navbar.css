@@ -1,6 +1,16 @@
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+}
 .navbar .navbar_logo {
-  margin-left: 100px;
   width: 200px;
+  margin: 0;
+}
+.navbar .navbar_container {
+  width: 60%;
+  margin: 0;
 }
 .navbar .navbar_container .navbar_container_collapse {
   justify-content: flex-end;
@@ -8,11 +18,18 @@
 }
 .navbar .navbar_container .navbar_container_collapse .navbar_container_collapse_nav {
   display: flex;
-  width: 65vw;
+  width: 90vw;
   justify-content: flex-end;
 }
 .navbar .navbar_container .navbar_container_collapse .navbar_container_collapse_nav .navbar_container_collapse_nav-navDropdown {
-  margin-left: 50px;
+  margin-left: 20px;
+}
+.navbar .navbar_container .navbar_container_collapse .navbar_container_collapse_nav .navbar_container_collapse_nav-navDropdown .dropdown-menu {
+  width: 100px;
+  left: -50px;
+  top: 70px;
+  border-radius: 0;
+  border: none;
 }
 
 @media screen and (max-width: 480px) {

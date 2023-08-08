@@ -1,18 +1,29 @@
 
+    .container-home-img{
+        div{
 
-    
+            canvas{
+                height: 50vh;
+                width: 100%;
+            }
+
+        }
+        
+    }
+
     .line1{
         color: #02AFF6;
         width: 80%;
         margin: 40px 10%;
     }
     .text-initial{
+        width: 80%;
         display: flex;
         justify-content: center;
         text-align: center;
-        background-color: rgba($color: #00E0C8, $alpha: 0.1);
+        background-color: rgba($color: #00E0C8b4, $alpha: 0.1);
         font-family: 'Montserrat', sans-serif;
-        margin: 20px 30px;
+        margin: 20px auto;
         padding: 20px;
         font-size: 14px;
         border-radius: 10px;
@@ -33,15 +44,7 @@
         width: 80%;
         margin: 40px 10%;
     }
-    .map{
-        
-        width:70% ;
-        height:40%; 
-        display: flex;
-        padding: 5px;
-        margin: 20px 15%;
-        
-    }
+    
     
 
     

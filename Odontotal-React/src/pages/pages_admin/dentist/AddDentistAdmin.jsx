@@ -4,6 +4,7 @@ import Login from '../../../components/Login';
 import Register from '../../../components/Register';
 import { ContextGlobal } from '../../../components/utils/global.context';
 import baseUrl from '../../../components/utils/baseUrl.json'
+import '../../../styles/pagesStyles/AddDentistAdmin.css'
 
 const AddDentistAdmin = () => {
 
@@ -62,21 +63,14 @@ const AddDentistAdmin = () => {
     console.log(response)
   return (
     <div className="AddDentistAdmin">
-      <NavbarAdmin />
-
+     
       {user?.rol === "ADMIN" &&
      
       <div className="row">
-        <div
-          className="col-sm-7"
-          style={{
-            backgroundColor: '#e6fffa',
-            padding: '10px',
-            borderRadius: '3px',
-          }}
-        >
-          <h3>Agregar Odontologo</h3>
+        
+          
           <form onSubmit={handleSubmit}>
+          <h3>Agregar Odontologo</h3>
             <div className="form-group">
               <label className="control-label" htmlFor="apellido">Apellido:</label>
               <input type="text"className="form-control" id="apellido" placeholder="Ingrese el apellido"
@@ -123,7 +117,7 @@ const AddDentistAdmin = () => {
                 <button>Cargar</button>
                 </form>
                 </div>
-                </div>
+                
           }
                 </div>
                 )}

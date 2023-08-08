@@ -1,57 +1,78 @@
-.div-login .login {
+.login {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 80vh;
+  height: 100%;
   background: linear-gradient(to top, rgba(0, 224, 202, 0.7058823529), rgba(4, 178, 217, 0.7058823529));
 }
-.div-login .login form {
+.login .row {
+  width: 100%;
+  align-items: center;
+}
+.login form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 30%;
-  margin: 7% auto;
+  width: 50%;
+  margin: 3% auto;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  background-color: #fff;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
-.div-login .login form img {
-  width: 50%;
+.login form img {
+  width: 30%;
 }
-.div-login .login form h2 {
+.login form h2 {
   margin-bottom: 20px;
   font-size: 1.5rem;
   font-weight: 500;
   color: #333;
 }
-.div-login .login form .form-group {
+.login form .form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   width: 100%;
-  margin-bottom: 15px;
 }
-.div-login .login form .form-group label {
+.login form .form-grid .form-group {
+  width: 80%;
+  margin: 8px auto;
+}
+.login form .form-grid .form-group label {
   display: block;
   margin-bottom: 5px;
   font-size: 1rem;
   font-weight: 500;
   color: #555;
 }
-.div-login .login form .form-group input[type=email],
-.div-login .login form .form-group input[type=password] {
+.login form .form-grid .form-group select {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 1rem;
+  color: #555;
+  height: 40px;
+}
+.login form .form-grid .form-group input {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 1rem;
   color: #333;
+  height: 40px;
 }
-.div-login .login form .form-group input[type=email]:focus,
-.div-login .login form .form-group input[type=password]:focus {
+.login form .form-grid .form-group input:focus {
   outline: none;
   border-color: #66afe9;
   box-shadow: 0px 0px 5px rgba(102, 175, 233, 0.5);
 }
-.div-login .login form button[type=submit] {
+.login form .show-password-button {
+  background-color: rgba(0, 0, 0, 0);
+  padding: 3px;
+  border: none;
+}
+.login form button {
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
@@ -60,12 +81,8 @@
   color: #fff;
   background-color: #007bff;
   cursor: pointer;
+  margin-top: 20px;
 }
-.div-login .login form button[type=submit]:hover {
+.login form button:hover {
   background-color: #0069d9;
-}
-.div-login .login form .show-password-button {
-  background-color: rgba(0, 0, 0, 0);
-  padding: 3px;
-  border: none;
-}/*# sourceMappingURL=Login.css.map */
+}/*# sourceMappingURL=Register.css.map */
