@@ -8,9 +8,11 @@ const Info = () => {
   return (
     <div className='information-container'>
         <div className='information-container_aboutus'>
-            <img src={imagen1} alt="" />
-            <h2>Bienvenidos a Odontotal Odontologia</h2>
-            <p>¡Bienvenido a nuestra clínica dental! Estamos comprometidos en brindarle una atención personalizada y de alta calidad para mejorar su salud bucal y su sonrisa.</p>
+            <h2>Donde Encontrarnos</h2>
+        <iframe  className='map' src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.7135784576135!2d-75.590516299192!3d6.1690946596964835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e4682493b86ae61%3A0xe3a1b3e88840ab4!2sEnvigado%2C%20Antioquia!5e0!3m2!1ses!2sco!4v1683151388243!5m2!1ses!2sco" 
+          >
+
+        </iframe>
         </div>
         <div className='information-container_schedule'>
             <h2 className='information-container_schedule_title'>Horario</h2>

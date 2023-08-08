@@ -5,7 +5,7 @@ import List from './List'
 import Login from '../../../components/Login'
 import Register from '../../../components/Register'
 import baseUrl from '../../../components/utils/baseUrl.json'
-
+import '../../../styles/pagesStyles/ListTurnsAdmin.css'
 
 const ListTurnsAdmin = () => {
   const { information, user} = useContext(ContextGlobal);
@@ -55,8 +55,8 @@ const ListTurnsAdmin = () => {
   }
 
   return (
-    <div style={{display: "flex", flexDirection: "column"}}>
-      <NavbarAdmin/> 
+    <div className='list-turn-container' style={{display: "flex", flexDirection: "column"}}>
+      
       { (user?.rol === "ADMIN" || user?.rol === "ODONTOLOGY")  &&
       <>
         <List data={data} onEditar={handleEditar} onEliminar={handleEliminar} />

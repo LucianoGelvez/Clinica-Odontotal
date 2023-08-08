@@ -1,34 +1,45 @@
 .container-slider{
-    background-color:rgba($color: #00E0C8, $alpha:0.1);
-    width: 80vw;
-    margin: 2% 10%;
+    
+    width: 80%;
+    margin: 0% auto;
     padding: 40px;
-    border-radius: 10px;
+    background: linear-gradient(to top, #04b2d97e, #f1f1f1) ;
+    clip-path: polygon(0 0,100% 0,100% calc(100% - 50px),50% 100%,0 calc(100% - 50px));
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
     
     .container-slider-carousel{
         
        
         .container-slider-carousel_card{
-            margin: 20px;
+            margin: 0px;
             display: flex;
             flex-direction: column;
             align-items: center;
+            // border: 1px solid rgba(128, 128, 128, 0.288);
+            border-radius: 10px;
+            padding-bottom: 10px;
+           
             
 
             .container-slider-carousel_card_img{
-                width: 100%;
-                height: 60vh;
+                width: 300px;
+                height: 40vh;
                 border: 1px solid rgba($color: #333333, $alpha: 0.3);
-                border-radius: 10px;
+                border-radius: 5px;
+
+                &:hover{
+                    filter: opacity(.5);
+                }
                 
             }
             .container-slider-carousel_card_span{
-                background-color: rgba($color: #02AFF6, $alpha: 0.5) ;
+                background-color: white ;
                 padding: 1% 5%;
                 display: flex;
-                color: white;
-                margin-top: 10px;
-                border-radius: 10px;
+                color: #02AFF6 ;
+                border-radius: 5px;
+                margin-top: -5%;
                 
                 
             }

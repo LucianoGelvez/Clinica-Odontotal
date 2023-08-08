@@ -1,40 +1,50 @@
 .information-container{
-    width: 80vw;
+    width: 80%;
     display: flex;
     justify-content: space-between;
-    margin: 0 10vw;
-    padding: 10px;
+    margin: -30px auto 20px;
+    clip-path: polygon(0 0,50% 50px,100% 0,100% 100%,0 100%);
+    background: linear-gradient(to bottom, #04b2d97e, #f1f1f1);
+    color: black;
+    gap: 10px;
+    // border: 1px solid #00e0c8;
+    padding: 50px;
     .information-container_aboutus{
-        width: 40%;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-content: center;
+         
+         color: black;
+         width: 80%;
+         
+        .map{
+            width: 100% ;
+            height:80%; 
+            display: flex;
+            padding: 5px;
+            margin: 10px auto;
+        }
+
     }
     .information-container_schedule{
         display: flex;
         justify-content: space-between;
         flex-direction: column;
-        background-color: rgba($color: #02AFF6, $alpha: 0.3) ;
+        // background-color: rgba($color: #02AFF6, $alpha: 0.3) ;
         text-align: center;
-        width: 20vw;
-        height: 100%;
-        padding: 15px;
-        border-radius: 10px;
+        width: 40%;
+        height: 100;
+        padding: 10px;
         
         
     }
     .information-container_contact{
-        background-color: rgba($color: #02AFF6, $alpha: 0.3) ;
-        width: 25%;
+        // background-color: rgba($color: #02AFF6, $alpha: 0.3) ;
+        width: 40%;
         height: 100%;
         display: flex;
-        justify-content: space-evenly;
+        // justify-content: space-evenly;
         flex-direction: column;
         align-items: center;
         font-size: 15px;
         padding: 15px;
-        border-radius: 10px;
 
         .information-container_contact_location{
             display: flex;
