@@ -22,7 +22,7 @@ import { ContextGlobal } from './components/utils/global.context';
 import Profile from './pages/Profile'
 // import { Navbar } from 'react-bootstrap'
 import Header from './components/Header'
-import PatientHistory from './pages/pages_patient/PatientHistory'
+// import PatientHistory from './pages/pages_patient/PatientHistory'
 
 
 function App() {
@@ -32,11 +32,7 @@ function App() {
 
   return (
     <div className="App" >
-    {/* {user?.rol === "ADMIN" && <NavbarAdmin/>}
-    {user?.rol === "ODONTOLOGY" && <NavbarDentist/>} */}
-    {/* {(user?.rol === "PATIENT" || user?.rol === undefined) && <NavbarPatient/>} */}
-    <Header/>
-
+<Header></Header>
     <Routes>
     <Route path={routes.Home} element={render ? <ListTurnsAdmin/> : <Home/>} />
     <Route path={routes.Service} element={<Service/>} />
@@ -54,8 +50,6 @@ function App() {
     <Route path={routes.ListDentalProsthetist} element={<ListDentalProsthetist/>}/>
     <Route path={routes.Login} element={<Login/>}/>
     <Route path={routes.Register} element={<Register/>}/>
-    <Route path={routes.profile} element={<Profile></Profile>}/>
-    <Route path={routes.PatientHistory} element={<PatientHistory/>}/>
     </Routes>
 
     <Footer/>

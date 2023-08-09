@@ -3,6 +3,7 @@ import Login from '../../../components/Login';
 import Register from '../../../components/Register';
 import { ContextGlobal } from '../../../components/utils/global.context';
 import baseUrl from '../../../components/utils/baseUrl.json'
+import '../../../styles/pagesStyles/AddDentistAdmin.css'
 
 const AddDentistAdmin = () => {
   const { user, jwt } = useContext(ContextGlobal);
@@ -89,16 +90,10 @@ const AddDentistAdmin = () => {
       {user?.rol === "ADMIN" &&
      
       <div className="row">
-        <div
-          className="col-sm-7"
-          style={{
-            backgroundColor: '#e6fffa',
-            padding: '10px',
-            borderRadius: '3px',
-          }}
-        >
-          <h3>Agregar Odontologo</h3>
+        
+          
           <form onSubmit={handleSubmit}>
+          <h3>Agregar Odontologo</h3>
             <div className="form-group">
             {/* <label className="control-label" htmlFor="Image">Foto:</label>
             <input className="categories-container_input-field"
@@ -193,7 +188,7 @@ const AddDentistAdmin = () => {
                 <button>Cargar</button>
                 </form>
                 </div>
-                </div>
+                
           }
                 </div>
                 )}

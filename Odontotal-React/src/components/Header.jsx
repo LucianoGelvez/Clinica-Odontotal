@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import profilePic from '../images/profilePic.svg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLocationDot, faPhoneVolume, faEnvelope, faUser  } from '@fortawesome/free-solid-svg-icons'
@@ -24,7 +24,7 @@ const Header = () => {
   console.log(user)
   return (
     <Navbar expand="lg" className='navbar large'>
-          <img className='navbar_logo' src={Logo} alt="Logo"/>
+          <Link to={routes.Home}><img className='navbar_logo' src={Logo} alt="Logo"/></Link>
       <Container className='navbar_container'>
         <Navbar.Toggle aria-controls="basic-navbar-nav"  />
         <Navbar.Collapse id="basic-navbar-nav" className='navbar_container_collapse'>

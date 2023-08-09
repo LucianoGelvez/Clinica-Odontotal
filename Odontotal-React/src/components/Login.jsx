@@ -97,7 +97,7 @@ const Login = () => {
   };
 
   return (
-    <div> 
+    <div className='div-login'> 
       {/* {window.location.pathname === "/IniciarSesion" && <NavbarPatient/>} */}
       <div className="login">
         <form onSubmit={handleSubmit}>

@@ -1,19 +1,26 @@
-.login {
+.div-login{
+  .login {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background-color: #f0f0f0;
+    height: 80vh;
+    background: linear-gradient(to top, #00e0cab4, #04b2d9b4);
     
     form {
       display: flex;
       flex-direction: column;
       align-items: center;
+      width: 30%;
+      margin: 7% auto;
       padding: 20px;
       border: 1px solid #ccc;
       border-radius: 5px;
-      background-color: #fff;
-      box-shadow: 0px 3px 5px rgba(0,0,0,0.1);
+      
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+      img{
+        width: 50%;
+      }
       
       h2 {
         margin-bottom: 20px;
@@ -72,4 +79,5 @@
       }
     }
   }
+}
   

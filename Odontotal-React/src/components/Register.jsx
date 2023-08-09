@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import '../styles/componentStyles/Login.css';
+import '../styles/componentStyles/Register.css';
 import Logo from '../images/Logo.png'
 import { ContextGlobal } from './utils/global.context';
 import { Link, useNavigate } from 'react-router-dom';
@@ -122,20 +122,17 @@ const Register = () => {
       {/* {window.location.pathname === "/Registro" && <NavbarPatient/>} */}
       <div className="login">
         <div className="row">
-          <div
-            className="col-sm-7"
-            style={{
-              //backgroundColor: '#e2f0fa',
-              padding: '10px',
-              borderRadius: '3px',
-              width: "80%",
-            }}
-          >
+          
           {/* <h3>Agregar Paciente</h3> */}
+          
           <form onSubmit={handleSubmit}>
+         
             <img src={Logo} alt="" />
             <h2>Registrarse</h2>
             <p>Al ser una clínica precisamos de los siguientes datos para su mejor atención</p>
+            
+            
+            <div className='form-grid'>
             <div className="form-group">
               <label className="control-label" htmlFor="email">Email:</label>
               <input type="email" className="form-control" id="email"
@@ -223,11 +220,12 @@ const Register = () => {
                 placeholder="Ingrese la provincia" name="provincia" 
                 value={formData.provincia} onChange={handleInputChange} required/>
             </div>
+            </div>
 
             <button>Agregar</button>
             {<Link to='/IniciarSesion'>Si tienes cuenta, ¡Inicia sesión aquí!</Link>}
           </form>
-          </div>
+          
         </div>
       </div>
     </div>

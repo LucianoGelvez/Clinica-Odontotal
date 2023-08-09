@@ -3,6 +3,7 @@ import { ContextGlobal } from '../../../components/utils/global.context';
 import Login from '../../../components/Login';
 import Register from '../../../components/Register';
 import baseUrl from '../../../components/utils/baseUrl.json'
+import '../../../styles/pagesStyles/AddPatientAdmin.css'
 
 const AddPatientAdmin = () => {
 
@@ -104,18 +105,11 @@ const AddPatientAdmin = () => {
     <div>    
       {user?.rol === "ADMIN" &&
       <>
-      <div className="row">
-        <div
-          className="col-sm-7"
-          style={{
-            backgroundColor: '#e2f0fa',
-            padding: '10px',
-            borderRadius: '3px',
-            width: "80%",
-          }}
-        >
-        <h3>Agregar Paciente</h3>
+      
+        
         <form onSubmit={handleSubmit}>
+        <h3>Agregar Paciente</h3>
+        <div className="row">
           <div className="form-group">
             <label className="control-label" htmlFor="apellido">Apellido:</label>
             <input type="text" className="form-control" id="apellido"
@@ -182,11 +176,11 @@ const AddPatientAdmin = () => {
               placeholder="Ingrese el provincia" name="provincia" 
               value={domicilio.provincia} onChange={handleInputChange} required/>
           </div>
-            
+          </div>
           <button>Agregar</button>
         </form>
-        </div>
-      </div>
+       
+      
 
       </>
       }

@@ -1,32 +1,32 @@
-import React, { useEffect, useState } from 'react'
+// import React, { useEffect, useState } from 'react'
 
-const PatientHistory = () => {
-const [infoPersonal, setInfoPersonal] = useState({})
+// const PatientHistory = () => {
+// const [infoPersonal, setInfoPersonal] = useState({})
 
-    useEffect = () => {
+//     useEffect = () => {
 
-        const url = `http://localhost:8080/paciente/${id}`
-        fetch(url, {
-            headers: {
-              'Authorization': `Bearer ${jwt}`,
-            },
-          })
-            .then((response) => response.json())
-            .then((data) => setInfoPersonal(data))
-            .catch((error) => console.log(error));
+//         const url = `http://localhost:8080/paciente/${id}`
+//         fetch(url, {
+//             headers: {
+//               'Authorization': `Bearer ${jwt}`,
+//             },
+//           })
+//             .then((response) => response.json())
+//             .then((data) => setInfoPersonal(data))
+//             .catch((error) => console.log(error));
         
-    }
+//     }
 
 
 
-  return (
-    <div>
-        PatientHistory
+//   return (
+//     <div>
+//         PatientHistory
 
     
-    </div>
+//     </div>
 
-  )
-}
+//   )
+// }
 
-export default PatientHistory
+// export default PatientHistory

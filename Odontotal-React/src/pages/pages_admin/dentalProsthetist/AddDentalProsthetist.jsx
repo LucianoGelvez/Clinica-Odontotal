@@ -3,6 +3,7 @@ import { ContextGlobal } from '../../../components/utils/global.context';
 import Login from '../../../components/Login';
 import Register from '../../../components/Register';
 import baseUrl from '../../../components/utils/baseUrl.json'
+import '../../../styles/pagesStyles/AddDentalProsthe.css'
 
 const AddDentalProsthetist = () => {
 
@@ -63,8 +64,9 @@ const AddDentalProsthetist = () => {
     <div>AddAddDentalHygienists
       {user?.rol === "ADMIN" &&
       <>
-        <h3>Agregar Protecista</h3>
+        
         <form onSubmit={handleSubmit}>
+        <h3>Agregar Protecista</h3>
           <div className="form-group">
             <label className="control-label" htmlFor="apellido">Apellido:</label>
             <input type="text"className="form-control" id="apellido" placeholder="Ingrese el apellido"

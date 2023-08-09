@@ -124,6 +124,7 @@ const [dataResponse, setResponse] = useState({})
       <>
       <h3>Agregar Turno</h3>
         <form onSubmit={handleSubmit}>
+        <h3>Agregar Turno</h3>
           <div className="form-group perro" >
             <label className="control-label" htmlFor="documento">Paciente:</label>
             <input type="text"className="form-control" id="documento" placeholder="Ingrese el documento"

@@ -1,39 +1,43 @@
 .information-container {
-  width: 80vw;
+  width: 80%;
   display: flex;
   justify-content: space-between;
-  margin: 0 10vw;
-  padding: 10px;
+  margin: -30px auto 20px;
+  -webkit-clip-path: polygon(0 0, 50% 50px, 100% 0, 100% 100%, 0 100%);
+          clip-path: polygon(0 0, 50% 50px, 100% 0, 100% 100%, 0 100%);
+  background: linear-gradient(to bottom, rgba(4, 178, 217, 0.4941176471), #f1f1f1);
+  color: black;
+  gap: 10px;
+  padding: 50px;
 }
 .information-container .information-container_aboutus {
-  width: 40%;
+  color: black;
+  width: 80%;
+}
+.information-container .information-container_aboutus .map {
+  width: 100%;
+  height: 80%;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-content: center;
+  padding: 5px;
+  margin: 10px auto;
 }
 .information-container .information-container_schedule {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  background-color: rgba(2, 175, 246, 0.3);
   text-align: center;
-  width: 20vw;
-  height: 100%;
-  padding: 15px;
-  border-radius: 10px;
+  width: 40%;
+  height: 100;
+  padding: 10px;
 }
 .information-container .information-container_contact {
-  background-color: rgba(2, 175, 246, 0.3);
-  width: 25%;
+  width: 40%;
   height: 100%;
   display: flex;
-  justify-content: space-evenly;
   flex-direction: column;
   align-items: center;
   font-size: 15px;
   padding: 15px;
-  border-radius: 10px;
 }
 .information-container .information-container_contact .information-container_contact_location {
   display: flex;
