@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react'
-import NavbarPatient from '../../components/componentPatient/NavbarPatient'
 import '../../styles/pagesStyles/TurnsStyle.css'
 import { ContextGlobal } from '../../components/utils/global.context';
 import Phone from '../../images/Phone.png'

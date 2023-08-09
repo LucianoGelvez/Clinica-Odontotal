@@ -1,5 +1,4 @@
 import React from 'react'
-import NavbarPatient from '../../components/componentPatient/NavbarPatient'
 import '../../styles/pagesStyles/ServiceStyle.css'
 import DentalProsthesis from '../../images/DentalProsthesis.jpeg'
 import Endodontics from '../../images/Endodontics.jpg'

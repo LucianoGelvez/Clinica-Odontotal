@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react'
-import NavbarAdmin from '../../../components/component_admin/NavbarAdmin'
 import '../../../styles/pagesStyles/AddTurnAdminStyle.css'
 import { ContextGlobal } from '../../../components/utils/global.context';
 import Login from '../../../components/Login';
@@ -119,11 +118,8 @@ const [dataResponse, setResponse] = useState({})
     
   };
   return (
-    
+  
     <div>
-
-      {/* {user.rol === "Patient" ? <NavbarAdmin/> : <Footer/>}  */}
-
       { user?.rol === "ADMIN" || user?.rol === "ODONTOLOGY" ? (
       <>
       <h3>Agregar Turno</h3>

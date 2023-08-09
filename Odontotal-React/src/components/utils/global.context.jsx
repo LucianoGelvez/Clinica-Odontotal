@@ -38,7 +38,7 @@ export const ContextProvider = ({ children }) => {
 
   useEffect(() => {
     const path = window.location.pathname;
-    if (path === "/ListaDeOdontologos" || path === "/NuestroEquipo") {
+    if (path === "/ListaDeOdontologos") {
       fetchData(url_ListDentists);
     } else if (path === "/ListaDePacientes" || path === "/AgregarTurno" || path === "/ReservarTurno") {
       fetchData(url_ListPatients);

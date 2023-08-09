@@ -1,5 +1,4 @@
 import React from 'react'
-import NavbarPatient from '../../components/componentPatient/NavbarPatient'
 import Slider from '../../components/componentPatient/Slider'
 import '../../styles/pagesStyles/Home.css'
 import Detail from '../../components/componentPatient/Detail'

@@ -4,13 +4,10 @@ import AddTurnAdmin from './pages/pages_admin/turns/AddTurnAdmin'
 import ListTurnsAdmin from './pages/pages_admin/turns/ListTurnsAdmin'
 import AddPatientAdmin from './pages/pages_admin/patient/AddPatientAdmin'
 import ListPatientAdmin from './pages/pages_admin/patient/ListPatientAdmin'
-import NavbarAdmin from './components/component_admin/NavbarAdmin'
 import AddDentistAdmin from './pages/pages_admin/dentist/AddDentistAdmin'
 import ListDentistAdmin from './pages/pages_admin/dentist/ListDentistAdmin'
 import { useContext, useState } from 'react'
-// import NavbarPatient from './components/component-patient/NavbarPatient'
 import Home from './pages/pages_patient/Home'
-import NavbarPatient from './components/componentPatient/NavbarPatient'
 import Service from './pages/pages_patient/Service'
 import AddAddDentalHygienists from './pages/pages_admin/dentalProsthetist/AddDentalProsthetist'
 import Footer from './components/component_admin/Footer'
@@ -23,8 +20,9 @@ import Login from './components/Login'
 import Register from './components/Register'
 import { ContextGlobal } from './components/utils/global.context';
 import Profile from './pages/Profile'
-import { Navbar } from 'react-bootstrap'
+// import { Navbar } from 'react-bootstrap'
 import Header from './components/Header'
+import PatientHistory from './pages/pages_patient/PatientHistory'
 
 
 function App() {
@@ -57,6 +55,7 @@ function App() {
     <Route path={routes.Login} element={<Login/>}/>
     <Route path={routes.Register} element={<Register/>}/>
     <Route path={routes.profile} element={<Profile></Profile>}/>
+    <Route path={routes.PatientHistory} element={<PatientHistory/>}/>
     </Routes>
 
     <Footer/>

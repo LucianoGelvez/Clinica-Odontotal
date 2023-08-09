@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLocationDot, faPhoneVolume, faEnvelope, faUser  } from '@fortawesome/free-solid-svg-icons'
 import { routes } from '../routes';
 import Logo from '../images/Logo.png'
-import '../styles/componentStyles/NavbarAdmin.css'
+import '../styles/componentStyles/Header.css'
 import { useContext } from 'react';
 import { ContextGlobal } from '../components/utils/global.context';
 const Header = () => {
@@ -22,20 +22,19 @@ const Header = () => {
   }
 
   console.log(user)
-  console.log(user)
-  console.log(user)
   return (
     <Navbar expand="lg" className='navbar large'>
-    <img className='navbar_logo' src={Logo} alt="Logo"/>
+          <img className='navbar_logo' src={Logo} alt="Logo"/>
       <Container className='navbar_container'>
-       <Navbar.Brand></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav"  />
         <Navbar.Collapse id="basic-navbar-nav" className='navbar_container_collapse'>
           <Nav  className="me-auto navbar_container_collapse_nav">
               {(user?.rol === undefined || user?.rol === "PATIENT") && <><Nav.Link className='navbar_container_collapse_nav-navDropdown' href={routes.Home}>Inicio</Nav.Link>
+              <hr />
 
               {!user &&
           <Nav.Link className='navbar_container_collapse_nav-navDropdown' href={routes.Login}>Turnos</Nav.Link>}
+             <hr />
           {user &&
           <NavDropdown title="Turnos" id="basic-nav-dropdown" className='navbar_container_collapse_nav-navDropdown'>
           <NavDropdown.Item href={routes.ReserveTurn}> Añadir Turno</NavDropdown.Item>
@@ -44,14 +43,20 @@ const Header = () => {
           </NavDropdown>}
 
               <Nav.Link className='navbar_container_collapse_nav-navDropdown' href={routes.Service}>Servicios</Nav.Link>
-              <Nav.Link className='navbar_container_collapse_nav-navDropdown' href={routes.OurTeam}>Nuestro equipo</Nav.Link>
+              <hr />
+              <Nav.Link className='navbar_container_collapse_nav-navDropdown' href={routes.OurTeam}>Equipo</Nav.Link>
+              <hr />
               <Nav.Link className='navbar_container_collapse_nav-navDropdown' href={routes.AboutUs}>Conocenos</Nav.Link></>}
-
+            
           { user?.rol === "ODONTOLOGY" && <>
               <Nav.Link className='navbar_container_collapse_nav-navDropdown' href={routes.ListDentalProsthetist}>Turnos</Nav.Link>
+              <hr />
               <Nav.Link className='navbar_container_collapse_nav-navDropdown' href={routes.ListDentalProsthetist}>Protecistas</Nav.Link>
+              <hr />
               <Nav.Link className='navbar_container_collapse_nav-navDropdown' href={routes.ListPatientAdmin}>Pacientes</Nav.Link>
+              <hr />
               <Nav.Link className='navbar_container_collapse_nav-navDropdown' href={routes.profile}>Perfil</Nav.Link>
+              <hr />
               </>}
 
 
@@ -77,34 +82,41 @@ const Header = () => {
             </NavDropdown> </>}
 
 
-            {user?.rol === undefined &&
+            {user?.rol === undefined && <>
           <div>
           <NavDropdown title={<FontAwesomeIcon icon={faUser}/>} id="basic-nav-dropdown" className='navbar_container_collapse_nav-navDropdown'>
             <NavDropdown.Item href={routes.Login}>Iniciar Sesión</NavDropdown.Item>
             <NavDropdown.Divider />
             <NavDropdown.Item href={routes.Register}>Registrarse</NavDropdown.Item>
           </NavDropdown>
-          </div>}
+          </div> 
+           <div>
+            <Nav.Link className='simple'  href={routes.Login}>Iniciar Sesión</Nav.Link>
+            <Nav.Link className='simple' href={routes.Register}>Registrarse</Nav.Link>
+           </div>
+           </> 
+          }
 
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-      {user?.rol != undefined && (<>
+          {user?.rol != undefined && (<>
       {user?.urlImagen ?
-          <div className='profile_image'>
-            <img src={user?.urlImagen} style={{
-                 width: "3vw",
-                borderRadius: "200px",
-                height: "3vw",
-                // boxShadow: "1px 6px 6px rgba(149, 56, 13, 0.5)"             
-            }} /> 
-          </div> :
-          <div >
-            <img src={profilePic} /> 
-          </div>
+      <div className='profile_image'>
+            <img src={user?.urlImagen}/> </div>:
+            <div className='profile_image'>
+            <img  src={profilePic} /> 
+            </div>
         }</>
         )}
-      {user?.rol != undefined && <button onClick={handleButton}>Cerrar Sesión</button>}
+        {user?.rol != undefined && <button class="Btn">
+  
+  <div class="sign"><svg viewBox="0 0 512 512"><path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"></path></svg></div>
+  
+  <div class="text" onClick={handleButton} >Cerrar Sesión</div>
+</button>}
+          </Nav>
+
+        </Navbar.Collapse>
+      </Container>
+
     </Navbar>
 
   );

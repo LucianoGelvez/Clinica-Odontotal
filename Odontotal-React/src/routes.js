@@ -17,4 +17,5 @@ export const routes = {
     Login: "/IniciarSesion",
     Register: "/Registro",
     profile: '/Perfil',
+    PatientHistory: '/HistorialDelPaciente'
 }

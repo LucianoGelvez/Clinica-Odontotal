@@ -1,11 +1,11 @@
 import React from 'react'
-import NavbarPatient from '../../components/componentPatient/NavbarPatient'
 import PeopleSmiling from '../../images/PeopleSmiling.webp'
 import Mission from '../../images/Mission.png'
 import Vision from '../../images/Vision.png'
 import CorporatedValues from '../../images/CorporatedValues.png'
 import '../../styles/pagesStyles/AboutUsStyle.css'
 const AboutUs = () => {
+
   return (
 
     <div>

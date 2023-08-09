@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react'
-import NavbarAdmin from '../../../components/component_admin/NavbarAdmin'
 import { ContextGlobal } from '../../../components/utils/global.context'
 import List from './List'
 import Login from '../../../components/Login'
@@ -56,7 +55,6 @@ const ListTurnsAdmin = () => {
 
   return (
     <div style={{display: "flex", flexDirection: "column"}}>
-      {/* {user?.rol === "ADMIN" ? <NavbarAdmin/> : <NavbarDentist/>}  */}
       { (user?.rol === "ADMIN" || user?.rol === "ODONTOLOGY")  &&
       <>
         <List data={data} onEditar={handleEditar} onEliminar={handleEliminar} />

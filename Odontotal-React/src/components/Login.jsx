@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from 'react';
 import '../styles/componentStyles/Login.css';
 import Logo from '../images/Logo.png'
 import { Link, useNavigate } from 'react-router-dom';
-import NavbarPatient from './componentPatient/NavbarPatient';
 import baseUrl from './utils/baseUrl.json'
 import Swal from 'sweetalert2';
 

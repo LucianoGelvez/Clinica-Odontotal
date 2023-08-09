@@ -10,7 +10,7 @@ import '../../styles/pagesStyles/OurTeamStyle.css'
 
 import Dentist from '../../components/componentPatient/Dentist';
 import { ContextGlobal } from '../../components/utils/global.context';
-
+import baseUrl from '../../components/utils/baseUrl.json'
 const OurTeam = () => {
   // const { information } = useContext(ContextGlobal)
   // const images = [lola, pedro, laura, silvio, tania]
@@ -18,7 +18,7 @@ const OurTeam = () => {
   const [dentists, setDentists] = useState({})
 
   useEffect(() => {
-    fetch('/odontologos/listAll')
+    fetch(`${baseUrl.url}/odontologos/listAll`)
   .then(response => response.json())
   .then(data => {
     // Aquí puedes manejar la respuesta del servidor
@@ -30,7 +30,7 @@ const OurTeam = () => {
     console.error(error);
   });
     // fetchData();
-  }, [dentists]);
+  }, []);
 
   //   {
   //     id: 1,
