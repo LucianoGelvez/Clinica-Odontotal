@@ -126,7 +126,7 @@ const [dataResponse, setResponse] = useState({})
 
   return (
     <div>
-
+     
       {usuarioEncontrado &&
       <div className='turns'>
       <div className='turns_information'>
