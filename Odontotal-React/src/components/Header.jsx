@@ -32,16 +32,19 @@ const Header = () => {
               {(user?.rol === undefined || user?.rol === "PATIENT") && <><Nav.Link className='navbar_container_collapse_nav-navDropdown' href={routes.Home}>Inicio</Nav.Link>
               <hr />
 
-              {!user &&
-          <Nav.Link className='navbar_container_collapse_nav-navDropdown' href={routes.Login}>Turnos</Nav.Link>}
-             <hr />
-          {user &&
-          <NavDropdown title="Turnos" id="basic-nav-dropdown" className='navbar_container_collapse_nav-navDropdown'>
-          <NavDropdown.Item href={routes.ReserveTurn}> Añadir Turno</NavDropdown.Item>
-            <NavDropdown.Divider />
-            <NavDropdown.Item href={routes.MyTurn}> Listar Turnos</NavDropdown.Item>
-          </NavDropdown>}
-
+              {!user ? <>
+            <Nav.Link className='navbar_container_collapse_nav-navDropdown' href={routes.Login}>Turnos</Nav.Link>
+              <hr />
+              </>
+                :
+                <>
+            <NavDropdown title="Turnos" id="basic-nav-dropdown" className='navbar_container_collapse_nav-navDropdown'>
+            <NavDropdown.Item href={routes.ReserveTurn}> Añadir Turno</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href={routes.MyTurn}> Listar Turnos</NavDropdown.Item>
+            </NavDropdown>
+            </>}
+            <hr />
               <Nav.Link className='navbar_container_collapse_nav-navDropdown' href={routes.Service}>Servicios</Nav.Link>
               <hr />
               <Nav.Link className='navbar_container_collapse_nav-navDropdown' href={routes.OurTeam}>Equipo</Nav.Link>
@@ -65,6 +68,7 @@ const Header = () => {
               <NavDropdown.Divider />
               <NavDropdown.Item href={routes.ListTurnsAdmin}> Listar Turnos</NavDropdown.Item>
             </NavDropdown>
+            <hr />
             <NavDropdown title="Odontologo" id="basic-nav-dropdown" className='navbar_container_collapse_nav-navDropdown'>
               <NavDropdown.Item href={routes.AddDentistAdmin}> Añadir Odontologo</NavDropdown.Item>
               <NavDropdown.Divider />
