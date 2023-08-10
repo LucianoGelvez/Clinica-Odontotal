@@ -48,6 +48,8 @@ const Login = () => {
 
       localStorage.setItem('jwt', jwt);
       localStorage.setItem('user', JSON.stringify(userData));
+      localStorage.setItem('user', JSON.stringify(userData));
+      localStorage.setItem('user', JSON.stringify(userData));
       
       Swal.fire(
         {

@@ -14,7 +14,7 @@ import java.util.Set;
 public class Paciente extends Usuario {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO) // O GenerationType.SEQUENCE
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long Id;
 
     @OneToMany(mappedBy = "paciente",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
@@ -22,29 +22,34 @@ public class Paciente extends Usuario {
     private Set<Turno> turnos= new HashSet<>();
 
     @Column
-    private String historial;
-
-    @Column
     private Boolean validado;
 
     @Column
     private LocalDate fechaCreacion;
 
-    public Paciente(Long id, String email, String password, String nombre, String apellido, String documento, LocalDate fechaNacimiento, Genero genero, int telefono, String urlImagen, Domicilio domicilio, UsuarioRol rol, Long id1, String historial, Boolean validado, LocalDate fechaCreacion) {
+    public Paciente(Long id, String email, String password, String nombre, String apellido, String documento, LocalDate fechaNacimiento, Genero genero, int telefono, String urlImagen, Domicilio domicilio, UsuarioRol rol, Long id1, Boolean validado, LocalDate fechaCreacion) {
         super(id, email, password, nombre, apellido, documento, fechaNacimiento, genero, telefono, urlImagen, domicilio, rol);
-        this.historial = historial;
         this.validado = validado;
         this.fechaCreacion = fechaCreacion;
     }
 
-    public Paciente(String email, String password, String nombre, String apellido, String documento, LocalDate fechaNacimiento, Genero genero, int telefono, String urlImagen, Domicilio domicilio, UsuarioRol rol, String historial, Boolean validado, LocalDate fechaCreacion) {
+    public Paciente(String email, String password, String nombre, String apellido, String documento, LocalDate fechaNacimiento, Genero genero, int telefono, String urlImagen, Domicilio domicilio, UsuarioRol rol, Boolean validado, LocalDate fechaCreacion) {
         super(email, password, nombre, apellido, documento, fechaNacimiento, genero, telefono, urlImagen, domicilio, rol);
-        this.historial = historial;
         this.validado = validado;
         this.fechaCreacion = fechaCreacion;
     }
 
     public Paciente() {
+    }
+
+    @Override
+    public Long getId() {
+        return Id;
+    }
+
+    @Override
+    public void setId(Long id) {
+        Id = id;
     }
 
     public Set<Turno> getTurnos() {
@@ -53,14 +58,6 @@ public class Paciente extends Usuario {
 
     public void setTurnos(Set<Turno> turnos) {
         this.turnos = turnos;
-    }
-
-    public String getHistorial() {
-        return historial;
-    }
-
-    public void setHistorial(String historial) {
-        this.historial = historial;
     }
 
     public Boolean getValidado() {
@@ -83,7 +80,6 @@ public class Paciente extends Usuario {
     public String toString() {
         return "Paciente{" +
                 "turnos=" + turnos +
-                ", historial='" + historial + '\'' +
                 ", validado=" + validado +
                 ", fechaCreacion=" + fechaCreacion +
                 '}';

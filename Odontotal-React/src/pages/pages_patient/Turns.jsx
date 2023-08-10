@@ -14,7 +14,7 @@ import Register from '../../components/Register';
 import baseUrl from '../../components/utils/baseUrl.json'
 
 const Turns = () => {
-  const { information, showLogin, showRegister, setShowLogin, setShowRegister } = useContext(ContextGlobal);
+  const { showLogin, showRegister, setShowLogin, setShowRegister } = useContext(ContextGlobal);
   const usuarioEncontrado = localStorage.getItem('user')
   // console.log(information)
 
@@ -42,7 +42,7 @@ const Turns = () => {
     console.log(selectedDoctor)
   }
 
-  const url = baseUrl.url + "/odontologos"
+  const url = baseUrl.url + "/odontologos/listAll"
   useEffect(() => {
     fetch(url)
       .then((res) => res.json())
@@ -68,7 +68,10 @@ const [dataResponse, setResponse] = useState({})
     odontologoId: '',
     
   })
-  const match = information.find((item => item.documento === formData.documento))
+
+  useEffect()
+
+  // const match = information.find((item => item.documento === formData.documento))
   // console.log(match.idPaciente)
   const handleInputChange = (event) => {
     

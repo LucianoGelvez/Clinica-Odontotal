@@ -9,22 +9,18 @@ import java.util.Date;
 
 public class PacienteDto extends UsuarioDto{
 
-    private String historial;
-
     private Boolean validado;
 
     private LocalDate fechaCreacion;
 
-    public PacienteDto(Long id, String nombre, String apellido, String email, String password, String documento, LocalDate fechaNacimiento, String genero, int telefono, String calle, String numero, String localidad, String provincia, String rol, String urlImagen, String historial, Boolean validado, LocalDate fechaCreacion) {
+    public PacienteDto(Long id, String nombre, String apellido, String email, String password, String documento, LocalDate fechaNacimiento, String genero, int telefono, String calle, String numero, String localidad, String provincia, String rol, String urlImagen, Boolean validado, LocalDate fechaCreacion) {
         super(id, nombre, apellido, email, password, documento, fechaNacimiento, genero, telefono, calle, numero, localidad, provincia, rol, urlImagen);
-        this.historial = historial;
         this.validado = validado;
         this.fechaCreacion = fechaCreacion;
     }
 
-    public PacienteDto(String nombre, String apellido, String email, String password, String documento, LocalDate fechaNacimiento, String genero, int telefono, String calle, String numero, String localidad, String provincia, String rol, String urlImagen, String historial, Boolean validado, LocalDate fechaCreacion) {
+    public PacienteDto(String nombre, String apellido, String email, String password, String documento, LocalDate fechaNacimiento, String genero, int telefono, String calle, String numero, String localidad, String provincia, String rol, String urlImagen, Boolean validado, LocalDate fechaCreacion) {
         super(nombre, apellido, email, password, documento, fechaNacimiento, genero, telefono, calle, numero, localidad, provincia, rol, urlImagen);
-        this.historial = historial;
         this.validado = validado;
         this.fechaCreacion = fechaCreacion;
     }
@@ -32,13 +28,6 @@ public class PacienteDto extends UsuarioDto{
     public PacienteDto() {
     }
 
-    public String getHistorial() {
-        return historial;
-    }
-
-    public void setHistorial(String historial) {
-        this.historial = historial;
-    }
 
     public Boolean getValidado() {
         return validado;
@@ -59,7 +48,6 @@ public class PacienteDto extends UsuarioDto{
     @Override
     public String toString() {
         return "PacienteDto{" +
-                "historial='" + historial + '\'' +
                 ", validado=" + validado +
                 ", fechaCreacion=" + fechaCreacion +
                 '}';

@@ -16,6 +16,6 @@ export const routes = {
     ListDentalProsthetist: "/ListaDeProtecistas",
     Login: "/IniciarSesion",
     Register: "/Registro",
-    profile: '/Perfil',
+    Profile: '/Perfil',
     PatientHistory: '/HistorialDelPaciente'
 }

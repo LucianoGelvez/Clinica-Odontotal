@@ -1,5 +1,6 @@
 package JuniorsDH.Odontotal.Dto;
 
+import javax.persistence.Column;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -13,7 +14,12 @@ public class TurnoDto {
     private Long odontologoId;
     private String nombreOdontologo;
 
-    public TurnoDto(Long id, LocalDate fecha, LocalTime hora, Long pacienteId, String nombrePaciente, String documentoPaciente, Long odontologoId, String nombreOdontologo) {
+    private String reasonForTurn;
+
+    private String whatWasDone;
+
+
+    public TurnoDto(Long id, LocalDate fecha, LocalTime hora, Long pacienteId, String nombrePaciente, String documentoPaciente, Long odontologoId, String nombreOdontologo, String reasonForTurn, String whatWasDone) {
         this.id = id;
         this.fecha = fecha;
         this.hora = hora;
@@ -22,9 +28,11 @@ public class TurnoDto {
         this.documentoPaciente = documentoPaciente;
         this.odontologoId = odontologoId;
         this.nombreOdontologo = nombreOdontologo;
+        this.reasonForTurn = reasonForTurn;
+        this.whatWasDone = whatWasDone;
     }
 
-    public TurnoDto(LocalDate fecha, LocalTime hora, Long pacienteId, String nombrePaciente, String documentoPaciente, Long odontologoId, String nombreOdontologo) {
+    public TurnoDto(LocalDate fecha, LocalTime hora, Long pacienteId, String nombrePaciente, String documentoPaciente, Long odontologoId, String nombreOdontologo, String reasonForTurn, String whatWasDone) {
         this.fecha = fecha;
         this.hora = hora;
         this.pacienteId = pacienteId;
@@ -32,6 +40,7 @@ public class TurnoDto {
         this.documentoPaciente = documentoPaciente;
         this.odontologoId = odontologoId;
         this.nombreOdontologo = nombreOdontologo;
+        this.reasonForTurn = reasonForTurn;
     }
 
     public TurnoDto() {
@@ -100,18 +109,34 @@ public class TurnoDto {
     public void setNombreOdontologo(String nombreOdontologo) {
         this.nombreOdontologo = nombreOdontologo;
     }
+    public String getReasonForTurn() {
+        return reasonForTurn;
+    }
+
+    public void setReasonForTurn(String reasonForTurn) {
+        this.reasonForTurn = reasonForTurn;
+    }
+
+    public String getWhatWasDone() {
+        return whatWasDone;
+    }
+
+    public void setWhatWasDone(String whatWasDone) {
+        this.whatWasDone = whatWasDone;
+    }
 
     @Override
     public String toString() {
         return "TurnoDto{" +
-                "id=" + id +
-                ", fecha=" + fecha +
+                "fecha=" + fecha +
                 ", hora=" + hora +
                 ", pacienteId=" + pacienteId +
                 ", nombrePaciente='" + nombrePaciente + '\'' +
                 ", documentoPaciente='" + documentoPaciente + '\'' +
                 ", odontologoId=" + odontologoId +
                 ", nombreOdontologo='" + nombreOdontologo + '\'' +
+                ", reasonForTurn='" + reasonForTurn + '\'' +
+                ", whatWasDone='" + whatWasDone + '\'' +
                 '}';
     }
 }

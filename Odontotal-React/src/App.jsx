@@ -50,6 +50,7 @@ function App() {
     <Route path={routes.ListDentalProsthetist} element={<ListDentalProsthetist/>}/>
     <Route path={routes.Login} element={<Login/>}/>
     <Route path={routes.Register} element={<Register/>}/>
+    <Route path={routes.Profile} element={<Profile/>}/>
     </Routes>
 
     <Footer/>

@@ -55,4 +55,8 @@ public class TurnoController {
         return ResponseEntity.ok("Se actualizó el turno con id= " + turno.getId());
     }
 
+    @GetMapping("/tunosPaciente/{id}")
+    public ResponseEntity<List<TurnoDto>> historialPaciente(@PathVariable Long id) throws ResourceNotFoundException {
+        return ResponseEntity.ok(turnoService.listarTurnoPaciente(id));
+    }
 }

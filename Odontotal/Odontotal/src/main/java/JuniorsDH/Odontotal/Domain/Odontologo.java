@@ -11,7 +11,7 @@ import java.util.Set;
 public class Odontologo extends Usuario{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO) // O GenerationType.SEQUENCE
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long Id;
 
     @Column

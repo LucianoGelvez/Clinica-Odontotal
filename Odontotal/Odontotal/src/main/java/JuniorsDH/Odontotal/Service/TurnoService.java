@@ -11,6 +11,7 @@ import JuniorsDH.Odontotal.Exception.ResourceNotFoundException;
 import JuniorsDH.Odontotal.Repository.TurnoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -104,6 +105,8 @@ public class TurnoService {
         respuesta.setNombreOdontologo(turno.getOdontologo().getNombre());
         respuesta.setFecha(turno.getFecha());
         respuesta.setHora(turno.getHora());
+        respuesta.setReasonForTurn(turno.getReasonForTurn());
+        respuesta.setWhatWasDone(turno.getWhatWasDone());
 
         return respuesta;
     }
@@ -125,7 +128,25 @@ public class TurnoService {
         respuesta.setId(turnodto.getId());
         respuesta.setOdontologo(odontologo);
         respuesta.setPaciente(paciente);
+        respuesta.setReasonForTurn(turnodto.getReasonForTurn());
+        respuesta.setWhatWasDone(turnodto.getWhatWasDone());
         return respuesta;
     }
+
+
+    public List<TurnoDto> listarTurnoPaciente(Long id) throws ResourceNotFoundException {
+        List<Turno> turnosEncontrados = turnoRepository.findByPaciente(id);
+        List<TurnoDto> respuesta = new ArrayList<>();
+        if(turnoRepository.findByPaciente(id).isEmpty()){
+            throw  new ResourceNotFoundException("El paciente no tiene historia registrado");
+        }
+        else {
+            for (Turno turno : turnosEncontrados){
+                respuesta.add(turnoATurnoDTO(turno));
+            }
+            return respuesta;
+        }
+    }
+
 
 }

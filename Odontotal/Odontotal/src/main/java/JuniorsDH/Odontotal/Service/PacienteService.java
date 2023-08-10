@@ -139,7 +139,6 @@ public class PacienteService {
         pacienteDto.setTelefono(paciente.getTelefono());
         pacienteDto.setRol(paciente.getRol().getRol());
         pacienteDto.setFechaCreacion(paciente.getFechaCreacion());
-        pacienteDto.setHistorial(paciente.getHistorial());
         pacienteDto.setValidado(paciente.getValidado());
         pacienteDto.setGenero(paciente.getGenero().name());
         pacienteDto.setUrlImagen(paciente.getUrlImagen());
