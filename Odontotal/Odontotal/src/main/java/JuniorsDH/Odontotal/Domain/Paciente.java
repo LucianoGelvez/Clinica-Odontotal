@@ -79,7 +79,6 @@ public class Paciente extends Usuario {
     @Override
     public String toString() {
         return "Paciente{" +
-                "turnos=" + turnos +
                 ", validado=" + validado +
                 ", fechaCreacion=" + fechaCreacion +
                 '}';

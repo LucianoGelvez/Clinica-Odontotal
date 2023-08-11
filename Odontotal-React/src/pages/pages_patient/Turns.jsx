@@ -9,15 +9,15 @@ import Dent from '../../images/Dent.png'
 import Dentist from '../../images/Dentist.png'
 import Plan from '../../images/Plan.png'
 import Presentation from '../../images/Presentation.png'
-import Login from '../../components/Login';
-import Register from '../../components/Register';
 import baseUrl from '../../components/utils/baseUrl.json'
+import Swal from 'sweetalert2';
+
 
 const Turns = () => {
-  const { showLogin, showRegister, setShowLogin, setShowRegister } = useContext(ContextGlobal);
+  const { jwt, user } = useContext(ContextGlobal);
   const usuarioEncontrado = localStorage.getItem('user')
-  // console.log(information)
 
+  const [patient, setPatient] = useState({})
   const [selectedSpecialty, setSelectedSpecialty] = useState(null)
   const [selectedDoctor, setSelectedDoctor] = useState("")
   const [odontologos, setOdontologos] = useState({})
@@ -49,6 +49,25 @@ const Turns = () => {
       .then((data) => setOdontologos(data));
   }, []);
 
+  const urlPatient = baseUrl.url + `/pacientes/${user.id}`
+  useEffect (() => {
+    async function fetchData() {
+        try{
+          const response = await fetch(urlPatient, {
+            headers:{
+              'Authorization': `Bearer ${jwt}`,
+            }
+          });
+          const data = await response.json();
+          setPatient(data)
+   
+        } catch(error){
+            console.log(error)
+        }
+    }
+    fetchData();
+  }, [])
+
   const intervals = [
     "Selecciones un horario disponible", '08:00', '08:30', '09:00', '09:30', '10:00', '10:30', '11:00', '11:30', '12:00', '12:30',
     '17:00', '17:30', '18:00', '18:30', '19:00', '19:30'
@@ -69,18 +88,14 @@ const [dataResponse, setResponse] = useState({})
     
   })
 
-  useEffect()
-
-  // const match = information.find((item => item.documento === formData.documento))
-  // console.log(match.idPaciente)
   const handleInputChange = (event) => {
     
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
-    setNewFormData({ ...formData, [name]: value ,pacienteId: match.idPaciente, odontologoId: selectedDoctor });
+    setNewFormData({ ...formData, [name]: value ,pacienteId: patient.id, odontologoId: selectedDoctor });
   };
 
-  const handleSubmit = (event) => {
+  const  handleSubmit = (event) => {
     event.preventDefault();
     console.log("formulario")
     console.log(newFormData)
@@ -88,30 +103,46 @@ const [dataResponse, setResponse] = useState({})
     const settings = {
       method: 'POST',
       headers: {
+        'Authorization': `Bearer ${jwt}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(newFormData),
     };
 
-    fetch(url, settings)
-      .then((response) => response.json())
-      .then((data) => {
+    async function dateTurn() {
+      try {
+        const response = await fetch(url, settings)
+        const data = await response.json();
         setResponse(data);
-        resetUploadForm();
-      })
-      .catch((error) => {
-        setResponse(error);
-        resetUploadForm();
-      });
+        Swal.fire(
+          'Good job!',
+          'You clicked the button!',
+          'success'
+        )
+        setTimeout(() => {
+          resetUploadForm();
+        }, 1400);
+      }
+        catch(error) {
+          console.log(error);
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong!',
+            footer: '<a href="">Terminos y condiciones</a>'
+          })
+       
+        }
+    }
+    dateTurn();
 
-      console.log(dataResponse)
   };
 
   const resetUploadForm = () => {
     window.location.reload();
     setFormData({
       odontologoId: '',
-      documento: documentPatient, //Traer valor del LocalStorage
+      documento: documentPatient,
       fecha: '',   
     });
     setNewFormData({
@@ -129,7 +160,7 @@ const [dataResponse, setResponse] = useState({})
 
   return (
     <div>
-     
+
       {usuarioEncontrado &&
       <div className='turns'>
       <div className='turns_information'>
@@ -169,7 +200,6 @@ const [dataResponse, setResponse] = useState({})
               <option value="ESPECIALIDAD_ODONTOPEDIATRIA">Odontopediatría</option>
               <option value="ESPECIALIDAD_CIRUGIA_ORAL">Cirugía oral</option>
               <option value="ESPECIALIDAD_CIRUGIA_MAXILOFACIAL">Cirugía maxilofacial</option>
-              <option value="ESPECIALIDAD_PROTESISTA">Prótesis</option>
             </select>
           </div>
 

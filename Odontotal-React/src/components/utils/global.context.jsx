@@ -40,7 +40,7 @@ export const ContextProvider = ({ children }) => {
     const path = window.location.pathname;
     if (path === "/ListaDeOdontologos") {
       fetchData(url_ListDentists);
-    } else if (path === "/ListaDePacientes" || path === "/AgregarTurno" || path === "/ReservarTurno") {
+    } else if (path === "/ListaDePacientes" || path === "/AgregarTurno") {
       fetchData(url_ListPatients);
     } else if (path === "/ListaDeProtecistas" ) {
       fetchData(url_ListDentalHygienists);
