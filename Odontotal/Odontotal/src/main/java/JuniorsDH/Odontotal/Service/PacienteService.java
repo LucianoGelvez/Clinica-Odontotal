@@ -164,6 +164,8 @@ public class PacienteService {
         paciente.setRol(rol);
         paciente.setGenero(Genero.valueOf(pacienteDto.getGenero()));
         paciente.setUrlImagen(pacienteDto.getUrlImagen());
+        paciente.setFechaCreacion(pacienteDto.getFechaCreacion());
+        paciente.setValidado(pacienteDto.getValidado());
 
         return paciente;
     }

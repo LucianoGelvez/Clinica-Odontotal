@@ -16,12 +16,15 @@ public class TurnoDto {
     private Long odontologoId;
     private String nombreOdontologo;
 
+    private String apellidoOdontologo;
+    private String especialidad;
+
     private String reasonForTurn;
 
     private String whatWasDone;
 
 
-    public TurnoDto(Long id, LocalDate fecha, LocalTime hora, Long pacienteId, String nombrePaciente, String apellidoPaciente,String documentoPaciente, Long odontologoId, String nombreOdontologo, String reasonForTurn, String whatWasDone) {
+    public TurnoDto(Long id, LocalDate fecha, LocalTime hora, Long pacienteId, String nombrePaciente, String apellidoPaciente, String documentoPaciente, Long odontologoId, String nombreOdontologo, String apellidoOdontologo, String especialidad, String reasonForTurn, String whatWasDone) {
         this.id = id;
         this.fecha = fecha;
         this.hora = hora;
@@ -31,11 +34,13 @@ public class TurnoDto {
         this.documentoPaciente = documentoPaciente;
         this.odontologoId = odontologoId;
         this.nombreOdontologo = nombreOdontologo;
+        this.apellidoOdontologo = apellidoOdontologo;
+        this.especialidad = especialidad;
         this.reasonForTurn = reasonForTurn;
         this.whatWasDone = whatWasDone;
     }
 
-    public TurnoDto(LocalDate fecha, LocalTime hora, Long pacienteId, String nombrePaciente, String apellidoPaciente, String documentoPaciente, Long odontologoId, String nombreOdontologo, String reasonForTurn, String whatWasDone) {
+    public TurnoDto(LocalDate fecha, LocalTime hora, Long pacienteId, String nombrePaciente, String apellidoPaciente, String documentoPaciente, Long odontologoId, String nombreOdontologo, String apellidoOdontologo, String especialidad, String reasonForTurn, String whatWasDone) {
         this.fecha = fecha;
         this.hora = hora;
         this.pacienteId = pacienteId;
@@ -44,7 +49,10 @@ public class TurnoDto {
         this.documentoPaciente = documentoPaciente;
         this.odontologoId = odontologoId;
         this.nombreOdontologo = nombreOdontologo;
+        this.apellidoOdontologo = apellidoOdontologo;
+        this.especialidad = especialidad;
         this.reasonForTurn = reasonForTurn;
+        this.whatWasDone = whatWasDone;
     }
 
     public TurnoDto() {
@@ -135,6 +143,22 @@ public class TurnoDto {
 
     public void setWhatWasDone(String whatWasDone) {
         this.whatWasDone = whatWasDone;
+    }
+
+    public String getApellidoOdontologo() {
+        return apellidoOdontologo;
+    }
+
+    public void setApellidoOdontologo(String apellidoOdontologo) {
+        this.apellidoOdontologo = apellidoOdontologo;
+    }
+
+    public String getEspecialidad() {
+        return especialidad;
+    }
+
+    public void setEspecialidad(String especialidad) {
+        this.especialidad = especialidad;
     }
 
     @Override

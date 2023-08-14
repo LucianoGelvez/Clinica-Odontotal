@@ -24,6 +24,7 @@ import Profile from './pages/Profile'
 import Header from './components/Header'
 import TurnOdontology from './components/componentDentist/TurnOdontology'
 // import PatientHistory from './pages/pages_patient/PatientHistory'
+import ValidarUsuario from './pages/pages_patient/ValidarUsuario'
 
 
 function App() {
@@ -53,6 +54,7 @@ function App() {
     <Route path={routes.Register} element={<Register/>}/>
     <Route path={routes.Profile} element={<Profile/>}/>
     <Route path={routes.TurnOdontology} element={<TurnOdontology/>}/>
+    <Route path={routes.ValidateUser} element={<ValidarUsuario/>} />
     </Routes>
 
     <Footer/>

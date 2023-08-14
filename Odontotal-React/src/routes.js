@@ -18,5 +18,6 @@ export const routes = {
     Register: "/Registro",
     Profile: '/Perfil',
     PatientHistory: '/HistorialDelPaciente',
-    TurnOdontology: '/TurnosDelOdontologo'
+    TurnOdontology: '/TurnosDelOdontologo',
+    ValidateUser: "/usuario/validar/:id"
 }

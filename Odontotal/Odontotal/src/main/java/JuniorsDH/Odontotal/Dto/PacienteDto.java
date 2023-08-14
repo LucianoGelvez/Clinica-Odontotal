@@ -11,15 +11,15 @@ public class PacienteDto extends UsuarioDto{
 
     private Boolean validado;
 
-    private LocalDate fechaCreacion;
+    private Date fechaCreacion;
 
-    public PacienteDto(Long id, String nombre, String apellido, String email, String password, String documento, LocalDate fechaNacimiento, String genero, int telefono, String calle, String numero, String localidad, String provincia, String rol, String urlImagen, Boolean validado, LocalDate fechaCreacion) {
+    public PacienteDto(Long id, String nombre, String apellido, String email, String password, String documento, LocalDate fechaNacimiento, String genero, int telefono, String calle, String numero, String localidad, String provincia, String rol, String urlImagen, Boolean validado, Date fechaCreacion) {
         super(id, nombre, apellido, email, password, documento, fechaNacimiento, genero, telefono, calle, numero, localidad, provincia, rol, urlImagen);
         this.validado = validado;
         this.fechaCreacion = fechaCreacion;
     }
 
-    public PacienteDto(String nombre, String apellido, String email, String password, String documento, LocalDate fechaNacimiento, String genero, int telefono, String calle, String numero, String localidad, String provincia, String rol, String urlImagen, Boolean validado, LocalDate fechaCreacion) {
+    public PacienteDto(String nombre, String apellido, String email, String password, String documento, LocalDate fechaNacimiento, String genero, int telefono, String calle, String numero, String localidad, String provincia, String rol, String urlImagen, Boolean validado, Date fechaCreacion) {
         super(nombre, apellido, email, password, documento, fechaNacimiento, genero, telefono, calle, numero, localidad, provincia, rol, urlImagen);
         this.validado = validado;
         this.fechaCreacion = fechaCreacion;
@@ -37,11 +37,11 @@ public class PacienteDto extends UsuarioDto{
         this.validado = validado;
     }
 
-    public LocalDate getFechaCreacion() {
+    public Date getFechaCreacion() {
         return fechaCreacion;
     }
 
-    public void setFechaCreacion(LocalDate fechaCreacion) {
+    public void setFechaCreacion(Date fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
     }
 

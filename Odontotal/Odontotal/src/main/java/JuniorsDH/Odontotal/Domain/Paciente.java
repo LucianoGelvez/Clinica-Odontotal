@@ -1,6 +1,7 @@
 package JuniorsDH.Odontotal.Domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
@@ -25,15 +26,16 @@ public class Paciente extends Usuario {
     private Boolean validado;
 
     @Column
-    private LocalDate fechaCreacion;
+    @CreationTimestamp
+    private Date fechaCreacion;
 
-    public Paciente(Long id, String email, String password, String nombre, String apellido, String documento, LocalDate fechaNacimiento, Genero genero, int telefono, String urlImagen, Domicilio domicilio, UsuarioRol rol, Long id1, Boolean validado, LocalDate fechaCreacion) {
+    public Paciente(Long id, String email, String password, String nombre, String apellido, String documento, LocalDate fechaNacimiento, Genero genero, int telefono, String urlImagen, Domicilio domicilio, UsuarioRol rol, Long id1, Boolean validado, Date fechaCreacion) {
         super(id, email, password, nombre, apellido, documento, fechaNacimiento, genero, telefono, urlImagen, domicilio, rol);
         this.validado = validado;
         this.fechaCreacion = fechaCreacion;
     }
 
-    public Paciente(String email, String password, String nombre, String apellido, String documento, LocalDate fechaNacimiento, Genero genero, int telefono, String urlImagen, Domicilio domicilio, UsuarioRol rol, Boolean validado, LocalDate fechaCreacion) {
+    public Paciente(String email, String password, String nombre, String apellido, String documento, LocalDate fechaNacimiento, Genero genero, int telefono, String urlImagen, Domicilio domicilio, UsuarioRol rol, Boolean validado, Date fechaCreacion) {
         super(email, password, nombre, apellido, documento, fechaNacimiento, genero, telefono, urlImagen, domicilio, rol);
         this.validado = validado;
         this.fechaCreacion = fechaCreacion;
@@ -68,11 +70,11 @@ public class Paciente extends Usuario {
         this.validado = validado;
     }
 
-    public LocalDate getFechaCreacion() {
+    public Date getFechaCreacion() {
         return fechaCreacion;
     }
 
-    public void setFechaCreacion(LocalDate fechaCreacion) {
+    public void setFechaCreacion(Date fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
     }
 

@@ -6,23 +6,30 @@ import JuniorsDH.Odontotal.Dto.UsuarioDto;
 import JuniorsDH.Odontotal.Exception.BadRequestException;
 import JuniorsDH.Odontotal.Exception.DataInvalidException;
 import JuniorsDH.Odontotal.Exception.ResourceNotFoundException;
+import JuniorsDH.Odontotal.Service.MailService;
 import JuniorsDH.Odontotal.Service.PacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Logger;
 
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/pacientes")
 public class PacienteController {
     private PacienteService pacienteService;
+    private MailService mailService;
+
+    private Logger logger = Logger.getLogger(PacienteController.class.getName());
     @Autowired
-    public PacienteController(PacienteService pacienteService) {
+    public PacienteController(PacienteService pacienteService, MailService mailService) {
         this.pacienteService = pacienteService;
+        this.mailService = mailService;
     }
 
     @PutMapping
@@ -38,8 +45,11 @@ public class PacienteController {
     }
 
     @PostMapping("/registrar")
-    ResponseEntity <PacienteDto> registrarPaciente(@RequestBody PacienteDto paciente) throws BadRequestException {
-        return ResponseEntity.ok(pacienteService.agregarPaciente(paciente)) ;}
+    ResponseEntity <PacienteDto> registrarPaciente(@RequestBody PacienteDto pacienteDto) throws Exception {
+        PacienteDto pacienteGuardado = pacienteService.agregarPaciente(pacienteDto);
+        mailService.enviarCorreoValidacion(pacienteGuardado);
+        return ResponseEntity.status(HttpStatus.CREATED).body(pacienteDto);
+    }
 
 
     @GetMapping
@@ -65,6 +75,32 @@ public class PacienteController {
     public ResponseEntity<UsuarioDto> deleteImage(@PathVariable Long id)
     {
         return ResponseEntity.ok(pacienteService.deleteImage(id));
+    }
+
+    @PutMapping("/validar/{id}")
+    public ResponseEntity<String> validarCuenta(@PathVariable Long id) throws Exception {
+        // Checamos si existe el usuario
+        Optional<PacienteDto> paciente = pacienteService.listarPaciente(id);
+        if (paciente.isEmpty()) {
+            throw new ResourceNotFoundException("No se encontró el paciente con id: " + id);
+        }
+
+        // Checamos si la cuenta ya está validada
+        logger.info("Validando cuenta del usuario: " + paciente.get());
+        if (paciente.get().getValidado() != null && paciente.get().getValidado()) {
+            throw new BadRequestException("La cuenta ya está validada");
+        }
+
+        // Actualizamos el campo de validación de la cuenta en la base de datos
+        PacienteDto pacienteDto = paciente.get();
+        pacienteDto.setValidado(true);
+        pacienteDto = pacienteService.modificarPaciente(pacienteDto);
+        logger.info("Se validó la cuenta del paciente" + pacienteDto);
+
+        // Enviamos correo de bienvenida
+        mailService.enviarCorreoBienvenida(pacienteDto);
+
+        return ResponseEntity.ok("Se validó la cuenta del paciente con id: " + id);
     }
 
 }
