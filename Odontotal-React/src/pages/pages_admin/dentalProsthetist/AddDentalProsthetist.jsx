@@ -1,5 +1,4 @@
 import React, { useContext, useState } from 'react'
-import NavbarAdmin from '../../../components/component_admin/NavbarAdmin'
 import { ContextGlobal } from '../../../components/utils/global.context';
 import Login from '../../../components/Login';
 import Register from '../../../components/Register';
@@ -62,8 +61,7 @@ const AddDentalProsthetist = () => {
   };
     console.log(response)
   return (
-    <div className='add-pros-container'>
-      
+    <div>AddAddDentalHygienists
       {user?.rol === "ADMIN" &&
       <>
         

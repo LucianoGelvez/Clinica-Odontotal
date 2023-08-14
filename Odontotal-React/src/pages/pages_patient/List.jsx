@@ -2,7 +2,7 @@ import { useState } from "react";
 
 
 const List = ({ data, onEditar, onEliminar }) => {
-  
+
   return (
     <section>
     <table>
@@ -15,8 +15,7 @@ const List = ({ data, onEditar, onEliminar }) => {
           <th>Acciones</th>
         </tr>
       </thead>
-      <tbody>
-        {data.map((item) => (
+      <tbody>{data != "" && <>{data.map((item) => (
           <tr key={item.id}>
             <td>{item.nombrePaciente}</td>           
             <td>{item.nombreOdontologo}</td>
@@ -28,7 +27,8 @@ const List = ({ data, onEditar, onEliminar }) => {
               <button onClick={() => onEliminar(item)} className="btn-delete">Cancelar Turno</button>
             </td>
           </tr>
-        ))}
+        ))} </>}
+       
       </tbody>
     </table>
     </section>

@@ -68,4 +68,20 @@
   background-color: rgba(0, 0, 0, 0);
   padding: 3px;
   border: none;
+}
+
+@media (max-width: 480px) {
+  .div-login .login form {
+    width: 90%;
+  }
+}
+@media (max-width: 767px) {
+  .div-login .login form {
+    width: 80%;
+  }
+}
+@media (max-width: 1024px) {
+  .div-login .login form {
+    width: 50%;
+  }
 }/*# sourceMappingURL=Login.css.map */

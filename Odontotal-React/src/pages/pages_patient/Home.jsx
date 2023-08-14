@@ -1,17 +1,23 @@
-import React from 'react'
-import NavbarPatient from '../../components/componentPatient/NavbarPatient'
+import React, { useContext, useEffect } from 'react'
 import Slider from '../../components/componentPatient/Slider'
 import '../../styles/pagesStyles/Home.css'
 import Detail from '../../components/componentPatient/Detail'
 import SliderService from '../../components/componentPatient/SliderService'
 import Info from '../../components/componentPatient/Info'
 import Spline from '@splinetool/react-spline'
-
-
-
-
+import solicitarValidacionCuenta from '../pages_patient/solicitarValidacionCuenta'
+import { ContextGlobal } from '../../components/utils/global.context'
 
 const Home = () => {
+
+  const { user, jwt } = useContext(ContextGlobal);
+
+  // Verificamos si el usuario está logueado y si está validada la cuenta
+  useEffect(() => {
+    if (user) {
+      solicitarValidacionCuenta(user, jwt);
+    }
+  }, [user])
 
   return (
     <div className='container-home' >

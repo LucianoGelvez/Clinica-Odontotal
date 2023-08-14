@@ -1,14 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
 import '../styles/componentStyles/Login.css';
 import Logo from '../images/Logo.png'
-import { Link, useNavigate } from 'react-router-dom';
-import NavbarPatient from './componentPatient/NavbarPatient';
+import { Link } from 'react-router-dom';
 import baseUrl from './utils/baseUrl.json'
 import Swal from 'sweetalert2';
 
 const Login = () => {
-  const navigate = useNavigate();
-
   const [form,setForm] = useState({
     email:'',
     password:'',
@@ -49,7 +46,7 @@ const Login = () => {
 
       localStorage.setItem('jwt', jwt);
       localStorage.setItem('user', JSON.stringify(userData));
-      
+
       Swal.fire(
         {
           title: 'Inicio de Sesión',
@@ -62,9 +59,9 @@ const Login = () => {
         }
       ).then(() => {
         if(userData?.rol === "ADMIN" || userData.rol === "ODONTOLOGY"){
-          navigate("/ListaDeTurnos")
+          window.location.href="http://localhost:5173/ListaDeTurnos"
         }else{
-          navigate("/")
+          window.location.href="http://localhost:5173/"
         }
         
       })
@@ -96,7 +93,7 @@ const Login = () => {
 
   return (
     <div className='div-login'> 
-      {window.location.pathname === "/IniciarSesion" && <NavbarPatient/>}
+      {/* {window.location.pathname === "/IniciarSesion" && <NavbarPatient/>} */}
       <div className="login">
         <form onSubmit={handleSubmit}>
           <img src={Logo} alt="" />

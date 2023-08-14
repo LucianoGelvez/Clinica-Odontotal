@@ -21,7 +21,9 @@ public class UsuarioDto {
     private String provincia;
     private String rol;
 
-    public UsuarioDto(Long id, String nombre, String apellido, String email, String password, String documento, LocalDate fechaNacimiento, String genero, int telefono, String calle, String numero, String localidad, String provincia, String rol) {
+    private String urlImagen;
+
+    public UsuarioDto(Long id, String nombre, String apellido, String email, String password, String documento, LocalDate fechaNacimiento, String genero, int telefono, String calle, String numero, String localidad, String provincia, String rol, String urlImagen) {
         Id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -36,9 +38,10 @@ public class UsuarioDto {
         this.localidad = localidad;
         this.provincia = provincia;
         this.rol = rol;
+        this.urlImagen = urlImagen;
     }
 
-    public UsuarioDto(String nombre, String apellido, String email, String password, String documento, LocalDate fechaNacimiento, String genero, int telefono, String calle, String numero, String localidad, String provincia, String rol) {
+    public UsuarioDto(String nombre, String apellido, String email, String password, String documento, LocalDate fechaNacimiento, String genero, int telefono, String calle, String numero, String localidad, String provincia, String rol, String urlImagen) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
@@ -52,6 +55,7 @@ public class UsuarioDto {
         this.localidad = localidad;
         this.provincia = provincia;
         this.rol = rol;
+        this.urlImagen = urlImagen;
     }
 
     public UsuarioDto() {
@@ -63,6 +67,14 @@ public class UsuarioDto {
 
     public void setId(Long id) {
         Id = id;
+    }
+
+    public String getUrlImagen() {
+        return urlImagen;
+    }
+
+    public void setUrlImagen(String urlImagen) {
+        this.urlImagen = urlImagen;
     }
 
     public String getEmail() {

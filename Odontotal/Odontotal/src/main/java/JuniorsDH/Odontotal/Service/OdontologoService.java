@@ -2,11 +2,15 @@ package JuniorsDH.Odontotal.Service;
 
 import JuniorsDH.Odontotal.Domain.*;
 import JuniorsDH.Odontotal.Dto.OdontologoDto;
+import JuniorsDH.Odontotal.Dto.UsuarioDto;
 import JuniorsDH.Odontotal.Exception.BadRequestException;
 import JuniorsDH.Odontotal.Exception.DataInvalidException;
 import JuniorsDH.Odontotal.Exception.ResourceNotFoundException;
 import JuniorsDH.Odontotal.Repository.OdontologoRepository;
 import JuniorsDH.Odontotal.Repository.UsuarioRolRepository;
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.model.ObjectMetadata;
+import com.amazonaws.services.s3.model.PutObjectRequest;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -15,7 +19,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -26,6 +33,9 @@ public class OdontologoService {
 
     private OdontologoRepository odontologoRepository;
     private UsuarioRolRepository usuarioRolRepository;
+
+    @Autowired
+    private AmazonS3 s3Client;
 
     @Autowired
     public OdontologoService(OdontologoRepository odontologoRepository, UsuarioRolRepository usuarioRolRepository) {
@@ -60,7 +70,7 @@ public class OdontologoService {
     public Optional<OdontologoDto> listarOdontologo (Long id) throws ResourceNotFoundException {
         Optional<Odontologo> OdontologoABuscar=odontologoRepository.findById(id);
         if (OdontologoABuscar.isPresent()){
-          return  Optional.of(odontologoAOdontologoDto(OdontologoABuscar.get()));
+            return  Optional.of(odontologoAOdontologoDto(OdontologoABuscar.get()));
         }else {
             throw new ResourceNotFoundException("Error. No se encontro el Odontologo Buscado");
         }
@@ -68,9 +78,13 @@ public class OdontologoService {
 
     public OdontologoDto modificarOdontologo (OdontologoDto odontologoDto)throws ResourceNotFoundException{
         Odontologo odontologoModificado;
-        Optional<Odontologo> pacienteaModificar= odontologoRepository.findById(odontologoDto.getId());
-        if (pacienteaModificar.isPresent()){
-            odontologoModificado=odontologoRepository.save(odontologoDtoAOdontologo(odontologoDto));
+        Optional<Odontologo> odontoloaModificar= odontologoRepository.findById(odontologoDto.getId());
+        if (odontoloaModificar.isPresent()){
+            if(odontologoDto.getPassword() == null)
+            {
+                odontologoDto.setPassword(odontoloaModificar.get().getPassword());
+            }
+            odontologoModificado= odontologoRepository.save(odontologoDtoAOdontologo(odontologoDto));
         }else {
             throw new ResourceNotFoundException("Error. No se encontro el odontologo para actualizar");
         }
@@ -88,7 +102,7 @@ public class OdontologoService {
 
 
     public List<OdontologoDto> listarTodosOdontologo ()throws ResourceNotFoundException{
-       List<Odontologo> buscarTodosLosOdontologos= odontologoRepository.findAll();
+        List<Odontologo> buscarTodosLosOdontologos= odontologoRepository.findAll();
         List<OdontologoDto> todosodontologosADto =  new ArrayList<>();
 
         if (buscarTodosLosOdontologos.isEmpty()){
@@ -125,11 +139,11 @@ public class OdontologoService {
         respuesta.setLocalidad(odontologo.getDomicilio().getLocalidad());
         respuesta.setProvincia(odontologo.getDomicilio().getProvincia());
         respuesta.setFechaNacimiento(odontologo.getFechaNacimiento());
+        respuesta.setUrlImagen(odontologo.getUrlImagen());
         respuesta.setGenero(odontologo.getGenero().name());
         respuesta.setTelefono(odontologo.getTelefono());
         respuesta.setRol(odontologo.getRol().getRol());
-        respuesta.setUrlImagen(odontologo.getUrlImagen());
-    return  respuesta;
+        return  respuesta;
     }
 
 
@@ -153,5 +167,37 @@ public class OdontologoService {
         respuesta.setDocumento(odontologoDto.getDocumento());
         respuesta.setUrlImagen(odontologoDto.getUrlImagen());
         return respuesta;
+    }
+
+
+    public void uploadImageProfile(MultipartFile file, Long id) {
+        Odontologo odontologo = odontologoRepository.findById(id).get();
+        String bucketName = "odontotal-images";
+        String uniqueFilename = "profile/" + id + ".png";
+        String s3Url = "https://" + bucketName + ".s3" + ".amazonaws.com/" + uniqueFilename;
+
+        try {
+            byte[] bytes = file.getBytes();
+            ByteArrayInputStream inputStream = new ByteArrayInputStream(bytes);
+            ObjectMetadata metadata = new ObjectMetadata();
+            metadata.setContentLength(bytes.length);
+            metadata.setContentType("profile/png");
+
+            PutObjectRequest putObjectRequest = new PutObjectRequest(bucketName, uniqueFilename, inputStream, metadata);
+            s3Client.putObject(putObjectRequest);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        odontologo.setUrlImagen(s3Url);
+        odontologoRepository.save(odontologo);
+    }
+
+
+    public UsuarioDto deleteImage(Long id)
+    {
+        Odontologo odontologo = odontologoRepository.findById(id).get();
+        odontologo.setUrlImagen(null);
+        return odontologoAOdontologoDto(odontologoRepository.save(odontologo));
     }
 }

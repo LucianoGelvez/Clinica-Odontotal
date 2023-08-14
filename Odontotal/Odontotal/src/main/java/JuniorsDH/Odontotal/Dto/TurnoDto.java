@@ -1,5 +1,6 @@
 package JuniorsDH.Odontotal.Dto;
 
+import javax.persistence.Column;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -9,29 +10,49 @@ public class TurnoDto {
     private LocalTime hora;
     private Long pacienteId;
     private String nombrePaciente;
+
+    private String apellidoPaciente;
     private String documentoPaciente;
     private Long odontologoId;
     private String nombreOdontologo;
 
-    public TurnoDto(Long id, LocalDate fecha, LocalTime hora, Long pacienteId, String nombrePaciente, String documentoPaciente, Long odontologoId, String nombreOdontologo) {
+    private String apellidoOdontologo;
+    private String especialidad;
+
+    private String reasonForTurn;
+
+    private String whatWasDone;
+
+
+    public TurnoDto(Long id, LocalDate fecha, LocalTime hora, Long pacienteId, String nombrePaciente, String apellidoPaciente, String documentoPaciente, Long odontologoId, String nombreOdontologo, String apellidoOdontologo, String especialidad, String reasonForTurn, String whatWasDone) {
         this.id = id;
         this.fecha = fecha;
         this.hora = hora;
         this.pacienteId = pacienteId;
         this.nombrePaciente = nombrePaciente;
+        this.apellidoPaciente = apellidoPaciente;
         this.documentoPaciente = documentoPaciente;
         this.odontologoId = odontologoId;
         this.nombreOdontologo = nombreOdontologo;
+        this.apellidoOdontologo = apellidoOdontologo;
+        this.especialidad = especialidad;
+        this.reasonForTurn = reasonForTurn;
+        this.whatWasDone = whatWasDone;
     }
 
-    public TurnoDto(LocalDate fecha, LocalTime hora, Long pacienteId, String nombrePaciente, String documentoPaciente, Long odontologoId, String nombreOdontologo) {
+    public TurnoDto(LocalDate fecha, LocalTime hora, Long pacienteId, String nombrePaciente, String apellidoPaciente, String documentoPaciente, Long odontologoId, String nombreOdontologo, String apellidoOdontologo, String especialidad, String reasonForTurn, String whatWasDone) {
         this.fecha = fecha;
         this.hora = hora;
         this.pacienteId = pacienteId;
         this.nombrePaciente = nombrePaciente;
+        this.apellidoPaciente = apellidoPaciente;
         this.documentoPaciente = documentoPaciente;
         this.odontologoId = odontologoId;
         this.nombreOdontologo = nombreOdontologo;
+        this.apellidoOdontologo = apellidoOdontologo;
+        this.especialidad = especialidad;
+        this.reasonForTurn = reasonForTurn;
+        this.whatWasDone = whatWasDone;
     }
 
     public TurnoDto() {
@@ -59,6 +80,14 @@ public class TurnoDto {
 
     public void setHora(LocalTime hora) {
         this.hora = hora;
+    }
+
+    public String getApellidoPaciente() {
+        return apellidoPaciente;
+    }
+
+    public void setApellidoPaciente(String apellidoPaciente) {
+        this.apellidoPaciente = apellidoPaciente;
     }
 
     public Long getPacienteId() {
@@ -100,18 +129,51 @@ public class TurnoDto {
     public void setNombreOdontologo(String nombreOdontologo) {
         this.nombreOdontologo = nombreOdontologo;
     }
+    public String getReasonForTurn() {
+        return reasonForTurn;
+    }
+
+    public void setReasonForTurn(String reasonForTurn) {
+        this.reasonForTurn = reasonForTurn;
+    }
+
+    public String getWhatWasDone() {
+        return whatWasDone;
+    }
+
+    public void setWhatWasDone(String whatWasDone) {
+        this.whatWasDone = whatWasDone;
+    }
+
+    public String getApellidoOdontologo() {
+        return apellidoOdontologo;
+    }
+
+    public void setApellidoOdontologo(String apellidoOdontologo) {
+        this.apellidoOdontologo = apellidoOdontologo;
+    }
+
+    public String getEspecialidad() {
+        return especialidad;
+    }
+
+    public void setEspecialidad(String especialidad) {
+        this.especialidad = especialidad;
+    }
 
     @Override
     public String toString() {
         return "TurnoDto{" +
-                "id=" + id +
-                ", fecha=" + fecha +
+                "fecha=" + fecha +
                 ", hora=" + hora +
                 ", pacienteId=" + pacienteId +
                 ", nombrePaciente='" + nombrePaciente + '\'' +
+                ", apellidoPaciente='" + apellidoPaciente + '\'' +
                 ", documentoPaciente='" + documentoPaciente + '\'' +
                 ", odontologoId=" + odontologoId +
                 ", nombreOdontologo='" + nombreOdontologo + '\'' +
+                ", reasonForTurn='" + reasonForTurn + '\'' +
+                ", whatWasDone='" + whatWasDone + '\'' +
                 '}';
     }
 }

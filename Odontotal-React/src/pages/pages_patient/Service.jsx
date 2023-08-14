@@ -1,5 +1,4 @@
 import React from 'react'
-import NavbarPatient from '../../components/componentPatient/NavbarPatient'
 import '../../styles/pagesStyles/ServiceStyle.css'
 import DentalProsthesis from '../../images/DentalProsthesis.jpeg'
 import Endodontics from '../../images/Endodontics.jpg'
@@ -14,7 +13,7 @@ import CaleTeethWhiteningndar from '../../images/TeethWhitening.jpg'
 const Service = () => {
   return (
     <div>
-      <NavbarPatient/>
+
       <div className='service'>
         <h1>SERVICIOS</h1>
 

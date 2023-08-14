@@ -3,9 +3,9 @@ import '../styles/componentStyles/Register.css';
 import Logo from '../images/Logo.png'
 import { ContextGlobal } from './utils/global.context';
 import { Link, useNavigate } from 'react-router-dom';
-import NavbarPatient from './componentPatient/NavbarPatient';
 import Swal from 'sweetalert2';
 import baseUrl from './utils/baseUrl.json'
+import infoValidacionCuenta from '../pages/pages_patient/infoValidacionCuenta';
 
 const Register = () => {
   const navigate = useNavigate();
@@ -59,6 +59,7 @@ const Register = () => {
       });
 
       if (response.ok) {
+          const responseData = await response.json();
           console.log('Datos enviados correctamente');
           Swal.fire(
             {
@@ -72,6 +73,12 @@ const Register = () => {
             }
           ).then((result) => {
             if (result.isConfirmed) {
+              console.log(responseData);
+              const retriesData = {
+                initialTime: Date.now(),
+                retries: 0
+              }
+              infoValidacionCuenta(responseData, setFormData, retriesData);
               navigate('/IniciarSesion')
             }
           })
@@ -120,7 +127,7 @@ const Register = () => {
 
   return (
     <div>
-      {window.location.pathname === "/Registro" && <NavbarPatient/>}
+      {/* {window.location.pathname === "/Registro" && <NavbarPatient/>} */}
       <div className="login">
         <div className="row">
           
