@@ -60,14 +60,15 @@ public class TurnoService {
     }
 
     public void  eliminarTurno (Long id) throws ResourceNotFoundException {
-
-        Optional<TurnoDto> tuernoAEliminar= listarTurnoOptional(id);
-        if(tuernoAEliminar.isPresent()){
+        Optional<TurnoDto> turnoAEliminar= listarTurnoOptional(id);
+        if(turnoAEliminar.isPresent()){
             turnoRepository.deleteById(id);
+//            if (turnoRepository.findById(id).isPresent()) {
+//                throw new ResourceNotFoundException("Error. No se puede eliminar el turno");
+//            }
         }else {
             throw new ResourceNotFoundException("Error. No se puede eliminar el turno, no existe en el registro");
         }
-
     }
 
     public List<TurnoDto> listarTodosTurno () throws ResourceNotFoundException{
@@ -100,6 +101,7 @@ public class TurnoService {
         respuesta.setId(turno.getId());
         respuesta.setPacienteId(turno.getPaciente().getId());
         respuesta.setNombrePaciente(turno.getPaciente().getNombre());
+        respuesta.setApellidoPaciente(turno.getPaciente().getApellido());
         respuesta.setDocumentoPaciente(turno.getPaciente().getDocumento());
         respuesta.setOdontologoId(turno.getOdontologo().getId());
         respuesta.setNombreOdontologo(turno.getOdontologo().getNombre());
@@ -122,6 +124,7 @@ public class TurnoService {
         odontologo.setNombre(turnodto.getNombreOdontologo());
         paciente.setId(turnodto.getPacienteId());
         paciente.setNombre(turnodto.getNombrePaciente());
+        paciente.setApellido(turnodto.getApellidoPaciente());
         paciente.setDocumento(turnodto.getDocumentoPaciente());
         respuesta.setFecha(turnodto.getFecha());
         respuesta.setHora(turnodto.getHora());
@@ -144,6 +147,21 @@ public class TurnoService {
             for (TurnoDto turnoDTO : turnosEncontrados){
                 if (turnoDTO.getPacienteId() == id)
                 respuesta.add(turnoDTO);
+            }
+            return respuesta;
+        }
+    }
+
+    public List<TurnoDto> listarTurnoOdontologo(Long id) throws ResourceNotFoundException {
+        List<TurnoDto> turnosEncontrados = listarTodosTurno();
+        List<TurnoDto> respuesta = new ArrayList<>();
+        if(turnosEncontrados.isEmpty()){
+            throw  new ResourceNotFoundException("El odontologo no tiene historia registrado");
+        }
+        else {
+            for (TurnoDto turnoDTO : turnosEncontrados){
+                if (turnoDTO.getOdontologoId() == id)
+                    respuesta.add(turnoDTO);
             }
             return respuesta;
         }

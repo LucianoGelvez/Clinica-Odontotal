@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { ContextGlobal } from '../../components/utils/global.context'
-import List from './List'
 import baseUrl from '../../components/utils/baseUrl.json'
-import Swal from 'sweetalert2';
+// import Swal from 'sweetalert2';
+import ListTurns from './ListTurns';
 
-const MyTurns = () => {
+const PatientHistory = (idPaciente) => {
   const { jwt, user } = useContext(ContextGlobal);
 
   const [dataTurn, setDataTurn] = useState([]);
@@ -12,7 +12,7 @@ const MyTurns = () => {
 
   useEffect(() => {
     async function dataPersonalTurn() {
-      const urlList = baseUrl.url + `/turnos/turnosPaciente/${user.id}`;
+      const urlList = baseUrl.url + `/turnos/turnoOdontologo/${user.id}`;
       
     const settings = {
       method: 'GET',
@@ -83,9 +83,9 @@ const MyTurns = () => {
 
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
-     <List data={dataTurn} onEditar={handleEditar} onEliminar={handleEliminar} />
+     <ListTurns data={dataTurn} onEditar={handleEditar} onEliminar={handleEliminar}/>
     </div>
   );
 }
 
-export default MyTurns;
+export default PatientHistory;

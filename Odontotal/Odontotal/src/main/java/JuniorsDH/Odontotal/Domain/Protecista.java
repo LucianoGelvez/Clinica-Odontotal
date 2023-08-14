@@ -8,7 +8,7 @@ import java.time.LocalDate;
 public class Protecista extends Usuario{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO) // O GenerationType.SEQUENCE
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long Id;
     @Column
     private String matricula;

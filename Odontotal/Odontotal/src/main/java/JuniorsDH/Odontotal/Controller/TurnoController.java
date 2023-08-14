@@ -46,7 +46,7 @@ public class TurnoController {
     @DeleteMapping("/{id}")
     public ResponseEntity<String> eliminarTurno(@PathVariable Long id) throws ResourceNotFoundException {
         turnoService.eliminarTurno(id);
-        return ResponseEntity.ok("Se eliminó el turno" +" con id= " + id);
+        return ResponseEntity.ok("Se eliminó el turno" +" con id = " + id);
     }
 
     @PutMapping()
@@ -55,8 +55,12 @@ public class TurnoController {
         return ResponseEntity.ok("Se actualizó el turno con id= " + turno.getId());
     }
 
-    @GetMapping("/tunosPaciente/{id}")
+    @GetMapping("/turnosPaciente/{id}")
     public ResponseEntity<List<TurnoDto>> historialPaciente(@PathVariable Long id) throws ResourceNotFoundException {
         return ResponseEntity.ok(turnoService.listarTurnoPaciente(id));
+    }
+    @GetMapping("/turnoOdontologo/{id}")
+    public ResponseEntity<List<TurnoDto>> turnoOdontologo(@PathVariable Long id) throws ResourceNotFoundException {
+        return ResponseEntity.ok(turnoService.listarTurnoOdontologo(id));
     }
 }

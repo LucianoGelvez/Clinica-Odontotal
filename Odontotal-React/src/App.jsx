@@ -22,6 +22,7 @@ import { ContextGlobal } from './components/utils/global.context';
 import Profile from './pages/Profile'
 // import { Navbar } from 'react-bootstrap'
 import Header from './components/Header'
+import TurnOdontology from './components/componentDentist/TurnOdontology'
 // import PatientHistory from './pages/pages_patient/PatientHistory'
 
 
@@ -32,7 +33,7 @@ function App() {
 
   return (
     <div className="App" >
-<Header></Header>
+    <Header/>
     <Routes>
     <Route path={routes.Home} element={render ? <ListTurnsAdmin/> : <Home/>} />
     <Route path={routes.Service} element={<Service/>} />
@@ -51,6 +52,7 @@ function App() {
     <Route path={routes.Login} element={<Login/>}/>
     <Route path={routes.Register} element={<Register/>}/>
     <Route path={routes.Profile} element={<Profile/>}/>
+    <Route path={routes.TurnOdontology} element={<TurnOdontology/>}/>
     </Routes>
 
     <Footer/>

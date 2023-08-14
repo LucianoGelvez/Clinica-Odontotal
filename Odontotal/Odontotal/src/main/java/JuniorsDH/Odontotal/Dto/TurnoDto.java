@@ -10,6 +10,8 @@ public class TurnoDto {
     private LocalTime hora;
     private Long pacienteId;
     private String nombrePaciente;
+
+    private String apellidoPaciente;
     private String documentoPaciente;
     private Long odontologoId;
     private String nombreOdontologo;
@@ -19,12 +21,13 @@ public class TurnoDto {
     private String whatWasDone;
 
 
-    public TurnoDto(Long id, LocalDate fecha, LocalTime hora, Long pacienteId, String nombrePaciente, String documentoPaciente, Long odontologoId, String nombreOdontologo, String reasonForTurn, String whatWasDone) {
+    public TurnoDto(Long id, LocalDate fecha, LocalTime hora, Long pacienteId, String nombrePaciente, String apellidoPaciente,String documentoPaciente, Long odontologoId, String nombreOdontologo, String reasonForTurn, String whatWasDone) {
         this.id = id;
         this.fecha = fecha;
         this.hora = hora;
         this.pacienteId = pacienteId;
         this.nombrePaciente = nombrePaciente;
+        this.apellidoPaciente = apellidoPaciente;
         this.documentoPaciente = documentoPaciente;
         this.odontologoId = odontologoId;
         this.nombreOdontologo = nombreOdontologo;
@@ -32,11 +35,12 @@ public class TurnoDto {
         this.whatWasDone = whatWasDone;
     }
 
-    public TurnoDto(LocalDate fecha, LocalTime hora, Long pacienteId, String nombrePaciente, String documentoPaciente, Long odontologoId, String nombreOdontologo, String reasonForTurn, String whatWasDone) {
+    public TurnoDto(LocalDate fecha, LocalTime hora, Long pacienteId, String nombrePaciente, String apellidoPaciente, String documentoPaciente, Long odontologoId, String nombreOdontologo, String reasonForTurn, String whatWasDone) {
         this.fecha = fecha;
         this.hora = hora;
         this.pacienteId = pacienteId;
         this.nombrePaciente = nombrePaciente;
+        this.apellidoPaciente = apellidoPaciente;
         this.documentoPaciente = documentoPaciente;
         this.odontologoId = odontologoId;
         this.nombreOdontologo = nombreOdontologo;
@@ -68,6 +72,14 @@ public class TurnoDto {
 
     public void setHora(LocalTime hora) {
         this.hora = hora;
+    }
+
+    public String getApellidoPaciente() {
+        return apellidoPaciente;
+    }
+
+    public void setApellidoPaciente(String apellidoPaciente) {
+        this.apellidoPaciente = apellidoPaciente;
     }
 
     public Long getPacienteId() {
@@ -132,6 +144,7 @@ public class TurnoDto {
                 ", hora=" + hora +
                 ", pacienteId=" + pacienteId +
                 ", nombrePaciente='" + nombrePaciente + '\'' +
+                ", apellidoPaciente='" + apellidoPaciente + '\'' +
                 ", documentoPaciente='" + documentoPaciente + '\'' +
                 ", odontologoId=" + odontologoId +
                 ", nombreOdontologo='" + nombreOdontologo + '\'' +

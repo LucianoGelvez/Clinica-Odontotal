@@ -81,7 +81,6 @@ public class Odontologo extends Usuario{
         return "Odontologo{" +
                 "matricula='" + matricula + '\'' +
                 ", especialidad=" + especialidad +
-                ", turnos=" + turnos +
                 '}';
     }
 }
