@@ -1,8 +1,9 @@
 .navbar{  
-    width: 100%;
+    width: 90%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     flex-direction: row;
+    margin: auto;
 
     
     
@@ -11,26 +12,69 @@
         margin: 0;
     }
     .navbar_container {
-        width: 60%;
+        width: 50%;
         margin: 0;
-    .navbar_container_collapse{
+    .navbar_container_collapse.collapse{
         justify-content: flex-end;
-        width: 90%;
+        width: 100%;
+        margin: 0;
+        
+        
+
+        .me-auto.navbar_container_collapse_nav.navbar-nav{
+            
+            // display: flex;
+            justify-content: center;
+            // background-color: red;
+            text-align: center;
+            
+
+            div{
+                .navbar_container_collapse_nav-navDropdown.nav-item.dropdown{
+                    // background-color: red;
+                    height: 100%;
+                    align-items: center;
+                    display: flex;
+                    justify-content: center;
+                    margin-left: 5px;
+                    
+                }
+            }
+            .navbar_container_collapse_nav-navDropdown.nav-link{
+                margin: 0;
+                display: flex;
+                text-align: center;
+                width: 120px;
+                align-items: center;
+                justify-content: center;
+                
+            }
+        }
+        
+
+       
+
             .navbar_container_collapse_nav{
                 display: flex;
                 width: 90vw;
                 justify-content: flex-end;
 
+               
+                
+
                 
                 .navbar_container_collapse_nav-navDropdown{
                     margin-left: 20px;
+                    width: 100%;
 
                         .dropdown-menu{
                             width:100px;
-                            left: -50px;
+                            left: -80px;
                             top: 70px;
                             border-radius: 0;
                             border: none;
+                            background-color: grey;
+                            
                             
                             
                         }
@@ -41,16 +85,23 @@
     
     }}
 @media screen and (max-width: 480px) {
-        .navbar{  
+        .navbar.large.navbar.navbar-expand-lg.navbar-light{
+            // display: flex;
+            width: 100%;
+            flex-direction: row;
+            justify-content: space-around;
+            
             .navbar_logo{
-                position: absolute;
-                left: 0;
-                top: 12px;
-                right: 0px;
-                width: 170px;
+                width: 180px;
             }
             .navbar_container {
-                margin-top: 7%;
+                
+              
+                
+                
+                .contain{
+                    width: 10%;
+                }
             .navbar_container_collapse{
                 justify-content: center;
                 width: 90%;

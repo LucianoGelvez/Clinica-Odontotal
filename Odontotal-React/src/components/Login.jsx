@@ -96,7 +96,7 @@ const Login = () => {
 
   return (
     <div className='div-login'> 
-      {window.location.pathname === "/IniciarSesion" && <NavbarPatient/>}
+      {/* {window.location.pathname === "/IniciarSesion" && <NavbarPatient/>} */}
       <div className="login">
         <form onSubmit={handleSubmit}>
           <img src={Logo} alt="" />

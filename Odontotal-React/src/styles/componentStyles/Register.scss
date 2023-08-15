@@ -15,7 +15,7 @@ align-items: center;
       display: flex;
       flex-direction: column;
       align-items: center;
-      width: 50%;
+      width: 60%;
       margin: 3% auto;
       padding: 20px;
       border: 1px solid #ccc;
@@ -35,6 +35,9 @@ align-items: center;
         font-size: 1.5rem;
         font-weight: 500;
         color: #333;
+      }
+      p{
+        text-align: center;
       }
       .form-grid{
         display: grid;
@@ -106,4 +109,39 @@ align-items: center;
       }
     }
   }
+
+  @media (max-width:480px) {
+    
+      .login{
+        form{
+          width: 90%;
+          margin: 5% auto;
+          .form-grid{
+            display: flex;
+            flex-direction: column;
+        }
+      }
+    }
+  }
+    
+    @media (max-width:767px) and (min-width:481px) {
+      
+        .login{
+          form{
+            width: 90%;
+            margin: 3% auto;
+          }
+        }
+      }
+      
   
+      @media (max-width:1024px) and (min-width:768px) {
+       
+          .login{
+            form{
+              width: 80%;
+            }
+          }
+        }
+        
+      

@@ -2,18 +2,21 @@
     width: 80%;
     display: flex;
     justify-content: space-between;
-    margin: -30px auto 20px;
+    margin: -49px auto 0px;
     clip-path: polygon(0 0,50% 50px,100% 0,100% 100%,0 100%);
-    background: linear-gradient(to bottom, #04b2d97e, #f1f1f1);
     color: black;
     gap: 10px;
-    // border: 1px solid #00e0c8;
     padding: 50px;
+    background: linear-gradient(to bottom,#00e0ca4d, #f1f1f1) ;
+    box-shadow: 1px 1px 60px 1px #80808028 ;
+    // border-radius: 20px 20px 0 0;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.007);
+     box-shadow: 0px 0px 30px 0px #00000081;
     .information-container_aboutus{
-         
-         color: black;
-         width: 80%;
-         
+
+        color: black;
+        width: 80%;
+
         .map{
             width: 100% ;
             height:80%; 

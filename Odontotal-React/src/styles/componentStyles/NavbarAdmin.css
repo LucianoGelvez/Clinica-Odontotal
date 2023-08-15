@@ -16,13 +16,6 @@
 }
 
 @media screen and (max-width: 480px) {
-  .navbar .navbar_logo {
-    position: absolute;
-    left: 0;
-    top: 12px;
-    right: 0px;
-    width: 170px;
-  }
   .navbar .navbar_container {
     margin-top: 7%;
   }
