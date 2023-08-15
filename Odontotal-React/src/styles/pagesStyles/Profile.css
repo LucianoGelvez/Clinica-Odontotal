@@ -1,0 +1,718 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Ubuntu&display=swap");
+.general {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  align-self: center;
+}
+.general .general_info {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  align-items: center;
+  align-content: center;
+  align-self: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 16px;
+}
+.general .general_info h1 {
+  font-size: 3.5vh;
+}
+.general .general_info h2 {
+  font-size: 2.5vh;
+}
+.general .general_imagen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+}
+.general .general_imagen .profile_image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  top: 1vh;
+}
+.general .general_imagen .profile_image p {
+  text-align: center;
+}
+.general .general_imagen .profile_image button {
+  border: none;
+  background-color: #00abf5;
+  color: white;
+  font-size: 15px;
+  border-radius: 20px;
+  margin: 5px;
+  padding: 5px 10px;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  cursor: pointer;
+  box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.5);
+}
+.general .general_imagen .profile_image .dispel {
+  pointer-events: none;
+  background-color: rgba(0, 86, 108, 0.279);
+}
+.general .general_imagen .profile_image img {
+  width: 18vh;
+  height: 18vh;
+  border-radius: 200px;
+  box-shadow: 2px 10px 10px rgba(0, 0, 0, 0.5);
+}
+.general .general_imagen .profile_change_pic {
+  position: fixed !important;
+  left: 50%;
+  transform: translate(-50%);
+  background-color: #fbfbfb;
+  width: 30vw;
+  z-index: 500;
+  height: 50vh;
+  border-radius: 10px;
+  margin-right: 0 !important;
+  top: 60px;
+  box-shadow: 2px 10px 10px rgba(0, 0, 0, 0.5);
+}
+.general .general_imagen .profile_change_pic div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 100%;
+  border: 1 solid black;
+}
+.general .general_imagen .profile_change_pic div .file_image {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+.general .general_imagen .profile_change_pic div article {
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+}
+.general .general_imagen .profile_change_pic div article .profile_change_pic_delete {
+  background-color: #b20000;
+}
+.general .general_imagen .profile_change_pic div article .profile_change_pic_delete:hover {
+  background-color: #ff0000;
+}
+.general .general_imagen .profile_change_pic div article button {
+  border: none;
+  cursor: pointer;
+  width: 40%;
+  height: 5vh;
+  border-radius: 10px;
+  background-color: #3e8e41;
+  color: white;
+  font-size: 1.2vh;
+}
+.general .general_imagen .profile_change_pic div article button:hover {
+  background-color: #5ed962;
+}
+.general .general_imagen .profile_change_pic div img {
+  width: 12vw;
+  border-radius: 200px;
+  height: 12vw;
+}
+.general .general_imagen .profile__content {
+  filter: blur(4px);
+  pointer-events: none;
+}
+.general .general_imagen .loading {
+  color: #818181;
+  background-color: #dcdcdc;
+  border-radius: 0.8vw;
+  width: 13vw;
+  height: 6vh;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  padding-left: 1em;
+  position: relative;
+  top: 7vh;
+}
+.general .general_imagen .loading::before,
+.general .general_imagen .loading::after {
+  content: "";
+  position: absolute;
+  left: 5vw;
+  top: 40%;
+  transform: translate(0, -50%);
+  width: 0.5em;
+  height: 0.5em;
+  border-radius: 50%;
+  background-color: #818181;
+  animation: loadingAnimation 1s infinite;
+}
+.general .general_imagen .loading::before {
+  left: calc(70% - 1em);
+  animation-delay: 0s;
+}
+.general .general_imagen .loading::after {
+  left: calc(70% + 0.5em);
+  animation-delay: 0.2s;
+}
+@keyframes loadingAnimation {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+.general .general_imagen .profile_sure_to_delete {
+  position: absolute;
+  background-color: rgb(207, 202, 202);
+  width: 30vw;
+  height: 25vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 0.5vw;
+  top: 50vh;
+  font-size: 1.7vw;
+}
+.general .general_imagen .profile_sure_to_delete button {
+  border: none;
+  background-color: #ff4545;
+  font-size: 1.3vw;
+  color: #ffffff;
+  cursor: pointer;
+  height: 7vh;
+  border-radius: 0.4vw;
+  width: 45%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.general .general_imagen .profile__changes_succes {
+  color: #155724;
+  background-color: #d4edda;
+  height: 6vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5vw;
+  width: 70vw;
+  font-size: 1.5vw;
+  position: relative;
+  top: 7vh;
+  margin: 0;
+  left: 1vw;
+}
+.general .general_imagen .profile__title {
+  width: 6em;
+  height: 5vh;
+  font-size: 2vw;
+}
+.general .general_imagen .profile_from_group {
+  display: flex;
+  justify-content: space-between;
+  width: 50vw;
+}
+.general .general_imagen .profile_from_group .profile__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 40vh;
+  width: 20vw;
+}
+.general .general_imagen .profile_from_group .profile__form .profile__label {
+  display: block;
+  position: relative;
+  left: 0.8vw;
+  top: 2.5vh;
+  font-size: 1.5vw;
+  margin: 0;
+}
+.general .general_imagen .profile_from_group .profile__form .profile__input {
+  margin-bottom: 1rem;
+  border: solid;
+  border-width: 0.05vw;
+  width: 20vw;
+  margin: 0;
+  padding-left: 1vw;
+  font-size: 1.5vw;
+  height: 5vh;
+}
+.general .general_imagen .profile_change_buttons {
+  width: 30vw;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  left: 1vw;
+  top: 10vh;
+  margin: 0;
+}
+.general .general_imagen .profile_change_buttons .profile__button--delete {
+  border: none;
+  background-color: #ff4545;
+  font-size: 1.3vw;
+  color: #ffffff;
+  cursor: pointer;
+  height: 7vh;
+  border-radius: 0.4vw;
+  width: 45%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.general .general_imagen .profile_change_buttons .profile__button--save {
+  border: none;
+  background-color: green;
+  font-size: 1.3vw;
+  color: #ffffff;
+  cursor: pointer;
+  height: 7vh;
+  border-radius: 0.4vw;
+  width: 45%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.general .general_imagen .profile__label__email {
+  position: relative;
+  top: 2vh;
+  font-size: 1.5vw;
+}
+.general .general_imagen .profile_email {
+  width: 50vw;
+  position: relative;
+  top: 5vh;
+  margin: 0 !important;
+  width: 100%;
+  border: solid;
+  border-width: 0.05vw;
+  padding-left: 1vw;
+  font-size: 1.5vw;
+  height: 5vh;
+}
+.general form {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.general form table {
+  width: 40%;
+  border-collapse: collapse;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  align-self: center;
+  margin: 15px;
+}
+.general form table thead {
+  width: 40vw;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  align-self: center;
+}
+.general form table thead h4 {
+  margin-top: 20px;
+}
+.general form table thead .complet {
+  display: none;
+}
+.general form table thead th, .general form table thead td {
+  width: 65vw;
+  text-align: left;
+}
+.general form table thead .especial {
+  display: flex;
+}
+.general form table thead .nombre {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  text-align: center;
+  height: 100%;
+  width: 85vw;
+}
+.general form table th {
+  font-weight: bold;
+}
+.general form table td {
+  font-weight: normal;
+}
+.general form table button {
+  margin: 5px;
+  padding: 5px 10px;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.general form table button:hover {
+  background-color: #00abf5;
+}
+.general form table .edit {
+  background-color: #00abf5;
+}
+.general form table .edit:hover {
+  background-color: #00356e;
+}
+.general form table .dispel {
+  pointer-events: none;
+  background-color: rgba(0, 86, 108, 0.279);
+}
+.general form table .send {
+  background-color: #3e8e41;
+}
+.general form table .send:hover {
+  background-color: #5ed962;
+}
+.general form table .cancel {
+  background-color: #b20000;
+}
+.general form table .cancel:hover {
+  background-color: #ff0000;
+}
+.general form table input {
+  display: flex;
+  width: 12vw;
+  font-weight: bold;
+}
+.general form table input[type=text], .general form table input[type=date], .general form table select {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+}
+.general form table input[type=text]:focus, .general form table input[type=date]:focus, .general form table select:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+@media screen and (max-width: 650px) {
+  .general .general_imagen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    align-content: center;
+  }
+  .general .general_imagen .profile_image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    position: relative;
+    top: 1vh;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+  }
+  .general .general_imagen .profile_image img {
+    width: 18vh;
+    border-radius: 200px;
+    height: 18vh;
+    box-shadow: 2px 10px 10px rgba(0, 0, 0, 0.5);
+  }
+  .general .general_imagen .profile_image button {
+    border: none;
+    width: 20vw;
+    height: 3vh;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-items: center;
+    padding: 15px;
+    font-size: 10px;
+  }
+  .general .general_imagen .profile_change_pic {
+    transform: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    align-self: center;
+    z-index: 500;
+    height: 45vh;
+    border-radius: 10px;
+    margin-right: 0;
+    width: 75vw;
+    left: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    margin: 10vh 12.5vw 0 12.5vw;
+  }
+  .general .general_imagen .profile_change_pic div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 100%;
+    width: 75vw;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+  }
+  .general .general_imagen .profile_change_pic div article {
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+  }
+  .general .general_imagen .profile_change_pic div article button {
+    border: none;
+    cursor: pointer;
+    width: 40%;
+    height: 6vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    text-align: center;
+  }
+  .general .general_imagen .profile_change_pic div img {
+    width: 20vh;
+    border-radius: 200px;
+    height: 20vh;
+  }
+  .general form {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .general form h4 {
+    margin: 20px;
+  }
+  .general form table {
+    width: 85%;
+    border-collapse: collapse;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    align-self: center;
+  }
+  .general form table thead {
+    width: 85vw;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    align-self: center;
+  }
+  .general form table thead th, .general form table thead td {
+    width: 85vw;
+    text-align: left;
+  }
+  .general form table thead .especial {
+    display: none;
+  }
+  .general form table thead .complet {
+    display: flex;
+  }
+  .general form table thead .nombre {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    text-align: center;
+    height: 100%;
+    width: 80vw;
+  }
+  .general form table th {
+    font-weight: bold;
+  }
+  .general form table td {
+    font-weight: normal;
+  }
+}
+@media screen and (max-width: 1200px) and (min-width: 651px) {
+  .general .general_imagen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    align-content: center;
+  }
+  .general .general_imagen .profile_image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    position: relative;
+    top: 1vh;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+  }
+  .general .general_imagen .profile_image img {
+    width: 18vh;
+    border-radius: 200px;
+    height: 18vh;
+    box-shadow: 2px 10px 10px rgba(0, 0, 0, 0.5);
+  }
+  .general .general_imagen .profile_image button {
+    border: none;
+    width: 15vw;
+    height: 3vh;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-items: center;
+    padding: 15px;
+    font-size: 1vw;
+  }
+  .general .general_imagen .profile_change_pic {
+    transform: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    align-self: center;
+    z-index: 500;
+    height: 45vh;
+    border-radius: 10px;
+    margin-right: 0;
+    width: 75vw;
+    left: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    margin: 10vh 12.5vw 0 12.5vw;
+  }
+  .general .general_imagen .profile_change_pic div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 100%;
+    width: 75vw;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+  }
+  .general .general_imagen .profile_change_pic div article {
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+  }
+  .general .general_imagen .profile_change_pic div article button {
+    border: none;
+    cursor: pointer;
+    width: 30%;
+    height: 6vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    text-align: center;
+  }
+  .general .general_imagen .profile_change_pic div img {
+    width: 20vh;
+    border-radius: 200px;
+    height: 20vh;
+  }
+  .general form {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .general form h4 {
+    margin: 20px;
+  }
+  .general form table {
+    width: 100%;
+    border-collapse: collapse;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    align-self: center;
+  }
+  .general form table thead {
+    width: 65%;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    align-self: center;
+  }
+  .general form table thead th, .general form table thead td {
+    width: 60vw;
+    text-align: left;
+  }
+  .general form table thead .complet {
+    display: none;
+  }
+  .general form table thead .especial {
+    display: flex;
+  }
+  .general form table thead .perro {
+    display: flex;
+  }
+  .general form table thead .nombre {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    text-align: center;
+    height: 100%;
+    width: 80vw;
+  }
+  .general form table th {
+    font-weight: bold;
+  }
+  .general form table td {
+    font-weight: normal;
+  }
+}/*# sourceMappingURL=Profile.css.map */

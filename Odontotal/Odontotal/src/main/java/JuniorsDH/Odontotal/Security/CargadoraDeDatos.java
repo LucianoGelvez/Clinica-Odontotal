@@ -47,7 +47,7 @@ public class CargadoraDeDatos implements ApplicationRunner {
 
         Domicilio domicilioAdmin = new Domicilio("Principal","32","Kennedy","Bogotá");
 
-        Usuario usuarioAInsertar = new Usuario("admin@gmail.com",passCifradaUser,"Juan","Pérez","12121221", LocalDate.of(2000,1,1),Genero.Masculino,123123,domicilioAdmin,rol);
+        Usuario usuarioAInsertar = new Usuario("admin@gmail.com",passCifradaUser,"Juan","Pérez","12121221", LocalDate.of(2000,1,1),Genero.Masculino,123123,"",domicilioAdmin,rol );
         Optional<Usuario> usuarioEncontrado = usuarioRepository.findByEmail(usuarioAInsertar.getEmail());
         if (usuarioEncontrado.isEmpty()){
             try {
@@ -70,13 +70,20 @@ public class CargadoraDeDatos implements ApplicationRunner {
 
 
         Domicilio domicilioOdontologo1 = new Domicilio("Jimenez","16","Suba","Bogotá");
-        Odontologo odontologoAInsertar = new Odontologo("odontologo@gmail.com",passCifradaUser,"María","Beltrán","47345586",LocalDate.of(2000,1,1),Genero.Femenino,21314443,domicilioOdontologo1,rolOdontologo,"ABC123",Especialidad.ESPECIALIDAD_ORTODONCISTA,"");
+
+        Odontologo odontologoAInsertar = new Odontologo("odontologo@gmail.com",passCifradaUser,"María","Beltrán","47345586",LocalDate.of(2000,1,1),Genero.Femenino,21314443,domicilioOdontologo1,rolOdontologo,"ABC123",Especialidad.ESPECIALIDAD_ORTODONCISTA,"https://imagenes-resplado.s3.us-east-2.amazonaws.com/categories/10.png");
         Optional<Odontologo> odontologoEncontrado= odontologoRepository.findByEmail(odontologoAInsertar.getEmail());
         if (odontologoEncontrado.isEmpty()){
+            System.out.println(domicilioOdontologo1);
+            System.out.println(domicilioOdontologo1);
+            System.out.println(domicilioOdontologo1);
             try {
                 odontologoRepository.save(odontologoAInsertar);
             } catch (Exception e) {
-                e.printStackTrace();
+                e.printStackTrace();         System.out.println(domicilioOdontologo1);
+                System.out.println(domicilioOdontologo1);
+                System.out.println(domicilioOdontologo1);
+
             }
         }
 
@@ -160,7 +167,7 @@ public class CargadoraDeDatos implements ApplicationRunner {
 
 
         Domicilio domicilioPaciente = new Domicilio("Corredor","14","Engativa","Cundinamarca");
-        Paciente pacienteAInsertar = new Paciente("paciente@gmail.com",passCifradaUser,"Fulano","Gates","4534553", LocalDate.of(1990,1,1),Genero.Masculino,123123,domicilioPaciente,rolPaciente,"Historial",true, LocalDate.of(2023,1,1));
+        Paciente pacienteAInsertar = new Paciente("paciente@gmail.com",passCifradaUser,"Fulano","Gates","4534553", LocalDate.of(1990,1,1),Genero.Masculino,123123,"",domicilioPaciente,rolPaciente,true, new Date(121, 1, 1));
         Optional<Paciente> pacienteEncontrado= pacienteRepository.findByEmail(pacienteAInsertar.getEmail());
         if (pacienteEncontrado.isEmpty()){
             System.out.println("CREAR PACIENTE");
@@ -172,7 +179,7 @@ public class CargadoraDeDatos implements ApplicationRunner {
         }
 
         Domicilio domicilioPaciente2 = new Domicilio("Avenida Central","45","Suba","Bogotá");
-        Paciente pacienteAInsertar2 = new Paciente("paciente2@gmail.com", passCifradaUser, "Ana", "López", "7345678", LocalDate.of(1985, 9, 12), Genero.Femenino, 32147890, domicilioPaciente2, rolPaciente, "Historial completo", true, LocalDate.of(2023,1,1));
+        Paciente pacienteAInsertar2 = new Paciente("paciente2@gmail.com", passCifradaUser, "Ana", "López", "7345678", LocalDate.of(1985, 9, 12), Genero.Femenino, 32147890, "",domicilioPaciente2, rolPaciente, true, new Date(121, 1, 1));
         Optional<Paciente> pacienteEncontrado2 = pacienteRepository.findByEmail(pacienteAInsertar2.getEmail());
         if (pacienteEncontrado2.isEmpty()) {
             System.out.println("CREAR PACIENTE");
@@ -184,7 +191,7 @@ public class CargadoraDeDatos implements ApplicationRunner {
         }
 
         Domicilio domicilioPaciente3 = new Domicilio("Calle 15","28","Chapinero","Bogotá");
-        Paciente pacienteAInsertar3 = new Paciente("paciente3@gmail.com", passCifradaUser, "Juan", "Martínez", "9876543", LocalDate.of(1998, 6, 25), Genero.Masculino, 31578562, domicilioPaciente3, rolPaciente, "Historial incompleto", true, LocalDate.of(2023, 3, 10));
+        Paciente pacienteAInsertar3 = new Paciente("paciente3@gmail.com", passCifradaUser, "Juan", "Martínez", "9876543", LocalDate.of(1998, 6, 25), Genero.Masculino, 31578562, "",domicilioPaciente3, rolPaciente, true, new Date(121, 1, 1));
         Optional<Paciente> pacienteEncontrado3 = pacienteRepository.findByEmail(pacienteAInsertar3.getEmail());
         if (pacienteEncontrado3.isEmpty()) {
             System.out.println("CREAR PACIENTE");

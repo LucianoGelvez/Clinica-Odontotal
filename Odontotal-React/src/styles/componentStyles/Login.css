@@ -1,15 +1,19 @@
+.div-login {
+  width: 100%;
+}
 .div-login .login {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 80vh;
   background: linear-gradient(to top, rgba(0, 224, 202, 0.7058823529), rgba(4, 178, 217, 0.7058823529));
+  width: 100%;
 }
 .div-login .login form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 40%;
+  width: 35%;
   margin: 7% auto;
   padding: 20px;
   border: 1px solid #ccc;
@@ -75,12 +79,12 @@
     width: 90%;
   }
 }
-@media (max-width: 767px) {
+@media (max-width: 767px) and (min-width: 481px) {
   .div-login .login form {
     width: 80%;
   }
 }
-@media (max-width: 1024px) {
+@media (max-width: 1024px) and (min-width: 768px) {
   .div-login .login form {
     width: 50%;
   }

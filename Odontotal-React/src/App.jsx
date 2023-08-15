@@ -4,13 +4,10 @@ import AddTurnAdmin from './pages/pages_admin/turns/AddTurnAdmin'
 import ListTurnsAdmin from './pages/pages_admin/turns/ListTurnsAdmin'
 import AddPatientAdmin from './pages/pages_admin/patient/AddPatientAdmin'
 import ListPatientAdmin from './pages/pages_admin/patient/ListPatientAdmin'
-import NavbarAdmin from './components/component_admin/NavbarAdmin'
 import AddDentistAdmin from './pages/pages_admin/dentist/AddDentistAdmin'
 import ListDentistAdmin from './pages/pages_admin/dentist/ListDentistAdmin'
 import { useContext, useState } from 'react'
-// import NavbarPatient from './components/component-patient/NavbarPatient'
 import Home from './pages/pages_patient/Home'
-import NavbarPatient from './components/componentPatient/NavbarPatient'
 import Service from './pages/pages_patient/Service'
 import AddAddDentalHygienists from './pages/pages_admin/dentalProsthetist/AddDentalProsthetist'
 import Footer from './components/component_admin/Footer'
@@ -22,9 +19,12 @@ import ListDentalProsthetist from './pages/pages_admin/dentalProsthetist/ListDen
 import Login from './components/Login'
 import Register from './components/Register'
 import { ContextGlobal } from './components/utils/global.context';
-// import Profile from './pages/Profile'
-// import NavbarDentist from './components/componentDentist/NavbarDentist'
-import { Navbar } from 'react-bootstrap'
+import Profile from './pages/Profile'
+// import { Navbar } from 'react-bootstrap'
+import Header from './components/Header'
+import TurnOdontology from './components/componentDentist/TurnOdontology'
+// import PatientHistory from './pages/pages_patient/PatientHistory'
+import ValidarUsuario from './pages/pages_patient/ValidarUsuario'
 
 
 function App() {
@@ -34,10 +34,7 @@ function App() {
 
   return (
     <div className="App" >
-    {user?.rol === "ADMIN" && <NavbarAdmin/>}
-    {/* {user?.rol === "ODONTOLOGY" && <NavbarDentist/>} */}
-    {(user?.rol === "PATIENT" || user?.rol === undefined) && <NavbarPatient/>}
-
+    <Header/>
     <Routes>
     <Route path={routes.Home} element={render ? <ListTurnsAdmin/> : <Home/>} />
     <Route path={routes.Service} element={<Service/>} />
@@ -55,7 +52,9 @@ function App() {
     <Route path={routes.ListDentalProsthetist} element={<ListDentalProsthetist/>}/>
     <Route path={routes.Login} element={<Login/>}/>
     <Route path={routes.Register} element={<Register/>}/>
-    {/* <Route path={routes.profile} element={<Profile></Profile>}/> */}
+    <Route path={routes.Profile} element={<Profile/>}/>
+    <Route path={routes.TurnOdontology} element={<TurnOdontology/>}/>
+    <Route path={routes.ValidateUser} element={<ValidarUsuario/>} />
     </Routes>
 
     <Footer/>

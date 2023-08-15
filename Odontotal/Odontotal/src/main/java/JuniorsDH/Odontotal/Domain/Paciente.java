@@ -1,6 +1,7 @@
 package JuniorsDH.Odontotal.Domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
@@ -14,37 +15,43 @@ import java.util.Set;
 public class Paciente extends Usuario {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO) // O GenerationType.SEQUENCE
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long Id;
 
-    @OneToMany(mappedBy = "paciente",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "paciente",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<Turno> turnos= new HashSet<>();
-
-    @Column
-    private String historial;
 
     @Column
     private Boolean validado;
 
     @Column
-    private LocalDate fechaCreacion;
+    @CreationTimestamp
+    private Date fechaCreacion;
 
-    public Paciente(Long id, String email, String password, String nombre, String apellido, String documento, LocalDate fechaNacimiento, Genero genero, int telefono, Domicilio domicilio, UsuarioRol rol, String historial, Boolean validado, LocalDate fechaCreacion) {
-        super(id, email, password, nombre, apellido, documento, fechaNacimiento, genero, telefono, domicilio, rol);
-        this.historial = historial;
+    public Paciente(Long id, String email, String password, String nombre, String apellido, String documento, LocalDate fechaNacimiento, Genero genero, int telefono, String urlImagen, Domicilio domicilio, UsuarioRol rol, Long id1, Boolean validado, Date fechaCreacion) {
+        super(id, email, password, nombre, apellido, documento, fechaNacimiento, genero, telefono, urlImagen, domicilio, rol);
         this.validado = validado;
         this.fechaCreacion = fechaCreacion;
     }
 
-    public Paciente(String email, String password, String nombre, String apellido, String documento, LocalDate fechaNacimiento, Genero genero, int telefono, Domicilio domicilio, UsuarioRol rol, String historial, Boolean validado, LocalDate fechaCreacion) {
-        super(email, password, nombre, apellido, documento, fechaNacimiento, genero, telefono, domicilio, rol);
-        this.historial = historial;
+    public Paciente(String email, String password, String nombre, String apellido, String documento, LocalDate fechaNacimiento, Genero genero, int telefono, String urlImagen, Domicilio domicilio, UsuarioRol rol, Boolean validado, Date fechaCreacion) {
+        super(email, password, nombre, apellido, documento, fechaNacimiento, genero, telefono, urlImagen, domicilio, rol);
         this.validado = validado;
         this.fechaCreacion = fechaCreacion;
     }
 
     public Paciente() {
+    }
+
+    @Override
+    public Long getId() {
+        return Id;
+    }
+
+    @Override
+    public void setId(Long id) {
+        Id = id;
     }
 
     public Set<Turno> getTurnos() {
@@ -55,14 +62,6 @@ public class Paciente extends Usuario {
         this.turnos = turnos;
     }
 
-    public String getHistorial() {
-        return historial;
-    }
-
-    public void setHistorial(String historial) {
-        this.historial = historial;
-    }
-
     public Boolean getValidado() {
         return validado;
     }
@@ -71,19 +70,17 @@ public class Paciente extends Usuario {
         this.validado = validado;
     }
 
-    public LocalDate getFechaCreacion() {
+    public Date getFechaCreacion() {
         return fechaCreacion;
     }
 
-    public void setFechaCreacion(LocalDate fechaCreacion) {
+    public void setFechaCreacion(Date fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
     }
 
     @Override
     public String toString() {
         return "Paciente{" +
-                "turnos=" + turnos +
-                ", historial='" + historial + '\'' +
                 ", validado=" + validado +
                 ", fechaCreacion=" + fechaCreacion +
                 '}';

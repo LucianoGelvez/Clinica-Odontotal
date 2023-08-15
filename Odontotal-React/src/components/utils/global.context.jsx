@@ -4,15 +4,16 @@ import baseUrl from './baseUrl.json'
 export const ContextGlobal = createContext();
 export const ContextProvider = ({ children }) => {
 
-  const url_ListDentists = baseUrl.url + "/odontologos";
+  const url_ListDentists = baseUrl.url + "/odontologos/listAll";
   const url_ListPatients = baseUrl.url + "/pacientes";
   const url_ListDentalHygienists = baseUrl.url + "/protecistas";
   const url_ListTurn = baseUrl.url + "/turnos";
 
   const [jwt, setJwt] = useState(localStorage.getItem('jwt'));
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
+  const [formData, setFormData] = useState({})
 
-  const [showNavbarAdmin, setShowNavbarAdmin] = useState((user?.rol === "ADMIN" ? true : false))
+  const [showNavbarAdmin, setShowNavbarAdmin] = useState(((user?.rol === "ADMIN" || user?.rol === "ODONTOLOGY") ? true : false))
   useEffect(() => {
     if (user?.rol === "ADMIN") {
       setShowNavbarAdmin(true);
@@ -37,15 +38,16 @@ export const ContextProvider = ({ children }) => {
 
   useEffect(() => {
     const path = window.location.pathname;
-    if (path === "/ListaDeOdontologos" || path === "/NuestroEquipo") {
+    if (path === "/ListaDeOdontologos") {
       fetchData(url_ListDentists);
-    } else if (path === "/ListaDePacientes" || path === "/AgregarTurno" || path === "/ReservarTurno") {
+    } else if (path === "/ListaDePacientes" || path === "/AgregarTurno") {
       fetchData(url_ListPatients);
     } else if (path === "/ListaDeProtecistas" ) {
       fetchData(url_ListDentalHygienists);
-    } else if (path === "/ListaDeTurnos" || path === "/MisTurnos") {
-      fetchData(url_ListTurn);
     }
+    //  else if (path === "/ListaDeTurnos" || path === "/MisTurnos") {
+    //   fetchData(url_ListTurn);
+    // }
   }, []);
   
   useEffect(() => {
@@ -56,7 +58,7 @@ export const ContextProvider = ({ children }) => {
   
 
   return (
-    <ContextGlobal.Provider value={{information,showLogin, showRegister, setShowLogin, setShowRegister, showDentist,setShowDentist, user, setUser, jwt, setJwt,showNavbarAdmin, setShowNavbarAdmin}}>
+    <ContextGlobal.Provider value={{formData, setFormData , information ,showLogin, showRegister, setShowLogin, setShowRegister, showDentist,setShowDentist, user, setUser, jwt, setJwt,showNavbarAdmin, setShowNavbarAdmin}}>
       {children}
     </ContextGlobal.Provider>
   );

@@ -1,16 +1,18 @@
 .div-login{
+  width: 100%;
   .login {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 80vh;
     background: linear-gradient(to top, #00e0cab4, #04b2d9b4);
+    width: 100%;
     
     form {
       display: flex;
       flex-direction: column;
       align-items: center;
-      width: 40%;
+      width: 35%;
       margin: 7% auto;
       padding: 20px;
       border: 1px solid #ccc;
@@ -89,7 +91,7 @@
     }
   }
   }
-  @media (max-width:767px) {
+  @media (max-width:767px) and (min-width:481px) {
     .div-login{
       .login{
         form{
@@ -99,7 +101,7 @@
     }
     }
 
-    @media (max-width:1024px) {
+    @media (max-width:1024px) and (min-width:768px) {
       .div-login{
         .login{
           form{

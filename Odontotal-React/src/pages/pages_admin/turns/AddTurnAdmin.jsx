@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react'
-import NavbarAdmin from '../../../components/component_admin/NavbarAdmin'
 import '../../../styles/pagesStyles/AddTurnAdminStyle.css'
 import { ContextGlobal } from '../../../components/utils/global.context';
 import Login from '../../../components/Login';
@@ -119,12 +118,11 @@ const [dataResponse, setResponse] = useState({})
     
   };
   return (
-    
-    <div className='main-add-turn'>
-
-      { user?.rol === "ADMIN" &&
-      <div className='add-container'>
-      
+  
+    <div>
+      { user?.rol === "ADMIN" || user?.rol === "ODONTOLOGY" ? (
+      <>
+      <h3>Agregar Turno</h3>
         <form onSubmit={handleSubmit}>
         <h3>Agregar Turno</h3>
           <div className="form-group perro" >
@@ -201,8 +199,8 @@ const [dataResponse, setResponse] = useState({})
           </div>
           <button>Cargar</button>
         </form>
-      </div>
-      }
+      </>
+      ) : null} 
       </div>
   )
 }

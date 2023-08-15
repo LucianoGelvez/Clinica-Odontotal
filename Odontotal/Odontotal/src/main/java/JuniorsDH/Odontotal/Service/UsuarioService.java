@@ -8,6 +8,12 @@ import JuniorsDH.Odontotal.Exception.BadRequestException;
 import JuniorsDH.Odontotal.Exception.ResourceNotFoundException;
 import JuniorsDH.Odontotal.Repository.UsuarioRepository;
 import JuniorsDH.Odontotal.Repository.UsuarioRolRepository;
+import com.amazonaws.auth.AWSStaticCredentialsProvider;
+import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.AmazonS3ClientBuilder;
+import com.amazonaws.services.s3.model.ObjectMetadata;
+import com.amazonaws.services.s3.model.PutObjectRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,7 +22,10 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.apache.log4j.Logger;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -27,6 +36,10 @@ public class UsuarioService implements UserDetailsService {
 
     private UsuarioRepository usuarioRepository;
     private UsuarioRolRepository usuarioRolRepository;
+
+
+    @Autowired
+    private AmazonS3 s3Client;
 
     @Autowired
     public UsuarioService(UsuarioRepository usuarioRepository, UsuarioRolRepository usuarioRolRepository){
@@ -62,7 +75,12 @@ public class UsuarioService implements UserDetailsService {
         Usuario usuarioModificado;
         Optional<Usuario> usuarioaModificar= usuarioRepository.findById(usuarioDto.getId());
         if (usuarioaModificar.isPresent()){
+            if(usuarioDto.getPassword() == null)
+            {
+                usuarioDto.setPassword(usuarioaModificar.get().getPassword());
+            }
             usuarioModificado= usuarioRepository.save(usuarioDtoAUsuario(usuarioDto));
+
         }else {
             throw new ResourceNotFoundException("Error. No se encontró el usuario para actualizar");
         }
@@ -135,9 +153,11 @@ public class UsuarioService implements UserDetailsService {
         respuesta.setGenero(usuario.getGenero().name());
         respuesta.setTelefono(usuario.getTelefono());
         respuesta.setCalle(usuario.getDomicilio().getCalle());
+        respuesta.setNumero(usuario.getDomicilio().getNumero());
         respuesta.setLocalidad(usuario.getDomicilio().getLocalidad());
         respuesta.setProvincia(usuario.getDomicilio().getProvincia());
         respuesta.setRol(usuario.getRol().getRol());
+        respuesta.setUrlImagen(usuario.getUrlImagen());
         return  respuesta;
     }
 
@@ -156,6 +176,41 @@ public class UsuarioService implements UserDetailsService {
         respuesta.setDomicilio(domicilio);
         UsuarioRol rol = usuarioRolRepository.findByRol(usuarioDto.getRol()).get();
         respuesta.setRol(rol);
+        respuesta.setUrlImagen(usuarioDto.getUrlImagen());
         return  respuesta;
     }
+
+
+    public void uploadImageProfile(MultipartFile file, Long id) {
+        Usuario user = usuarioRepository.findById(id).get();
+        String bucketName = "odontotal-images";
+        String uniqueFilename = "profile/" + id + ".png";
+        String s3Url = "https://" + bucketName + ".s3." + ".amazonaws.com/" + uniqueFilename;
+
+        try {
+            byte[] bytes = file.getBytes();
+            ByteArrayInputStream inputStream = new ByteArrayInputStream(bytes);
+            ObjectMetadata metadata = new ObjectMetadata();
+            metadata.setContentLength(bytes.length);
+            metadata.setContentType("profile/png");
+
+            PutObjectRequest putObjectRequest = new PutObjectRequest(bucketName, uniqueFilename, inputStream, metadata);
+            s3Client.putObject(putObjectRequest);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        user.setUrlImagen(s3Url);
+        usuarioRepository.save(user);
+    }
+
+
+    public UsuarioDto deleteImage(Long id)
+    {
+        Usuario user = usuarioRepository.findById(id).get();
+        user.setUrlImagen(null);
+        return usuarioAUsuarioDto(usuarioRepository.save(user));
+    }
+
+
 }

@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react'
-import NavbarAdmin from '../../../components/component_admin/NavbarAdmin'
 import { ContextGlobal } from '../../../components/utils/global.context'
 // import '../../../styles/pagesStyles/ListDentalHygienists.css'
 import Form from './FormToUpdatePatient'
@@ -57,7 +56,6 @@ const ListPatientAdmin = () => {
 
   return (
     <div style={{display: "flex", flexDirection: "column"}}>
-      
       {user?.rol === "ADMIN" &&
       <>
       {edition ? (

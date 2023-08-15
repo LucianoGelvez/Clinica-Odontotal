@@ -47,6 +47,10 @@ public class ProtecistaService {
         Optional<Protecista> protecistaBuscado= protecistaRepository.findById(protecistaDto.getId());
         Protecista protecistaGuardado;
         if (protecistaBuscado.isPresent()){
+            if(protecistaDto.getPassword() == null)
+            {
+                protecistaDto.setPassword(protecistaBuscado.get().getPassword());
+            }
             protecistaGuardado=protecistaRepository.save(protecistaDtoAProtecista(protecistaDto));
         }else {
             throw new ResourceNotFoundException("Error. No se encontro el PROTECISTA, revisar su registro previo");
@@ -99,6 +103,7 @@ public class ProtecistaService {
         protecistaDto.setNombre(protecista.getNombre());
         protecistaDto.setApellido(protecista.getApellido());
         protecistaDto.setEspecialidadProtecista(protecista.getEspecialidadProtecista());
+        protecistaDto.setUrlImagen(protecista.getUrlImagen());
 
         return protecistaDto;
 
@@ -112,6 +117,7 @@ public class ProtecistaService {
         protecista.setNombre(protecistaDto.getNombre());
         protecista.setApellido(protecistaDto.getApellido());
         protecista.setEspecialidadProtecista(protecistaDto.getEspecialidadProtecista());
+        protecista.setUrlImagen(protecistaDto.getUrlImagen());
 
         return protecista;
     }

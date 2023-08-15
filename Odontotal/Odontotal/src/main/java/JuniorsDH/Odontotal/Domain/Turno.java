@@ -25,24 +25,50 @@ public class Turno {
     @Column
     private LocalTime hora;
 
-    public Turno(Long id, Paciente paciente, Odontologo odontologo, LocalDate fecha, LocalTime hora) {
+    @Column
+    private String reasonForTurn;
+
+    @Column
+    private String whatWasDone;
+
+    public Turno(Long id, Paciente paciente, Odontologo odontologo, LocalDate fecha, LocalTime hora, String reasonForTurn, String whatWasDone) {
         this.id = id;
         this.paciente = paciente;
         this.odontologo = odontologo;
         this.fecha = fecha;
         this.hora = hora;
+        this.reasonForTurn = reasonForTurn;
+        this.whatWasDone = whatWasDone;
     }
-    public Turno(Paciente paciente, Odontologo odontologo, LocalDate fecha, LocalTime hora) {
+    public Turno(Paciente paciente, Odontologo odontologo, LocalDate fecha, LocalTime hora, String reasonForTurn, String whatWasDone) {
         this.paciente = paciente;
         this.odontologo = odontologo;
         this.fecha = fecha;
         this.hora = hora;
+        this.reasonForTurn = reasonForTurn;
+        this.whatWasDone = whatWasDone;
     }
 
     public Turno() {
     }
 
     public Turno(Odontologo odontologo, Paciente paciente, LocalDate of) {
+    }
+
+    public String getReasonForTurn() {
+        return reasonForTurn;
+    }
+
+    public void setReasonForTurn(String reasonForTurn) {
+        this.reasonForTurn = reasonForTurn;
+    }
+
+    public String getWhatWasDone() {
+        return whatWasDone;
+    }
+
+    public void setWhatWasDone(String whatWasDone) {
+        this.whatWasDone = whatWasDone;
     }
 
     public LocalTime sumarHorarioMas30Minutos(){
