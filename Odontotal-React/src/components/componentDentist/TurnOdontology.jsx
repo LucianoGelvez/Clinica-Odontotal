@@ -38,29 +38,29 @@ const TurnOdontology = () => {
     setedition(item);
   };
     
-  const handleEliminar = (item) => {
+  // const handleEliminar = (item) => {
 
-    async function deleteTurn() {
+  //   async function deleteTurn() {
 
-      const url = baseUrl.url + "/turnos/" + item.id;
+  //     const url = baseUrl.url + "/turnos/" + item.id;
 
-      const setting = {
-        method: "DELETE",
-        headers: {
-          'Authorization': `Bearer ${jwt}`
-        }
-      };
-      try {
-        const response = await fetch(url, setting)
-        const data = await response.json();
-        setResponse(data)
-      } catch(error) {
-          console.log(error)
-      }
-    }
+  //     const setting = {
+  //       method: "DELETE",
+  //       headers: {
+  //         'Authorization': `Bearer ${jwt}`
+  //       }
+  //     };
+  //     try {
+  //       const response = await fetch(url, setting)
+  //       const data = await response.json();
+  //       setResponse(data)
+  //     } catch(error) {
+  //         console.log(error)
+  //     }
+  //   }
    
-    deleteTurn();
-  };
+  //   deleteTurn();
+  // };
 
   // const handleGuardar = (item) => {
   //   console.log(item)
@@ -83,7 +83,7 @@ const TurnOdontology = () => {
 
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
-     <ListTurns data={dataTurn} onEditar={handleEditar} onEliminar={handleEliminar}/>
+     <ListTurns data={dataTurn} onEditar={handleEditar} />
     </div>
   );
 }

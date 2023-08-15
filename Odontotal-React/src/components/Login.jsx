@@ -58,9 +58,13 @@ const Login = () => {
           confirmButtonText: 'Aceptar',
         }
       ).then(() => {
-        if(userData?.rol === "ADMIN" || userData.rol === "ODONTOLOGY"){
+        if(userData?.rol === "ADMIN"){
           window.location.href="http://localhost:5173/ListaDeTurnos"
-        }else{
+        }
+        if(userData.rol === "ODONTOLOGY"){
+          window.location.href="http://localhost:5173/TurnosDelOdontologo"
+        }
+        else{
           window.location.href="http://localhost:5173/"
         }
         
@@ -93,7 +97,6 @@ const Login = () => {
 
   return (
     <div className='div-login'> 
-      {/* {window.location.pathname === "/IniciarSesion" && <NavbarPatient/>} */}
       <div className="login">
         <form onSubmit={handleSubmit}>
           <img src={Logo} alt="" />
