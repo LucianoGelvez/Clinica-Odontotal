@@ -36,7 +36,11 @@
 }
 
 @media (min-width: 200px) and (max-width: 480px) {
+  .add-pros-container {
+    height: 100%;
+  }
   .add-pros-container form {
+    margin: 20px auto;
     width: 90%;
   }
 }
@@ -47,6 +51,7 @@
 }
 @media (min-width: 771px) and (max-width: 1100px) {
   .add-pros-container form {
-    width: 50%;
+    height: 70%;
+    width: 70%;
   }
 }/*# sourceMappingURL=AddDentalProsthe.css.map */

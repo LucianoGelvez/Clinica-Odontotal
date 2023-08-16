@@ -20,7 +20,6 @@ import Register from './components/Register'
 import Profile from './pages/Profile'
 import Header from './components/Header'
 import TurnOdontology from './components/componentDentist/TurnOdontology'
-// import PatientHistory from './pages/pages_patient/PatientHistory'
 import ValidarUsuario from './pages/pages_patient/ValidarUsuario'
 import PatientHistory from './pages/pages_admin/dentist/PatientHistory'
 

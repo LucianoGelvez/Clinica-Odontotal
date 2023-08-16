@@ -61,9 +61,9 @@ const AddDentalProsthetist = () => {
   };
     console.log(response)
   return (
-    <div>AddAddDentalHygienists
+    <div>
       {user?.rol === "ADMIN" &&
-      <>
+      <div className='add-pros-container'>
         
         <form onSubmit={handleSubmit}>
         <h3>Agregar Protecista</h3>
@@ -98,7 +98,7 @@ const AddDentalProsthetist = () => {
           </div>
           <button>Cargar</button>
         </form>
-      </>
+      </div>
       }
     </div>
   

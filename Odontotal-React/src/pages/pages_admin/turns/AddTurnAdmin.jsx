@@ -1,8 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import '../../../styles/pagesStyles/AddTurnAdminStyle.css'
 import { ContextGlobal } from '../../../components/utils/global.context';
-import Login from '../../../components/Login';
-import Register from '../../../components/Register';
 import baseUrl from '../../../components/utils/baseUrl.json'
 
 const AddTurnAdmin = () => {
@@ -119,13 +117,12 @@ const [dataResponse, setResponse] = useState({})
   };
   return (
   
-    <div>
+    <div className='main-add-turn'>
       { user?.rol === "ADMIN" || user?.rol === "ODONTOLOGY" ? (
-      <>
-      <h3>Agregar Turno</h3>
+      <div className='add-container'>
         <form onSubmit={handleSubmit}>
         <h3>Agregar Turno</h3>
-          <div className="form-group perro" >
+          <div className="form-group" >
             <label className="control-label" htmlFor="documento">Paciente:</label>
             <input type="text"className="form-control" id="documento" placeholder="Ingrese el documento"
             name="documento" value={formData.documento} onChange={handleInputChange} required/>
@@ -199,7 +196,7 @@ const [dataResponse, setResponse] = useState({})
           </div>
           <button>Cargar</button>
         </form>
-      </>
+      </div>
       ) : null} 
       </div>
   )

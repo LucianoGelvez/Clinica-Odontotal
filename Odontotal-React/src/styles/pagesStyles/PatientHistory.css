@@ -1,0 +1,63 @@
+.patient-history-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  height: 80vh;
+  background-color: #f1f1f1;
+  background: linear-gradient(to top, rgba(0, 224, 202, 0.7058823529), rgba(4, 178, 217, 0.7058823529));
+}
+.patient-history-container .encabezado-ph {
+  text-align: center;
+  text-shadow: 1px 1px 1px white;
+  border-top-left-radius: 1px solid black;
+  padding: 10px;
+  width: 70%;
+  margin: 40px auto;
+}
+.patient-history-container section {
+  width: 100%;
+}
+.patient-history-container section .patient-history-main {
+  margin: 0px auto 10px;
+  display: flex;
+  width: 70%;
+  background-color: rgba(255, 255, 255, 0.842);
+  border: 1px solid rgba(128, 128, 128, 0.13);
+  padding: 10px;
+  box-shadow: 1px 1px 15px grey;
+}
+.patient-history-container section .patient-history-main details {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 0;
+}
+.patient-history-container section .patient-history-main details summary {
+  display: flex;
+  justify-content: space-around;
+}
+.patient-history-container section .patient-history-main details summary h4 {
+  text-align: center;
+  font-size: 16px;
+}
+.patient-history-container section .patient-history-main details summary h4 span {
+  font-size: 18px;
+  font-weight: bolder;
+}
+.patient-history-container section .patient-history-main details .info-patientHistory {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.patient-history-container section .patient-history-main details .info-patientHistory p {
+  padding: 10px;
+  text-align: justify;
+  background-color: rgba(4, 178, 217, 0.2);
+  width: 100%;
+  margin: 0;
+  justify-content: space-around;
+  flex-direction: row;
+}
+.patient-history-container section .patient-history-main details .info-patientHistory p span {
+  font-weight: bolder;
+}/*# sourceMappingURL=PatientHistory.css.map */
