@@ -104,7 +104,7 @@ const AddPatientAdmin = () => {
   return (
     <div>    
       {user?.rol === "ADMIN" &&
-      <>
+      <div className='add-patient-container'>
       
         
         <form onSubmit={handleSubmit}>
@@ -182,7 +182,7 @@ const AddPatientAdmin = () => {
        
       
 
-      </>
+      </div>
       }
     </div>
       

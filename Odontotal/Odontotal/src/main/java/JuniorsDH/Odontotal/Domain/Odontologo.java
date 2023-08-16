@@ -22,7 +22,7 @@ public class Odontologo extends Usuario{
 
 
 
-    @OneToMany(mappedBy = "odontologo",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "odontologo",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<Turno> turnos= new HashSet<>();
 

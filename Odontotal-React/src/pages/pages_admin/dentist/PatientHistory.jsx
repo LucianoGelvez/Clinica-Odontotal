@@ -1,90 +1,72 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { ContextGlobal } from '../../components/utils/global.context'
-import baseUrl from '../../components/utils/baseUrl.json'
-// import Swal from 'sweetalert2';
-import ListTurns from './ListTurns';
+import baseUrl from '../../../components/utils/baseUrl.json'
+import { useParams } from 'react-router-dom';
+import { ContextGlobal } from '../../../components/utils/global.context';
+import '../../../styles/pagesStyles/PatientHistory.css'
 
-const PatientHistory = (idPaciente) => {
-  const { jwt, user } = useContext(ContextGlobal);
+const PatientHistory = () => {
 
-  const [dataTurn, setDataTurn] = useState([]);
-  const [response, setResponse] = useState([]);
+  const { id  } = useParams();
+  const { jwt } = useContext(ContextGlobal);
+  const [dataTurns, setDataTurns] = useState([])
 
-  useEffect(() => {
-    async function dataPersonalTurn() {
-      const urlList = baseUrl.url + `/turnos/turnoOdontologo/${user.id}`;
-      
-    const settings = {
-      method: 'GET',
-      headers: {
+useEffect(() => {
+  async function datePatient(){
+    const url = baseUrl.url + `/turnos/turnosPaciente/${id}`
+    const setting = {
+      method: "GET",
+      headers:{
         'Authorization': `Bearer ${jwt}`
-      }
-    };
-      try {
-        const response = await fetch(urlList, settings);
-        const data = await response.json();
-        setDataTurn(data);
-        console.log(data)
-      } catch (error) {
-
-        console.log(error);
-      }
+      } 
     }
+    try{
+      const response = await fetch(url, setting);
+      const data = await response.json();
+      setDataTurns(data)
 
-    dataPersonalTurn();
-  }, []);
-  
-  const handleEditar = (item) => {
-    setedition(item);
-  };
-    
-  const handleEliminar = (item) => {
-
-    async function deleteTurn() {
-
-      const url = baseUrl.url + "/turnos/" + item.id;
-
-      const setting = {
-        method: "DELETE",
-        headers: {
-          'Authorization': `Bearer ${jwt}`
-        }
-      };
-      try {
-        const response = await fetch(url, setting)
-        const data = await response.json();
-        setResponse(data)
-      } catch(error) {
-          console.log(error)
-      }
+    }catch(error){
+      console.log(error)
     }
-   
-    deleteTurn();
-  };
-
-  // const handleGuardar = (item) => {
-  //   console.log(item)
-  //   console.log(item.id)
-  //   if (edition) {
-  //     serData((prevState) =>
-  //       prevState.map((x) => (x.id === item.id ? item : x))
-       
-  //     );
-  //     console.log(data)
-  //     setedition(null);
-  //   } else {
-  //     serData((prevState) => [...prevState, { ...item, id: Date.now() }]);
-  //   }
-  // };
-
-  const handleCancelar = () => {
-    setedition(false)
   }
 
+  datePatient();
+
+},[])
+
+const dateOrder = dataTurns.sort((a, b) => {
+  const dateA = new Date(`${a.fecha} ${a.hora}`);
+  const dateB = new Date(`${b.fecha} ${b.hora}`);
+  return dateB - dateA;
+});
+
+
   return (
-    <div style={{ display: "flex", flexDirection: "column" }}>
-     <ListTurns data={dataTurn} onEditar={handleEditar} onEliminar={handleEliminar}/>
+  <div className='patient-history-container'>
+    <h2 className='encabezado-ph'>HISTORIAL PACIENTE</h2>
+    <section>
+  {dateOrder.map((item, index) => (
+    <div key={id} className={`patient-history-main ${index % 2 === 0 ? 'details-even' : 'details-odd'}`}>
+      
+    <details>
+      
+      <summary>
+        <h4><span>Fecha </span><br />{item.fecha}</h4>
+        <h4><span>Hora </span><br />{item.hora}</h4>
+        <h4><span>Nombre </span><br />{item.nombrePaciente + " " + item.apellidoPaciente}</h4>
+        <h4><span>Especialidad </span><br />{item.especialidad}</h4>
+        {console.log(item)}
+      </summary>
+      <div className='info-patientHistory'>
+        <p><span>Motivo de la visita</span><br /> {item.reasonForTurn}</p>
+        <p><span>Resultado de la visita</span><br /> {item.whatWasDone}</p>
+        
+        </div>
+    </details>
     </div>
+  ))}
+  </section>
+  </div>
+
   );
 }
 

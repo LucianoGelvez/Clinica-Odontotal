@@ -135,6 +135,10 @@ const FormToUpdateDentist =({ data, onGuardar, onCancelar, informacionCompleta, 
             <td>{item.matricula}</td>
             <td>{item.calle} {item.numero}, {item.localidad}, {item.provincia}</td>
             <td>
+            <td>
+              <button onClick={() => onEditar(item)}>Editar</button>
+              <button onClick={() => onEliminar(item)} className="btn-delete">Eliminar</button>
+            </td>
             </td>
           </tr>
         ))}

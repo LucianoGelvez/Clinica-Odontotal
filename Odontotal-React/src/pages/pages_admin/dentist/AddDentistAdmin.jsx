@@ -1,6 +1,4 @@
 import React, { useContext, useState } from 'react';
-import Login from '../../../components/Login';
-import Register from '../../../components/Register';
 import { ContextGlobal } from '../../../components/utils/global.context';
 import baseUrl from '../../../components/utils/baseUrl.json'
 import '../../../styles/pagesStyles/AddDentistAdmin.css'

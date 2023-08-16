@@ -1,6 +1,5 @@
 package JuniorsDH.Odontotal.Dto;
 
-import javax.persistence.Column;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -19,12 +18,12 @@ public class TurnoDto {
     private String apellidoOdontologo;
     private String especialidad;
 
-    private String reasonForTurn;
+    private String motivo;
 
-    private String whatWasDone;
+    private String trabajoRealizado;
 
 
-    public TurnoDto(Long id, LocalDate fecha, LocalTime hora, Long pacienteId, String nombrePaciente, String apellidoPaciente, String documentoPaciente, Long odontologoId, String nombreOdontologo, String apellidoOdontologo, String especialidad, String reasonForTurn, String whatWasDone) {
+    public TurnoDto(Long id, LocalDate fecha, LocalTime hora, Long pacienteId, String nombrePaciente, String apellidoPaciente, String documentoPaciente, Long odontologoId, String nombreOdontologo, String apellidoOdontologo, String especialidad, String motivo, String trabajoRealizado) {
         this.id = id;
         this.fecha = fecha;
         this.hora = hora;
@@ -36,11 +35,11 @@ public class TurnoDto {
         this.nombreOdontologo = nombreOdontologo;
         this.apellidoOdontologo = apellidoOdontologo;
         this.especialidad = especialidad;
-        this.reasonForTurn = reasonForTurn;
-        this.whatWasDone = whatWasDone;
+        this.motivo = motivo;
+        this.trabajoRealizado = trabajoRealizado;
     }
 
-    public TurnoDto(LocalDate fecha, LocalTime hora, Long pacienteId, String nombrePaciente, String apellidoPaciente, String documentoPaciente, Long odontologoId, String nombreOdontologo, String apellidoOdontologo, String especialidad, String reasonForTurn, String whatWasDone) {
+    public TurnoDto(LocalDate fecha, LocalTime hora, Long pacienteId, String nombrePaciente, String apellidoPaciente, String documentoPaciente, Long odontologoId, String nombreOdontologo, String apellidoOdontologo, String especialidad, String motivo, String trabajoRealizado) {
         this.fecha = fecha;
         this.hora = hora;
         this.pacienteId = pacienteId;
@@ -51,8 +50,8 @@ public class TurnoDto {
         this.nombreOdontologo = nombreOdontologo;
         this.apellidoOdontologo = apellidoOdontologo;
         this.especialidad = especialidad;
-        this.reasonForTurn = reasonForTurn;
-        this.whatWasDone = whatWasDone;
+        this.motivo = motivo;
+        this.trabajoRealizado = trabajoRealizado;
     }
 
     public TurnoDto() {
@@ -129,20 +128,20 @@ public class TurnoDto {
     public void setNombreOdontologo(String nombreOdontologo) {
         this.nombreOdontologo = nombreOdontologo;
     }
-    public String getReasonForTurn() {
-        return reasonForTurn;
+    public String getMotivo() {
+        return motivo;
     }
 
-    public void setReasonForTurn(String reasonForTurn) {
-        this.reasonForTurn = reasonForTurn;
+    public void setMotivo(String motivo) {
+        this.motivo = motivo;
     }
 
-    public String getWhatWasDone() {
-        return whatWasDone;
+    public String getTrabajoRealizado() {
+        return trabajoRealizado;
     }
 
-    public void setWhatWasDone(String whatWasDone) {
-        this.whatWasDone = whatWasDone;
+    public void setTrabajoRealizado(String trabajoRealizado) {
+        this.trabajoRealizado = trabajoRealizado;
     }
 
     public String getApellidoOdontologo() {
@@ -172,8 +171,8 @@ public class TurnoDto {
                 ", documentoPaciente='" + documentoPaciente + '\'' +
                 ", odontologoId=" + odontologoId +
                 ", nombreOdontologo='" + nombreOdontologo + '\'' +
-                ", reasonForTurn='" + reasonForTurn + '\'' +
-                ", whatWasDone='" + whatWasDone + '\'' +
+                ", motivo='" + motivo + '\'' +
+                ", trabajoRealizado='" + trabajoRealizado + '\'' +
                 '}';
     }
 }

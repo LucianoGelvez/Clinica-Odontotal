@@ -18,7 +18,7 @@ public class Paciente extends Usuario {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long Id;
 
-    @OneToMany(mappedBy = "paciente",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "paciente",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<Turno> turnos= new HashSet<>();
 
