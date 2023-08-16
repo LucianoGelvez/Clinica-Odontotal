@@ -19,5 +19,6 @@ export const routes = {
     Profile: '/Perfil',
     PatientHistory: '/HistorialDelPaciente',
     TurnOdontology: '/TurnosDelOdontologo',
-    ValidateUser: "/usuario/validar/:id"
+    ValidateUser: "/usuario/validar/:id",
+    PatientHistory: "TurnosDelOdontologo/HistorialDelPaciente/:id"
 }

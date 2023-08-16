@@ -3,6 +3,7 @@ import { ContextGlobal } from '../../components/utils/global.context'
 import baseUrl from '../../components/utils/baseUrl.json'
 // import Swal from 'sweetalert2';
 import ListTurns from './ListTurns';
+import '../../styles/componentStyles/TurnOdontology.css'
 
 const TurnOdontology = () => {
   const { jwt, user } = useContext(ContextGlobal);
@@ -38,29 +39,29 @@ const TurnOdontology = () => {
     setedition(item);
   };
     
-  const handleEliminar = (item) => {
+  // const handleEliminar = (item) => {
 
-    async function deleteTurn() {
+  //   async function deleteTurn() {
 
-      const url = baseUrl.url + "/turnos/" + item.id;
+  //     const url = baseUrl.url + "/turnos/" + item.id;
 
-      const setting = {
-        method: "DELETE",
-        headers: {
-          'Authorization': `Bearer ${jwt}`
-        }
-      };
-      try {
-        const response = await fetch(url, setting)
-        const data = await response.json();
-        setResponse(data)
-      } catch(error) {
-          console.log(error)
-      }
-    }
+  //     const setting = {
+  //       method: "DELETE",
+  //       headers: {
+  //         'Authorization': `Bearer ${jwt}`
+  //       }
+  //     };
+  //     try {
+  //       const response = await fetch(url, setting)
+  //       const data = await response.json();
+  //       setResponse(data)
+  //     } catch(error) {
+  //         console.log(error)
+  //     }
+  //   }
    
-    deleteTurn();
-  };
+  //   deleteTurn();
+  // };
 
   // const handleGuardar = (item) => {
   //   console.log(item)
@@ -82,8 +83,8 @@ const TurnOdontology = () => {
   }
 
   return (
-    <div style={{ display: "flex", flexDirection: "column" }}>
-     <ListTurns data={dataTurn} onEditar={handleEditar} onEliminar={handleEliminar}/>
+    <div className='turn-container' style={{ display: "flex", flexDirection: "column" }}>
+     <ListTurns data={dataTurn} onEditar={handleEditar} />
     </div>
   );
 }

@@ -1,13 +1,13 @@
 .information-container{
-    width: 80%;
+    width: 100%;
     display: flex;
     justify-content: space-between;
-    margin: -49px auto 0px;
+    margin: 5px auto 0px;
     clip-path: polygon(0 0,50% 50px,100% 0,100% 100%,0 100%);
     color: black;
     gap: 10px;
     padding: 50px;
-    background: linear-gradient(to bottom,#00e0ca4d, #f1f1f1) ;
+    // background: linear-gradient(to bottom,#00e0ca4d, #f1f1f1) ;
     box-shadow: 1px 1px 60px 1px #80808028 ;
     // border-radius: 20px 20px 0 0;
     border-bottom: 1px solid rgba(128, 128, 128, 0.007);
