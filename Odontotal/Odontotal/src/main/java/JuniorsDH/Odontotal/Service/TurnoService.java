@@ -2,9 +2,7 @@ package JuniorsDH.Odontotal.Service;
 
 import JuniorsDH.Odontotal.Domain.Odontologo;
 import JuniorsDH.Odontotal.Domain.Paciente;
-import JuniorsDH.Odontotal.Domain.Protecista;
 import JuniorsDH.Odontotal.Domain.Turno;
-import JuniorsDH.Odontotal.Dto.PacienteDto;
 import JuniorsDH.Odontotal.Dto.TurnoDto;
 import JuniorsDH.Odontotal.Exception.BadRequestException;
 import JuniorsDH.Odontotal.Exception.DataInvalidException;
@@ -14,7 +12,6 @@ import JuniorsDH.Odontotal.Repository.PacienteRepository;
 import JuniorsDH.Odontotal.Repository.TurnoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -136,8 +133,8 @@ public class TurnoService {
         respuesta.setEspecialidad(turno.getOdontologo().getEspecialidad().name());
         respuesta.setFecha(turno.getFecha());
         respuesta.setHora(turno.getHora());
-        respuesta.setReasonForTurn(turno.getReasonForTurn());
-        respuesta.setWhatWasDone(turno.getWhatWasDone());
+        respuesta.setMotivo(turno.getMotivo());
+        respuesta.setTrabajoRealizado(turno.getRealizado());
 
         return respuesta;
     }
@@ -157,8 +154,8 @@ public class TurnoService {
         respuesta.setId(turnodto.getId());
         respuesta.setOdontologo(odontologo);
         respuesta.setPaciente(paciente);
-        respuesta.setReasonForTurn(turnodto.getReasonForTurn());
-        respuesta.setWhatWasDone(turnodto.getWhatWasDone());
+        respuesta.setMotivo(turnodto.getMotivo());
+        respuesta.setRealizado(turnodto.getTrabajoRealizado());
         return respuesta;
     }
 

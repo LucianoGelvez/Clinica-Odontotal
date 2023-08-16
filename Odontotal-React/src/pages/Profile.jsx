@@ -12,9 +12,6 @@ const Profile = () => {
     const local = JSON.parse(localStorage.getItem('user'))
     const jwtLocal = localStorage.getItem('jwt')
 
-
-    // const [edition, setedition] = useState(null);
-
     const [id, setId] = useState(local.id);
     const [nombre, setNombre] = useState('');
     const [apellido, setApellido] = useState('');
@@ -56,7 +53,21 @@ const Profile = () => {
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const url = `http://localhost:8080/odontologos/${local?.id}`;
+          
+          let url;
+
+          switch(user.rol){
+            case "ODONTOLOGY" :
+            url =`http://localhost:8080/odontologos/${local?.id}`;
+            break;
+            case "PATIENT" :
+            url = `http://localhost:8080/pacientes/${local?.id}`;
+            break;
+            case "ADMIN" :
+            url =  `http://localhost:8080/usuarios/${local?.id}`
+            default:
+              console.log("Invalid role");  
+          }
     
           const response = await fetch(url, {
             method: "GET",
@@ -79,7 +90,6 @@ const Profile = () => {
           console.log(data);
           setData(data);
           localStorage.setItem('user', JSON.stringify(data));
-          // console.log(possibleCities)
         } catch (error) {
           console.log(error);
         }
@@ -125,11 +135,6 @@ const Profile = () => {
         document.removeEventListener('click', handleDocumentClick);
       };
     }, []);
-
-
-
-
-
 
     useEffect(() => {
       setNombre(dataPesonal.nombre || '');
@@ -217,8 +222,6 @@ const Profile = () => {
 
   const handleSaveChanges = () => {
     const formData = new FormData();
-    // const token = JSON.parse(localStorage.getItem("jwt"))
-    // const userId = user.id;
     formData.append('file', selectedImage);
     formData.append('id', local.id);
 
@@ -380,7 +383,7 @@ const Profile = () => {
             <form>
             {/* <h2>Actualizá tus datos para poder estar en contacto en caso de urgencia</h2> */}
             <table>
-            <thead>
+  <thead>
   <th id='nombre' className='especial'>Apellido</th>
   {!showApellido && (
     <>
@@ -399,8 +402,7 @@ const Profile = () => {
     </div>
   )}
 </thead>
-
-        <thead>
+  <thead>
   <th id='nombre' className='especial'>Nombre</th>
   {!showNombre ? (
     <>
@@ -473,7 +475,7 @@ const Profile = () => {
         </div>
         )}
         </thead>
-        <thead>
+        {user.rol == "ODONTOLOGY" && <thead>
         < th className='especial'>Matricula</th>
         {!showMatricula ? (<> < th className='complet'>Matricula</th>
           <td> {dataPesonal.matricula}</td>
@@ -485,7 +487,7 @@ const Profile = () => {
         <button className='cancel' onClick={()=> handleCancelar(setShowMatricula)}>Cancelar</button>
         <button className='send' onClick={handleSubmit}>Guardar</button>
         </div>)}
-        </thead>
+        </thead>}
         <thead>
         < th className='especial'>Telefono</th>
         {!showTelefono ? ( <> <th className='complet'>Telefono</th>
@@ -500,13 +502,14 @@ const Profile = () => {
         </div> 
         )}
         </thead>
+        {user?.rol == "ODONTOLOGY" && 
         <thead>
         < th className='especial'>Especialidad</th>
         {/* {!showEspecialidad && < th className='complet'>Especialidad</th>} */}
         {!showEspecialidad ? ( <> <td> {dataPesonal.especialidad}</td>
         <button className='edit' onClick={() => handleActivateButton(setShowEspecialidad)}>Editar</button>
         </>
-  ) : (
+       ) : (
         <div className='nombre'> 
         <label>
       <select name="especialidad" id="especialidad" value={especialidad} onChange={(e) => setEspecialidad(e.target.value)} required>
@@ -523,7 +526,7 @@ const Profile = () => {
         <button className='send' onClick={handleSubmit}>Guardar</button>
         </div>
         )}
-        </thead>
+        </thead>}
 
         <thead>
           <h4>Domicilio</h4>
