@@ -161,17 +161,15 @@ public class TurnoService {
 
 
     public List<TurnoDto> listarTurnoPaciente(Long id) throws ResourceNotFoundException {
-        List<TurnoDto> turnosEncontrados = listarTodosTurno();
-        List<TurnoDto> respuesta = new ArrayList<>();
-        if(turnosEncontrados.isEmpty()){
-            throw  new ResourceNotFoundException("El paciente no tiene historia registrado");
-        }
-        else {
-            for (TurnoDto turnoDTO : turnosEncontrados){
-                if (turnoDTO.getPacienteId() == id)
-                respuesta.add(turnoDTO);
+        List<Turno> turnosEncontrados = turnoRepository.findByPacienteId(id);
+        List<TurnoDto> respuesta= new ArrayList<>();
+        if (turnosEncontrados.isEmpty()){
+            throw new ResourceNotFoundException("El paciente no tiene historial registrado");
+        }else {
+            for (Turno turno : turnosEncontrados) {
+                respuesta.add(turnoATurnoDTO(turno));
             }
-            return respuesta;
+            return respuesta ;
         }
     }
 

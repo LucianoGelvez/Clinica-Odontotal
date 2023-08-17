@@ -26,7 +26,7 @@ const Header = () => {
     <Navbar expand="lg" className='navbar large'>
         {(user?.rol != "ODONTOLOGY" || user?.rol == "ADMIN") && <Link to={routes.Home}><img className='navbar_logo' src={Logo} alt="Logo"/></Link>}
          {user?.rol == "ODONTOLOGY" && <Link to={routes.TurnOdontology}><img className='navbar_logo' src={Logo} alt="Logo"/></Link>}
-         {user?.rol == "ADMIN" && <Link to={routes.ListTurnsAdmin}><img className='navbar_logo' src={Logo} alt="Logo"/></Link>}
+         {user?.rol == "ADMIN" && <Link to={routes.ListTurnsAdmin}></Link>}
       <Container className='navbar_container'>
         <Navbar.Toggle aria-controls="basic-navbar-nav"  />
         <Navbar.Collapse id="basic-navbar-nav" className='navbar_container_collapse'>

@@ -17,4 +17,7 @@ public interface TurnoRepository extends JpaRepository<Turno,Long> {
     boolean existsByFechaAndHoraAndPaciente(LocalDate fecha, LocalTime hora, Paciente paciente);
     @Query(value = "SELECT * FROM turnos WHERE odontologos_id = ?1", nativeQuery = true)
     List<Turno> findByOdontologoId(Long odontologoId);
+
+    @Query(value = "SELECT * FROM turnos WHERE paciente_id = ?1", nativeQuery = true)
+    List<Turno> findByPacienteId(Long odontologoId);
 }
