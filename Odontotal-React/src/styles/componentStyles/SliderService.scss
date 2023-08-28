@@ -1,57 +1,106 @@
-.container-slider{
+.container-slider-main{
+    width: 100%;
+
+    h2{
+        color: #02AFF6;
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 40px;
+        font-size: 40px;
+    }
+    .container-slider{
     
-    width: 80%;
-    margin: 0% auto;
-    padding: 40px;
-    background: linear-gradient(to top, #04b2d97e, #f1f1f1) ;
-    clip-path: polygon(0 0,100% 0,100% calc(100% - 50px),50% 100%,0 calc(100% - 50px));
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        width: 80%;
+        margin: 0 auto ;
+        padding: 10px;
+   
+        .react-multi-carousel-list{
+            // width: 95%;
+            margin: 0 auto;
+            .react-multiple-carousel__arrow--right{
+                background-color: #02AFF6;
 
-    
-    .container-slider-carousel{
-        
-       
-        .container-slider-carousel_card{
-            margin: 0px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            // border: 1px solid rgba(128, 128, 128, 0.288);
-            border-radius: 10px;
-            padding-bottom: 10px;
-           
-            
-
-            .container-slider-carousel_card_img{
-                width: 300px;
-                height: 40vh;
-                border: 1px solid rgba($color: #333333, $alpha: 0.3);
-                border-radius: 5px;
-
-                &:hover{
-                    filter: opacity(.5);
-                }
-                
             }
-            .container-slider-carousel_card_span{
-                background-color: white ;
-                padding: 1% 5%;
-                display: flex;
-                color: #02AFF6 ;
-                border-radius: 5px;
-                margin-top: -5%;
+            .react-multiple-carousel__arrow--left{
+                background-color: #02AFF6;
+
+            }
+        
+            .react-multi-carousel-track{
                 
-                
+                .react-multi-carousel-item{
+                    width: 200px;
+
+                }
+
+                .react-multi-carousel-item--active{
+                }
             }
         }
-        
+
+        .container-slider-carousel{
+       
+            
+            .container-slider-carousel_card{
+                
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                border-radius: 10px;
+                padding-bottom: 10px;
+                
+                
+                
+                .container-slider-carousel_card_img{
+                    width: 90%;
+                    height: 40vh;
+                    border: 1px solid rgba(82, 82, 82, 0.158);
+                    border-radius: 5px;
+                    box-shadow: 1px 1px 5px 1px rgba(82, 82, 82, 0.712) ;
+                    
+                    
+    
+                    &:hover{
+                        filter: opacity(.5);
+                    }
+                    
+                }
+                .container-slider-carousel_card_span{
+                    // background-color: #02AFF6 ;
+                    // padding: 3% 5%;
+                    // display: flex;
+                    // text-align: right;
+                    // color: white ;
+                    // border-radius: 5px 5px 0px 0px;
+                    // margin-top: -10%;
+                    // width: 90%;
+                    background-color: #02AFF6;
+                    color: white ;
+                    position:absolute;
+                    // left: 20px;
+                    padding: 10px ;
+                    top: 80%; 
+                    right: 5%;     
+                    border-radius: 5px 0px 0px 5px;  
+                    font-weight: 600;        
+                    border-bottom: 0.5px solid rgba(255, 255, 255, 0.418); 
+                    border-top: 0.5px solid rgba(255, 255, 255, 0.418); 
+                    box-shadow: 0px 0px 3px white  ;   
+                    
+                }
+            }
+            
+        }
     }
+    
+
 }
 
 @media (max-width: 480px) {
     .container-slider{
         height: 52vh;
         padding: 20px;
+        // width: 100%;
         .container-slider-carousel{
             display: flex;
             
@@ -59,10 +108,11 @@
         
        
             .container-slider-carousel_card{
-                margin: 20px;
+                // margin: 20px;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
+                width: 100%;
                 
     
                 .container-slider-carousel_card_img{

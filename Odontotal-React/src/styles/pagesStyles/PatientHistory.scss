@@ -81,3 +81,40 @@
     }
     
 }
+@media (max-width:480px) {
+    .patient-history-container{
+        section{
+            .patient-history-main{
+                width: 90%;
+                
+                details{
+               
+                    summary{
+                         flex-direction: column;             
+                    }
+                   
+                }
+            }
+        }
+    }
+}
+@media (max-width:767px) and (min-width:481px) {
+    .patient-history-container{
+        section{
+            .patient-history-main{
+                width: 90%;
+                
+                details{
+               
+                    summary{
+                                      
+                    }
+                   
+                }
+            }
+        }
+    }
+    
+    
+    
+}

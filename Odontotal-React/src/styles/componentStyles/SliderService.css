@@ -1,36 +1,59 @@
-.container-slider {
-  width: 80%;
-  margin: 0% auto;
-  padding: 40px;
-  background: linear-gradient(to top, rgba(4, 178, 217, 0.4941176471), #f1f1f1);
-  -webkit-clip-path: polygon(0 0, 100% 0, 100% calc(100% - 50px), 50% 100%, 0 calc(100% - 50px));
-          clip-path: polygon(0 0, 100% 0, 100% calc(100% - 50px), 50% 100%, 0 calc(100% - 50px));
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+.container-slider-main {
+  width: 100%;
 }
-.container-slider .container-slider-carousel .container-slider-carousel_card {
-  margin: 0px;
+.container-slider-main h2 {
+  color: #02AFF6;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  font-size: 40px;
+}
+.container-slider-main .container-slider {
+  width: 80%;
+  margin: 0 auto;
+  padding: 10px;
+}
+.container-slider-main .container-slider .react-multi-carousel-list {
+  margin: 0 auto;
+}
+.container-slider-main .container-slider .react-multi-carousel-list .react-multiple-carousel__arrow--right {
+  background-color: #02AFF6;
+}
+.container-slider-main .container-slider .react-multi-carousel-list .react-multiple-carousel__arrow--left {
+  background-color: #02AFF6;
+}
+.container-slider-main .container-slider .react-multi-carousel-list .react-multi-carousel-track .react-multi-carousel-item {
+  width: 200px;
+}
+.container-slider-main .container-slider .container-slider-carousel .container-slider-carousel_card {
   display: flex;
   flex-direction: column;
   align-items: center;
   border-radius: 10px;
   padding-bottom: 10px;
 }
-.container-slider .container-slider-carousel .container-slider-carousel_card .container-slider-carousel_card_img {
-  width: 300px;
+.container-slider-main .container-slider .container-slider-carousel .container-slider-carousel_card .container-slider-carousel_card_img {
+  width: 90%;
   height: 40vh;
-  border: 1px solid rgba(51, 51, 51, 0.3);
+  border: 1px solid rgba(82, 82, 82, 0.158);
   border-radius: 5px;
+  box-shadow: 1px 1px 5px 1px rgba(82, 82, 82, 0.712);
 }
-.container-slider .container-slider-carousel .container-slider-carousel_card .container-slider-carousel_card_img:hover {
+.container-slider-main .container-slider .container-slider-carousel .container-slider-carousel_card .container-slider-carousel_card_img:hover {
   filter: opacity(0.5);
 }
-.container-slider .container-slider-carousel .container-slider-carousel_card .container-slider-carousel_card_span {
-  background-color: white;
-  padding: 1% 5%;
-  display: flex;
-  color: #02AFF6;
-  border-radius: 5px;
-  margin-top: -5%;
+.container-slider-main .container-slider .container-slider-carousel .container-slider-carousel_card .container-slider-carousel_card_span {
+  background-color: #02AFF6;
+  color: white;
+  position: absolute;
+  padding: 10px;
+  top: 80%;
+  right: 5%;
+  border-radius: 5px 0px 0px 5px;
+  font-weight: 600;
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.418);
+  border-top: 0.5px solid rgba(255, 255, 255, 0.418);
+  box-shadow: 0px 0px 3px white;
 }
 
 @media (max-width: 480px) {
@@ -43,10 +66,10 @@
     align-items: center;
   }
   .container-slider .container-slider-carousel .container-slider-carousel_card {
-    margin: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
   }
   .container-slider .container-slider-carousel .container-slider-carousel_card .container-slider-carousel_card_img {
     width: 120%;
