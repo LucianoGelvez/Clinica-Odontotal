@@ -26,27 +26,27 @@ public class Turno {
     private LocalTime hora;
 
     @Column
-    private String reasonForTurn;
+    private String motivo;
 
     @Column
-    private String whatWasDone;
+    private String realizado;
 
-    public Turno(Long id, Paciente paciente, Odontologo odontologo, LocalDate fecha, LocalTime hora, String reasonForTurn, String whatWasDone) {
+    public Turno(Long id, Paciente paciente, Odontologo odontologo, LocalDate fecha, LocalTime hora, String motivo, String realizado) {
         this.id = id;
         this.paciente = paciente;
         this.odontologo = odontologo;
         this.fecha = fecha;
         this.hora = hora;
-        this.reasonForTurn = reasonForTurn;
-        this.whatWasDone = whatWasDone;
+        this.motivo = motivo;
+        this.realizado = realizado;
     }
-    public Turno(Paciente paciente, Odontologo odontologo, LocalDate fecha, LocalTime hora, String reasonForTurn, String whatWasDone) {
+    public Turno(Paciente paciente, Odontologo odontologo, LocalDate fecha, LocalTime hora, String motivo, String realizado) {
         this.paciente = paciente;
         this.odontologo = odontologo;
         this.fecha = fecha;
         this.hora = hora;
-        this.reasonForTurn = reasonForTurn;
-        this.whatWasDone = whatWasDone;
+        this.motivo = motivo;
+        this.realizado = realizado;
     }
 
     public Turno() {
@@ -55,20 +55,20 @@ public class Turno {
     public Turno(Odontologo odontologo, Paciente paciente, LocalDate of) {
     }
 
-    public String getReasonForTurn() {
-        return reasonForTurn;
+    public String getMotivo() {
+        return motivo;
     }
 
-    public void setReasonForTurn(String reasonForTurn) {
-        this.reasonForTurn = reasonForTurn;
+    public void setMotivo(String motivo) {
+        this.motivo = motivo;
     }
 
-    public String getWhatWasDone() {
-        return whatWasDone;
+    public String getRealizado() {
+        return realizado;
     }
 
-    public void setWhatWasDone(String whatWasDone) {
-        this.whatWasDone = whatWasDone;
+    public void setRealizado(String realizado) {
+        this.realizado = realizado;
     }
 
     public LocalTime sumarHorarioMas30Minutos(){

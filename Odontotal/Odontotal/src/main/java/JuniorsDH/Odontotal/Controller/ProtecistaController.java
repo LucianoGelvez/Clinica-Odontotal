@@ -46,7 +46,7 @@ public class ProtecistaController {
         return ResponseEntity.ok("se eliminó el Protecista con id : "+ id );
     }
 
-    @GetMapping
+    @GetMapping("/listAll")
     ResponseEntity<List<ProtecistaDto>> listarProtecistas () throws ResourceNotFoundException {
         List<ProtecistaDto>protecistasList= protecistaService.listarTodosProtecistas();
         return ResponseEntity.ok(protecistasList);

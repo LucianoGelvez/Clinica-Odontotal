@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { ContextGlobal } from '../../components/utils/global.context'
 import baseUrl from '../../components/utils/baseUrl.json'
 // import Swal from 'sweetalert2';
-import ListTurns from './ListTurns';
+import ListTurns from '../../pages/pages_dentist/ListTurns';
 import '../../styles/componentStyles/TurnOdontology.css'
 
 const TurnOdontology = () => {

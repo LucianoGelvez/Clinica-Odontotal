@@ -8,13 +8,6 @@ section table thead tr {
 section table thead tr th {
   text-align: center;
 }
-section tbody tr td {
+section table tbody tr td {
   text-align: center;
-}
-section tbody tr td .link-history {
-  text-decoration: none;
-  background-color: rgb(1, 196, 59);
-  color: white;
-  padding: 8px;
-  border-radius: 5px;
 }/*# sourceMappingURL=ListTurns.css.map */

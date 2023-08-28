@@ -2,86 +2,107 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    margin: 5px auto 0px;
+    margin: 30px auto 0px;
     clip-path: polygon(0 0,50% 50px,100% 0,100% 100%,0 100%);
     color: black;
     gap: 10px;
-    padding: 50px;
-    // background: linear-gradient(to bottom,#00e0ca4d, #f1f1f1) ;
+    padding: 80px 30px;
+    background: radial-gradient(#04b2d9, #04b2d9, #00e0c8 );
     box-shadow: 1px 1px 60px 1px #80808028 ;
-    // border-radius: 20px 20px 0 0;
     border-bottom: 1px solid rgba(128, 128, 128, 0.007);
-     box-shadow: 0px 0px 30px 0px #00000081;
-    .information-container_aboutus{
+    box-shadow: 0px 0px 30px 0px #00000081;
+    font-family: "Montserrat", sans-serif;
+    
+        // .map{
+        //     width: 100% ;
+        //     height:80%; 
+        //     display: flex;
+        //     padding: 5px;
+        //     margin: 10px auto;
+        // }
 
-        color: black;
-        width: 80%;
-
-        .map{
-            width: 100% ;
-            height:80%; 
-            display: flex;
-            padding: 5px;
-            margin: 10px auto;
-        }
-
-    }
-    .information-container_schedule{
+    
+    .info-text-container{
         display: flex;
-        justify-content: space-between;
         flex-direction: column;
-        // background-color: rgba($color: #02AFF6, $alpha: 0.3) ;
         text-align: center;
-        width: 40%;
-        height: 100;
-        padding: 10px;
-        
-        
-    }
-    .information-container_contact{
-        // background-color: rgba($color: #02AFF6, $alpha: 0.3) ;
-        width: 40%;
-        height: 100%;
-        display: flex;
-        // justify-content: space-evenly;
-        flex-direction: column;
-        align-items: center;
-        font-size: 15px;
-        padding: 15px;
+        justify-content: flex-end;
+        width: 50%;
+        gap: 10px;
+        // margin-top: 10px;
+        padding-right: 100px;
+        .information-container_schedule{
+            display: flex;
+            justify-content: start;
+            gap: 10px;
+            flex-direction: column;
+            text-align: center;
+            color: #04b2d9;
+            background-color: #f1f1f1;
 
-        .information-container_contact_location{
-            display: flex;
-            margin: 10px;
-            width: 100%;
-            justify-content: space-evenly;
-            .contact-icon{
-                margin-top: 3px;
-            }
 
-            
         }
-        .information-container_contact_phone{
+        .information-container_contact{
+            height: 100%;
             display: flex;
-            margin: 10px;
-            width: 100%;
-            justify-content: space-evenly;
-            .contact-icon{
-                margin-top: 4px;
+            justify-content: center;
+            flex-direction: column;
+            align-items: flex-end;
+            font-size: 15px;
+            padding: 15px;
+            color: white;
+
+            h3{
+                align-items: flex-end;
+                justify-content: flex-end;
+                text-align: end;
+                font-size: 24px;
+                width: 80%;
+            }
+    
+
+            .information-container_contact_phone{
+                display: flex;
+                width: 100%;
+                font-size: 20px;    
+                text-align: end;
+                justify-content: flex-end;
+                p{
+                    margin: 0;
+                    align-items: center;
+                }
+                .contact-icon{
+                    
+                    margin-right: 8px;
+                    font-size: 30px;
+                    align-items: end;
+                    
+                }
+            }
+            .information-container_contact_email{
+                display: flex;
+                width: 100%;
+                font-size: 20px;    
+                text-align: end;
+                justify-content: flex-end;
+                p{
+                    margin: 0;
+                    align-items: center;
+                }
+                .contact-icon{
+                    
+                    margin-right: 8px;
+                    font-size: 30px;
+                    align-items: end;
+                }
+                
+               
+                
             }
         }
-        .information-container_contact_email{
-            display: flex;
-            margin: 10px;
-            width: 100%;
-            justify-content: space-evenly;
-            .contact-icon{
-                margin-top: 4px;
-            }
-            
-           
-            
-        }
+
     }
+    
 
 }
 
@@ -90,7 +111,34 @@
         display: flex;
         flex-direction: column;
         width: 100%;
-        justify-content: space-between;
+        .info-text-container{
+            width: 100%;
+            justify-content: center;
+            padding: 0;
+            .information-container_contact{
+                width: 100%;
+                h2{
+                    text-align: center;
+                    justify-content: center;
+                    width: 100%;
+                }
+                h3{
+                    text-align: center;
+                    justify-content: center;
+                    width: 100%;
+                }
+                .information-container_contact_phone{
+                    text-align: center;
+                    justify-content: center;
+                    width: 100%;
+                }
+                .information-container_contact_email{
+                    text-align: center;
+                    justify-content: center;
+                    width: 100%;
+                }
+            }
+        }
 
         .information-container_aboutus{
             width: 80%;
@@ -101,7 +149,23 @@
         }
         .information-container_contact{
             width: 80%;
+            text-align: center;
         }
 
+    }
+}
+
+@media (max-width: 1024px) and (min-width:768px){
+    .information-container{
+        display: flex;
+        width: 100%;
+        .info-text-container{
+            width: 100%;
+            justify-content: center;
+            
+            .information-container_contact{
+                width: 100%;            
+            }
+        }
     }
 }

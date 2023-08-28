@@ -60,4 +60,18 @@
 }
 .patient-history-container section .patient-history-main details .info-patientHistory p span {
   font-weight: bolder;
+}
+
+@media (max-width: 480px) {
+  .patient-history-container section .patient-history-main {
+    width: 90%;
+  }
+  .patient-history-container section .patient-history-main details summary {
+    flex-direction: column;
+  }
+}
+@media (max-width: 767px) and (min-width: 481px) {
+  .patient-history-container section .patient-history-main {
+    width: 90%;
+  }
 }/*# sourceMappingURL=PatientHistory.css.map */

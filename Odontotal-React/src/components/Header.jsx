@@ -24,7 +24,9 @@ const Header = () => {
   console.log(user)
   return (
     <Navbar expand="lg" className='navbar large'>
-          <Link to={routes.Home}><img className='navbar_logo' src={Logo} alt="Logo"/></Link>
+        {(user?.rol != "ODONTOLOGY" || user?.rol == "ADMIN") && <Link to={routes.Home}><img className='navbar_logo' src={Logo} alt="Logo"/></Link>}
+         {user?.rol == "ODONTOLOGY" && <Link to={routes.TurnOdontology}><img className='navbar_logo' src={Logo} alt="Logo"/></Link>}
+         {user?.rol == "ADMIN" && <Link to={routes.ListTurnsAdmin}><img className='navbar_logo' src={Logo} alt="Logo"/></Link>}
       <Container className='navbar_container'>
         <Navbar.Toggle aria-controls="basic-navbar-nav"  />
         <Navbar.Collapse id="basic-navbar-nav" className='navbar_container_collapse'>
@@ -44,12 +46,19 @@ const Header = () => {
               <NavDropdown.Item href={routes.MyTurn}> Listar Turnos</NavDropdown.Item>
             </NavDropdown>
             </>}
-            <hr />
+             <hr />
               <Nav.Link className='navbar_container_collapse_nav-navDropdown' href={routes.Service}>Servicios</Nav.Link>
               <hr />
               <Nav.Link className='navbar_container_collapse_nav-navDropdown' href={routes.OurTeam}>Equipo</Nav.Link>
               <hr />
-              <Nav.Link className='navbar_container_collapse_nav-navDropdown' href={routes.AboutUs}>Conocenos</Nav.Link></>}
+              <Nav.Link className='navbar_container_collapse_nav-navDropdown' href={routes.AboutUs}>Conocenos</Nav.Link>
+              </>  
+            // {user?.rol === "PATIENT" && <>
+            // <Nav.Link className='navbar_container_collapse_nav-navDropdown' href={routes.Profile}>Perfil</Nav.Link>
+            // </>
+            // }
+              }
+
             
           { user?.rol === "ODONTOLOGY" && <>
               <Nav.Link className='navbar_container_collapse_nav-navDropdown' href={routes.TurnOdontology}>Turnos</Nav.Link>
@@ -74,16 +83,22 @@ const Header = () => {
               <NavDropdown.Divider />
               <NavDropdown.Item href={routes.ListDentistAdmin}> Listar Odontologos</NavDropdown.Item>
             </NavDropdown>
+            <hr />
             <NavDropdown title="Protecistas" id="basic-nav-dropdown" className='navbar_container_collapse_nav-navDropdown'>
               <NavDropdown.Item href={routes.AddDentalProsthetist}>Añadir Protecista</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href={routes.ListDentalProsthetist}> Listar Protecistas</NavDropdown.Item>
             </NavDropdown>
+            <hr />
             <NavDropdown title="Pacientes" id="basic-nav-dropdown" className='navbar_container_collapse_nav-navDropdown'>
               <NavDropdown.Item href={routes.AddPatientAdmin}>Añadir Paciente</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href={routes.ListPatientAdmin}>Listar Pacientes</NavDropdown.Item>
-            </NavDropdown> </>}
+            </NavDropdown> 
+            <hr />
+              <Nav.Link className='navbar_container_collapse_nav-navDropdown' href={routes.Profile}>Perfil</Nav.Link>
+              <hr />
+            </>}
 
 
             {user?.rol === undefined && <>

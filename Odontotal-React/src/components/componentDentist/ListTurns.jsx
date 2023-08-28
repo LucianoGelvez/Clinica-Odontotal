@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import baseUrl from '../../components/utils/baseUrl.json'
 import { ContextGlobal } from '../utils/global.context'
 import { Link } from 'react-router-dom';
-import '../../styles/componentStyles/ListTurns.css'
+// import '../../styles/componentStyles/ListTurns.css'
 
 // import PatientHistory from './PatientHistory';
 const ListTurns = ({ data, onEditar, onEliminar }) => {

@@ -14,7 +14,6 @@ const ListDentalProsthetist = () => {
   const [edition, setedition] = useState(null);
 
   useEffect(() => {
-    // Actualiza el estado de `data` cuando `information` cambia en el contexto global
     serData(information);
   }, [information]);
   
