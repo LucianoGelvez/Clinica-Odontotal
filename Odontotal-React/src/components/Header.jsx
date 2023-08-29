@@ -18,7 +18,7 @@ const Header = () => {
   const handleButton = () => {
     localStorage.removeItem("jwt")
     localStorage.removeItem("user")
-    window.location.href="http://localhost:5173/"
+    window.location.pathname="/"
   }
 
   console.log(user)

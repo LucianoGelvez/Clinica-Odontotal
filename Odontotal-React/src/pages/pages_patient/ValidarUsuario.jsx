@@ -38,7 +38,7 @@ const ValidarUsuario = () => {
           })
           .then((result) => {
             if (result.isConfirmed) {
-              window.location.href="http://localhost:5173/"
+              window.location.href="/"
             }
           });
 
@@ -59,7 +59,7 @@ const ValidarUsuario = () => {
         if (result.isConfirmed) {
           window.location.reload();
         }
-        window.location.href="http://localhost:5173/"
+        window.location.pathname="/"
       });
     }
 

@@ -112,10 +112,9 @@ export const ContextProvider = ({ children }) => {
       fetchData(url_ListPatients);
     } else if (path === "/ListaDeProtecistas" ) {
       fetchData(url_ListDentalHygienists);
+    } else if (path === "/ListaDeTurnos" || path === "/MisTurnos") {
+      fetchData(url_ListTurn);
     }
-    //  else if (path === "/ListaDeTurnos" || path === "/MisTurnos") {
-    //   fetchData(url_ListTurn);
-    // }
   }, []);
   
   useEffect(() => {

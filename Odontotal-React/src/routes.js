@@ -20,5 +20,6 @@ export const routes = {
     PatientHistory: '/HistorialDelPaciente',
     TurnOdontology: '/TurnosDelOdontologo',
     ValidateUser: "/usuario/validar/:id",
-    PatientHistory: "TurnosDelOdontologo/HistorialDelPaciente/:id"
+    PatientHistory: "TurnosDelOdontologo/HistorialDelPaciente/:id",
+    EditTurn: "EditarTurno/:id"
 }

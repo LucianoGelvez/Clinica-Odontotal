@@ -17,7 +17,7 @@ const FormCustomer = () => {
       });
   };
   return (
-    <div className='form-customer-container'>
+    <div id="form-customer" className='form-customer-container'>
          <form ref={form} onSubmit={sendEmail}>
             
             <label>Nombre</label>

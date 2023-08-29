@@ -169,3 +169,42 @@
         }
     }
 }
+
+@media (max-width: 767px) and (min-width:481px){
+    .information-container{
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        .info-text-container{
+            width: 100%;
+            justify-content: center;
+            // background-color: red;
+            padding: 0;
+
+            .information-container_contact{
+                width: 100%;
+                text-align: center;
+                h2{
+                    text-align: center;
+                    justify-content: center;
+                    width: 100%;
+                }
+                h3{
+                    text-align: center;
+                    justify-content: center;
+                    width: 100%;
+                }
+                .information-container_contact_phone{
+                    text-align: center;
+                    justify-content: center;
+                    width: 100%;
+                }
+                .information-container_contact_email{
+                    text-align: center;
+                    justify-content: center;
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

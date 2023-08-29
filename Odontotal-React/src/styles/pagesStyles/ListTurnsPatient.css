@@ -1,0 +1,50 @@
+.turns-list{
+    background: linear-gradient(to top, rgba(0, 224, 202, 0.7058823529), rgba(4, 178, 217, 0.7058823529));
+    width: 100vw;
+}
+.turns-list .patient-information {
+    padding: 10px 10px 10px 10vw;
+    background-color: #ffffff;
+}
+.turns-list .patient-information p{
+    margin-bottom: 3px;
+}
+.turns-list .patient-information span{
+    font-weight: bold;
+}
+.turns-list h4{
+    text-align: center;
+    margin-top: 30px;
+    position: sticky;
+    left: 0px;
+    background-color: #ffffff;
+}
+.turns-list .turns-patient{
+    height: 80vh;
+    width: 65vw;
+    overflow: auto;
+    margin: 40px auto 40px;
+    background-color: #ffffff;
+}
+.turns-list .turns-patient .row-titles{
+    position: sticky;
+    top: -1px;
+    background-color: #ebe8e8;
+}
+.turns-list .turns-patient .center-input{
+    text-align: center;
+}
+.turns-list .turns-patient .fecha{
+    color: #ebe8e8;
+}
+
+@media(max-width: 1024px) {
+    .turns-list .turns-patient{
+        width: 80vw;
+    }
+}
+@media(max-width: 480px) {
+    .turns-list h4{
+        margin-top: 15px;
+    }
+}

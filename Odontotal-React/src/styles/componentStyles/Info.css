@@ -140,4 +140,38 @@
   .information-container .info-text-container .information-container_contact {
     width: 100%;
   }
-}/*# sourceMappingURL=Info.css.map */
+}
+@media (max-width: 767px) and (min-width: 481px) {
+  .information-container {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+  }
+
+  .information-container .info-text-container {
+      width: 100%;
+      justify-content: center;
+      /* background-color: red; */
+      padding: 0;
+  }
+
+  .information-container .info-text-container .information-container_contact {
+      width: 100%;
+      text-align: center;
+  }
+
+  .information-container .info-text-container .information-container_contact h2,
+  .information-container .info-text-container .information-container_contact h3 {
+      text-align: center;
+      width: 100%;
+      justify-content: center;
+  }
+
+  .information-container .info-text-container .information-container_contact .information-container_contact_phone,
+  .information-container .info-text-container .information-container_contact .information-container_contact_email {
+      text-align: center;
+      width: 100%;
+      justify-content: center;
+  }
+}
+/*# sourceMappingURL=Info.css.map */

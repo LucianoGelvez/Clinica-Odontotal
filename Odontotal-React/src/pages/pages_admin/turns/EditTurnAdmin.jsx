@@ -1,26 +1,33 @@
 import React, { useContext, useEffect, useState } from 'react'
-import '../../../styles/pagesStyles/AddTurnAdminStyle.css'
+import '../../../styles/pagesStyles/EditTurnAdminStyle.css'
 import { ContextGlobal } from '../../../components/utils/global.context';
 import baseUrl from '../../../components/utils/baseUrl.json'
 import Swal from 'sweetalert2';
 import Select from 'react-select';
+import { useParams } from 'react-router-dom';
 
 const AddTurnAdmin = () => {
   const { information, user, jwt } = useContext(ContextGlobal);
+  const { id } = useParams();
 
   const [selectedSpecialty, setSelectedSpecialty] = useState(null)
-  const [selectedDoctor, setSelectedDoctor] = useState("")
-  const [odontologos, setOdontologos] = useState({})
+  const [selectedDoctor, setSelectedDoctor] = useState(null)
+  const [odontologos, setOdontologos] = useState([])
   const [pacientes, setPacientes] = useState([])
-  const [especilistaFiltrado, setEspecilistaFiltrado] = useState({})
+  const [especilistaFiltrado, setEspecilistaFiltrado] = useState([])
   const [turnsOdontology, setTurnsOdontology] = useState([]);
   const [turnsPatient, setTurnsPatient] = useState([]);
+  const [turnoEncontrado, setTurnoEncontrado] = useState([]);
   const [horasTurnosFiltrados, setHorasTurnosFiltrados] = useState([]);
+  const [formData, setFormData] = useState({
+    id:'',
+    odontologoId: '',
+    documento: '',
+    fecha: '',
+    hora: '',
+    pacienteId: ''
+  })
 
-  const options = pacientes.map((paciente) => ({
-    value: paciente.id,
-    label: paciente.documento
-  }));
 
   const urlDentist= baseUrl.url + "/odontologos/listAll"
   useEffect(() => {
@@ -46,13 +53,85 @@ const AddTurnAdmin = () => {
     '14:00', '14:30', '15:00', '15:30', '16:00', '16:30'
   ];
 
-  const [formData, setFormData] = useState({
-    odontologoId: '',
-    documento: '',
-    fecha: '',
-    hora: '',
-    pacienteId: ''
-  })
+  const urlTurnId = baseUrl.url + "/turnos/"+id;
+  useEffect(() => {
+    fetch(urlTurnId, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${jwt}`
+      }
+    })
+    .then((res) => res.json())
+    .then((data) => {
+      setTurnoEncontrado(data);
+
+      setFormData({
+        id: data.id,
+        odontologoId: data.odontologoId,
+        documento: data.documentoPaciente,
+        fecha: data.fecha,   
+        hora: data.hora.slice(0,5),
+        pacienteId: data.pacienteId,
+      });
+
+      setSelectedSpecialty(data.especialidad)
+      setEspecilistaFiltrado(odontologos.filter(item => data.especialidad === item.especialidad))
+      setSelectedDoctor(data.odontologoId)
+      
+
+      const urlTurnsOdontology = baseUrl.url + '/turnos/turnoOdontologo/'+data.odontologoId;
+      const urlTurnsPatients = baseUrl.url + '/turnos/turnosPaciente/'+ data.pacienteId;
+      
+      fetch(urlTurnsOdontology, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${jwt}`
+      }})
+      .then((response) => response.json())
+      .then((data) => setTurnsOdontology(data))
+      .catch((error) => setTurnsOdontology([]));
+
+      
+      fetch(urlTurnsPatients, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${jwt}`
+        }})
+        .then((response) => response.json())
+        .then((data) => setTurnsPatient(data))
+        .catch((error) => {
+          setTurnsPatient([]);
+          console.log(error);
+        });
+
+    });
+  }, [odontologos]);
+
+  useEffect( () =>{
+    const turnosFiltradosOdontologo = turnsOdontology.filter(turno => turno.fecha === turnoEncontrado.fecha);
+      const turnosFiltradosPaciente = turnsPatient.filter(turno => turno.fecha === turnoEncontrado.fecha);
+      const turnosFiltrados = turnosFiltradosOdontologo.concat(turnosFiltradosPaciente)
+      const horasFiltradas = turnosFiltrados
+        .filter(turno => turno.hora !== turnoEncontrado.hora)
+        .map(turno => turno.hora);
+
+      for (let i = 0; i < horasFiltradas.length; i++) {
+        horasFiltradas[i] = horasFiltradas[i].slice(0, -3);
+      } 
+
+      setHorasTurnosFiltrados(horasFiltradas);
+  },[turnoEncontrado.fecha, turnsOdontology, turnsPatient])
+
+  useEffect(() => {
+    console.log(formData);
+    console.log(selectedDoctor);
+    console.log(turnsOdontology);
+    console.log(turnsPatient);
+    console.log(horasTurnosFiltrados);
+  }, [formData,selectedSpecialty,turnoEncontrado,selectedDoctor,especilistaFiltrado,turnsOdontology,turnsPatient,horasTurnosFiltrados]);
 
   const handleInputChangeDocument = (selectedOption) => {
     setFormData({
@@ -158,12 +237,13 @@ const AddTurnAdmin = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formSend = {
+      id: formData.id,
       odontologoId: formData.odontologoId,
       fecha: formData.fecha,
       hora: formData.hora,
       pacienteId: formData.pacienteId
     }
-
+    console.log(formSend);
     if(formData.hora !=='' && formData.odontologoId !==''&& formData.hora !=='Selecciona un horario disponible'){
       const confirmResult = await Swal.fire({
         title: 'Confirmar datos',
@@ -179,9 +259,8 @@ const AddTurnAdmin = () => {
       // Si el usuario acepta la confirmación
       if (confirmResult.isConfirmed) {
         try{
-          const url = baseUrl.url + '/turnos';
-          const response = await fetch(url, {
-            method: 'POST',
+          const response = await fetch(urlTurnId, {
+            method: 'PUT',
             headers: {
               'Content-Type': 'application/json',
               'Authorization': `Bearer ${jwt}`
@@ -195,7 +274,7 @@ const AddTurnAdmin = () => {
   
             Swal.fire(
               {
-                title: 'Turno agendado correctamente',
+                title: 'Turno actualizado correctamente',
                 text: `Hemos enviado un correo con los detalles del turno.`,
                 icon: 'success',
                 showCancelButton: false,
@@ -205,7 +284,7 @@ const AddTurnAdmin = () => {
               }
             ).then((result) => {
               if (result.isConfirmed) {
-                resetUploadForm();
+                window.location.pathname="/ListaDeTurnos"
               }
             })
           } else {
@@ -230,6 +309,10 @@ const AddTurnAdmin = () => {
     }
     
   };
+
+  const handleCancel = () => {
+    window.location.pathname = "/ListaDeTurnos"
+  }
   
 
   const resetUploadForm = () => {
@@ -248,22 +331,22 @@ const AddTurnAdmin = () => {
   };
   return (
   
-    <div className='main-add-turn'>
-      { user?.rol === "ADMIN" || user?.rol === "ODONTOLOGY" ? (
-      <div className='add-container'>
+    <div className='main-edit-turn'>
+      { user?.rol === "ADMIN" ? (
+      <div className='edit-container'>
         <form onSubmit={handleSubmit}>
-          <h3>Agregar Turno</h3>
+          <h3>Editar Turno</h3>
           <div className="dropdown">
             <label className="control-label" htmlFor="documento">Documento paciente:</label>
             <Select
-              options={options}
-              value={options.find((option) => option.value === formData.documento)}
+              value={{ value: formData?.documento, label: formData?.documento }}
               onChange={(selectedOption) => handleInputChangeDocument(selectedOption)}
-              isSearchable={true}
+              isSearchable={false} // Desactivar la búsqueda
               placeholder="Selecciona un documento"
               required
             />
           </div>
+
 
           <div className="dropdown">
             <label className="control-label" htmlFor="selectedSpecialty">Especialidad:</label>
@@ -282,7 +365,7 @@ const AddTurnAdmin = () => {
           {selectedSpecialty && 
             <div className="dropdown">
               <label className="control-label" htmlFor="selectedDoctor">Especialista:</label>
-              <select className="form-select" aria-label="Dropdown example" name="selectedDoctor" value={formData.odontologoId} onChange={(event) => {
+              <select className="form-select" aria-label="Dropdown example" name="selectedDoctor" value={formData?.odontologoId} onChange={(event) => {
                 handleInputChange(event)
                 handleInputOdontologyChange(event)
               }} required>
@@ -340,14 +423,18 @@ const AddTurnAdmin = () => {
 
           <div className="dropdown">     
           <label className="control-label" htmlFor="hora"> Hora:</label>
-            <select className="form-select" name="hora" id="hora" value={formData.hora} onChange={handleInputChange} required>
+            <select className="form-select" name="hora" id="hora" value={formData?.hora} onChange={handleInputChange} required>
               {obtenerHorasDisponibles().map((hora, index) => (
               <option key={index} >{hora}</option>  
               ))}
             </select>
           </div>
 
-          <button>Cargar</button>
+          <div>
+            <button type="submit" className='btn-send'>Enviar</button>
+            <button type="button" className="btn-cancel"onClick={handleCancel}>Cancelar</button>
+          </div>
+  
         </form>
       </div>
       ) : null} 

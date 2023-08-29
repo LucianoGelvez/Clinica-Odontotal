@@ -15,7 +15,7 @@ const NavbarPatient = () => {
   const handleButton = () => {
     localStorage.removeItem("user")
     localStorage.removeItem("jwt")
-    window.location.href="http://localhost:5173/"
+    window.location.pathname="/"
   }
   return (
 <Navbar expand="lg" className='navbar large'>  

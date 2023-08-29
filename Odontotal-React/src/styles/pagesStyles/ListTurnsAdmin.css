@@ -1,4 +1,29 @@
 .list-turn-container {
-  height: 80vh;
+  height: 90vh;
   background: linear-gradient(to top, rgba(0, 224, 202, 0.7058823529), rgba(4, 178, 217, 0.7058823529));
 }/*# sourceMappingURL=ListTurnsAdmin.css.map */
+
+.turns-list-admin .turns-admin h4{
+  text-align: center;
+  margin-top: 20px;
+  position: sticky;
+  left: 0px;
+  background-color: #ffffff;
+}
+.turns-list-admin .turns-admin{
+  height: 80vh;
+  overflow: auto;
+  margin-top: 40px;
+  background-color: #ffffff;
+}
+.turns-list-admin .turns-admin .row-titles{
+  position: sticky;
+  top: -1px;
+  background-color: #ebe8e8;
+}
+.turns-list-admin .turns-admin .center-input{
+  text-align: center;
+}
+.turns-list-admin .turns-admin span{
+  color: #ebe8e8;
+}

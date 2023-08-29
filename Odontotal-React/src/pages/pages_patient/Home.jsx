@@ -15,7 +15,7 @@ const Home = () => {
 
   // Verificamos si el usuario está logueado y si está validada la cuenta
   useEffect(() => {
-    if (user) {
+    if (user && user.rol === "PATIENT") {
       solicitarValidacionCuenta(user, jwt);
     }
   }, [user])
@@ -30,7 +30,7 @@ const Home = () => {
       {/* <Slider/> */}
       
 
-      <Spline scene="https://prod.spline.design/nbo5Nm8lM26WaEAF/scene.splinecode" />
+      {/* <Spline scene="https://prod.spline.design/nbo5Nm8lM26WaEAF/scene.splinecode" /> */}
       {/* https://prod.spline.design/nbo5Nm8lM26WaEAF/scene.splinecode */}
       {/* https://prod.spline.design/nbo5Nm8lM26WaEAF/scene.splinecode */}
       

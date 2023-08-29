@@ -31,12 +31,12 @@ const Info = () => {
             </div> */}
             <div className='information-container_contact_phone'>
             <FontAwesomeIcon icon={faPhoneVolume} className='contact-icon'/>
-                <p>+57 302 698 03 02</p>
+                <p>+57 314 360 28 30</p>
                 
             </div>
             <div className='information-container_contact_email'>
             <FontAwesomeIcon icon={faEnvelope} className='contact-icon'/>
-                <p className='information-container_contact_email_text'>Odontotalmail@gmail.com</p>
+                <p className='information-container_contact_email_text'>odontotalcontacto@gmail.com</p>
                 
             </div>
             
