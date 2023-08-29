@@ -1,0 +1,82 @@
+.navbar {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  margin: auto;
+}
+.navbar .navbar_logo {
+  width: 200px;
+  margin: 0;
+}
+.navbar .navbar_container {
+  width: 50%;
+  margin: 0;
+}
+.navbar .navbar_container .navbar_container_collapse.collapse {
+  justify-content: flex-end;
+  width: 100%;
+  margin: 0;
+}
+.navbar .navbar_container .navbar_container_collapse.collapse .me-auto.navbar_container_collapse_nav.navbar-nav {
+  justify-content: center;
+  text-align: center;
+}
+.navbar .navbar_container .navbar_container_collapse.collapse .me-auto.navbar_container_collapse_nav.navbar-nav div .navbar_container_collapse_nav-navDropdown.nav-item.dropdown {
+  height: 100%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-left: 5px;
+}
+.navbar .navbar_container .navbar_container_collapse.collapse .me-auto.navbar_container_collapse_nav.navbar-nav .navbar_container_collapse_nav-navDropdown.nav-link {
+  margin: 0;
+  display: flex;
+  text-align: center;
+  width: 120px;
+  align-items: center;
+  justify-content: center;
+}
+.navbar .navbar_container .navbar_container_collapse.collapse .navbar_container_collapse_nav {
+  display: flex;
+  width: 90vw;
+  justify-content: flex-end;
+}
+.navbar .navbar_container .navbar_container_collapse.collapse .navbar_container_collapse_nav .navbar_container_collapse_nav-navDropdown {
+  margin-left: 20px;
+  width: 100%;
+}
+.navbar .navbar_container .navbar_container_collapse.collapse .navbar_container_collapse_nav .navbar_container_collapse_nav-navDropdown .dropdown-menu {
+  width: 100px;
+  left: -80px;
+  top: 70px;
+  border-radius: 0;
+  border: none;
+  background-color: grey;
+}
+
+@media screen and (max-width: 480px) {
+  .navbar.large.navbar.navbar-expand-lg.navbar-light {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  .navbar.large.navbar.navbar-expand-lg.navbar-light .navbar_logo {
+    width: 180px;
+  }
+  .navbar.large.navbar.navbar-expand-lg.navbar-light .navbar_container .contain {
+    width: 10%;
+  }
+  .navbar.large.navbar.navbar-expand-lg.navbar-light .navbar_container .navbar_container_collapse {
+    justify-content: center;
+    width: 90%;
+  }
+  .navbar.large.navbar.navbar-expand-lg.navbar-light .navbar_container .navbar_container_collapse .navbar_container_collapse_nav {
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+  }
+  .navbar.large.navbar.navbar-expand-lg.navbar-light .navbar_container .navbar_container_collapse .navbar_container_collapse_nav .navbar_container_collapse_nav-navDropdown {
+    margin-left: 10px;
+  }
+}/*# sourceMappingURL=Navbar.css.map */

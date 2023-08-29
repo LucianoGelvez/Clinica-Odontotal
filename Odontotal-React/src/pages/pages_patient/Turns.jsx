@@ -1,16 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react'
 import '../../styles/pagesStyles/TurnsStyle.css'
 import { ContextGlobal } from '../../components/utils/global.context';
-import Phone from '../../images/Phone.png'
-import Calendar from '../../images/Calendar.png'
-import Contact from '../../images/Contact.png'
-import Whatsapp from '../../images/Whatsapp.png'
-import Dent from '../../images/Dent.png'
-import Dentist from '../../images/Dentist.png'
-import Plan from '../../images/Plan.png'
-import Presentation from '../../images/Presentation.png'
 import baseUrl from '../../components/utils/baseUrl.json'
 import Swal from 'sweetalert2';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPhoneVolume, faCalendarDays, faEnvelope, faUserDoctor, faTooth, faClipboardCheck, faCreditCard  } from '@fortawesome/free-solid-svg-icons'
+import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 
 const Turns = () => {
   const { information, user, jwt} = useContext(ContextGlobal);
@@ -21,8 +16,8 @@ const Turns = () => {
   const [odontologos, setOdontologos] = useState({})
   const [especilistaFiltrado, setEspecilistaFiltrado] = useState({})
   const [turnsOdontology, setTurnsOdontology] = useState([]);
+  const [turnsPatient, setTurnsPatient] = useState([]);
   const [horasTurnosFiltrados, setHorasTurnosFiltrados] = useState([]);
-
 
   const handleSpecialtySelect = (event) => {
     setSelectedSpecialty(event.target.value);
@@ -31,12 +26,20 @@ const Turns = () => {
   }
 
   useEffect(() => {
-    console.log(especilistaFiltrado) 
-    console.log(formData);
-    console.log(selectedDoctor)
-    console.log(turnsOdontology);
-    console.log(horasTurnosFiltrados);
-  }, [ selectedDoctor,especilistaFiltrado,turnsOdontology,horasTurnosFiltrados]);
+    const urlTurnsPatients = baseUrl.url + '/turnos/turnosPaciente/'+ user.id;
+    fetch(urlTurnsPatients, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${jwt}`
+      }})
+      .then((response) => response.json())
+      .then((data) => setTurnsPatient(data))
+      .catch((error) => {
+        setTurnsPatient([]);
+        console.log(error);
+      });
+  }, []);
 
 
   const url = baseUrl.url + "/odontologos/listAll"
@@ -104,11 +107,17 @@ const Turns = () => {
         icon: "warning",
         title: "Día no disponible",
         text: "Por favor selecciona un día distinto a Domingo.",
+        showCancelButton: false,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Aceptar'
       });
     };
 
     let fechaSeleccionada = event.target.value
-    const turnosFiltrados = turnsOdontology.filter(turno => turno.fecha === fechaSeleccionada);
+    const turnosFiltradosOdontologo = turnsOdontology.filter(turno => turno.fecha === fechaSeleccionada);
+    const turnosFiltradosPaciente = turnsPatient.filter(turno => turno.fecha === fechaSeleccionada);
+    const turnosFiltrados = turnosFiltradosOdontologo.concat(turnosFiltradosPaciente)
     let horasFiltradas = turnosFiltrados.map(turno => turno.hora);
     for (let i = 0; i < horasFiltradas.length; i++) {
       horasFiltradas[i] = horasFiltradas[i].slice(0, -3);
@@ -222,139 +231,144 @@ const Turns = () => {
   
       {usuarioEncontrado &&
       <div className='turns'>
-      <div className='turns_information'>
-        <h3>Agenda hoy mismo tu cita de valoración</h3>
-        <p>En Odontotal trabajamos para siempre darte lo mejor, conoce los diferentes canales para que puedas agendar tu cita de valoración</p>
-      
-
-        <div className='turns_information_contact'>
-          <div className='turns_information_contact_frame'>
-            <img className='turns_information_contact_img' src={Phone} alt="" />
-            <p>Llámanos</p>
-          </div>
-          <div className='turns_information_contact_frame'>
-          <img className='turns_information_contact_img' src={Calendar} alt="" />
-            <p>Agéndate tu mismo</p>
-          </div>
-          <div className='turns_information_contact_frame'>
-          <img className='turns_information_contact_img' src={Contact} alt="" />
-            <p>Nosotros te llamanos</p>
-          </div>
-          <div className='turns_information_contact_frame'>
-          <img className='turns_information_contact_img' src={Whatsapp} alt="" />
-            <p>Escríbenos a WhatsApp</p>
+        <div className='information'>
+          <h3 className='title-turns'>Agenda hoy mismo tus citas</h3>
+          <p className='initial-information'>En Odontotal trabajamos para siempre darte lo mejor, conoce los diferentes canales para que puedas agendar tus citas, también puedes consultar los horarios disponibles con los especialistas de tu preferencia.</p>
+          
+          <div className="contact">
+            <div className='contact_frame'>
+              <a href="tel:+573143602830" target="_blank"><div className="detail-image"><FontAwesomeIcon icon={faPhoneVolume} /></div></a>
+              <a href="tel:+573143602830" target="_blank"><p className="detail-title">Llámanos</p> </a> 
+            </div>
+            <div className='contact_frame'>
+              <a href="#section-add-turn"><div className="detail-image" ><FontAwesomeIcon icon={faCalendarDays} /></div></a>
+              <a href="#section-add-turn"><p className="detail-title">Agéndate tu mismo</p></a>
+            </div>
+            <div className='contact_frame'>
+              <a href="mailto:odontotalcontacto@gmail.com"><div className="detail-image"><FontAwesomeIcon icon={faEnvelope} /></div></a>
+              <a href="mailto:odontotalcontacto@gmail.com"><p className="detail-title">Escríbenos por email</p></a>
+            </div>
+            <div className='contact_frame'>
+              <a href="https://web.whatsapp.com/send?phone=573143602830" target="_blank"><div className="detail-image"><FontAwesomeIcon icon={faWhatsapp} /></div></a>
+              <a href="https://web.whatsapp.com/send?phone=573143602830" target="_blank"><p className="detail-title">Escríbenos a WhatsApp</p></a>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className='add-turn'>
-      <h3>Agendar Turno</h3>
-        <form onSubmit={handleSubmit}>
-          <div className="dropdown">
-            <select name="selectedSpecialty" id="selectedSpecialty" onChange={handleSpecialtySelect} required>
-              <option value="">Selecciona una especialidad</option>
-              <option value="ESPECIALIDAD_ORTODONCISTA">Ortodoncia</option>
-              <option value="ESPECIALIDAD_PERIODONCISTA">Periodoncia</option>
-              <option value="ESPECIALIDAD_ENDODONCISTA">Endodoncia</option>
-              <option value="ESPECIALIDAD_ODONTOPEDIATRIA">Odontopediatría</option>
-              <option value="ESPECIALIDAD_CIRUGIA_ORAL">Cirugía oral</option>
-              <option value="ESPECIALIDAD_CIRUGIA_MAXILOFACIAL">Cirugía maxilofacial</option>
-              <option value="ESPECIALIDAD_PROTESISTA">Prótesis</option>
-            </select>
-          </div>
-
-          {selectedSpecialty && 
+        <div id='section-add-turn' className='add-turn-container'>
+          <form onSubmit={handleSubmit}>
+            <h3 >Agendar Turno</h3>
             <div className="dropdown">
-              <select className="form-select" aria-label="Dropdown example" name="selectedDoctor" value={formData.odontologoId}onChange={(event) => {
-                handleInputChange(event)
-                handleInputOdontologyChange(event)
-              }} required>
-                <option value="" selected>Selecciona un especialista</option>
-                {selectedSpecialty === "ESPECIALIDAD_ORTODONCISTA" && 
-                  <>
-                  {especilistaFiltrado.map(odontologo => <option value={odontologo.id} key={odontologo.id}>{odontologo.nombre} {odontologo.apellido}</option>)}    
-                  </>
-                }
-                {selectedSpecialty === "ESPECIALIDAD_PERIODONCISTA" &&
-                  <>
-                    {especilistaFiltrado.map(odontologo => <option value={odontologo.id} key={odontologo.id}>{odontologo.nombre}</option>)} 
-                  </>
-                }
-                {selectedSpecialty === "ESPECIALIDAD_ENDODONCISTA" &&
-                  <>
-                    {especilistaFiltrado.map(odontologo => <option value={odontologo.id} key={odontologo.id}>{odontologo.nombre}</option>)} 
-                  </>
-                }
-                {selectedSpecialty === "ESPECIALIDAD_ODONTOPEDIATRIA" &&
-                  <>
-                    {especilistaFiltrado.map(odontologo => <option value={odontologo.id} key={odontologo.id}>{odontologo.nombre}</option>)} 
-                  </>
-                }
-                {selectedSpecialty === "ESPECIALIDAD_CIRUGIA_ORAL" &&
-                  <>
-                    {especilistaFiltrado.map(odontologo => <option value={odontologo.id} key={odontologo.id}>{odontologo.nombre}</option>)} 
-                  </>
-                }
-                {selectedSpecialty === "ESPECIALIDAD_CIRUGIA_MAXILOFACIAL" &&
-                  <>
-                    {especilistaFiltrado.map(odontologo => <option value={odontologo.id} key={odontologo.id}>{odontologo.nombre}</option>)} 
-                  </>
-                }
-                    {selectedSpecialty === "ESPECIALIDAD_PROTESISTA" &&
-                  <>
-                    {especilistaFiltrado.map(odontologo => <option value={odontologo.id} key={odontologo.id}>{odontologo.nombre}</option>)} 
-                  </>
-                }
+              <label className="control-label" htmlFor="selectedSpecialty">Especialidad:</label>
+              <select className="form-select" name="selectedSpecialty" id="selectedSpecialty" onChange={handleSpecialtySelect} required>
+                <option value="">Selecciona una especialidad</option>
+                <option value="ESPECIALIDAD_ORTODONCISTA">Ortodoncia</option>
+                <option value="ESPECIALIDAD_PERIODONCISTA">Periodoncia</option>
+                <option value="ESPECIALIDAD_ENDODONCISTA">Endodoncia</option>
+                <option value="ESPECIALIDAD_ODONTOPEDIATRIA">Odontopediatría</option>
+                <option value="ESPECIALIDAD_CIRUGIA_ORAL">Cirugía oral</option>
+                <option value="ESPECIALIDAD_CIRUGIA_MAXILOFACIAL">Cirugía maxilofacial</option>
+                <option value="ESPECIALIDAD_PROTESISTA">Prótesis</option>
               </select>
             </div>
-          }
 
-          <div className="form-group">
-            <label className="control-label" htmlFor="fecha"> Fecha:</label>
-            <input type="date"className="form-control" id="fecha" placeholder="Ingrese la fecha"
-            name="fecha" value={formData.fecha}
-            min={getTomorrowDateString()}
-            onChange={(event) => {
-              handleInputChange(event)
-              handleInputDateChange(event)
-            }} 
-            required/>
-            <select className="hora" name="hora" id="hora" value={formData.hora} onChange={handleInputChange} required>
-            {obtenerHorasDisponibles().map((hora, index) => (
-              <option key={index}>{hora}</option>
-            ))}
-            </select>
-          </div>
-          <button>Cargar</button>
-        </form>
-      </div>
+            {selectedSpecialty && 
+              <div className="dropdown">
+                <label className="control-label" htmlFor="selectedDoctor">Especialista:</label>
+                <select className="form-select" aria-label="Dropdown example" name="selectedDoctor" value={formData.odontologoId}onChange={(event) => {
+                  handleInputChange(event)
+                  handleInputOdontologyChange(event)
+                }} required>
+                  <option value="" selected>Selecciona un especialista</option>
+                  {selectedSpecialty === "ESPECIALIDAD_ORTODONCISTA" && 
+                    <>
+                      {especilistaFiltrado.map(odontologo => <option value={odontologo.id} key={odontologo.id}>{odontologo.nombre} {odontologo.apellido}</option>)}    
+                    </>
+                  }
+                  {selectedSpecialty === "ESPECIALIDAD_PERIODONCISTA" &&
+                    <>
+                      {especilistaFiltrado.map(odontologo => <option value={odontologo.id} key={odontologo.id}>{odontologo.nombre} {odontologo.apellido}</option>)} 
+                    </>
+                  }
+                  {selectedSpecialty === "ESPECIALIDAD_ENDODONCISTA" &&
+                    <>
+                      {especilistaFiltrado.map(odontologo => <option value={odontologo.id} key={odontologo.id}>{odontologo.nombre} {odontologo.apellido}</option>)} 
+                    </>
+                  }
+                  {selectedSpecialty === "ESPECIALIDAD_ODONTOPEDIATRIA" &&
+                    <>
+                      {especilistaFiltrado.map(odontologo => <option value={odontologo.id} key={odontologo.id}>{odontologo.nombre} {odontologo.apellido}</option>)} 
+                    </>
+                  }
+                  {selectedSpecialty === "ESPECIALIDAD_CIRUGIA_ORAL" &&
+                    <>
+                      {especilistaFiltrado.map(odontologo => <option value={odontologo.id} key={odontologo.id}>{odontologo.nombre} {odontologo.apellido}</option>)} 
+                    </>
+                  }
+                  {selectedSpecialty === "ESPECIALIDAD_CIRUGIA_MAXILOFACIAL" &&
+                    <>
+                      {especilistaFiltrado.map(odontologo => <option value={odontologo.id} key={odontologo.id}>{odontologo.nombre} {odontologo.apellido}</option>)} 
+                    </>
+                  }
+                      {selectedSpecialty === "ESPECIALIDAD_PROTESISTA" &&
+                    <>
+                      {especilistaFiltrado.map(odontologo => <option value={odontologo.id} key={odontologo.id}>{odontologo.nombre} {odontologo.apellido}</option>)} 
+                    </>
+                  }
+                </select>
+              </div>
+            }
 
-      <div className='turns_information'>
-        <h3>Cómo será tu primera cita</h3>
-        <p>En Odontotal trabajamos para siempre darte lo mejor, conoce los diferentes canales para que puedas agendar tu cita de valoración</p>
+            <div className="form-group">
+              <label className="control-label" htmlFor="fecha"> Fecha:</label>
+              <input type="date"className="form-control" id="fecha" placeholder="Ingrese la fecha"
+              name="fecha" value={formData.fecha}
+              min={getTomorrowDateString()}
+              onChange={(event) => {
+                handleInputChange(event)
+                handleInputDateChange(event)
+              }} 
+              required/>
+            </div>
             
-        <div className='turns_information_contact'>
-          <div className='turns_information_contact_frame'>
-            <img className='turns_information_contact_img' src={Dent} alt="" />
-            <p>Exámenes diagnósticos (Rayos X, Radiografía panorámica)</p>
-          </div>
-          <div className='turns_information_contact_frame'>
-          <img className='turns_information_contact_img' src={Dentist} alt="" />
-            <p>Evaluación médica y diagnóstico de especialista</p>
-          </div>
-          <div className='turns_information_contact_frame'>
-          <img className='turns_information_contact_img' src={Plan} alt="" />
-            <p>Plan de tratamiento y presupuesto</p>
-          </div>
-          <div className='turns_information_contact_frame'>
-          <img className='turns_information_contact_img' src={Presentation} alt="" />
-            <p>Presentación de alternativas de pago y financiación</p>
+            <div className="dropdown"> 
+              <label className="control-label" htmlFor="hora"> Hora:</label>
+              <select className="form-select" name="hora" id="hora" value={formData.hora} onChange={handleInputChange} required>
+              {obtenerHorasDisponibles().map((hora, index) => (
+                <option key={index}>{hora}</option>
+              ))}
+              </select>
+            </div>
+            <button>Enviar</button>
+          </form>
+        </div>
+
+        <div className='information'>
+          <h3 className='title-turns'>Cómo será tu experiencia</h3>
+          <p className='initial-information'>Durante tu tratamiento en Odontotal nos aseguraremos de brindarte una experiencia agradable y cómoda, la posibilidad de tener exámenes y garantizamos diseñar el mejor plan acorde a tus necesidades.</p>
+              
+          <div className='contact'>
+            <div className='contact_frame'>
+              <div className="detail-image"><FontAwesomeIcon icon={faUserDoctor} /></div>
+              <p className="detail-title">Evaluación médica con especialistas</p>
+            </div>
+            <div className='contact_frame'>
+              <div className="detail-image"><FontAwesomeIcon icon={faTooth} /></div>
+              <p className="detail-title">Exámenes diagnósticos (Rayos X, Radiografías)</p>
+            </div>
+            <div className='contact_frame'>
+              <div className="detail-image"><FontAwesomeIcon icon={faClipboardCheck} /></div>
+              <p className="detail-title">Plan de tratamiento y presupuesto</p>
+            </div>
+            <div className='contact_frame'>
+              <div className="detail-image"><FontAwesomeIcon icon={faCreditCard} /></div>
+              <p className="detail-title">Presentación de alternativas de pago</p>
+            </div>
           </div>
         </div>
-      </div>
-      
-      </div>
-      }
+              
+        </div>
+        }
       
     </div>
   

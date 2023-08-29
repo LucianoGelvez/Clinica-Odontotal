@@ -58,13 +58,13 @@ const Profile = () => {
 
           switch(user.rol){
             case "ODONTOLOGY" :
-            url =`http://localhost:8080/odontologos/${local?.id}`;
+            url =baseUrl.url + `/odontologos/${local?.id}`;
             break;
             case "PATIENT" :
-            url = `http://localhost:8080/pacientes/${local?.id}`;
+            url = baseUrl.url + `/pacientes/${local?.id}`;
             break;
             case "ADMIN" :
-            url =  `http://localhost:8080/usuarios/${local?.id}`
+            url =  baseUrl.url+ + `/usuarios/${local?.id}`
             default:
               console.log("Invalid role");  
           }
@@ -226,7 +226,7 @@ const Profile = () => {
     formData.append('id', local.id);
 
 
-    fetch(`http://localhost:8080/odontologos/uploadImage`, {
+    fetch(baseUrl.url + `/odontologos/uploadImage`, {
       method: 'PUT',
       headers: {
         'Authorization': `Bearer ${jwtLocal}`
@@ -262,7 +262,7 @@ const Profile = () => {
   };
 
   function deleteImage() {
-    const url = `http://localhost:8080/odontologos/deleteImage/${user.id}`
+    const url = baseUrl.url + `/odontologos/deleteImage/${user.id}`
     fetch(url, {
       method: 'DELETE',
       headers: {

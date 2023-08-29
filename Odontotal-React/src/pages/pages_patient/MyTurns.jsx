@@ -8,7 +8,6 @@ const MyTurns = () => {
   const { jwt, user } = useContext(ContextGlobal);
 
   const [dataTurn, setDataTurn] = useState([]);
-  const [response, setResponse] = useState([]);
 
   useEffect(() => {
     async function dataPersonalTurn() {
@@ -39,28 +38,64 @@ const MyTurns = () => {
   };
     
   const handleEliminar = (item) => {
-
-    async function deleteTurn() {
-
-      const url = baseUrl.url + "/turnos/" + item.id;
-
-      const setting = {
-        method: "DELETE",
-        headers: {
-          'Authorization': `Bearer ${jwt}`
-        }
-      };
-      try {
-        const response = await fetch(url, setting)
-        const data = await response.json();
-        setResponse(data)
-      } catch(error) {
-          console.log(error)
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: `Esta acción cancelará el turno de especialidad ${item.especialidad.replace("ESPECIALIDAD_", "")} con ${item.nombreOdontologo} ${item.apellidoOdontologo} el día ${item.fecha} a las ${item.hora.slice(0,5)}`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Aceptar',
+      cancelButtonText: 'Cancelar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteTurn(item);
       }
-    }
-   
-    deleteTurn();
+    });
   };
+
+  const deleteTurn = async (item) => {
+    const url = baseUrl.url + "/turnos/" + item.id;
+
+    const setting = {
+      method: "DELETE",
+      headers: {
+        'Authorization': `Bearer ${jwt}`
+      }
+    };
+    try {
+      const response = await fetch(url, setting);
+      if (response.ok) {
+        Swal.fire(
+          {
+            title: '¡Cancelado!',
+            text: 'El turno ha sido cancelado.',
+            icon: 'success',
+            showCancelButton: false,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Aceptar'
+          }
+        ).then((result) => {
+          if (result.isConfirmed) {
+            window.location.reload();
+          }else{
+            window.location.reload();
+          }
+        })
+      }else {
+        console.error('Error al eliminar el turno');
+        Swal.fire({
+          icon: "error",
+          title: "Error al eliminar",
+          text: "Por favor, intente de nuevo.",
+        });
+        }
+    } catch(error) {
+      console.log(error);
+    }
+  };
+
 
   // const handleGuardar = (item) => {
   //   console.log(item)
@@ -77,9 +112,6 @@ const MyTurns = () => {
   //   }
   // };
 
-  const handleCancelar = () => {
-    setedition(false)
-  }
 
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>

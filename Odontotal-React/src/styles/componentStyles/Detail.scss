@@ -1,70 +1,147 @@
-.detail-container{
-    // background-color:rgba($color: #00E0C8, $alpha: 0.1);
-    display: flex;
-    flex-wrap: wrap;
-    height: 100%;
+.main-datail{
     width: 100%;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-    
-     
-    
-
-    .detail-box{
+    font-family: "Montserrat", sans-serif;
+   
+    h2{
+        width: 40%;
+        text-align: center;
+        color: #02AFF6;
+        margin: 40px auto;
+        font-size: 30px;
         
-        display: flex;
-        width: 35vw;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        border: 1px solid rgba($color: #00E0C8, $alpha: 0.2);
-        margin: 10px;
-        border-radius: 10px;
-        
-        
-        //pisa a container
-        .detail-image{
-            display:flex;
-            margin: 20px;
-            color: #02AFF6 ;
-            font-size: 50px;
-           
-        }
-         .detail-title{
-            display: flex;
-            justify-content: center;
-            font-size: 16px;
-            width: 200px;
-            align-items: center;
-            font-family: 'Montserrat', sans-serif;
-            
-            
-            
-
-
-                
-            }
-            .detail-description{
-                
-                height: 100px;
-                display: flex;
-                align-items: center;
-                text-align: center;
-                font-family: 'Montserrat', sans-serif;
-                margin: 0 5px;
-            }
-
     }
+    .detail-container{
+        // background-color:rgba($color: #00E0C8, $alpha: 0.1);
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        width: 80%;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        margin: 0 auto ;
+        gap: 15px;
+        padding: 30px;
+        
+        // background: linear-gradient(to top , #cfcfcfc0, #00e0ca9f) ;
+        
+    
+    
+    
+    
+    
+        .detail-box{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            padding: 20px;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 5px 5px 10px 0px rgba(150, 150, 150, 0.459) ;
+            margin: 0px auto;
+            height: 100%;
+            transition: background-color 1s ease-in;
+ 
+
+            &:hover{
+                background-color: #92929225;
+                
+                .detail-description{
+                    display: flex;
+                   
+
+                }
+
+
+            }
+    
+            
+            //pisa a container
+            .detail-image{
+                display:flex;
+                margin: 10px;
+                color: #02AFF6 ;
+                font-size: 40px;
+                align-items: center;
+               
+            }
+             .detail-title{
+                display: flex;
+                justify-content: center;
+                font-size: 16px;
+                // width: 200px;
+                align-items: center;
+                font-family: 'Montserrat', sans-serif;
+                margin: 10px;
+                font-weight: 600;
+                text-align: center;
+                color: #02AFF6;
+                
+                
+                
+                
+    
+    
+                    
+                }
+                .detail-description{
+                    
+                    height: 100%;
+                    display: none;
+                    align-items: flex-start;
+                    text-align: center;
+                    font-family: 'Montserrat', sans-serif;
+                    font-weight: 300;
+                    
+                    
+                }
+    
+        }
+    }
+    
 }
 
-@media (max-width: 480px){
-    .detail-container{
-        display: flex;
-        flex-direction: column;
-        .detail-box{
-            width: 80vw;
 
+@media (max-width: 480px){
+    .main-datail{
+        h2{
+            display: none;
+        }
+        .detail-container{
+            display: flex;
+            flex-direction: column;
+            .detail-box{
+                // width: 80vw;
+    
+            }
         }
     }
+    
+}
+@media (min-width:481px) and (max-width:767px) {
+    .main-datail{
+        .detail-container{
+            width: 90%;
+            grid-template-columns: 1fr 1fr;
+            .detail-box{
+               
+    
+            }
+        }
+    }
+    
+}
+@media (min-width:768px) and (max-width:1024px) {
+    .main-datail{
+
+        .detail-container{
+            width: 80%;
+            grid-template-columns: 1fr 1fr;
+            
+            .detail-box{
+                
+    
+            }
+        }
+    }
+    
 }

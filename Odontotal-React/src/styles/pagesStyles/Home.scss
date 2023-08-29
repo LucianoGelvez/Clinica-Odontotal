@@ -1,5 +1,6 @@
 
     .container-home-img{
+
         div{
 
             canvas{
@@ -11,22 +12,44 @@
         
     }
 
-    .line1{
-        color: #02AFF6;
-        width: 80%;
-        margin: 40px 10%;
+    .home-second-container{
+        display: flex;
+        background: radial-gradient(#04b2d9, #04b2d9, #00e0c8 );
+        // width: 80%;
+        margin: 0 auto;
+        height: 40vh;
+    }
+    .img-home-dentist{
+        padding-top: 20px;
+        position: sticky;
+        // left: 60%;
+    }   
+    .button-home{
+        height: 50px;
+        border-radius: 20px;
+        position: sticky;
+        top: 85%;
+        z-index: 1;
+        left: 40%;
+        border: none;
+        padding: 0 50px;
     }
     .text-initial{
-        width: 80%;
+        width: 60%;
         display: flex;
         justify-content: center;
-        text-align: center;
-        background-color: rgba($color: #00E0C8b4, $alpha: 0.1);
+        align-items: center;
+        z-index: 2;
         font-family: 'Montserrat', sans-serif;
-        margin: 20px auto;
-        padding: 20px;
-        font-size: 14px;
-        border-radius: 10px;
+        // margin: 20px auto;
+        // padding: 20px;
+        font-size: 35px;
+        // border-radius: 10px;
+        position: sticky;
+        color: white;
+        font-weight: bolder;
+        left: 10%;
+
         
         
     }
@@ -45,18 +68,69 @@
         margin: 40px 10%;
     }
     
-    
-
-    
-    
-
-
+    iframe{
+        width: 100%;
+    }
 
 @media (max-width: 480px) {
-    .text-initial{
-        display: none;
-    }
-    .text-responsive{
+    .home-second-container{
+        height: 30vh;
         display: flex;
+        background-image: url(../../images/collageazul.png);
+        background-size: cover;
+
+    .text-initial{
+        font-size: 20px;
+        width: 60%;
+        margin: 0 auto;
+        text-align: center;
+    }
+    .img-home-dentist{
+        display: none;
+        // left: 60%;
+    }   
+    
+}
+}
+@media (max-width: 767px) and (min-width:481px) {
+    
+    .home-second-container{
+        height: 30vh;
+        display: flex;
+        background-image: url(../../images/collageazul.png);
+        background-size: cover;
+
+        .text-initial{
+        //    display: none;
+        font-size: 20px;
+        width: 60%;
+        margin: 0 auto;
+        text-align: center;
+        // height: 50%;
+        
+        }
+        
+        .img-home-dentist{
+            display: none;
+            // left: 60%;
+        }
+
+    }
+    
+}
+@media (max-width: 1024px) and (min-width:768px) {
+    
+    .home-second-container{
+        height: 30vh;
+        .text-initial{
+           font-size: 20px;
+        }
+        
+        .img-home-dentist{
+            padding-top: 20px;
+            position: sticky;
+            // left: 60%;
+        }   
+        
     }
 }

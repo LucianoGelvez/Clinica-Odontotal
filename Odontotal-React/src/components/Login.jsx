@@ -59,13 +59,13 @@ const Login = () => {
         }
       ).then(() => {
         if(userData?.rol === "ADMIN"){
-          window.location.href="http://localhost:5173/ListaDeTurnos"
+          window.location.pathname="/ListaDeTurnos"
         }
         else if(userData.rol === "ODONTOLOGY"){
-          window.location.href="http://localhost:5173/TurnosDelOdontologo"
+          window.location.pathname="/TurnosDelOdontologo"
         }
         else{
-          window.location.href="http://localhost:5173/"
+          window.location.pathname="/"
         }
         
       })

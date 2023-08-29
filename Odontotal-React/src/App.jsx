@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom'
 import { routes } from './routes'
 import AddTurnAdmin from './pages/pages_admin/turns/AddTurnAdmin'
+import EditTurnAdmin from './pages/pages_admin/turns/EditTurnAdmin'
 import ListTurnsAdmin from './pages/pages_admin/turns/ListTurnsAdmin'
 import AddPatientAdmin from './pages/pages_admin/patient/AddPatientAdmin'
 import ListPatientAdmin from './pages/pages_admin/patient/ListPatientAdmin'
@@ -51,6 +52,7 @@ function App() {
     <Route path={routes.TurnOdontology} element={<TurnOdontology/>}/>
     <Route path={routes.ValidateUser} element={<ValidarUsuario/>} />
     <Route path={routes.PatientHistory} element={<PatientHistory/>} />
+    <Route path={routes.EditTurn} element={<EditTurnAdmin/>} />
     </Routes>
 
     <Footer/>

@@ -63,10 +63,15 @@ public class TurnoController {
         return ResponseEntity.ok("Se eliminó el turno" +" con id = " + id);
     }
 
-    @PutMapping()
-    public ResponseEntity<String> actualizarTurno(@RequestBody TurnoDto turno) throws ResourceNotFoundException {
-        turnoService.modificarTurno(turno);
-        return ResponseEntity.ok("Se actualizó el turno con id= " + turno.getId());
+    @PutMapping("/{id}")
+    public ResponseEntity<TurnoDto> actualizarTurno(@RequestBody TurnoDto turno) throws Exception {
+        TurnoDto turnoModificado = turnoService.modificarTurno(turno);
+        //Trear el paciente para luego usar su correo
+        PacienteDto pacienteDto = pacienteService.listarPaciente(turno.getPacienteId()).get();
+
+        // Enviamos el correo de confirmación del turno
+        mailService.enviarCorreoTurno(pacienteDto.getEmail(),turnoModificado);
+        return ResponseEntity.status(HttpStatus.OK).body(turnoModificado);
     }
 
     @GetMapping("/turnosPaciente/{id}")

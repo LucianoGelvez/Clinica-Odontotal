@@ -35,9 +35,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                .antMatchers( "/login", "/mail/**","/pacientes/registrar", "/pacientes/validar/{id}","/usuarios", "/odontologos/listAll").permitAll()
                .antMatchers("/odontologos/**").hasAnyAuthority( "ADMIN","ODONTOLOGY")
                .antMatchers("/pacientes/**").hasAnyAuthority("ADMIN","PATIENT","ODONTOLOGY")
-               .antMatchers("/protecistas/**").hasAnyAuthority("ADMIN")
+               .antMatchers("/protecistas/**").hasAnyAuthority("ADMIN", "ODONTOLOGY")
                .antMatchers("/turnos/**").hasAnyAuthority("ADMIN","ODONTOLOGY","PATIENT")
-               .antMatchers(HttpMethod.GET, "/protecistas/{id}","/protecistas").hasAnyAuthority("ODONTOLOGY")
+               .antMatchers(HttpMethod.GET, "/protecistas/{id}","/protecistas/listAll").hasAnyAuthority("ODONTOLOGY")
                .antMatchers(HttpMethod.PUT, "/protecistas/{id}").hasAnyAuthority("ODONTOLOGY")
 
                .anyRequest().authenticated()

@@ -92,6 +92,7 @@ const AddDentistAdmin = () => {
           
           <form onSubmit={handleSubmit}>
           <h3>Agregar Odontologo</h3>
+          <div className='form-dentist-main'>
             <div className="form-group">
             {/* <label className="control-label" htmlFor="Image">Foto:</label>
             <input className="categories-container_input-field"
@@ -182,8 +183,10 @@ const AddDentistAdmin = () => {
               placeholder="Ingrese el provincia" name="provincia" 
               value={formData.provincia} onChange={handleInputChange} required/>
           </div>
-
+          </div>
                 <button>Cargar</button>
+                
+               
                 </form>
                 </div>
                 

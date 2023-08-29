@@ -294,32 +294,32 @@ const AddTurnAdmin = () => {
                 }
                 {selectedSpecialty === "ESPECIALIDAD_PERIODONCISTA" &&
                   <>
-                    {especilistaFiltrado.map(odontologo => <option value={odontologo.id} key={odontologo.id}>{odontologo.nombre}</option>)} 
+                    {especilistaFiltrado.map(odontologo => <option value={odontologo.id} key={odontologo.id}>{odontologo.nombre} {odontologo.apellido}</option>)} 
                   </>
                 }
                 {selectedSpecialty === "ESPECIALIDAD_ENDODONCISTA" &&
                   <>
-                    {especilistaFiltrado.map(odontologo => <option value={odontologo.id} key={odontologo.id}>{odontologo.nombre}</option>)} 
+                    {especilistaFiltrado.map(odontologo => <option value={odontologo.id} key={odontologo.id}>{odontologo.nombre} {odontologo.apellido}</option>)} 
                   </>
                 }
                 {selectedSpecialty === "ESPECIALIDAD_ODONTOPEDIATRIA" &&
                   <>
-                    {especilistaFiltrado.map(odontologo => <option value={odontologo.id} key={odontologo.id}>{odontologo.nombre}</option>)} 
+                    {especilistaFiltrado.map(odontologo => <option value={odontologo.id} key={odontologo.id}>{odontologo.nombre} {odontologo.apellido}</option>)} 
                   </>
                 }
                 {selectedSpecialty === "ESPECIALIDAD_CIRUGIA_ORAL" &&
                   <>
-                    {especilistaFiltrado.map(odontologo => <option value={odontologo.id} key={odontologo.id}>{odontologo.nombre}</option>)} 
+                    {especilistaFiltrado.map(odontologo => <option value={odontologo.id} key={odontologo.id}>{odontologo.nombre} {odontologo.apellido}</option>)} 
                   </>
                 }
                 {selectedSpecialty === "ESPECIALIDAD_CIRUGIA_MAXILOFACIAL" &&
                   <>
-                    {especilistaFiltrado.map(odontologo => <option value={odontologo.id} key={odontologo.id}>{odontologo.nombre}</option>)} 
+                    {especilistaFiltrado.map(odontologo => <option value={odontologo.id} key={odontologo.id}>{odontologo.nombre} {odontologo.apellido}</option>)} 
                   </>
                 }
                     {selectedSpecialty === "ESPECIALIDAD_PROTESISTA" &&
                   <>
-                    {especilistaFiltrado.map(odontologo => <option value={odontologo.id} key={odontologo.id}>{odontologo.nombre}</option>)} 
+                    {especilistaFiltrado.map(odontologo => <option value={odontologo.id} key={odontologo.id}>{odontologo.nombre} {odontologo.apellido}</option>)} 
                   </>
                 }
               </select>
