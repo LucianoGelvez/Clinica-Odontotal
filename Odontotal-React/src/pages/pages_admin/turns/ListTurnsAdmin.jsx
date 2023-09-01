@@ -2,7 +2,8 @@ import React, { useContext, useEffect, useState } from 'react'
 import { ContextGlobal } from '../../../components/utils/global.context'
 import List from './List'
 import baseUrl from '../../../components/utils/baseUrl.json'
-import '../../../styles/pagesStyles/ListTurnsAdmin.css'
+// import '../../../styles/pagesStyles/ListTurnsAdmin.css'
+import '../../../styles/pagesStyles/ListAdmin/ListADentisAdmin.css'
 import Swal from 'sweetalert2';
 
 const ListTurnsAdmin = () => {
@@ -72,11 +73,15 @@ const ListTurnsAdmin = () => {
   };
 
   return (
-    <div className='list-turn-container' style={{display: "flex", flexDirection: "column"}}>
+    <div className='main'>
       
       { (user?.rol === "ADMIN" || user?.rol === "ODONTOLOGY")  &&
+      
       <>
-        <List data={data} onEditar={handleEditar} onEliminar={handleEliminar} />
+      {data.length != 0 ?
+        <List data={data} onEditar={handleEditar} onEliminar={handleEliminar} /> 
+        :
+        <h1 style={{margin: "40px"}}>No tienen Turnos asignados por el momento </h1>}
       </>
       }
     </div>

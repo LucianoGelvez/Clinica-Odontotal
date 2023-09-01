@@ -1,7 +1,5 @@
 import React, { useContext, useState } from 'react'
 import { ContextGlobal } from '../../../components/utils/global.context';
-import Login from '../../../components/Login';
-import Register from '../../../components/Register';
 import baseUrl from '../../../components/utils/baseUrl.json'
 import '../../../styles/pagesStyles/AddDentalProsthe.css'
 
@@ -10,12 +8,15 @@ const AddDentalProsthetist = () => {
   const {user } = useContext(ContextGlobal);
 
   const [formData, setFormData] = useState({
-    nombre: '',
-    apellido: '',
+      nombre: '',
+      apellido: '',
       matricula: '',
       email: '',
       telefono: '',
       especialidadProtecista: '',
+      matricula: '',
+      especialidadProtecista: '',
+
   });
   const [response, setResponse] = useState('');
 
@@ -51,10 +52,12 @@ const AddDentalProsthetist = () => {
     setFormData({
       nombre: '',
       apellido: '',
-        matricula: '',
-        email: '',
-        telefono: '',
-        especialidadProtecista: '',
+      matricula: '',
+      email: '',
+      telefono: '',
+      especialidadProtecista: '',
+      matricula: '',
+      especialidadProtecista: '',
     });
 
     console.log(formData)

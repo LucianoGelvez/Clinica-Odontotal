@@ -1,6 +1,8 @@
 .main-datail {
   width: 100%;
   font-family: "Montserrat", sans-serif;
+  margin-bottom: 60px;
+  height: 100%;
 }
 .main-datail h2 {
   width: 40%;
@@ -12,13 +14,14 @@
 .main-datail .detail-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  width: 80%;
+  width: 90%;
   align-items: center;
   justify-content: center;
   font-size: 16px;
   margin: 0 auto;
   gap: 15px;
   padding: 30px;
+  height: 35vh;
 }
 .main-datail .detail-container .detail-box {
   display: flex;
@@ -57,9 +60,8 @@
   color: #02AFF6;
 }
 .main-datail .detail-container .detail-box .detail-description {
-  height: 100%;
   display: none;
-  align-items: flex-start;
+  align-items: center;
   text-align: center;
   font-family: "Montserrat", sans-serif;
   font-weight: 300;
@@ -72,17 +74,24 @@
   .main-datail .detail-container {
     display: flex;
     flex-direction: column;
+    height: 100%;
   }
 }
 @media (min-width: 481px) and (max-width: 767px) {
   .main-datail .detail-container {
-    width: 90%;
-    grid-template-columns: 1fr 1fr;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
   }
 }
 @media (min-width: 768px) and (max-width: 1024px) {
   .main-datail .detail-container {
     width: 80%;
     grid-template-columns: 1fr 1fr;
+    height: 100%;
+  }
+  .main-datail .detail-container .detail-box {
+    height: 20vh;
   }
 }/*# sourceMappingURL=Detail.css.map */

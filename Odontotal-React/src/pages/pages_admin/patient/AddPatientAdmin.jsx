@@ -1,106 +1,90 @@
 import React, { useContext, useState } from 'react'
 import { ContextGlobal } from '../../../components/utils/global.context';
-import Login from '../../../components/Login';
-import Register from '../../../components/Register';
-import baseUrl from '../../../components/utils/baseUrl.json'
 import '../../../styles/pagesStyles/AddPatientAdmin.css'
+import baseUrl from '../../../components/utils/baseUrl.json'
+import Swal from 'sweetalert2';
 
 const AddPatientAdmin = () => {
 
-  const { user } = useContext(ContextGlobal);
-
-  const [domicilio, setDomicilio] = useState({
-    calle: '',
-    numero: '',
-    localidad: '',
-    provincia: '',
-  });
+  const { user, jwt } = useContext(ContextGlobal);
 
   const [formData, setFormData] = useState({
-    apellido: '',
-    nombre: '',
-    documento: '',
-    fechaIngreso: '',
-    fechaNacimiento: '',
-    telefono: '',
-    email: '',
+    apellido: "",
+    nombre: "",
+    email:"",
+    password:"",
+    documento: "",
+    fechaNacimiento:"",
+    genero: "",
+    telefono: "",
+    matricula: "",
+    urlImagen: "",
+    rol:"PATIENT",
+    especialidad: "",
+    calle: "",
+    numero: "",
+    localidad: "",
+    provincia: ""
   });
-
-  const [response, setResponse] = useState('');
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-
-    if (name === 'calle' || name === 'numero' || name === 'localidad' || name === 'provincia') {
-      setDomicilio({
-        ...domicilio,
-        [name]: value,
-      });
-      setFormData({
-        ...formData,
-        domicilio: {
-          ...domicilio,
-          [name]: value,
-        },
-      });
-    } else {
-      setFormData({
-        ...formData,
-        [name]: value,
-      });
-    }
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value
+    }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit =  async (event) => {
     event.preventDefault();
-    console.log(formData);
-    const url = baseUrl.url + '/pacientes';
-    const settings = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    };
-
-    fetch(url, settings)
-      .then((response) => response.json())
-      .then((data) => {
-        setResponse();
-        resetUploadForm();
-      })
-      .catch((error) => {
-        setResponse(error);
-        resetUploadForm();
+    const url = baseUrl.url + '/pacientes/registrar'
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${jwt}`
+        },
+        body: JSON.stringify(formData),
       });
-  };
 
-  const resetUploadForm = () => {
-    setFormData({
-      apellido: '',
-      nombre: '',
-      documento: '',
-      fechaIngreso: '',
-      fechaNacimiento: '',
-      telefono: '',
-      domicilio: {
-        calle: '',
-        numero: '',
-        localidad: '',
-        provincia: '',
-      },
-      email: '',
-    });
+      if (response.ok) {
+          const responseData = await response.json();
+          console.log('Datos enviados correctamente');
+          Swal.fire(
+            {
+              title: 'Paciente registrado correctamente',
+              text: `Paciente: ${formData.apellido} ${formData.nombre} , ha sido registrado con éxito.`,
+              icon: 'success',
+              showCancelButton: false,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Aceptar',
+            }
+          ).then((result) => {
+            if (result.isConfirmed) {
+              console.log(responseData);
+              const retriesData = {
+                initialTime: Date.now(),
+                retries: 0
+              }
+              window.location.reload();
+            }
+          })
+        } else {
+          console.error('Error al enviar los datos');
+          Swal.fire({
+            icon: "error",
+            title: "Error al resgistrar paciente",
+            text: "Por favor, verifique los campos nuevamente.",
+          });
+      }
+    } catch (error) {
+    console.error('Error en la conexión', error);
+    }
+   
+  };   
 
-    setDomicilio({
-      calle: '',
-      numero: '',
-      localidad: '',
-      provincia: '',
-    });
-  };
-
-  console.log(response);
   return (
     <div>    
       {user?.rol === "ADMIN" &&
@@ -129,10 +113,10 @@ const AddPatientAdmin = () => {
                 value={formData.documento} onChange={handleInputChange} required/>
           </div>
           <div className="form-group">
-            <label className="control-label" htmlFor="nombre">FechaIngreso:</label>
-            <input type="date" className="form-control" id="fechaIngreso"
-              placeholder="Ingrese el fechaIngreso" name="fechaIngreso" 
-              value={formData.fechaIngreso} onChange={handleInputChange} required/>
+            <label className="control-label" htmlFor="password">Contraseña:</label>
+            <input type="text" className="form-control" id="password"
+              placeholder="Ingrese el contraseña" name="password" 
+              value={formData.password} onChange={handleInputChange} required/>
           </div>
           <div className="form-group">
             <label className="control-label" htmlFor="fechaNacimiento">FechaNacimiento:</label>
@@ -141,11 +125,30 @@ const AddPatientAdmin = () => {
               value={formData.fechaNacimiento} onChange={handleInputChange} required/>
           </div>
           <div className="form-group">
+            <label className="control-label" htmlFor="genero">Género:</label>
+            <select
+              className="form-control"
+              id="genero"
+              name="genero"
+              value={formData.genero}
+              onChange={handleInputChange}
+              required
+            >
+              <option value="">Seleccione una opción</option>
+              <option value="Femenino">Femenino</option>
+              <option value="Masculino">Masculino</option>
+              <option value="NoBinario">No binario</option>
+              <option value="Transgenero">Transgénero</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+          <div className="form-group">
             <label className="control-label" htmlFor="telefono">Telefono:</label>
             <input type="number" className="form-control" id="telefono"
               placeholder="Ingrese el fechaNacimiento" name="telefono" 
               value={formData.telefono} onChange={handleInputChange} required/>
           </div>
+          
           <div className="form-group">
             <label className="control-label" htmlFor="email">Email:</label>
             <input type="email" className="form-control" id="email"
@@ -156,25 +159,25 @@ const AddPatientAdmin = () => {
             <label className="control-label" htmlFor="calle">calle:</label>
             <input type="text" className="form-control" id="calle"
               placeholder="Ingrese el calle" name="calle" 
-              value={domicilio.calle} onChange={handleInputChange} required/>
+              value={formData.calle} onChange={handleInputChange} required/>
           </div>
           <div className="form-group">
             <label className="control-label" htmlFor="numero">numero:</label>
             <input type="number" className="form-control" id="numero"
               placeholder="Ingrese el numero" name="numero" 
-              value={domicilio.numero} onChange={handleInputChange} required/>
+              value={formData.numero} onChange={handleInputChange} required/>
           </div>
           <div className="form-group">
             <label className="control-label" htmlFor="localidad">localidad:</label>
             <input type="text" className="form-control" id="localidad"
               placeholder="Ingrese el localidad" name="localidad" 
-              value={domicilio.localidad} onChange={handleInputChange} required/>
+              value={formData.localidad} onChange={handleInputChange} required/>
           </div>
           <div className="form-group">
             <label className="control-label" htmlFor="provincia">provincia:</label>
             <input type="text" className="form-control" id="provincia"
               placeholder="Ingrese el provincia" name="provincia" 
-              value={domicilio.provincia} onChange={handleInputChange} required/>
+              value={formData.provincia} onChange={handleInputChange} required/>
           </div>
           </div>
           <button>Agregar</button>

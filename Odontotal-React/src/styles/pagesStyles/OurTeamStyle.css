@@ -1,34 +1,63 @@
-.container h2 {
+.team {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  background: linear-gradient(to top, rgba(0, 224, 202, 0.7058823529), rgba(4, 178, 217, 0.7058823529));
+  height: 80vh;
+}
+.team h2 {
   margin-top: 10px;
   text-align: center;
 }
-.container .container_text {
+.team .container_text {
   background-color: rgba(63, 147, 183, 0.503);
   border-radius: 10px;
   margin-bottom: 10px;
   text-align: center;
 }
-.container .container_text .container_text_desk {
+.team .container_text .container_text_desk {
   font-size: medium;
 }
-.container .container_text .container_text_responsive {
+.team .container_text .container_text_responsive {
   display: none;
 }
-.container .container_dentist {
+.team .row {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  -moz-column-count: 4;
+       column-count: 4;
+  flex-wrap: wrap;
+  width: 70vw;
+}
+.team .row .container_dentist {
   margin-top: 2%;
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+  width: calc(33.33% - 10px);
+  margin: 5px;
+  box-sizing: border-box;
 }
-.container .container_dentist .card-box {
+.team .row .container_dentist .card-box {
   padding: 0px;
   border-radius: 3px;
   margin-bottom: 20px;
 }
-.container .container_dentist .thumb-lg {
+.team .row .container_dentist .thumb-lg {
   height: 150px;
   width: 150px;
 }
-.container .container_dentist .img-thumbnail {
+.team .row .container_dentist .img-thumbnail {
   margin-bottom: 100px;
   padding: 0.25rem;
   background-color: #fff;
@@ -37,25 +66,84 @@
   max-width: 100%;
   height: auto;
 }
-.container .container_dentist .text-pink {
+.team .row .container_dentist .text-pink {
   margin-top: 100px;
   color: #dd140a !important;
 }
-.container .container_dentist .text-muted {
-  color: #059ce7 !important;
+.team .row .container_dentist .text-muted {
+  color: #ffffff !important;
+  font-weight: 700;
 }
-.container .container_dentist h4 {
+.team .row .container_dentist h4 {
   margin-top: 5%;
   line-height: 22px;
   font-size: 18px;
 }
+.team .bring {
+  padding: 10px;
+}
+.team img {
+  width: 150px;
+  height: 150px;
+  border-radius: 160px;
+}
 
-@media screen and (max-width: 480px) {
-  .container .container_text .container_text_desk {
+@media screen and (max-width: 780px) {
+  .team .container_text .container_text_desk {
     display: none;
   }
-  .container .container_text .container_text_responsive {
+  .team .container_text .container_text_responsive {
     font-size: medium;
     display: block;
+  }
+  .team .row {
+    -moz-column-count: 2;
+         column-count: 2;
+    flex-wrap: wrap;
+  }
+  .team .row .container_dentist {
+    margin-top: 2%;
+    width: calc(50% - 10px);
+    margin: 5px 5px 0px 5px;
+    box-sizing: border-box;
+    margin-top: 0px;
+  }
+  .team .row .container_dentist .card-box {
+    padding: 0px;
+    border-radius: 3px;
+    margin-bottom: 20px;
+  }
+  .team .row .container_dentist .thumb-lg {
+    height: 150px;
+    width: 150px;
+  }
+  .team .row .container_dentist .img-thumbnail {
+    margin-bottom: 100px;
+    padding: 0.25rem;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+    max-width: 100%;
+    height: auto;
+  }
+  .team .row .container_dentist .text-pink {
+    margin-top: 100px;
+    color: #dd140a !important;
+  }
+  .team .row .container_dentist .text-muted {
+    color: #059ce7 !important;
+  }
+  .team .row .container_dentist h4 {
+    margin-top: 5%;
+    line-height: 22px;
+    font-size: 18px;
+  }
+  .profilePic {
+    width: 150px;
+    height: 150px;
+  }
+  .bring {
+    width: 90px;
+    height: 90px;
   }
 }/*# sourceMappingURL=OurTeamStyle.css.map */

@@ -1,14 +1,15 @@
 .main-edit-turn {
     width: 100%;
-    background-color: #007bff;
+    // background-color: #0071e9;
   
     .edit-container {
+      overflow: auto;
       background: linear-gradient(to top, rgba(0, 224, 202, 0.7058823529), rgba(4, 178, 217, 0.7058823529));
       height: 80vh;
       display: flex;
       justify-content: center;
   
-      form {
+      .edit-form {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -21,31 +22,9 @@
         box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
         gap: 10px;
   
-        .form-group {
-          width: 100%;
-          gap: 10px;
-  
-          input {
-            margin: auto;
+          .dropdown-edit {
             width: 100%;
-            height: 40px;
-            color: grey;
-          }
-  
-          select {
-            margin: auto;
-            width: 100%;
-            margin-top: 10px;
-            height: 40px;
-            border-radius: 5px;
-            border: 1px solid rgba(128, 128, 128, 0.39);
-            padding-left: 10px;
-            color: grey;
-          }
-  
-          .dropdown {
-            width: 100%;
-  
+        
             select {
               height: 40px;
               width: 100%;
@@ -54,42 +33,54 @@
               color: rgb(128, 128, 128);
               padding-left: 10px;
             }
-          }
-  
-          .btn-send {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            font-size: 1rem;
-            font-weight: 500;
-            color: #fff;
-            background-color: #007bff;
-            cursor: pointer;
-            margin-top: 20px;
-            margin-right: 5px;
-  
-            &:hover {
-              background-color: #0069d9;
-            }
-          }
-  
-          .btn-cancel {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            font-size: 1rem;
-            font-weight: 500;
-            color: #fff;
-            background-color: #d33;
-            cursor: pointer;
-            margin-top: 20px;
-            margin-left: 5px;
-  
-            &:hover {
-              background-color: rgb(196, 45, 45);
-            }
-          }
+
         }
+        .form-group-edit {
+          width: 100%;
+          gap: 10px;
+
+          .input-edit {
+            margin: auto;
+            width: 100%;
+            height: 40px;
+            color: grey;
+          }
+  
+      }
+
+      .btn-send {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        font-weight: 500;
+        color: #fff;
+        background-color: #007bff;
+        cursor: pointer;
+        margin-top: 20px;
+        margin-right: 5px;
+
+        &:hover {
+          background-color: #0069d9;
+        }
+      }
+
+      .btn-cancel {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        font-weight: 500;
+        color: #fff;
+        background-color: #d33;
+        cursor: pointer;
+        margin-top: 20px;
+        margin-left: 5px;
+
+        &:hover {
+          background-color: rgb(196, 45, 45);
+        }
+      }
       }
     }
   }

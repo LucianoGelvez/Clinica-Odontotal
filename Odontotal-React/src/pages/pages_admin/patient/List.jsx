@@ -5,6 +5,7 @@ const List = ({ data, onEditar, onEliminar }) => {
   
   return (
     <section>
+            <h1>Lista de Pacientes</h1>
     <table>
       <thead>
         <tr>
@@ -12,7 +13,7 @@ const List = ({ data, onEditar, onEliminar }) => {
           <th>Apellido</th>
           <th>documento</th>
           <th>Provincia</th>
-          <th>Acciones</th>
+          <th className="actions">Acciones</th>
         </tr>
       </thead>
       <tbody>
@@ -22,8 +23,7 @@ const List = ({ data, onEditar, onEliminar }) => {
             <td>{item.apellido}</td>
             <td>{item.documento}</td>
             <td>{item.provincia}</td>
-           
-            <td>
+            <td className="actions">
               <button onClick={() => onEditar(item)}>Editar</button>
               <button onClick={() => onEliminar(item)} className="btn-delete">Eliminar</button>
             </td>

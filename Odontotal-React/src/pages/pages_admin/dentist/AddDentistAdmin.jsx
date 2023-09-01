@@ -2,17 +2,16 @@ import React, { useContext, useState } from 'react';
 import { ContextGlobal } from '../../../components/utils/global.context';
 import baseUrl from '../../../components/utils/baseUrl.json'
 import '../../../styles/pagesStyles/AddDentistAdmin.css'
+import Swal from 'sweetalert2';
 
 const AddDentistAdmin = () => {
   const { user, jwt } = useContext(ContextGlobal);
-  const [image, setImage] = useState();
-  const [previewImage, setPreviewImage] = useState(null);
 
   const [formData, setFormData] = useState({
     apellido: "",
     nombre: "",
     email:"",
-    password:"12345",
+    password:"",
     documento: "",
     fechaNacimiento:"",
     genero: "",
@@ -35,28 +34,70 @@ const AddDentistAdmin = () => {
   const [response, setResponse] = useState('');
 
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async(event) => {
     event.preventDefault();
     const url = baseUrl.url + '/odontologos';
-    const settings = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + jwt
-      },
-      body: JSON.stringify(formData),
-    };
-
-    fetch(url, settings)
-      .then((response) => response.json())
-      .then((data) => {
-        setResponse(data);
-        resetUploadForm();
-      })
-      .catch((error) => {
-        setResponse(error);
-        resetUploadForm();
+      const confirmResult = await Swal.fire({
+        title: 'Confirmar datos',
+        text: `¿Desea agregar el odontologo ${formData.nombre} ${formData.apellido}?`,
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Aceptar',
+        cancelButtonText: 'Cancelar',
       });
+    
+      // Si el usuario acepta la confirmación
+      if (confirmResult.isConfirmed) {
+        try{
+          const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${jwt}`
+            },
+            body: JSON.stringify(formData),
+          });
+  
+          if (response.ok) {
+            const responseData = await response.json();
+            console.log('Datos enviados correctamente');
+  
+            Swal.fire(
+              {
+                title: 'Odontologo agregado correctamente',
+                icon: 'success',
+                showCancelButton: false,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Aceptar',
+              }
+            ).then((result) => {
+              if (result.isConfirmed) {
+                resetUploadForm();
+              }
+            })
+          } else {
+            console.error('Error al enviar los datos');
+            Swal.fire({
+              icon: "error",
+              title: "Error al agregar odontologo",
+              text: "Por favor, verifique los campos nuevamente.",
+            });
+            }
+        }
+        catch (error) {
+          console.error('Error en la conexión', error);
+          }
+        }
+    else{
+      Swal.fire({
+        icon: "warning",
+        title: "No se puede agregar odontologo",
+        text: "Por favor complete todos los campos.",
+      });
+    }
   };
 
   const resetUploadForm = () => {
@@ -64,7 +105,7 @@ const AddDentistAdmin = () => {
       apellido: "",
       nombre: "",
       email:"",
-      password:"12345",
+      password:"",
       documento: "",
       fechaNacimiento:"",
       genero: "",
@@ -94,9 +135,6 @@ const AddDentistAdmin = () => {
           <h3>Agregar Odontologo</h3>
           <div className='form-dentist-main'>
             <div className="form-group">
-            {/* <label className="control-label" htmlFor="Image">Foto:</label>
-            <input className="categories-container_input-field"
-            type="file" accept="image/*" onChange={handleImageChange}/> */}
               <label className="control-label" htmlFor="apellido">Apellido:</label>
               <input type="text"className="form-control" id="apellido" placeholder="Ingrese el apellido"
                name="apellido" value={formData.apellido} onChange={handleInputChange} required/>
@@ -116,6 +154,12 @@ const AddDentistAdmin = () => {
               <input type="text"className="form-control" id="documento" placeholder="Ingrese el Documento"
                name="documento" value={formData.documento} onChange={handleInputChange} required/>
             </div>
+            <div className="form-group">
+            <label className="control-label" htmlFor="password">Contraseña:</label>
+            <input type="text" className="form-control" id="password"
+              placeholder="Ingrese la contraseña" name="password" 
+              value={formData.password} onChange={handleInputChange} required/>
+          </div>
             <div className="form-group">
             <label className="control-label" htmlFor="fechaNacimiento">FechaNacimiento:</label>
             <input type="date" className="form-control" id="fechaNacimiento"

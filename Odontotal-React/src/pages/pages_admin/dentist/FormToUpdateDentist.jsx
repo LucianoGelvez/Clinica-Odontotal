@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import Swal from 'sweetalert2';
+import '../../../styles/pagesStyles/ListAdmin/FormUpdateDentist.css'
 import baseUrl from '../../../components/utils/baseUrl.json'
+
 
 const FormToUpdateDentist =({ data, onGuardar, onCancelar, informacionCompleta, jwt  }) => {
   const [id, setId] = useState(data.id);
@@ -20,7 +22,7 @@ const FormToUpdateDentist =({ data, onGuardar, onCancelar, informacionCompleta, 
   const [fechaNacimiento, setFechaNacimiento] = useState(data.fechaNacimiento);
 
 
-  const handleSubmit = (e) => {
+  const handleSubmit =  async(e) => {
     e.preventDefault();
     onGuardar({ ...data, id});
 
@@ -44,26 +46,59 @@ const FormToUpdateDentist =({ data, onGuardar, onCancelar, informacionCompleta, 
     };
 
     const url = baseUrl.url + `/odontologos/`;
-    const settings = {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        'Authorization': 'Bearer ' + jwt
-      },
-      body: JSON.stringify(formData),
-    };
+    
+    const confirmResult = await Swal.fire({
+      title: 'Confirmar datos',
+      text: `¿Esta seguro que desea modificar los datos del odontologo ${data.nombre} ${data.apellido}?`,
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Aceptar',
+      cancelButtonText: 'Cancelar',
+    });
+    if (confirmResult.isConfirmed) {
 
-    fetch(url, settings)
-    .then((response) => {
-      if (response.ok) {
-        Swal.fire(
-          'La modificacion fue exitosa',
-        )
-      } else {
-        console.log(formData)
-        console.log("Error al actualizar el protecista");
-      }
-    })
+         try{
+          const response = await fetch(url, {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${jwt}`
+            },
+            body: JSON.stringify(formData),
+          });
+          
+          if (response.ok) {  
+            Swal.fire(
+              {
+                title: 'Datos de odontologo actualizado correctamente',
+                icon: 'success',
+                showCancelButton: false,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Aceptar',
+              }
+            ).then((result) => {
+              if (result.isConfirmed) {
+                window.location.pathname="/ListaDeOdontologos"
+              }
+            })
+          } else {
+            console.error('Error al enviar los datos');
+            Swal.fire({
+              icon: "error",
+              title: "Error en la modificacion",
+              text: "Por favor, verifique los campos nuevamente.",
+            });
+            }
+        }
+        catch (error) {
+          console.error('Error en la conexión', error);
+          }
+            }
+
+
 
   };
 
@@ -77,75 +112,135 @@ const FormToUpdateDentist =({ data, onGuardar, onCancelar, informacionCompleta, 
   const informacionFila = informacionCompleta.filter(item => item.id !== id);
 
   return (
-    <section>
- <form onSubmit={handleSubmit} style={{ display: "flex", justifyContent: "center", flexWrap: "wrap" }}>
-  <div style={{ display: "flex" }}>
-    <label>Nombre:<input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} /></label>
-    <label>Apellido:<input type="text" value={apellido} onChange={(e) => setApellido(e.target.value)} /></label>
-    <label>Fecha de Nacimiento:<input type="text" value={fechaNacimiento} onChange={(e) => setFechaNacimiento(e.target.value)} /></label>
-    <label>Telefono:<input type="text" value={telefono} onChange={(e) => setTelefono(e.target.value)} /></label>
-  </div>
-  <div style={{ display: "flex" }}>
-    <label>Genero:<input type="text" value={genero} onChange={(e) => setGenero(e.target.value)} /></label>
-    <label>Documento:<input type="text" value={documento} onChange={(e) => setDocumento(e.target.value)} /></label>
-    <label>Matricula:<input type="text" value={matricula} onChange={(e) => setMatricula(e.target.value)} /></label>
-    <label>Calle:<input type="text" value={calle} onChange={(e) => setCalle(e.target.value)} /></label>
-    <label>Numero:<input type="text" value={numero} onChange={(e) => setNumero(e.target.value)} /></label>
-    <label>Localidad:<input type="text" value={localidad} onChange={(e) => setLocalidad(e.target.value)} /></label>
-    <label>Provincia:<input type="text" value={provincia} onChange={(e) => setProvincia(e.target.value)} /></label>
-    <label>Especialidad:
-      <select name="especialidad" id="especialidad" value={especialidad} onChange={(e) => setEspecialidad(e.target.value)} required>
-        <option>ESPECIALIDAD_ORTODONCISTA</option>
-        <option>ESPECIALIDAD_PERIODONCISTA</option>
-        <option>ESPECIALIDAD_ENDODONCISTA</option>
-        <option>ESPECIALIDAD_ODONTOPEDIATRIA</option>
-        <option>ESPECIALIDAD_CIRUGIA_ORAL</option>
-        <option>ESPECIALIDAD_CIRUGIA_MAXILOFACIAL</option>
-        <option>ESPECIALIDAD_PROTESISTA</option>
+<div className='main_update'>
+  <form onSubmit={handleSubmit} className='main_update__form'>
+    <div className='form-group'>
+      <label htmlFor='nombre'>Nombre:</label>
+      <input
+        type='text'
+        id='nombre'
+        value={nombre}
+        onChange={(e) => setNombre(e.target.value)}
+      />
+    </div>
+    <div className='form-group'>
+      <label htmlFor='apellido'>Apellido:</label>
+      <input
+        type='text'
+        id='apellido'
+        value={apellido}
+        onChange={(e) => setApellido(e.target.value)}
+      />
+    </div>
+    <div className='form-group'>
+      <label htmlFor='fechaNacimiento'>Fecha de Nacimiento:</label>
+      <input
+        type='text'
+        id='fechaNacimiento'
+        value={fechaNacimiento}
+        onChange={(e) => setFechaNacimiento(e.target.value)}
+      />
+    </div>
+    <div className='form-group'>
+      <label htmlFor='telefono'>Telefono personal:</label>
+      <input
+        type='text'
+        id='telefono'
+        value={telefono}
+        onChange={(e) => setTelefono(e.target.value)}
+      />
+    </div>
+    <div className='form-group'>
+      <label htmlFor='genero'>Genero:</label>
+      <input
+        type='text'
+        id='genero'
+        value={genero}
+        onChange={(e) => setGenero(e.target.value)}
+      />
+    </div>
+    <div className='form-group'>
+      <label htmlFor='documento'>Documento:</label>
+      <input
+        type='text'
+        id='documento'
+        value={documento}
+        onChange={(e) => setDocumento(e.target.value)}
+      />
+    </div>
+    <div className='form-group'>
+      <label htmlFor='matricula'>Matricula:</label>
+      <input
+        type='text'
+        id='matricula'
+        value={matricula}
+        onChange={(e) => setMatricula(e.target.value)}
+      />
+    </div>
+    <div className='form-group'>
+      <label htmlFor='calle'>Calle:</label>
+      <input
+        type='text'
+        id='calle'
+        value={calle}
+        onChange={(e) => setCalle(e.target.value)}
+      />
+    </div>
+    <div className='form-group'>
+      <label htmlFor='numero'>Numero:</label>
+      <input
+        type='text'
+        id='numero'
+        value={numero}
+        onChange={(e) => setNumero(e.target.value)}
+      />
+    </div>
+    <div className='form-group'>
+      <label htmlFor='localidad'>Localidad:</label>
+      <input
+        type='text'
+        id='localidad'
+        value={localidad}
+        onChange={(e) => setLocalidad(e.target.value)}
+      />
+    </div>
+    <div className='form-group'>
+      <label htmlFor='provincia'>Provincia:</label>
+      <input
+        type='text'
+        id='provincia'
+        value={provincia}
+        onChange={(e) => setProvincia(e.target.value)}
+      />
+    </div>
+    <div className='form-group'>
+      <label htmlFor='especialidad'>Especialidad:</label>
+      <select
+        id='especialidad'
+        name='especialidad'
+        value={especialidad}
+        onChange={(e) => setEspecialidad(e.target.value)}
+        required
+      >
+        <option value='ESPECIALIDAD_ORTODONCISTA'> Ortodoncista</option>
+        <option value='ESPECIALIDAD_PERIODONCISTA'> Periodoncista</option>
+        <option value='ESPECIALIDAD_ENDODONCISTA'> Endodoncista</option>
+        <option value='ESPECIALIDAD_ODONTOPEDIATRIA'> Odontopediatría</option>
+        <option value='ESPECIALIDAD_CIRUGIA_ORAL'> Cirugía Oral</option>
+        <option value='ESPECIALIDAD_CIRUGIA_MAXILOFACIAL'> Cirugía Maxilofacial</option>
+        <option value='ESPECIALIDAD_PROTESISTA'> Protesista</option>
       </select>
-    </label>
-  </div>
-  <div style={{ display: "flex", justifyContent: "center", width: "100%", marginTop: "20px" }}>
-    <button type="submit">Guardar</button>
-    <button className='cancel-change' onClick={onCancelarClick}>Cancelar</button>
-  </div>
-</form>
-      <table>
-        <thead>
-          <tr>
-          <th>Nombre</th>
-          <th>Apellido</th>
-          <th>Fecha Nacimiento</th>
-          <th> Genero</th>
-          <th>Telefono</th>
-          <th>Documento</th>
-          <th>Matricula</th>
-          <th>Domicilio</th>
-          </tr>
-        </thead>
-        <tbody>
-        {informacionFila.map((item) => (
-          <tr key={item.id}>
-            <td>{item.nombre}</td>
-            <td>{item.apellido}</td>
-            <td>{item.fechaNacimiento}</td>
-            <td>{item.genero}</td>
-            <td>{item.telefono}</td>
-            <td>{item.documento}</td>
-            <td>{item.matricula}</td>
-            <td>{item.calle} {item.numero}, {item.localidad}, {item.provincia}</td>
-            <td>
-            <td>
-              <button onClick={() => onEditar(item)}>Editar</button>
-              <button onClick={() => onEliminar(item)} className="btn-delete">Eliminar</button>
-            </td>
-            </td>
-          </tr>
-        ))}
-        </tbody>
-      </table>
+    </div>
+    <div className='form_group__btn'>
+      <button type='submit'>Guardar</button>
+      <button className='cancel-change' onClick={onCancelarClick}>Cancelar</button>
+    </div>
+  </form>
+</div>
+
+
   
-    </section>
+
   );
 }
 export default FormToUpdateDentist
