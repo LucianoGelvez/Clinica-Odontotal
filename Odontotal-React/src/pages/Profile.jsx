@@ -58,17 +58,20 @@ const Profile = () => {
 
           switch(user.rol){
             case "ODONTOLOGY" :
-            url =baseUrl.url + `/odontologos/${local?.id}`;
+            url = baseUrl.url +`/odontologos/${user.id}`;
             break;
             case "PATIENT" :
-            url = baseUrl.url + `/pacientes/${local?.id}`;
+            url = baseUrl.url + `/pacientes/${user.id}`;
             break;
             case "ADMIN" :
-            url =  baseUrl.url+ + `/usuarios/${local?.id}`
+            url =  baseUrl.url + `/usuarios/${user.id}`
             default:
               console.log("Invalid role");  
           }
     
+          console.log(url)
+          console.log(url)
+          console.log(url)
           const response = await fetch(url, {
             method: "GET",
             headers: {
@@ -177,7 +180,7 @@ const Profile = () => {
       telefono: telefono,
       matricula: matricula,
       email: email,
-      rol: "ODONTOLOGY",
+      rol: user.rol,
       especialidad: especialidad,
       calle: calle,
       numero: numero,
@@ -185,7 +188,23 @@ const Profile = () => {
       provincia: provincia,
       urlImagen: urlImagen,
     };
-    const url = baseUrl.url + `/odontologos/`;
+
+      let url;
+
+      switch(user.rol){
+        case "ODONTOLOGY" :
+        url = baseUrl.url + `/odontologos/`;
+        break;
+        case "PATIENT" :
+        url =  baseUrl.url + `/pacientes/`;
+        break;
+        case "ADMIN" :
+        url =   baseUrl.url + `/usuarios/`
+        default:
+          console.log("Invalid role");  
+      }
+
+
     const settings = {
       method: "PUT",
       headers: {
@@ -207,11 +226,9 @@ const Profile = () => {
         }, 1500);
    
       } else {
-        // console.log(formData)
+
        
-          console.log("Error al actualizar el odontologo");
-       
-        console.log("Error al actualizar el odontologo");
+          console.log("Error al modificar datos");
       }
     })
 
@@ -226,7 +243,23 @@ const Profile = () => {
     formData.append('id', local.id);
 
 
-    fetch(baseUrl.url + `/odontologos/uploadImage`, {
+    let url;
+
+    switch(user.rol){
+      case "ODONTOLOGY" :
+      url = baseUrl.url + `/odontologos/uploadImage`;
+      break;
+      case "PATIENT" :
+      url =  baseUrl.url + `/pacientes/uploadImage`;
+      break;
+      case "ADMIN" :
+      url =   baseUrl.url + `/usuarios/uploadImage`
+      default:
+        console.log("role invalido");  
+    }
+    
+
+    fetch(url, {
       method: 'PUT',
       headers: {
         'Authorization': `Bearer ${jwtLocal}`
@@ -262,7 +295,21 @@ const Profile = () => {
   };
 
   function deleteImage() {
-    const url = baseUrl.url + `/odontologos/deleteImage/${user.id}`
+    let url;
+
+    switch(user.rol){
+      case "ODONTOLOGY" :
+      url = baseUrl.url + `/odontologos/deleteImage/${user.id}`;
+      break;
+      case "PATIENT" :
+      url =  baseUrl.url + `/pacientes/deleteImage/${user.id}`;
+      break;
+      case "ADMIN" :
+      url =   baseUrl.url + `/usuarios/deleteImage/${user.id}`
+      default:
+        console.log("Invalid role");  
+    }
+    
     fetch(url, {
       method: 'DELETE',
       headers: {
@@ -381,7 +428,6 @@ const Profile = () => {
           </div>
         )}  </div>
             <form>
-            {/* <h2>Actualizá tus datos para poder estar en contacto en caso de urgencia</h2> */}
             <table>
   <thead>
   <th id='nombre' className='especial'>Apellido</th>

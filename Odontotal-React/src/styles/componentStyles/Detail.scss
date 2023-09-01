@@ -1,70 +1,62 @@
-.main-datail{
+.main-datail {
     width: 100%;
     font-family: "Montserrat", sans-serif;
-   
-    h2{
+    margin-bottom: 60px;
+    height: 100%;
+
+    h2 {
         width: 40%;
         text-align: center;
         color: #02AFF6;
         margin: 40px auto;
         font-size: 30px;
-        
+
     }
-    .detail-container{
-        // background-color:rgba($color: #00E0C8, $alpha: 0.1);
+
+    .detail-container {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
-        width: 80%;
+        width: 90%;
         align-items: center;
         justify-content: center;
         font-size: 16px;
-        margin: 0 auto ;
+        margin: 0 auto;
         gap: 15px;
         padding: 30px;
-        
-        // background: linear-gradient(to top , #cfcfcfc0, #00e0ca9f) ;
-        
-    
-    
-    
-    
-    
-        .detail-box{
+        height: 35vh;
+
+
+        .detail-box {
             display: flex;
             flex-direction: column;
             width: 100%;
             padding: 20px;
             justify-content: center;
             align-items: center;
-            box-shadow: 5px 5px 10px 0px rgba(150, 150, 150, 0.459) ;
+            box-shadow: 5px 5px 10px 0px rgba(150, 150, 150, 0.459);
             margin: 0px auto;
             height: 100%;
             transition: background-color 1s ease-in;
- 
 
-            &:hover{
+            &:hover {
                 background-color: #92929225;
-                
-                .detail-description{
+
+                .detail-description {
                     display: flex;
-                   
 
                 }
-
-
             }
-    
-            
-            //pisa a container
-            .detail-image{
-                display:flex;
+
+            .detail-image {
+                display: flex;
                 margin: 10px;
-                color: #02AFF6 ;
+                color: #02AFF6;
                 font-size: 40px;
                 align-items: center;
-               
+
             }
-             .detail-title{
+
+            .detail-title {
                 display: flex;
                 justify-content: center;
                 font-size: 16px;
@@ -75,73 +67,67 @@
                 font-weight: 600;
                 text-align: center;
                 color: #02AFF6;
-                
-                
-                
-                
-    
-    
-                    
-                }
-                .detail-description{
-                    
-                    height: 100%;
-                    display: none;
-                    align-items: flex-start;
-                    text-align: center;
-                    font-family: 'Montserrat', sans-serif;
-                    font-weight: 300;
-                    
-                    
-                }
-    
+
+            }
+
+            .detail-description {
+
+                // height: 100%;
+                display: none;
+                align-items: center;
+                text-align: center;
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 300;
+
+
+            }
+
         }
     }
-    
+
 }
 
 
-@media (max-width: 480px){
-    .main-datail{
-        h2{
+@media (max-width: 480px) {
+    .main-datail {
+        h2 {
             display: none;
         }
-        .detail-container{
+
+        .detail-container {
             display: flex;
             flex-direction: column;
-            .detail-box{
-                // width: 80vw;
-    
-            }
+            height: 100%;
         }
     }
-    
-}
-@media (min-width:481px) and (max-width:767px) {
-    .main-datail{
-        .detail-container{
-            width: 90%;
-            grid-template-columns: 1fr 1fr;
-            .detail-box{
-               
-    
-            }
-        }
-    }
-    
-}
-@media (min-width:768px) and (max-width:1024px) {
-    .main-datail{
 
-        .detail-container{
+}
+
+@media (min-width:481px) and (max-width:767px) {
+    .main-datail {
+        .detail-container {
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+    }
+
+}
+
+@media (min-width:768px) and (max-width:1024px) {
+    .main-datail {
+
+        .detail-container {
             width: 80%;
             grid-template-columns: 1fr 1fr;
-            
-            .detail-box{
-                
-    
+            height: 100%;
+
+            .detail-box {
+                height: 20vh;
+
             }
         }
     }
-    
+
 }

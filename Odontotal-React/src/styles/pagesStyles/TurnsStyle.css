@@ -11,7 +11,7 @@
   flex-direction: column;
   align-items: center;
 }
-.turns .information .title-turns{
+.turns .information .title-turns {
   font-family: "Montserrat", sans-serif;
 }
 .turns .information .initial-information {
@@ -46,10 +46,10 @@
   margin: 10px;
   border-radius: 10px;
 }
-.turns .information .contact .contact_frame a{
+.turns .information .contact .contact_frame a {
   text-decoration: none;
 }
-.turns .information .contact .contact_frame a:visited{
+.turns .information .contact .contact_frame a:visited {
   color: black;
 }
 .turns .information .contact .contact_frame .detail-image {
@@ -78,7 +78,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 30vw; 
+  width: 30vw;
   margin: auto;
   padding: 20px;
   border: 1px solid #ccc;
@@ -133,7 +133,7 @@
   background-color: #0069d9;
 }
 
-@media(max-width: 1080px) {
+@media (max-width: 1080px) {
   .turns .information .contact .contact_frame {
     width: 30vw;
   }
@@ -141,8 +141,8 @@
     width: 50vw;
   }
 }
-@media(max-width: 770px) {
-  .turns .information .contact{
+@media (max-width: 770px) {
+  .turns .information .contact {
     width: 90vw;
   }
   .turns .information .contact .contact_frame {
@@ -152,7 +152,6 @@
     width: 60vw;
   }
 }
-
 @media (max-width: 480px) {
   .turns .information .contact {
     display: flex;
@@ -161,12 +160,11 @@
   .turns .information .contact .contact_frame {
     width: 80vw;
   }
-  .turns .add-turn-container{
+  .turns .add-turn-container {
     width: 100vw;
     border-radius: 0px;
   }
 }
-
 @media (min-width: 200px) and (max-width: 480px) {
   .turns .add-turn-container form {
     width: 90vw;

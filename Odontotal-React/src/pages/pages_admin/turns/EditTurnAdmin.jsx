@@ -334,23 +334,23 @@ const AddTurnAdmin = () => {
     <div className='main-edit-turn'>
       { user?.rol === "ADMIN" ? (
       <div className='edit-container'>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className='edit-form'>
           <h3>Editar Turno</h3>
-          <div className="dropdown">
+          <div className="dropdown-edit">
             <label className="control-label" htmlFor="documento">Documento paciente:</label>
             <Select
               value={{ value: formData?.documento, label: formData?.documento }}
               onChange={(selectedOption) => handleInputChangeDocument(selectedOption)}
-              isSearchable={false} // Desactivar la búsqueda
+              isSearchable={false} 
               placeholder="Selecciona un documento"
               required
             />
           </div>
 
 
-          <div className="dropdown">
+          <div className="dropdown-edit">
             <label className="control-label" htmlFor="selectedSpecialty">Especialidad:</label>
-            <select className="form-select" name="selectedSpecialty" id="selectedSpecialty" value={selectedSpecialty} onChange={handleSpecialtySelect} required>
+            <select className="select-edit" name="selectedSpecialty" id="selectedSpecialty" value={selectedSpecialty} onChange={handleSpecialtySelect} required>
               <option value="">Selecciona una especialidad</option>
               <option value="ESPECIALIDAD_ORTODONCISTA">Ortodoncia</option>
               <option value="ESPECIALIDAD_PERIODONCISTA">Periodoncia</option>
@@ -363,9 +363,9 @@ const AddTurnAdmin = () => {
           </div>
 
           {selectedSpecialty && 
-            <div className="dropdown">
+            <div className="dropdown-edit">
               <label className="control-label" htmlFor="selectedDoctor">Especialista:</label>
-              <select className="form-select" aria-label="Dropdown example" name="selectedDoctor" value={formData?.odontologoId} onChange={(event) => {
+              <select className="select-edit" aria-label="Dropdown example" name="selectedDoctor" value={formData?.odontologoId} onChange={(event) => {
                 handleInputChange(event)
                 handleInputOdontologyChange(event)
               }} required>
@@ -409,9 +409,9 @@ const AddTurnAdmin = () => {
             </div>
           }
 
-          <div className="form-group">
+          <div className="form-group-edit">
             <label className="control-label" htmlFor="fecha"> Fecha:</label>
-            <input type="date"className="form-control" id="fecha" placeholder="Ingrese el fecha"
+            <input type="date"className="input-edit" id="fecha" placeholder="Ingrese el fecha"
             name="fecha" value={formData.fecha} 
             min={getTomorrowDateString()}
             onChange={(event) => {
@@ -421,9 +421,9 @@ const AddTurnAdmin = () => {
             required/>
           </div>
 
-          <div className="dropdown">     
+          <div className="dropdown-edit">     
           <label className="control-label" htmlFor="hora"> Hora:</label>
-            <select className="form-select" name="hora" id="hora" value={formData?.hora} onChange={handleInputChange} required>
+            <select className="select-edit" name="hora" id="hora" value={formData?.hora} onChange={handleInputChange} required>
               {obtenerHorasDisponibles().map((hora, index) => (
               <option key={index} >{hora}</option>  
               ))}

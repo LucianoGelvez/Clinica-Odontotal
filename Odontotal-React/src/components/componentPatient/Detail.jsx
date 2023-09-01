@@ -47,7 +47,7 @@ const Detail = () => {
               <div className="detail-box" key={index}>
                 <div className="detail-image">{detail.image}</div>
                 <div className="detail-title">{detail.title}</div>
-                <div className="detail-description">{detail.description}</div>
+                <p className="detail-description">{detail.description}</p>
             </div>
             
             ))}

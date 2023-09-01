@@ -1,14 +1,14 @@
 .main-edit-turn {
   width: 100%;
-  background-color: #007bff;
 }
 .main-edit-turn .edit-container {
+  overflow: auto;
   background: linear-gradient(to top, rgba(0, 224, 202, 0.7058823529), rgba(4, 178, 217, 0.7058823529));
   height: 80vh;
   display: flex;
   justify-content: center;
 }
-.main-edit-turn .edit-container form {
+.main-edit-turn .edit-container .edit-form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,30 +21,10 @@
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   gap: 10px;
 }
-.main-edit-turn .edit-container form .form-group {
-  width: 100%;
-  gap: 10px;
-}
-.main-edit-turn .edit-container form .form-group input {
-  margin: auto;
-  width: 100%;
-  height: 40px;
-  color: grey;
-}
-.main-edit-turn .edit-container form .form-group select {
-  margin: auto;
-  width: 100%;
-  margin-top: 10px;
-  height: 40px;
-  border-radius: 5px;
-  border: 1px solid rgba(128, 128, 128, 0.39);
-  padding-left: 10px;
-  color: grey;
-}
-.main-edit-turn .edit-container form .dropdown {
+.main-edit-turn .edit-container .edit-form .dropdown-edit {
   width: 100%;
 }
-.main-edit-turn .edit-container form .dropdown select {
+.main-edit-turn .edit-container .edit-form .dropdown-edit select {
   height: 40px;
   width: 100%;
   border-radius: 5px;
@@ -52,7 +32,17 @@
   color: rgb(128, 128, 128);
   padding-left: 10px;
 }
-.main-edit-turn .edit-container form .btn-send {
+.main-edit-turn .edit-container .edit-form .form-group-edit {
+  width: 100%;
+  gap: 10px;
+}
+.main-edit-turn .edit-container .edit-form .form-group-edit .input-edit {
+  margin: auto;
+  width: 100%;
+  height: 40px;
+  color: grey;
+}
+.main-edit-turn .edit-container .edit-form .btn-send {
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
@@ -64,10 +54,10 @@
   margin-top: 20px;
   margin-right: 5px;
 }
-.main-edit-turn .edit-container form .btn-send:hover {
+.main-edit-turn .edit-container .edit-form .btn-send:hover {
   background-color: #0069d9;
 }
-.main-edit-turn .edit-container form .btn-cancel {
+.main-edit-turn .edit-container .edit-form .btn-cancel {
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
@@ -79,7 +69,7 @@
   margin-top: 20px;
   margin-left: 5px;
 }
-.main-edit-turn .edit-container form .btn-cancel:hover {
+.main-edit-turn .edit-container .edit-form .btn-cancel:hover {
   background-color: rgb(196, 45, 45);
 }
 
@@ -97,4 +87,4 @@
   .main-edit-turn .edit-container form {
     width: 50%;
   }
-}/*# sourceMappingURL=AddTurnAdminStyle.css.map */
+}/*# sourceMappingURL=EditTurnAdminStyle.css.map */

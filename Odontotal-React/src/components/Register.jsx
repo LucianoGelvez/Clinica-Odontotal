@@ -95,43 +95,10 @@ const Register = () => {
     }
   };    
 
-  // const resetUploadForm = () => {
-  //   setFormData({
-  //     apellido: '',
-  //     nombre: '',
-  //     documento: '',
-  //     fechaIngreso: '',
-  //     fechaNacimiento: '',
-  //     telefono: '',
-  //     domicilio: {
-  //       calle: '',
-  //       numero: '',
-  //       localidad: '',
-  //       provincia: '',
-  //     },
-  //     email: '',
-  //   });
-
-  //   setDomicilio({
-  //     calle: '',
-  //     numero: '',
-  //     localidad: '',
-  //     provincia: '',
-  //   })
-  //   setFormUser({
-  //     email:'',
-  //     password:'',
-  //     rol:'ROLE_USER'
-  //   });
-  // };
-
   return (
     <div>
-      {/* {window.location.pathname === "/Registro" && <NavbarPatient/>} */}
       <div className="login">
         <div className="row">
-          
-          {/* <h3>Agregar Paciente</h3> */}
           
           <form onSubmit={handleSubmit}>
          

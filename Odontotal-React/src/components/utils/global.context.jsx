@@ -94,19 +94,26 @@ export const ContextProvider = ({ children }) => {
   const [showDentist,setShowDentist] = useState(true)
 
     const fetchData = (url) => {
+      if(user?.rol){
       fetch(url, {
         headers: {
           'Authorization': `Bearer ${jwt}`,
         },
       })
+      .then((response) => response.json())
+      .then((data) => setInformation(data))
+      .catch((error) => console.log(error));}
+      else {
+        fetch(url)
         .then((response) => response.json())
         .then((data) => setInformation(data))
         .catch((error) => console.log(error));
-    };
+  }
+}
 
   useEffect(() => {
     const path = window.location.pathname;
-    if (path === "/ListaDeOdontologos") {
+    if (path === "/ListaDeOdontologos" || path === "/NuestroEquipo") {
       fetchData(url_ListDentists);
     } else if (path === "/ListaDePacientes" || path === "/AgregarTurno") {
       fetchData(url_ListPatients);

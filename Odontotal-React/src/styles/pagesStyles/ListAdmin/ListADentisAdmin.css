@@ -1,0 +1,143 @@
+.main {
+  background: linear-gradient(to top, rgba(0, 224, 202, 0.7058823529), rgba(4, 178, 217, 0.7058823529));
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #fff;
+  gap: 10px;
+  min-height: 78vh;
+  align-self: flex-start;
+}
+.main section {
+  margin: 0;
+  padding: 0;
+  align-self: flex-start;
+  margin: 6vh 0px 10vh 0px;
+}
+.main section table {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  gap: 10px;
+}
+.main section th, .main section td {
+  text-align: center;
+}
+.main section .actions {
+  width: 18vw;
+}
+.main .main_update {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  min-height: 70vh;
+}
+.main .main_update .main_update__form {
+  width: 60%;
+  background-color: #ffffff;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  gap: 10px;
+}
+.main .main_update .main_update__form .form-group {
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+  margin-right: 10px;
+}
+.main .main_update .main_update__form .form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.main .main_update .main_update__form .form-group input[type=text], .main .main_update .main_update__form .form-group [type=date], .main .main_update .main_update__form .form-group [type=number],
+.main .main_update .main_update__form .form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+.main .main_update .main_update__form .form-group select {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background: url("arrow-down.svg") no-repeat right center;
+  background-size: 20px;
+}
+.main .main_update .main_update__form .form-group button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+.main .main_update .main_update__form .form-group button.cancel-change {
+  background-color: #ccc;
+  margin-left: 10px;
+}
+.main .main_update .form_group__btn {
+  margin-top: 10px;
+}
+.main .main_update .form_group__btn button {
+  padding: 10px 20px;
+  background-color: #3e8e41;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+.main .main_update .form_group__btn button:hover {
+  background-color: #40a142;
+}
+.main .main_update .form_group__btn button.cancel-change {
+  background-color: #b90000;
+  margin-left: 10px;
+}
+.main .main_update .form_group__btn button.cancel-change:hover {
+  background-color: #b20000;
+}
+
+@media (max-width: 835px) {
+  .main section {
+    width: 100vw;
+  }
+  .main section table {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    gap: 10px;
+  }
+  .main section table .none {
+    display: none;
+  }
+  .main .main_update {
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+  }
+  .main .main_update .main_update__form {
+    width: 100%;
+  }
+  .main .main_update .main_update__form .form-group {
+    width: 42%;
+  }
+}
+@media (max-width: 480px) {
+  .main section {
+    overflow: auto;
+  }
+}/*# sourceMappingURL=ListADentisAdmin.css.map */
