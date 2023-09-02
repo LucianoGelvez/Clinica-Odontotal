@@ -1,68 +1,162 @@
-.container {
-h2{
+@import "colores.scss";
+
+.team {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  background: linear-gradient(to top, $greenLight, $greenDark);
+  height: 80vh;
+  h2 {
     margin-top: 10px;
     text-align: center;
-}
-.container_text{
-  background-color: rgba(63, 147, 183, 0.503);
-  border-radius: 10px;
-  margin-bottom: 10px;
-  text-align: center;
-  
- .container_text_desk {
-   font-size: medium;
- }
- .container_text_responsive {
-  display: none;
- }}
-    .container_dentist{
-      margin-top: 2%;
-        display: flex;
-        justify-content: space-evenly;
-       
-  .card-box {   
-    padding: 0px;
-    border-radius: 3px;
-    margin-bottom: 20px;
   }
-  
-  .thumb-lg {
-    height: 150px;
-    width: 150px;
-  }
-  .img-thumbnail {
-    margin-bottom: 100px;
-    padding: 0.25rem;
-    background-color: #fff;
-    border: 1px solid #dee2e6;
-    border-radius: 0.25rem;
-    max-width: 100%;
-    height: auto;
-  }
-  .text-pink {
-    margin-top: 100px;
-    color: #dd140a !important;
-  }
-  
-  .text-muted {
-   
-    color: #059ce7 !important;
-  }
-  h4 {
-    margin-top: 5%;
-    line-height: 22px;
-    font-size: 18px;
-  } }
-}
-@media screen and (max-width: 480px) {
-  .container {  
-    .container_text{  
-     .container_text_desk {
-       display: none;
-     }
-     .container_text_responsive {
+  .container_text {
+    background-color: $greenDark;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+
+    .container_text_desk {
       font-size: medium;
-      display: block;
-     }}
     }
+    .container_text_responsive {
+      display: none;
+    }
+  }
+  .row {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    column-count: 4;
+    flex-wrap: wrap;
+
+    width: 70vw;
+    .container_dentist {
+      margin-top: 2%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-content: center;
+      align-items: center;
+      text-align: center;
+      width: calc(33.33% - 10px);
+      margin: 5px;
+      box-sizing: border-box;
+
+      .card-box {
+        padding: 0px;
+        border-radius: 3px;
+        margin-bottom: 20px;
+      }
+
+      .thumb-lg {
+        height: 150px;
+        width: 150px;
+      }
+      .img-thumbnail {
+        margin-bottom: 100px;
+        padding: 0.25rem;
+        background-color: $white;
+        border: 1px solid $whiteMatte;
+        border-radius: 0.25rem;
+        max-width: 100%;
+        height: auto;
+      }
+      .text-pink {
+        margin-top: 100px;
+        color: $orangeStrong !important;
+      }
+
+      .text-muted {
+        color: $white !important;
+        font-weight: 700;
+      }
+      h4 {
+        margin-top: 5%;
+        line-height: 22px;
+        font-size: 18px;
+      }
+    }
+  }
+
+  .bring {
+    padding: 10px;
+  }
+  img {
+    width: 150px;
+    height: 150px;
+    border-radius: 160px;
+  }
+}
+@media screen and (max-width: 780px) {
+  .team {
+    .container_text {
+      .container_text_desk {
+        display: none;
+      }
+      .container_text_responsive {
+        font-size: medium;
+        display: block;
+      }
+    }
+
+    .row {
+      column-count: 2;
+      flex-wrap: wrap;
+      .container_dentist {
+        margin-top: 2%;
+        width: calc(50% - 10px);
+        margin: 5px 5px 0px 5px;
+        box-sizing: border-box;
+        margin-top: 0px;
+        .card-box {
+          padding: 0px;
+          border-radius: 3px;
+          margin-bottom: 20px;
+        }
+
+        .thumb-lg {
+          height: 150px;
+          width: 150px;
+        }
+        .img-thumbnail {
+          margin-bottom: 100px;
+          padding: 0.25rem;
+          background-color: $white;
+          border: 1px solid $whiteMatte;
+          border-radius: 0.25rem;
+          max-width: 100%;
+          height: auto;
+        }
+        .text-pink {
+          margin-top: 100px;
+          color: $orangeStrong !important;
+        }
+
+        .text-muted {
+          color: $blue !important;
+        }
+        h4 {
+          margin-top: 5%;
+          line-height: 22px;
+          font-size: 18px;
+        }
+      }
+    }
+  }
+
+  .profilePic {
+    width: 150px;
+    height: 150px;
+  }
+  .bring {
+    width: 90px;
+    height: 90px;
+  }
 }

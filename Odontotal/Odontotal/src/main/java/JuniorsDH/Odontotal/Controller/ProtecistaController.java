@@ -1,6 +1,5 @@
 package JuniorsDH.Odontotal.Controller;
 
-
 import JuniorsDH.Odontotal.Domain.Protecista;
 import JuniorsDH.Odontotal.Dto.ProtecistaDto;
 import JuniorsDH.Odontotal.Exception.DataInvalidException;
@@ -14,13 +13,10 @@ import java.util.List;
 import java.util.Optional;
 
 @CrossOrigin(origins = "*")
-
 @RestController
 @RequestMapping("/protecistas")
 public class ProtecistaController {
-
     private ProtecistaService protecistaService;
-
     @Autowired
     public ProtecistaController(ProtecistaService protecistaService) {
         this.protecistaService = protecistaService;
@@ -36,7 +32,6 @@ public class ProtecistaController {
     ResponseEntity<ProtecistaDto> buscarProtecista (@PathVariable Long id ) throws ResourceNotFoundException {
         Optional<ProtecistaDto> protecistaBuscado= protecistaService.listarProtecista(id);
         return ResponseEntity.ok(protecistaBuscado.get());
-
     }
 
     @PutMapping
@@ -48,10 +43,10 @@ public class ProtecistaController {
     @DeleteMapping ("/{id}")
     ResponseEntity<String> eliminarProtecista (@PathVariable Long id ) throws ResourceNotFoundException {
         protecistaService.eliminarProtecista(id);
-        return ResponseEntity.ok("se elimino el Protecista con id : "+ id );
+        return ResponseEntity.ok("se eliminó el Protecista con id : "+ id );
     }
 
-    @GetMapping
+    @GetMapping("/listAll")
     ResponseEntity<List<ProtecistaDto>> listarProtecistas () throws ResourceNotFoundException {
         List<ProtecistaDto>protecistasList= protecistaService.listarTodosProtecistas();
         return ResponseEntity.ok(protecistasList);

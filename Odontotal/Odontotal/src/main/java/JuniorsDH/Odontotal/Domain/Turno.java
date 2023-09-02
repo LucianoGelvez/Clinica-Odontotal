@@ -1,15 +1,12 @@
 package JuniorsDH.Odontotal.Domain;
 
-
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-
 @Entity
 @Table(name="turnos")
 public class Turno {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -28,21 +25,28 @@ public class Turno {
     @Column
     private LocalTime hora;
 
+    @Column
+    private String motivo;
 
-    public Turno(Long id, Paciente paciente, Odontologo odontologo, LocalDate fecha, LocalTime hora) {
+    @Column
+    private String realizado;
+
+    public Turno(Long id, Paciente paciente, Odontologo odontologo, LocalDate fecha, LocalTime hora, String motivo, String realizado) {
         this.id = id;
         this.paciente = paciente;
         this.odontologo = odontologo;
         this.fecha = fecha;
         this.hora = hora;
+        this.motivo = motivo;
+        this.realizado = realizado;
     }
-
-
-    public Turno(Paciente paciente, Odontologo odontologo, LocalDate fecha, LocalTime hora) {
+    public Turno(Paciente paciente, Odontologo odontologo, LocalDate fecha, LocalTime hora, String motivo, String realizado) {
         this.paciente = paciente;
         this.odontologo = odontologo;
         this.fecha = fecha;
         this.hora = hora;
+        this.motivo = motivo;
+        this.realizado = realizado;
     }
 
     public Turno() {
@@ -51,13 +55,25 @@ public class Turno {
     public Turno(Odontologo odontologo, Paciente paciente, LocalDate of) {
     }
 
+    public String getMotivo() {
+        return motivo;
+    }
+
+    public void setMotivo(String motivo) {
+        this.motivo = motivo;
+    }
+
+    public String getRealizado() {
+        return realizado;
+    }
+
+    public void setRealizado(String realizado) {
+        this.realizado = realizado;
+    }
 
     public LocalTime sumarHorarioMas30Minutos(){
         return hora.minusMinutes(30);
     }
-
-
-
 
     public Long getId() {
         return id;
@@ -98,9 +114,6 @@ public class Turno {
     public void setHora(LocalTime hora) {
         this.hora = hora;
     }
-
-
-
 
     @Override
     public String toString() {

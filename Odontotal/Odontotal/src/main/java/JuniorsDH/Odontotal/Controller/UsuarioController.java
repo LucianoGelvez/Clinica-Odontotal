@@ -2,9 +2,16 @@ package JuniorsDH.Odontotal.Controller;
 
 
 import JuniorsDH.Odontotal.Domain.Usuario;
+import JuniorsDH.Odontotal.Dto.PacienteDto;
+import JuniorsDH.Odontotal.Dto.UsuarioDto;
+import JuniorsDH.Odontotal.Exception.BadRequestException;
+import JuniorsDH.Odontotal.Exception.ResourceNotFoundException;
 import JuniorsDH.Odontotal.Service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Optional;
@@ -21,28 +28,44 @@ public class UsuarioController {
     }
 
     @PostMapping
-    public Usuario guardarUsuario(@RequestBody Usuario usuario){
-        return usuarioService.guardarUsuario(usuario);
+    public ResponseEntity<UsuarioDto> guardarUsuario(@RequestBody UsuarioDto usuarioDto) throws BadRequestException {
+        return ResponseEntity.status(HttpStatus.CREATED).body(usuarioService.guardarUsuario(usuarioDto));
     }
 
     @GetMapping("/{id}")
-    public Optional<Usuario> buscarUsuario(@PathVariable Long id){
-        return usuarioService.buscarUsuario(id);
+    public ResponseEntity<Optional<UsuarioDto>> buscarUsuario(@PathVariable Long id) throws ResourceNotFoundException {
+        return ResponseEntity.ok(usuarioService.buscarUsuario(id));
     }
 
     @PutMapping
-    public Usuario actualizarUsuario(@RequestBody Usuario usuario){
-        return usuarioService.guardarUsuario(usuario);
+    public ResponseEntity<UsuarioDto> actualizarUsuario(@RequestBody UsuarioDto usuarioDto) throws ResourceNotFoundException {
+        UsuarioDto usuarioActualizado = usuarioService.actualizarUsuario(usuarioDto);
+        return ResponseEntity.ok(usuarioActualizado);
     }
 
     @DeleteMapping("/{id}")
-    public void eliminarUsuario(@PathVariable Long id){
+    public ResponseEntity<String> eliminarUsuario(@PathVariable Long id) throws ResourceNotFoundException {
         usuarioService.eliminarUsuario(id);
+        return ResponseEntity.ok("se eliminó el usuario con id : "+ id );
     }
 
     @GetMapping
-    public List<Usuario> buscarTodos(){
-        return usuarioService.buscarTodos();
+    public ResponseEntity<List<UsuarioDto>> buscarTodos() throws ResourceNotFoundException {
+        return ResponseEntity.ok(usuarioService.buscarTodos());
+    }
+
+
+    @PutMapping("/uploadImage")
+    public ResponseEntity<String> uploadImage(@ModelAttribute("file") MultipartFile file, @RequestParam("id") Long id)
+    {
+        usuarioService.uploadImageProfile(file, id);
+        return ResponseEntity.ok("Image uploaded");
+    }
+
+    @DeleteMapping("/deleteImage/{id}")
+    public ResponseEntity<UsuarioDto> deleteImage(@PathVariable Long id)
+    {
+        return ResponseEntity.ok(usuarioService.deleteImage(id));
     }
 
 }

@@ -1,0 +1,41 @@
+@import "colores.scss";
+
+.list-turn-container {
+  height: 90vh;
+  background: linear-gradient(
+    to top,
+    $greenLight,
+    $greenDark
+  );
+}
+
+.turns-list-admin {
+  &.turns-admin {
+    h4 {
+      text-align: center;
+      margin-top: 20px;
+      position: sticky;
+      left: 0px;
+      background-color: $white;
+    }
+
+    height: 80vh;
+    overflow: auto;
+    margin-top: 40px;
+    background-color: $white;
+
+    .row-titles {
+      position: sticky;
+      top: -1px;
+      background-color: $whiteMatte;
+    }
+
+    .center-input {
+      text-align: center;
+    }
+
+    span {
+      color: $whiteMatte;
+    }
+  }
+}

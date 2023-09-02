@@ -1,0 +1,6 @@
+.turn-container {
+  background: linear-gradient(to top, rgba(0, 224, 202, 0.7058823529), rgba(4, 178, 217, 0.7058823529));
+  height: 80vh;
+  display: flex;
+  overflow: scroll;
+}/*# sourceMappingURL=TurnOdontology.css.map */

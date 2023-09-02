@@ -1,46 +1,122 @@
-import React from 'react'
-import NavbarPatient from '../../components/componentPatient/NavbarPatient'
-import PeopleSmiling from '../../images/PeopleSmiling.webp'
-import Mission from '../../images/Mission.png'
-import Vision from '../../images/Vision.png'
-import CorporatedValues from '../../images/CorporatedValues.png'
-import '../../styles/pagesStyles/AboutUsStyle.css'
+import React from "react";
+import SmileDentist from "../../images/SmileDentist.png";
+import DoctorPortrait from "../../images/doctor-portrait.png";
+import "../../styles/pagesStyles/AboutUsStyle.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faHandHoldingHeart,
+  faHandshake,
+  faPeopleCarryBox,
+  faPeopleGroup,
+  faHandFist,
+} from "@fortawesome/free-solid-svg-icons";
+
 const AboutUs = () => {
   return (
-
     <div>
-      <NavbarPatient/>
-
-      <div className='about-us'>
-        <img className='image' src={PeopleSmiling} alt="" />
-        <h1>Quiénes Somos</h1>
-        <div className='about-us_text'>
-          <p>Odontotal es una clínica dental de renombre en Bogotá, Colombia, que se especializa en servicios de implantología y rehabilitación oral, así como en todos los demás servicios de odontología. La clínica fue fundada en el año 2007 bajo la dirección del reconocido especialista en implantología, Juan Perez, quien cuenta con más de 30 años de experiencia en este campo y es miembro de la Sociedad Colombiana de Implantes (SOCI) desde 1985.</p>
-          <p>Gracias a su experiencia, el Dr. Perez ha seleccionado cuidadosamente un equipo de profesionales altamente capacitados y con valores en común, que garantizan un éxito cercano al 99% en tratamientos de implantes y otras especialidades. Cada miembro del equipo de Odontotal tiene una experiencia no menor a diez años en su área de especialización. Además, nuestro equipo de servicio al cliente está siempre disponible para responder cualquier pregunta o duda que puedas tener y para explicar detalladamente cada tratamiento o intervención. En Odontotal, nos tomamos el tiempo necesario para entender tus expectativas y necesidades para brindarte la mejor atención personalizada.</p>
-          <p>En Odontotal, nos diferenciamos de demás clínicas dentales gracias a la relación cercana y respetuosa que establecemos con nuestros pacientes. Nos enfocamos en el cuidado de cada uno de ellos y no en el aspecto comercial. Además, nuestro modelo de servicio para adultos mayores se basa en ayudas didácticas para una mejor recuperación. Nos destacamos por brindar garantía y satisfacción, lo que nos ha permitido ganarnos la confianza de las personas.</p>
+      <div className="about-us">
+        <div className="about-primary-container">
+          <img className="about-image" src={SmileDentist} alt="" />
+          <h1 className="about-tittle">Quiénes Somos</h1>
         </div>
 
-        <div className='about-us_mission'>
+        <div className="about-second-container">
+          <div className="about-us_text">
+            <h3 className="our-history">Nuestra historia</h3>
+            <p className="text-history">
+              Odontotal fue fundada en 2007 por el reconocido especialista en
+              implantología, Enrique Pérez, quien cuenta con más de 30 años de
+              experiencia en este campo y es miembro de la Sociedad Colombiana
+              de Implantes (SOCI).
+            </p>
+            <p className="text-history">
+              El Dr. Pérez ha seleccionado cuidadosamente un equipo de
+              profesionales altamente capacitados y con valores en común, que
+              garantizan un éxito cercano al 99% en tratamientos dentales.
+              Nuestro equipo de servicio al cliente está siempre disponible para
+              responder cualquier pregunta que puedas tener.
+            </p>
+            <p className="text-history">
+              En Odontotal, nos diferenciamos de demás clínicas dentales gracias
+              a la relación cercana y respetuosa que establecemos con nuestros
+              pacientes. Nos enfocamos en el cuidado de cada uno de ellos y no
+              en el aspecto comercial.
+            </p>
+          </div>
+          <div className="doctor-info">
+            <img className="doctor-portrait" src={DoctorPortrait} alt="" />
+            <p className="doctor-name">Dr. Enrique Pérez</p>
+          </div>
+        </div>
+
+        <div className="about-us_mission">
           <div>
-              <img src={Mission} alt="Imagen 1"/>
-              <h3>Misión</h3>
-              <p>Nuestra misión es proporcionar a nuestros pacientes tratamientos odontológicos integrales de la más alta calidad, con atención especializada y personalizada en una infraestructura moderna y funcional, utilizando tecnología de última generación, para lograr la satisfacción total del paciente y su bienestar oral a largo plazo.</p>
+            <h3 className="mission-value">Misión</h3>
+            <p className="mission-text">
+              Proporcionar a nuestros pacientes tratamientos odontológicos
+              integrales de la más alta calidad, con atención especializada y
+              personalizada en una infraestructura moderna y funcional, para
+              lograr la satisfacción total del paciente y su bienestar oral a
+              largo plazo.
+            </p>
+          </div>
+          <div>
+            <h3 className="mission-value">Visión</h3>
+            <p className="mission-text">
+              Convertirnos en líderes del mercado de la salud oral, reconocidos
+              por nuestros pacientes en tratamientos con tecnología de última
+              generación y un equipo de profesionales calificados, garantizar
+              una odontología humana y socialmente responsable.
+            </p>
+          </div>
+        </div>
+
+        <div className="about-third-container">
+          <h3 className="value-tittle">Nuestros valores</h3>
+          <p className="value-description">
+            En Odontotal, nos enorgullece operar bajo un sólido conjunto de
+            valores que reflejan nuestro compromiso con la excelencia y el
+            cuidado excepcional para nuestros pacientes. Estos valores actúan
+            como la base de todo lo que hacemos, son la brújula que nos guía en
+            nuestra búsqueda de brindar una atención excepcional y contribuir a
+            sonrisas radiantes que perduren toda la vida.
+          </p>
+          <div className="our-values">
+            <div className="value-container">
+              <div className="value-image">
+                <FontAwesomeIcon icon={faHandshake} />
+              </div>
+              <p>Respeto</p>
             </div>
-            <div>   
-              <img src={Vision} alt="Imagen 2"/>
-              <h3>Visión</h3>
-              <p>Convertirnos en líderes del mercado de la salud oral, reconocidos por nuestros pacientes al ofrecer tratamientos integrales de alta calidad con tecnología de última generación y un equipo de profesionales altamente calificados y comprometidos con la satisfacción y bienestar de nuestros pacientes.</p>
+            <div className="value-container">
+              <div className="value-image">
+                <FontAwesomeIcon icon={faHandHoldingHeart} />
+              </div>
+              <p>Confianza</p>
             </div>
-            <div>
-              <img src={CorporatedValues} alt="Imagen 3"/>
-              <h3>Valores corporativos</h3>
-              <p> Destacamos por la experiencia y alta calidad de nuestros especialistas. Nos enfocamos en casos de alta complejidad y ofrecemos soluciones estéticas mínimamente invasivas, teniendo en cuenta la comodidad y satisfacción de nuestros clientes para garantizar una experiencia agradable.</p>
+            <div className="value-container">
+              <div className="value-image">
+                <FontAwesomeIcon icon={faHandFist} />
+              </div>
+              <p>Liderazgo</p>
+            </div>
+            <div className="value-container">
+              <div className="value-image">
+                <FontAwesomeIcon icon={faPeopleGroup} />
+              </div>
+              <p>Vocación</p>
+            </div>
+            <div className="value-container">
+              <div className="value-image">
+                <FontAwesomeIcon icon={faPeopleCarryBox} />
+              </div>
+              <p>Colaboración</p>
             </div>
           </div>
+        </div>
       </div>
-
     </div>
-  )
-}
+  );
+};
 
-export default AboutUs
+export default AboutUs;

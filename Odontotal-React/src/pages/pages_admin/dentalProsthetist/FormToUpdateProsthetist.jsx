@@ -1,38 +1,86 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
+import Swal from "sweetalert2";
+import baseUrl from "../../../components/utils/baseUrl.json";
 
-const FormToUpdateProsthetist =({ data, onGuardar, onCancelar, informacionCompleta  }) => {
+const FormToUpdateProsthetist = ({
+  data,
+  onGuardar,
+  onCancelar,
+  informacionCompleta,
+  jwt,
+}) => {
   const [id, setId] = useState(data.id);
   const [nombre, setNombre] = useState(data.nombre);
   const [apellido, setApellido] = useState(data.apellido);
-  const [especialidadProtecista, setEspecialidad] = useState(data.especialidadProtecista);
+  const [email, setEmail] = useState(data.email);
+  const [documento, setDocumento] = useState(data.documento);
+  const [telefono, setTelefono] = useState(data.telefono);
+  const [matricula, setMatricula] = useState(data.matricula);
+  const [especialidadProtecista, setEspecialidad] = useState(
+    data.especialidadProtecista
+  );
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    onGuardar({ ...data, id, nombre, apellido, especialidadProtecista });
 
     const formData = {
       id: id,
       nombre: nombre,
       apellido: apellido,
+      email: email,
       especialidadProtecista: especialidadProtecista,
+      documento: documento,
+      telefono: telefono,
+      matricula: matricula,
     };
 
-    const url = `http://localhost:8080/protecistas`;
-    const settings = {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    };
-    fetch(url, settings)
-    .then((response) => {
-      if (response.ok) {
-        alert("La modificacion fue exitosa")
-      } else {
-        console.log("Error al actualizar el protecista");
+    const url = baseUrl.url + `/protecistas`;
+    const confirmResult = await Swal.fire({
+      title: "Confirmar datos",
+      text: `¿Esta seguro que desea modificar los datos del protecista ${data.nombre} ${data.apellido}?`,
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Aceptar",
+      cancelButtonText: "Cancelar",
+    });
+    if (confirmResult.isConfirmed) {
+      try {
+        const response = await fetch(url, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${jwt}`,
+          },
+          body: JSON.stringify(formData),
+        });
+
+        if (response.ok) {
+          Swal.fire({
+            title: "Protecista actualizado correctamente",
+            icon: "success",
+            showCancelButton: false,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Aceptar",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              window.location.pathname = "/ListaDeProtecistas";
+            }
+          });
+        } else {
+          console.error("Error al enviar los datos");
+          Swal.fire({
+            icon: "error",
+            title: "Error en la modificacion",
+            text: "Por favor, verifique los campos nuevamente.",
+          });
+        }
+      } catch (error) {
+        console.error("Error en la conexión", error);
       }
-    })
+    }
   };
 
   const onCancelarClick = (e) => {
@@ -41,59 +89,76 @@ const FormToUpdateProsthetist =({ data, onGuardar, onCancelar, informacionComple
   };
 
   // Busca la informacion correspondiente a la tabla sin la fila que se está editando
-  const informacionFila = informacionCompleta.filter(item => item.id !== id);
+  const informacionFila = informacionCompleta.filter((item) => item.id !== id);
 
   return (
-    <section>
-    <form onSubmit={handleSubmit} style={{display: "flex",justifyContent: "center"}}>
-      <label>Nombre:<input type="text"value={nombre}onChange={(e) => setNombre(e.target.value)}/></label>
+    <div className="main_update">
+      <form onSubmit={handleSubmit} className="main_update__form">
+        <div className="form-group">
+          <label>
+            Nombre:
+            <input
+              type="text"
+              value={nombre}
+              onChange={(e) => setNombre(e.target.value)}
+            />
+          </label>
+        </div>
+        <div className="form-group">
+          <label>
+            Apellido:
+            <input
+              type="text"
+              value={apellido}
+              onChange={(e) => setApellido(e.target.value)}
+            />
+          </label>
+        </div>
+        <div className="form-group">
+          <label>
+            Email:
+            <input
+              type="text"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </label>
+        </div>
+        <div className="form-group">
+          <label>
+            Matricula:
+            <input
+              type="text"
+              value={matricula}
+              onChange={(e) => setMatricula(e.target.value)}
+            />
+          </label>
+        </div>
+        <div className="form-group">
+          <label>
+            Telefono:
+            <input
+              type="text"
+              value={telefono}
+              onChange={(e) => setTelefono(e.target.value)}
+            />
+          </label>
+        </div>
 
-      <label>
-        Apellido:
-        <input
-          type="text"
-          value={apellido}
-          onChange={(e) => setApellido(e.target.value)}
-        />
-      </label>
-
-      <label>
-        Especialidad:
-        <input
-          type="text"
-          value={especialidadProtecista}
-          onChange={(e) => setEspecialidad(e.target.value)}
-        />
-      </label>
-
-      <button type="submit">Guardar</button>
-      <button className='cancel-change' onClick={onCancelarClick}>Cancelar</button>
-
-      <br />
-      {/* Muestra la informacion de la fila en la tabla mientras se edita */}
+        <div className="form-group">
+          <label>
+            Especialidad:
+            <input type="text" value="PROTECISTA" />
+          </label>
+        </div>
+        <div className="form_group__btn">
+          <button type="submit">Guardar</button>
+          <button className="cancel-change" onClick={onCancelarClick}>
+            Cancelar
+          </button>
+        </div>
       </form>
-      <table>
-        <thead>
-          <tr>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Especialidad</th>
-          </tr>
-        </thead>
-        <tbody>
-        {informacionFila.map((item) => (
-          <tr key={item.id}>
-            <td>{item.nombre}</td>
-            <td>{item.apellido}</td>
-            <td>{item.especialidadProtecista}</td>
-            <td>
-            </td>
-          </tr>
-        ))}
-        </tbody>
-      </table>
-  
-    </section>
+    </div>
   );
-}
-export default FormToUpdateProsthetist
+};
+export default FormToUpdateProsthetist;

@@ -1,52 +1,38 @@
 package JuniorsDH.Odontotal.Dto;
 
-import javax.persistence.Column;
+import JuniorsDH.Odontotal.Domain.Domicilio;
+import JuniorsDH.Odontotal.Domain.UsuarioRol;
 
-public class OdontologoDto {
-    private Long id;
-    private String nombre;
-    private String apellido;
+import java.time.LocalDate;
+
+public class OdontologoDto extends UsuarioDto {
+
+    private String matricula;
     private String especialidad;
 
+    private String urlImagen;
 
-    public OdontologoDto(Long id, String nombre, String apellido, String especialidad) {
-        this.id = id;
-        this.nombre = nombre;
-        this.apellido = apellido;
+    public OdontologoDto(Long id, String nombre, String apellido, String email, String password, String documento, LocalDate fechaNacimiento, String genero, int telefono, String calle, String numero, String localidad, String provincia, String rol, String matricula, String especialidad, String urlImagen) {
+        super(id, nombre, apellido, email, password, documento, fechaNacimiento, genero, telefono, calle, numero, localidad, provincia, rol, urlImagen);
+        this.matricula = matricula;
         this.especialidad = especialidad;
     }
 
-    public OdontologoDto(String nombre, String apellido, String especialidad) {
-        this.nombre = nombre;
-        this.apellido = apellido;
+    public OdontologoDto(String nombre, String apellido, String email, String password, String documento, LocalDate fechaNacimiento, String genero, int telefono, String calle, String numero, String localidad, String provincia, String rol, String matricula, String especialidad, String urlImagen) {
+        super(nombre, apellido, email, password, documento, fechaNacimiento, genero, telefono, calle, numero, localidad, provincia, rol, urlImagen);
+        this.matricula = matricula;
         this.especialidad = especialidad;
     }
 
     public OdontologoDto() {
     }
 
-    public Long getId() {
-        return id;
+    public String getMatricula() {
+        return matricula;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
     }
 
     public String getEspecialidad() {
@@ -57,12 +43,11 @@ public class OdontologoDto {
         this.especialidad = especialidad;
     }
 
+
     @Override
     public String toString() {
         return "OdontologoDto{" +
-                "id=" + id +
-                ", nombre='" + nombre + '\'' +
-                ", apellido='" + apellido + '\'' +
+                "matricula='" + matricula + '\'' +
                 ", especialidad='" + especialidad + '\'' +
                 '}';
     }

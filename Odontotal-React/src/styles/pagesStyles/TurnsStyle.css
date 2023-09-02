@@ -1,3 +1,172 @@
 .turns {
-  border: 2px blue solid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.turns .information {
+  margin-top: 20px;
+  margin-bottom: 35px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.turns .information .title-turns {
+  font-family: "Montserrat", sans-serif;
+}
+.turns .information .initial-information {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  background-color: rgba(0, 224, 200, 0.1019607843);
+  font-family: "Montserrat", sans-serif;
+  margin: 10px auto;
+  padding: 20px;
+  font-size: 16px;
+  border-radius: 10px;
+}
+.turns .information .contact {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+  width: 80vw;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 12px;
+  margin-top: 15px;
+}
+.turns .information .contact .contact_frame {
+  display: flex;
+  width: 18vw;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: 1px solid rgba(0, 224, 200, 0.2);
+  margin: 10px;
+  border-radius: 10px;
+}
+.turns .information .contact .contact_frame a {
+  text-decoration: none;
+}
+.turns .information .contact .contact_frame a:visited {
+  color: black;
+}
+.turns .information .contact .contact_frame .detail-image {
+  display: flex;
+  margin: 20px;
+  color: #02aff6;
+  font-size: 50px;
+}
+.turns .information .contact .contact_frame .detail-title {
+  display: flex;
+  justify-content: center;
+  font-size: 16px;
+  width: 200px;
+  align-items: center;
+  font-family: "Montserrat", sans-serif;
+}
+.turns .add-turn-container {
+  background: linear-gradient(to top, rgba(0, 224, 202, 0.7058823529), rgba(4, 178, 217, 0.7058823529));
+  height: 540px;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+.turns .add-turn-container form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30vw;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  gap: 10px;
+}
+.turns .add-turn-container form .dropdown {
+  width: 100%;
+}
+.turns .add-turn-container form .dropdown select {
+  height: 40px;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid rgba(128, 128, 128, 0.39);
+  color: rgb(128, 128, 128);
+  padding-left: 10px;
+}
+.turns .add-turn-container form .form-group {
+  width: 100%;
+  gap: 10px;
+}
+.turns .add-turn-container form .form-group input {
+  margin: auto;
+  width: 100%;
+  height: 40px;
+  color: grey;
+}
+.turns .add-turn-container form .form-group select {
+  margin: auto;
+  width: 100%;
+  margin-top: 10px;
+  height: 40px;
+  border-radius: 5px;
+  border: 1px solid rgba(128, 128, 128, 0.39);
+  padding-left: 10px;
+  color: grey;
+}
+.turns .add-turn-container form button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #fff;
+  background-color: #007bff;
+  cursor: pointer;
+  margin-top: 20px;
+}
+.turns .add-turn-container form button:hover {
+  background-color: #0069d9;
+}
+
+@media (max-width: 1080px) {
+  .turns .information .contact .contact_frame {
+    width: 30vw;
+  }
+  .turns .add-turn-container form {
+    width: 50vw;
+  }
+}
+@media (max-width: 770px) {
+  .turns .information .contact {
+    width: 90vw;
+  }
+  .turns .information .contact .contact_frame {
+    width: 35vw;
+  }
+  .turns .add-turn-container form {
+    width: 60vw;
+  }
+}
+@media (max-width: 480px) {
+  .turns .information .contact {
+    display: flex;
+    flex-direction: column;
+  }
+  .turns .information .contact .contact_frame {
+    width: 80vw;
+  }
+  .turns .add-turn-container {
+    width: 100vw;
+    border-radius: 0px;
+  }
+}
+@media (min-width: 200px) and (max-width: 480px) {
+  .turns .add-turn-container form {
+    width: 90vw;
+  }
 }/*# sourceMappingURL=TurnsStyle.css.map */

@@ -7,8 +7,10 @@ import { ContextProvider } from './components/utils/global.context'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
-    <ContextProvider>
+     <ContextProvider>
       <App />
     </ContextProvider>
   </BrowserRouter>,
 )
+
+ 

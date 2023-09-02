@@ -5,7 +5,6 @@ import javax.persistence.*;
 @Entity
 @Table(name="domicilios")
 public class Domicilio {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -18,9 +17,6 @@ public class Domicilio {
     @Column
     private String provincia;
 
-
-
-
     public Domicilio(Long id, String calle, String numero, String localidad, String provincia) {
         this.id = id;
         this.calle = calle;
@@ -29,22 +25,14 @@ public class Domicilio {
         this.provincia = provincia;
     }
 
-
-
-
     public Domicilio(String calle, String numero, String localidad, String provincia) {
         this.calle = calle;
         this.numero = numero;
         this.localidad = localidad;
         this.provincia = provincia;
     }
-
-
     public Domicilio() {
     }
-
-
-
 
     public Long getId() {
         return id;
@@ -85,7 +73,6 @@ public class Domicilio {
     public void setProvincia(String provincia) {
         this.provincia = provincia;
     }
-
 
     @Override
     public String toString() {

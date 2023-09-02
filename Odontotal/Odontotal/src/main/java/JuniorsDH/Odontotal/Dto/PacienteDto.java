@@ -1,96 +1,55 @@
 package JuniorsDH.Odontotal.Dto;
 
 import JuniorsDH.Odontotal.Domain.Domicilio;
+import JuniorsDH.Odontotal.Domain.UsuarioRol;
 
-public class PacienteDto {
+import javax.persistence.Column;
+import java.time.LocalDate;
+import java.util.Date;
 
-    private Long idPaciente;
+public class PacienteDto extends UsuarioDto{
 
-    public String getEmail() {
-        return email;
+    private Boolean validado;
+
+    private Date fechaCreacion;
+
+    public PacienteDto(Long id, String nombre, String apellido, String email, String password, String documento, LocalDate fechaNacimiento, String genero, int telefono, String calle, String numero, String localidad, String provincia, String rol, String urlImagen, Boolean validado, Date fechaCreacion) {
+        super(id, nombre, apellido, email, password, documento, fechaNacimiento, genero, telefono, calle, numero, localidad, provincia, rol, urlImagen);
+        this.validado = validado;
+        this.fechaCreacion = fechaCreacion;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    private String apellido;
-    private String nombre;
-    private Domicilio domicilio;
-    private String documento;
-
-    private String email;
-
-    public PacienteDto(Long idPaciente, String apellido, String nombre, Domicilio domicilio, String documento, String email ) {
-        this.idPaciente = idPaciente;
-        this.apellido = apellido;
-        this.nombre = nombre;
-        this.domicilio = domicilio;
-        this.documento = documento;
-        this.email = email;
-    }
-
-    public PacienteDto(String apellido, String nombre, Domicilio domicilio, String documento, String email ) {
-        this.apellido = apellido;
-        this.nombre = nombre;
-        this.domicilio = domicilio;
-        this.documento = documento;
-        this.email = email;
+    public PacienteDto(String nombre, String apellido, String email, String password, String documento, LocalDate fechaNacimiento, String genero, int telefono, String calle, String numero, String localidad, String provincia, String rol, String urlImagen, Boolean validado, Date fechaCreacion) {
+        super(nombre, apellido, email, password, documento, fechaNacimiento, genero, telefono, calle, numero, localidad, provincia, rol, urlImagen);
+        this.validado = validado;
+        this.fechaCreacion = fechaCreacion;
     }
 
     public PacienteDto() {
     }
 
 
-    public Long getIdPaciente() {
-        return idPaciente;
+    public Boolean getValidado() {
+        return validado;
     }
 
-    public void setIdPaciente(Long idPaciente) {
-        this.idPaciente = idPaciente;
+    public void setValidado(Boolean validado) {
+        this.validado = validado;
     }
 
-    public String getApellido() {
-        return apellido;
+    public Date getFechaCreacion() {
+        return fechaCreacion;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public Domicilio getDomicilio() {
-        return domicilio;
-    }
-
-    public void setDomicilio(Domicilio domicilio) {
-        this.domicilio = domicilio;
-    }
-
-    public String getDocumento() {
-        return documento;
-    }
-
-    public void setDocumento(String documento) {
-        this.documento = documento;
+    public void setFechaCreacion(Date fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
     }
 
     @Override
     public String toString() {
         return "PacienteDto{" +
-                "idPaciente=" + idPaciente +
-                ", apellido='" + apellido + '\'' +
-                ", nombre='" + nombre + '\'' +
-                ", domicilio=" + domicilio +
-                ", documento='" + documento + '\'' +
-                ", email='" + email + '\'' +
+                ", validado=" + validado +
+                ", fechaCreacion=" + fechaCreacion +
                 '}';
     }
 }

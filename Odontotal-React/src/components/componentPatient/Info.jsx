@@ -1,48 +1,35 @@
-import React from 'react'
-import imagen1 from '../../images/image3.jpg'
-import '../../styles/componentStyles/Info.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLocationDot, faPhoneVolume, faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import React from "react";
+import "../../styles/componentStyles/Info.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPhoneVolume, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import FormCustomer from "../FormCustomer";
 
 const Info = () => {
   return (
-    <div className='information-container'>
-        <div className='information-container_aboutus'>
-            <img src={imagen1} alt="" />
-            <h2>Bienvenidos a Odontotal Odontologia</h2>
-            <p>¡Bienvenido a nuestra clínica dental! Estamos comprometidos en brindarle una atención personalizada y de alta calidad para mejorar su salud bucal y su sonrisa.</p>
-        </div>
-        <div className='information-container_schedule'>
-            <h2 className='information-container_schedule_title'>Horario</h2>
-            <span className='information-container_schedule_days'>Lunes-Viernes</span>
-            <span className='information-container_schedule_hour'>08:00 am - 5:00pm</span>
-            <span className='information-container_schedule_days'>Sabado</span>
-            <span className='information-container_schedule_hour'>08:00 am - 12:00 md</span>
-        </div>
-        <div className='information-container_contact'>
-            <h2>Contact</h2>
-            <div className='information-container_contact_location'>
-                <FontAwesomeIcon icon={faLocationDot} className='contact-icon'/>
-                <div className='information-container_contact_location_text'>
-                <p style={{fontWeight:'bold'}}>Medellin, Antioquia</p>
-                <p>Calle 37 #25-30</p>
-                </div>
-            </div>
-            <div className='information-container_contact_phone'>
-            <FontAwesomeIcon icon={faPhoneVolume} className='contact-icon'/>
-                <p>+57 302 698 03 02</p>
-                
-            </div>
-            <div className='information-container_contact_email'>
-            <FontAwesomeIcon icon={faEnvelope} className='contact-icon'/>
-                <p className='information-container_contact_email_text'>Odontotal@gmail.com</p>
-                
-            </div>
-            
-            
-        </div>    
-    </div>
-  )
-}
+    <div className="information-container">
+      <div className="info-text-container">
+        <div className="information-container_contact">
+          <h2>CONTACTO</h2>
+          <h3>
+            Dejanos tu informacion y nos pondremos en contacto en el menor
+            tiempo posible
+          </h3>
 
-export default Info
+          <div className="information-container_contact_phone">
+            <FontAwesomeIcon icon={faPhoneVolume} className="contact-icon" />
+            <p>+57 314 360 28 30</p>
+          </div>
+          <div className="information-container_contact_email">
+            <FontAwesomeIcon icon={faEnvelope} className="contact-icon" />
+            <p className="information-container_contact_email_text">
+              odontotalcontacto@gmail.com
+            </p>
+          </div>
+        </div>
+      </div>
+      <FormCustomer />
+    </div>
+  );
+};
+
+export default Info;
