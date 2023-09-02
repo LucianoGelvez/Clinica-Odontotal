@@ -24,55 +24,64 @@ export const ContextProvider = ({ children }) => {
   const [formData, setFormData] = useState({})
 
   const arrayService = [
-    {
+    { 
+      id: 1,
       imgSrc: GeneralDentistry2,
       alt: "Imagen 1",
       title: "Odontología general",
       description: "Es el diagnóstico, tratamiento, prevención de enfermedades y afecciones de los dientes, las encías y la boca en general. Incluye servicios como la limpieza dental, las extracciones dentales, los rellenos dentales, entre otros."
     },
     {
+      id: 2,
       imgSrc: Implantology,
       alt: "Imagen 2",
       title: "Implantología",
       description: "Consiste en colocar implantes dentales para reemplazar dientes faltantes o perdidos. Los implantes dentales son estructuras de titanio que se ponen en el hueso maxilar o mandibular para usar prótesis dentales."
     },
     {
+      id: 3,
       imgSrc: Orthodontics,
       alt: "Imagen 3",
       title: "Ortodoncia",
       description: "Especialidad que se enfoca en corregir la posición de los dientes y la mandíbula para lograr una buena mordida y una sonrisa más estética."
     },
     {
+      id: 4,
       imgSrc: DentalProsthesis,
       alt: "Imagen 4",
       title: "Prótesis dental",
       description: "Tratamiento para reemplazar dientes faltantes o restaurar dientes dañados, mediante prótesis dentales, ya sea fija o removible."
     },
     {
+      id: 5,
       imgSrc: CaleTeethWhiteningndar,
       alt: "Imagen 5",
       title: "Blanqueamiento dental",
       description: "Es un tratamiento estético para aclarar el tono de los dientes, eliminando las manchas y decoloraciones que pueden deberse al consumo de café, té, vino tinto, entre otros factores. El tratamiento puede realizarse con el uso de productos especializados."
     },
     {
+      id: 6,
       imgSrc: Endodontics,
       alt: "Imagen 6",
       title: "Endodoncia",
       description: "Tratamiento de conductos radiculares, que se realiza para tratar infecciones o inflamaciones en el interior de los dientes y preservar la estructura dental."
     },
     {
+      id: 7,
       imgSrc: Periodontics,
       alt: "Imagen 7",
       title: "Periodoncia",
       description: "Especialidad que trata las enfermedades de las encías y los tejidos que soportan los dientes, como el hueso alveolar y el ligamento periodontal."
     },
     {
+      id: 8,
       imgSrc: MaxillofacialSurgery,
       alt: "Imagen 8",
       title: "Cirugía maxilofacial",
       description: "Especialidad que se enfoca en el tratamiento de problemas de la mandíbula, la cara y el cráneo, como fracturas, malformaciones congénitas, tumores, entre otros."
     },
     {
+      id: 9,
       imgSrc: PediatricDentistry,
       alt: "Imagen 10",
       title: "Odontopediatría",

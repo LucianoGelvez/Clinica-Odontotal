@@ -1,7 +1,5 @@
-// *{  background: linear-gradient(to top, #00e0cab4, #04b2d9b4);}
-.team {
-  // background-color: #dd140a;
 
+.team {
   margin: 0;
   padding: 0;
   display: flex;
@@ -9,20 +7,49 @@
   justify-content: center;
   align-content: center;
   align-items: center;
-  background: linear-gradient(to top, #00e0cab4, #04b2d9b4);
-  height: 80vh;
-  h2{
-      margin-top: 10px;
-      text-align: center;
+margin-bottom: 60px;
+  h1{
+    text-align: center;
+    color: white;
+    margin-top: -480px;
+}
+  .team_branding{
+    width: 100vw;
+    display: flex;
+    justify-content: flex-start;
+    align-self: start;
+    align-content: flex-start;
+    align-items: start;
+    background: radial-gradient(#04b2d9, #04b2d9, #00e0c8);
+    height: 60vh;
+    img {
+      width: 100%;
+      height: 60vh ;
+      position: relative;
+      
+    }
+    
   }
   .container_text{
-    background-color: rgba(63, 147, 183, 0.503);
-    border-radius: 10px;
-    margin-bottom: 10px;
+    margin-top: 60px;
+    margin-bottom: 50px;
+    width: 100vw;
+    background: radial-gradient(#04b2d9, #04b2d9, #00e0c8);
     text-align: center;
+    display: flex;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+
+    .container_text_desk{
+      text-align: justify;
+      font-size: 6px;
+      width: 80vw;
+    }
     
    .container_text_desk {
-     font-size: medium;
+     font-size: large;
    }
    .container_text_responsive {
     display: none;
@@ -34,152 +61,258 @@
     justify-content: center;
     align-items: center;
     column-count: 4;
-    // background-color: aqua;
     flex-wrap: wrap;   
+    width: 100vw;
 
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     width: 70vw;
+    border: 1px solid rgba(82, 82, 82, 0.158);
+    border-radius: 5px;
+    box-shadow: 1px 10px 5px 1px rgba(82, 82, 82, 0.712);
+
       .container_dentist{
-        margin-top: 2%;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-content: center;
-          align-items: center;
-          text-align: center;
-          width: calc(33.33% - 10px); 
-          margin: 5px;
-          box-sizing: border-box;
- 
-    .card-box {   
-      padding: 0px;
-      border-radius: 3px;
-      margin-bottom: 20px;
-    }
-    
-    .thumb-lg {
-      height: 150px;
-      width: 150px;
-    }
-    .img-thumbnail {
-      margin-bottom: 100px;
-      padding: 0.25rem;
-      background-color: #fff;
-      border: 1px solid #dee2e6;
-      border-radius: 0.25rem;
-      max-width: 100%;
-      height: auto;
-    }
-    .text-pink {
-      margin-top: 100px;
-      color: #dd140a !important;
-    }
-    
-    .text-muted {
-     
-      color: #ffffff !important;
-      font-weight: 700;
-    }
-    h4 {
-      margin-top: 5%;
-      line-height: 22px;
-      font-size: 18px;
-    } }
-  }
-  
-  .bring {
-    padding: 10px;
-    // border: 1px solid black;
-  }
-      img {
-        width: 150px;
-        height: 150px;
-        border-radius: 160px
-    }
-  
-  }
-  @media screen and (max-width: 780px) {
-    .team {  
+          width: calc(33.33% - 0px);
+          padding: 10px;
+          .container_dentist_card{
+            .container_dentist_card_specific{
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              align-content: center;
+              img {
+                width: 80%;
+                height: 70%;
+              }
+              .container_dentist_card_specific_data_personal{
+                background-color: white;
+                width: auto;
+                height: auto;
+              //   height: 100px;
+              //   position: relative;
+                margin: -35% 10px 30% 15px;
+                padding-right: 20px ;
+                padding-left: 20px ;
+                padding: 20px;
+              //   text-align: center;  
+                // padding: 10%;
+                display: flex;
+                flex-direction: column;
+                align-content: center;
+                align-items: center;
+                // background-color: #00E0C8;
+                p{
+                  font-size: 0.8vw;
+                }
+                h4 {
+                  font-size: 1.2vw;
+                }
 
-      .container_text{  
-       .container_text_desk {
-         display: none;
-       }
-       .container_text_responsive {
-        font-size: medium;
-        display: block;
-       }}
-      
-      .row {
+                .footer-redes {
+                  .footer-redes_icon {
+                      color: grey;
+                      font-size: 20px;
+                      margin-right: 5px;
+                  }
+          
+                  .twitter {
+                      color: rgba($color: #02AFF6, $alpha: 0.8);
+                  }
+          
+                  .fb {
+                      color: rgba($color: #00E0C8, $alpha: 0.8);
+                  }
+          
+                  .insta {
+                      color: rgba($color: #02AFF6, $alpha: 0.8);
+                  }
+          
+                  .whats {
+                      color: rgba($color: #00E0C8, $alpha: 0.8);
+                  }
+          
+              }
+              }
+            }
+          }
+      }
+    }
   
-        column-count: 2;
-        // background-color: aqua;
-        flex-wrap: wrap;
+  }
+  @media screen and (max-width: 835px) {
+    .team {
+    margin-bottom: 60px;
+      h1{
+        margin-top: -620px;
+        width: 80vw;
+    }
+      .team_branding{
+        width: 100vw;
+    
+        align-items: start;
+        background: radial-gradient(#04b2d9, #04b2d9, #00e0c8);
+        height: 60vh;
+        img {
+          width: 100%;
+          height: 60vh ;
+          position: relative;
+          
+        }
+        
+      }
+    
+       .row {
+    
+        width: 100vw;
+    
+    
+        width: 90vw;
+        border: 1px solid rgba(82, 82, 82, 0.158);
+        border-radius: 5px;
+    
+    
           .container_dentist{
-            margin-top: 2%;
-              width: calc(50% - 10px); 
-              margin: 5px 5px 0px 5px;
-              box-sizing: border-box;
-              // justify-content: space-evenly;
-             margin-top: 0px;
-        .card-box {   
-          padding: 0px;
-          border-radius: 3px;
-          margin-bottom: 20px;
+              width: calc(50%);
+              padding: 10px;
+              .container_dentist_card{
+                .container_dentist_card_specific{
+                // background-color: rebeccapurple;
+                    margin: 0;
+                    padding: 0;
+                  img {
+                    width: 80%;
+                    // height: auto;
+                  }
+                  .container_dentist_card_specific_data_personal{
+                    width: 25vw;
+                    height:auto;
+                    display: flex;
+                    flex-direction: column;
+                    padding: 6px;
+                    bottom: 50px;
+                    text-align: center;
+                    .text-muted{
+                      font-size: 2.5vw;
+                    }
+                    h4 {
+                      font-size: 2.8vw;
+                    }
+       
+                  }
+                }
+              }
+          }
         }
-        
-        .thumb-lg {
-          height: 150px;
-          width: 150px;
-        }
-        .img-thumbnail {
-          margin-bottom: 100px;
-          padding: 0.25rem;
-          background-color: #fff;
-          border: 1px solid #dee2e6;
-          border-radius: 0.25rem;
-          max-width: 100%;
-          height: auto;
-        }
-        .text-pink {
-          margin-top: 100px;
-          color: #dd140a !important;
-        }
-        
-        .text-muted {
-         
-          color: #059ce7 !important;
-        }
-        h4 {
-          margin-top: 5%;
-          line-height: 22px;
-          font-size: 18px;
-        } }
+        .container_text{
+          margin-bottom: 0px;
+          width: 100vw;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+      background-color: red;
+          .container_text_desk{
+            text-align: justify;
+            font-size: 6px;
+            width: 80vw;
+          }
+          
+         .container_text_desk {
+          display: none;
+         }
+         .container_text_responsive {
+          display: flex;
+          width: 80vw;
+          margin-top: 15px;
+         }}
+      
       }
-  
     }
-  
-      .profilePic {
-        width: 150px;
-        height: 150px;
-        // border: solid 1px black;
+  @media screen and (max-width: 480px) {
+.team {
+margin-bottom: 60px;
+  h1{
+    margin-top: -1220px;
+    width: 80vw;
+}
+  .team_branding{
+    width: 100vw;
 
-      }
-    .bring {
-      width: 90px;
-      height: 90px;
-      // border-radius: 160px;
-      // background-color: aqua;
+    align-items: start;
+    background: radial-gradient(#04b2d9, #04b2d9, #00e0c8);
+    height: 180vh;
+    img {
+      width: 100%;
+      height: 60vh ;
+      position: relative;
+      
     }
+    
   }
-  // @media screen and (max-width: 800px) {
-  //   .container {  
-  //     .container_text{  
-  //      .container_text_desk {
-  //        display: none;
-  //      }
-  //      .container_text_responsive {
-  //       font-size: medium;
-  //       display: block;
-  //      }}
-  //     }
-  // }
+
+   .row {
+
+    width: 100vw;
+
+
+    width: 90vw;
+    border: 1px solid rgba(82, 82, 82, 0.158);
+    border-radius: 5px;
+
+
+      .container_dentist{
+          width: 100vw;
+          padding: 10px;
+          .container_dentist_card{
+            .container_dentist_card_specific{
+
+              img {
+                width: 80%;
+                height: 70%;
+              }
+              .container_dentist_card_specific_data_personal{
+                width: 50vw;
+                height: 100px;
+                display: flex;
+                flex-direction: column;
+                padding: 6px;
+                bottom: 50px;
+                text-align: center;
+                .text-muted{
+                  font-size: 4vw;
+                }
+                h4 {
+                  font-size: 5.2vw;
+                }
+
+              }
+            }
+          }
+      }
+    }
+    .container_text{
+      margin-bottom: 0px;
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  background-color: red;
+      .container_text_desk{
+        text-align: justify;
+        font-size: 6px;
+        width: 80vw;
+      }
+      
+     .container_text_desk {
+      display: none;
+     }
+     .container_text_responsive {
+      display: flex;
+      width: 80vw;
+      margin-top: 15px;
+     }}
+  
+  }
+}
+

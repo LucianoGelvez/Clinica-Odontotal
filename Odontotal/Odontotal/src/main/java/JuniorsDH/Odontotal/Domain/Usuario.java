@@ -39,7 +39,7 @@ public class Usuario implements UserDetails {
     private Genero genero;
 
     @Column
-    private int telefono;
+    private Long telefono;
 
     @Column
     private String urlImagen;
@@ -52,7 +52,7 @@ public class Usuario implements UserDetails {
     @JoinColumn(name = "rol_id" ,referencedColumnName = "id")
     private UsuarioRol rol;
 
-    public Usuario(Long id, String email, String password, String nombre, String apellido, String documento, LocalDate fechaNacimiento, Genero genero, int telefono, String urlImagen, Domicilio domicilio, UsuarioRol rol) {
+    public Usuario(Long id, String email, String password, String nombre, String apellido, String documento, LocalDate fechaNacimiento, Genero genero, Long telefono, String urlImagen, Domicilio domicilio, UsuarioRol rol) {
         Id = id;
         this.email = email;
         this.password = password;
@@ -67,7 +67,7 @@ public class Usuario implements UserDetails {
         this.rol = rol;
     }
 
-    public Usuario(String email, String password, String nombre, String apellido, String documento, LocalDate fechaNacimiento, Genero genero, int telefono, String urlImagen, Domicilio domicilio, UsuarioRol rol) {
+    public Usuario(String email, String password, String nombre, String apellido, String documento, LocalDate fechaNacimiento, Genero genero, Long telefono, String urlImagen, Domicilio domicilio, UsuarioRol rol) {
         this.email = email;
         this.password = password;
         this.nombre = nombre;
@@ -195,11 +195,11 @@ public class Usuario implements UserDetails {
         this.genero = genero;
     }
 
-    public int getTelefono() {
+    public Long getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(Long telefono) {
         this.telefono = telefono;
     }
 

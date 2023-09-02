@@ -14,8 +14,6 @@ const AddDentalProsthetist = () => {
       email: '',
       telefono: '',
       especialidadProtecista: '',
-      matricula: '',
-      especialidadProtecista: '',
 
   });
   const [response, setResponse] = useState('');
@@ -56,8 +54,7 @@ const AddDentalProsthetist = () => {
       email: '',
       telefono: '',
       especialidadProtecista: '',
-      matricula: '',
-      especialidadProtecista: '',
+
     });
 
     console.log(formData)

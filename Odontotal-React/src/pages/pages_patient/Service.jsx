@@ -1,13 +1,13 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import '../../styles/pagesStyles/ServiceStyle.css'
 import { ContextGlobal } from '../../components/utils/global.context'
+import { Link } from 'react-router-dom';
 
 const Service = () => {
 
   const { arrayService }  = useContext(ContextGlobal);
   console.log(arrayService)
-  console.log(arrayService)
-  console.log(arrayService)
+
 
   return (
     
@@ -15,11 +15,12 @@ const Service = () => {
         {console.log(arrayService)}
         <h1>SERVICIOS</h1>
         <div class="grid-container">
-          {arrayService.map((item, index) =>(
-            <div key={index}>   
+          {arrayService.map((item, id) =>(
+            <div id={id} key={id}> 
             <img src={item.imgSrc} alt={item.alt}/>
             <h3>{item.title}</h3>
-            <p>{item.description}</p>
+            <p >{item.description}</p>
+            {/* </a> */}
            </div>
           ))}
 

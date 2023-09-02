@@ -9,7 +9,7 @@ const Info = () => {
   return (
     <div className='information-container'>
         
-        
+
     <div className='info-text-container'>
         {/* <div className='information-container_schedule'>
         

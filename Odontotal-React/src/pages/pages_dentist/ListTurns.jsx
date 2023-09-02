@@ -24,7 +24,6 @@ const ListTurns = ({ data }) => {
           const data = await response.json();
           setDataPatient(data);
           console.log(data)
-          console.log(data)
           console.log(dataPatient)
         }catch (error){
           console.log(error)

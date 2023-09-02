@@ -26,13 +26,13 @@ public class Odontologo extends Usuario{
     @JsonIgnore
     private Set<Turno> turnos= new HashSet<>();
 
-    public Odontologo(Long id, String email, String password, String nombre, String apellido, String documento, LocalDate fechaNacimiento, Genero genero, int telefono, Domicilio domicilio, UsuarioRol rol, String matricula, Especialidad especialidad, String urlImagen) {
+    public Odontologo(Long id, String email, String password, String nombre, String apellido, String documento, LocalDate fechaNacimiento, Genero genero, Long telefono, Domicilio domicilio, UsuarioRol rol, String matricula, Especialidad especialidad, String urlImagen) {
         super(id, email, password, nombre, apellido, documento, fechaNacimiento, genero, telefono, urlImagen, domicilio, rol);
         this.matricula = matricula;
         this.especialidad = especialidad;
     }
 
-    public Odontologo(String email, String password, String nombre, String apellido, String documento, LocalDate fechaNacimiento, Genero genero, int telefono, Domicilio domicilio, UsuarioRol rol, String matricula, Especialidad especialidad, String urlImagen) {
+    public Odontologo(String email, String password, String nombre, String apellido, String documento, LocalDate fechaNacimiento, Genero genero, Long telefono, Domicilio domicilio, UsuarioRol rol, String matricula, Especialidad especialidad, String urlImagen) {
         super(email, password, nombre, apellido, documento, fechaNacimiento, genero, telefono, urlImagen,domicilio, rol);
         this.matricula = matricula;
         this.especialidad = especialidad;

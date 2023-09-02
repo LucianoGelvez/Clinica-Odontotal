@@ -47,10 +47,7 @@ public class ProtecistaService {
         Optional<Protecista> protecistaBuscado= protecistaRepository.findById(protecistaDto.getId());
         Protecista protecistaGuardado;
         if (protecistaBuscado.isPresent()){
-            if(protecistaDto.getPassword() == null)
-            {
-                protecistaDto.setPassword(protecistaBuscado.get().getPassword());
-            }
+
             protecistaGuardado=protecistaRepository.save(protecistaDtoAProtecista(protecistaDto));
         }else {
             throw new ResourceNotFoundException("Error. No se encontro el PROTECISTA, revisar su registro previo");
@@ -86,15 +83,6 @@ public class ProtecistaService {
     }
 
 
-    public Long obtenerUltimoIdAsc() throws ResourceNotFoundException{
-        List<Protecista> odontologos = protecistaRepository.findAll(Sort.by(Sort.Direction.ASC, "id"));
-        if (!odontologos.isEmpty()) {
-            return odontologos.get(odontologos.size() - 1).getId();
-        } else {
-            throw new ResourceNotFoundException("No existen ID registrados");
-        }
-    }
-
 
     private ProtecistaDto protecistaAProtecistaDto(Protecista protecista){
         ProtecistaDto protecistaDto= new ProtecistaDto();
@@ -102,8 +90,10 @@ public class ProtecistaService {
         protecistaDto.setId(protecista.getId());
         protecistaDto.setNombre(protecista.getNombre());
         protecistaDto.setApellido(protecista.getApellido());
+        protecistaDto.setEmail(protecista.getEmail());
+        protecistaDto.setTelefono(protecista.getTelefono());
+        protecistaDto.setMatricula(protecista.getMatricula());
         protecistaDto.setEspecialidadProtecista(protecista.getEspecialidadProtecista());
-        protecistaDto.setUrlImagen(protecista.getUrlImagen());
 
         return protecistaDto;
 
@@ -116,16 +106,13 @@ public class ProtecistaService {
         protecista.setId(protecistaDto.getId());
         protecista.setNombre(protecistaDto.getNombre());
         protecista.setApellido(protecistaDto.getApellido());
+        protecista.setEmail(protecistaDto.getEmail());
+        protecista.setMatricula(protecistaDto.getMatricula());
         protecista.setEspecialidadProtecista(protecistaDto.getEspecialidadProtecista());
-        protecista.setUrlImagen(protecistaDto.getUrlImagen());
+        protecista.setTelefono(protecistaDto.getTelefono());
 
         return protecista;
     }
-
-
-
-
-
 
 
 

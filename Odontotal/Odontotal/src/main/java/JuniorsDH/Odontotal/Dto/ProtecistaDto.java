@@ -3,25 +3,68 @@ package JuniorsDH.Odontotal.Dto;
 import JuniorsDH.Odontotal.Domain.Domicilio;
 import JuniorsDH.Odontotal.Domain.UsuarioRol;
 
+import javax.persistence.Column;
 import java.time.LocalDate;
 
-public class ProtecistaDto extends  UsuarioDto{
+public class ProtecistaDto {
+    private Long Id;
+
+    private String nombre;
+
+    private String apellido;
+
     private String matricula;
+
     private String especialidadProtecista;
 
-    public ProtecistaDto(Long id, String nombre, String apellido, String email, String password, String documento, LocalDate fechaNacimiento, String genero, int telefono, String calle, String numero, String localidad, String provincia, String rol, String urlImagen, String matricula, String especialidadProtecista) {
-        super(id, nombre, apellido, email, password, documento, fechaNacimiento, genero, telefono, calle, numero, localidad, provincia, rol, urlImagen);
+    private Integer telefono;
+
+    private String email;
+
+    public ProtecistaDto(Long id, String nombre, String apellido, String matricula, String especialidadProtecista, Integer telefono, String email) {
+        Id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
         this.matricula = matricula;
         this.especialidadProtecista = especialidadProtecista;
+        this.telefono = telefono;
+        this.email = email;
     }
 
-    public ProtecistaDto(String nombre, String apellido, String email, String password, String documento, LocalDate fechaNacimiento, String genero, int telefono, String calle, String numero, String localidad, String provincia, String rol, String urlImagen, String matricula, String especialidadProtecista) {
-        super(nombre, apellido, email, password, documento, fechaNacimiento, genero, telefono, calle, numero, localidad, provincia, rol, urlImagen);
+    public ProtecistaDto(String nombre, String apellido, String matricula, String especialidadProtecista, Integer telefono, String email) {
+        this.nombre = nombre;
+        this.apellido = apellido;
         this.matricula = matricula;
         this.especialidadProtecista = especialidadProtecista;
+        this.telefono = telefono;
+        this.email = email;
     }
 
     public ProtecistaDto() {
+    }
+
+    public Long getId() {
+        return Id;
+    }
+
+    public void setId(Long id) {
+        Id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
     public String getMatricula() {
@@ -40,11 +83,31 @@ public class ProtecistaDto extends  UsuarioDto{
         this.especialidadProtecista = especialidadProtecista;
     }
 
+    public Integer getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(Integer telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     @Override
     public String toString() {
         return "ProtecistaDto{" +
-                "matricula='" + matricula + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", matricula='" + matricula + '\'' +
                 ", especialidadProtecista='" + especialidadProtecista + '\'' +
+                ", telefono=" + telefono +
+                ", email='" + email + '\'' +
                 '}';
     }
 }

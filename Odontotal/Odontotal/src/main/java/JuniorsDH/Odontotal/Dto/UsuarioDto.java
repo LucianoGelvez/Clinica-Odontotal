@@ -1,8 +1,5 @@
 package JuniorsDH.Odontotal.Dto;
 
-import JuniorsDH.Odontotal.Domain.Domicilio;
-import JuniorsDH.Odontotal.Domain.UsuarioRol;
-
 import java.time.LocalDate;
 
 public class UsuarioDto {
@@ -14,7 +11,7 @@ public class UsuarioDto {
     private String documento;
     private LocalDate fechaNacimiento;
     private String genero;
-    private int telefono;
+    private Long telefono;
     private String calle;
     private String numero;
     private String localidad;
@@ -23,7 +20,7 @@ public class UsuarioDto {
 
     private String urlImagen;
 
-    public UsuarioDto(Long id, String nombre, String apellido, String email, String password, String documento, LocalDate fechaNacimiento, String genero, int telefono, String calle, String numero, String localidad, String provincia, String rol, String urlImagen) {
+    public UsuarioDto(Long id, String nombre, String apellido, String email, String password, String documento, LocalDate fechaNacimiento, String genero, Long telefono, String calle, String numero, String localidad, String provincia, String rol, String urlImagen) {
         Id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -41,7 +38,7 @@ public class UsuarioDto {
         this.urlImagen = urlImagen;
     }
 
-    public UsuarioDto(String nombre, String apellido, String email, String password, String documento, LocalDate fechaNacimiento, String genero, int telefono, String calle, String numero, String localidad, String provincia, String rol, String urlImagen) {
+    public UsuarioDto(String nombre, String apellido, String email, String password, String documento, LocalDate fechaNacimiento, String genero, Long telefono, String calle, String numero, String localidad, String provincia, String rol, String urlImagen) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
@@ -125,11 +122,11 @@ public class UsuarioDto {
         this.genero = genero;
     }
 
-    public int getTelefono() {
+    public Long getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(Long telefono) {
         this.telefono = telefono;
     }
 

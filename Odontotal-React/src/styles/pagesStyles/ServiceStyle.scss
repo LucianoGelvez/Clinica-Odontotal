@@ -1,63 +1,105 @@
-.service{
+.service {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(to top, rgba(0, 224, 202, 0.7058823529), rgba(4, 178, 217, 0.7058823529));
+  font-family: "Montserrat", sans-serif;
+
+  h1 {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    color: white;
+    text-shadow: 1px 1px 1px black;
+  }
+
+  .grid-container {
+    width: 80vw;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: linear-gradient(to top, #00e0cab4, #04b2d9b4);
+    flex-wrap: wrap;
+    justify-content: space-around;
 
-  
-    h1{
-        margin-top: 50px;
-        margin-bottom: 50px;   
-        color: white;
-        text-shadow: 1px 1px 1px black;
-        
-    }
-  
-    .grid-container {
-
-        width: 70%;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-  
-        div {
-            background-color: aliceblue;
-            width: 30%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 100px;
-
-            img {
-                height: 300px;
-                width: 100%; /* Hace que la imagen se ajuste a la altura fija del contenedor */
-                object-fit: cover; /* Ajusta la imagen para cubrir todo el contenedor */
-                margin-bottom: 15px;
-            }
-      
-            p {
-                margin-top: 5px;
-                width: 90%;
-                text-align: justify;
-            }
-        }
-    }    
-}
-  /* Estilos para pantallas pequeñas */
-  @media only screen and (max-width: 767px) {
-    .grid-container{
-      border: 2px rgb(0, 136, 255) solid;
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    .grid-container div {
-      border: 2px red solid;
+    div {
       background-color: aliceblue;
-      width: 80%;
+      flex-basis: calc(30%);
       display: flex;
       flex-direction: column;
       align-items: center;
       margin-bottom: 100px;
+      border-radius: 10px;
+      transition: all 1s ease;
+
+      h3 {
+        text-align: center;
+      }
+
+      &:hover {
+        box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 5px 5px;
+        flex-basis: calc(31%);
+      }
+
+      img {
+        height: 300px;
+        width: 100%;
+        -o-object-fit: cover;
+        object-fit: cover;
+        margin-bottom: 15px;
+      }
+
+      p {
+        margin-top: 5px;
+        width: 20vw;
+        text-align: justify;
+      }
     }
   }
+
+  @media only screen and (max-width: 1023px) {
+    .grid-container div {
+      flex-basis: calc(45%);
+      transition: all 1s ease;
+    }
+
+    .grid-container div:hover {
+      flex-basis: calc(47%);
+    }
+
+    .grid-container div p {
+      width: 25vw;
+    }
+  }
+
+  @media only screen and (max-width: 767px) {
+    .grid-container {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .grid-container div {
+      flex-basis: calc(50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .grid-container div:hover {
+      flex-basis: calc(52%);
+    }
+
+    .grid-container div p {
+      width: 80%;
+    }
+  }
+
+  @media only screen and (max-width: 473px) {
+    .grid-container div {
+      flex-basis: calc(80%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .grid-container div:hover {
+      flex-basis: calc(82%);
+    }
+  }
+}

@@ -4,7 +4,6 @@ import JuniorsDH.Odontotal.Domain.*;
 import JuniorsDH.Odontotal.Dto.PacienteDto;
 import JuniorsDH.Odontotal.Dto.UsuarioDto;
 import JuniorsDH.Odontotal.Exception.BadRequestException;
-import JuniorsDH.Odontotal.Exception.DataInvalidException;
 import JuniorsDH.Odontotal.Exception.ResourceNotFoundException;
 import JuniorsDH.Odontotal.Repository.PacienteRepository;
 import JuniorsDH.Odontotal.Repository.UsuarioRolRepository;
@@ -14,9 +13,6 @@ import com.amazonaws.services.s3.model.PutObjectRequest;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -77,11 +73,11 @@ public class PacienteService {
     public PacienteDto modificarPaciente (PacienteDto pacienteDto)throws ResourceNotFoundException{
         Paciente pacienteModificado;
         Optional<Paciente> pacienteaModificar= pacienteRepository.findById(pacienteDto.getId());
+
+        BCryptPasswordEncoder cifradorContrasena= new BCryptPasswordEncoder();
+        pacienteDto.setPassword(cifradorContrasena.encode(pacienteDto.getPassword()));
+
         if (pacienteaModificar.isPresent()){
-            if(pacienteDto.getPassword() == null)
-            {
-                pacienteDto.setPassword(pacienteaModificar.get().getPassword());
-            }
             pacienteModificado=  pacienteRepository.save(pacienteDtoAPaciente(pacienteDto) );
         }else {
             throw new ResourceNotFoundException("Error. No se encontro el paciente para actualizar");
