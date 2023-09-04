@@ -97,13 +97,13 @@ const AddDentalProsthetist = () => {
             <div className="form-group">
               <label className="control-label" htmlFor="matricula">
                 {" "}
-                Matricula:
+                Matrícula:
               </label>
               <input
                 type="text"
                 className="form-control"
                 id="matricula"
-                placeholder="Ingrese el matricula"
+                placeholder="Ingrese la matrícula"
                 name="matricula"
                 value={formData.matricula}
                 onChange={handleInputChange}
@@ -129,13 +129,13 @@ const AddDentalProsthetist = () => {
             <div className="form-group">
               <label className="control-label" htmlFor="apellido">
                 {" "}
-                telefono:
+                Teléfono:
               </label>
               <input
                 type="text"
                 className="form-control"
                 id="telefono"
-                placeholder="Ingrese el telefono"
+                placeholder="Ingrese el teléfono"
                 name="telefono"
                 value={formData.telefono}
                 onChange={handleInputChange}

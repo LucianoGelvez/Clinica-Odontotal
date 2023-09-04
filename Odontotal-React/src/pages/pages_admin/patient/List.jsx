@@ -7,7 +7,7 @@ const List = ({ data, onEditar, onEliminar }) => {
           <tr>
             <th>Nombre</th>
             <th>Apellido</th>
-            <th>documento</th>
+            <th>Documento</th>
             <th>Provincia</th>
             <th className="actions">Acciones</th>
           </tr>

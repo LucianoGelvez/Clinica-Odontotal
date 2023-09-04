@@ -1,3 +1,5 @@
+@import '../variables/colors';
+
 .main-datail {
   width: 100%;
   font-family: "Montserrat", sans-serif;
@@ -37,7 +39,7 @@
       transition: background-color 1s ease-in;
 
       &:hover {
-        background-color: $black;
+        background-color: rgba(0, 0, 0, 0.083);
 
         .detail-description {
           display: flex;

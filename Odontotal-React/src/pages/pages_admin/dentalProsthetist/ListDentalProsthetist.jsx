@@ -87,7 +87,7 @@ const ListDentalProsthetist = () => {
 
   return (
     <div className="main">
-      {user?.rol === "ADMIN" && (
+      {(user?.rol === "ADMIN" || user?.rol === "ODONTOLOGY")  && (
         <>
           {edition ? (
             <Form

@@ -11,7 +11,7 @@ const OurTeam = () => {
     <div className='team'>          
       <div className='team_branding'>
       </div>
-      <h1>Nuesto personal calificado nos distingue</h1>        
+      <h1>Nuestro personal calificado nos distingue</h1>        
   <div className="row" >
     
   {(information != null || information != {}) && information.map((dentist)=>{

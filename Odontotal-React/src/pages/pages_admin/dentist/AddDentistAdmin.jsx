@@ -63,7 +63,7 @@ const AddDentistAdmin = () => {
           console.log("Datos enviados correctamente");
 
           Swal.fire({
-            title: "Odontologo agregado correctamente",
+            title: "Odontólogo agregado correctamente",
             icon: "success",
             showCancelButton: false,
             confirmButtonColor: "#3085d6",
@@ -78,7 +78,7 @@ const AddDentistAdmin = () => {
           console.error("Error al enviar los datos");
           Swal.fire({
             icon: "error",
-            title: "Error al agregar odontologo",
+            title: "Error al agregar odontólogo",
             text: "Por favor, verifique los campos nuevamente.",
           });
         }
@@ -122,7 +122,7 @@ const AddDentistAdmin = () => {
       {user?.rol === "ADMIN" && (
         <div className="row">
           <form onSubmit={handleSubmit}>
-            <h3>Agregar Odontologo</h3>
+            <h3>Agregar Odontólogo</h3>
             <div className="form-dentist-main">
               <div className="form-group">
                 <label className="control-label" htmlFor="apellido">
@@ -180,7 +180,7 @@ const AddDentistAdmin = () => {
                   type="text"
                   className="form-control"
                   id="documento"
-                  placeholder="Ingrese el Documento"
+                  placeholder="Ingrese el documento"
                   name="documento"
                   value={formData.documento}
                   onChange={handleInputChange}
@@ -204,7 +204,7 @@ const AddDentistAdmin = () => {
               </div>
               <div className="form-group">
                 <label className="control-label" htmlFor="fechaNacimiento">
-                  FechaNacimiento:
+                  Fecha de nacimiento:
                 </label>
                 <input
                   type="date"
@@ -220,7 +220,7 @@ const AddDentistAdmin = () => {
               <div className="form-group">
                 <label className="control-label" htmlFor="genero">
                   {" "}
-                  Genero:
+                  Género:
                 </label>
 
                 <select
@@ -241,13 +241,13 @@ const AddDentistAdmin = () => {
               <div className="form-group">
                 <label className="control-label" htmlFor="telefono">
                   {" "}
-                  Telefono:
+                  Teléfono:
                 </label>
                 <input
                   type="number"
                   className="form-control"
                   id="telefono"
-                  placeholder="Ingrese el telefono"
+                  placeholder="Ingrese el teléfono"
                   name="telefono"
                   value={formData.telefono}
                   onChange={handleInputChange}
@@ -257,13 +257,13 @@ const AddDentistAdmin = () => {
               <div className="form-group">
                 <label className="control-label" htmlFor="matricula">
                   {" "}
-                  Matricula:
+                  Matrícula:
                 </label>
                 <input
                   type="text"
                   className="form-control"
                   id="matricula"
-                  placeholder="Ingrese el matricula"
+                  placeholder="Ingrese la matrícula"
                   name="matricula"
                   value={formData.matricula}
                   onChange={handleInputChange}
@@ -296,13 +296,13 @@ const AddDentistAdmin = () => {
 
               <div className="form-group">
                 <label className="control-label" htmlFor="calle">
-                  calle:
+                  Calle:
                 </label>
                 <input
                   type="text"
                   className="form-control"
                   id="calle"
-                  placeholder="Ingrese el calle"
+                  placeholder="Ingrese la calle"
                   name="calle"
                   value={formData.calle}
                   onChange={handleInputChange}
@@ -311,13 +311,13 @@ const AddDentistAdmin = () => {
               </div>
               <div className="form-group">
                 <label className="control-label" htmlFor="numero">
-                  numero:
+                  Número:
                 </label>
                 <input
                   type="number"
                   className="form-control"
                   id="numero"
-                  placeholder="Ingrese el numero"
+                  placeholder="Ingrese el número"
                   name="numero"
                   value={formData.numero}
                   onChange={handleInputChange}
@@ -326,13 +326,13 @@ const AddDentistAdmin = () => {
               </div>
               <div className="form-group">
                 <label className="control-label" htmlFor="localidad">
-                  localidad:
+                  Localidad:
                 </label>
                 <input
                   type="text"
                   className="form-control"
                   id="localidad"
-                  placeholder="Ingrese el localidad"
+                  placeholder="Ingrese la localidad"
                   name="localidad"
                   value={formData.localidad}
                   onChange={handleInputChange}
@@ -341,13 +341,13 @@ const AddDentistAdmin = () => {
               </div>
               <div className="form-group">
                 <label className="control-label" htmlFor="provincia">
-                  provincia:
+                  Provincia:
                 </label>
                 <input
                   type="text"
                   className="form-control"
                   id="provincia"
-                  placeholder="Ingrese el provincia"
+                  placeholder="Ingrese la provincia"
                   name="provincia"
                   value={formData.provincia}
                   onChange={handleInputChange}

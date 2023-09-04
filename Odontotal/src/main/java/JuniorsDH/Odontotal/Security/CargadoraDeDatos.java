@@ -71,7 +71,7 @@ public class CargadoraDeDatos implements ApplicationRunner {
 
         Domicilio domicilioOdontologo1 = new Domicilio("Jimenez","16","Suba","Bogotá");
 
-        Odontologo odontologoAInsertar = new Odontologo("odontologo@gmail.com",passCifradaUser,"María","Beltrán","47345586",LocalDate.of(2000,1,1),Genero.Femenino,21314443L,domicilioOdontologo1,rolOdontologo,"ABC123",Especialidad.ESPECIALIDAD_ORTODONCISTA,"https://imagenes-resplado.s3.us-east-2.amazonaws.com/categories/10.png");
+        Odontologo odontologoAInsertar = new Odontologo("odontologo@gmail.com",passCifradaUser,"Mario","Beltrán","47345586",LocalDate.of(2000,1,1),Genero.Masculino,21314443L,domicilioOdontologo1,rolOdontologo,"ABC123",Especialidad.ESPECIALIDAD_ORTODONCISTA,"https://raw.githubusercontent.com/CesarMauricioRojas/odontotal-imagenes/main/dentist-1.jpg?token=GHSAT0AAAAAAB7VIMTX5WEDLZPENXWODWXEZHWB6FA");
         Optional<Odontologo> odontologoEncontrado= odontologoRepository.findByEmail(odontologoAInsertar.getEmail());
         if (odontologoEncontrado.isEmpty()){
             System.out.println(domicilioOdontologo1);
@@ -88,7 +88,7 @@ public class CargadoraDeDatos implements ApplicationRunner {
         }
 
         Domicilio domicilioOdontologo2 = new Domicilio("Libertadores","51","Central","Bogotá");
-        Odontologo odontologoAInsertar2 = new Odontologo("odontologo2@gmail.com",passCifradaUser,"Camila","Gonzaléz","53379843",LocalDate.of(2000,1,1),Genero.Femenino,21314443L,domicilioOdontologo2,rolOdontologo,"ABC123",Especialidad.ESPECIALIDAD_CIRUGIA_MAXILOFACIAL,"");
+        Odontologo odontologoAInsertar2 = new Odontologo("odontologo2@gmail.com",passCifradaUser,"Camilo","Gonzaléz","53379843",LocalDate.of(2000,1,1),Genero.Masculino,21314443L,domicilioOdontologo2,rolOdontologo,"ABC123",Especialidad.ESPECIALIDAD_CIRUGIA_MAXILOFACIAL,"https://raw.githubusercontent.com/CesarMauricioRojas/odontotal-imagenes/main/dentist-2.jpg?token=GHSAT0AAAAAAB7VIMTXUQMRZKAELPJHWWEKZHWBZMA");
         odontologoEncontrado= odontologoRepository.findByEmail(odontologoAInsertar2.getEmail());
         if (odontologoEncontrado.isEmpty()){
             try {
@@ -99,7 +99,7 @@ public class CargadoraDeDatos implements ApplicationRunner {
         }
 
         Domicilio domicilioOdontologo3 = new Domicilio("Carrera 10","25","Chapinero","Bogotá");
-        Odontologo odontologoAInsertar3 = new Odontologo("odontologo3@gmail.com", passCifradaUser, "Luis", "Hernández", "61234567", LocalDate.of(1990, 5, 12), Genero.Masculino, 31254365L, domicilioOdontologo3, rolOdontologo, "DEF789", Especialidad.ESPECIALIDAD_ODONTOPEDIATRIA, "");
+        Odontologo odontologoAInsertar3 = new Odontologo("odontologo3@gmail.com", passCifradaUser, "Luis", "Hernández", "61234567", LocalDate.of(1990, 5, 12), Genero.Masculino, 31254365L, domicilioOdontologo3, rolOdontologo, "DEF789", Especialidad.ESPECIALIDAD_ODONTOPEDIATRIA, "https://raw.githubusercontent.com/CesarMauricioRojas/odontotal-imagenes/main/dentist-3.jpg?token=GHSAT0AAAAAAB7VIMTWIVJPKNVDI6AZWNDOZHWB2HA");
         odontologoEncontrado = odontologoRepository.findByEmail(odontologoAInsertar3.getEmail());
         if (odontologoEncontrado.isEmpty()) {
             try {
@@ -110,7 +110,7 @@ public class CargadoraDeDatos implements ApplicationRunner {
         }
 
         Domicilio domicilioOdontologo4 = new Domicilio("Avenida Sur","18","Kennedy","Bogotá");
-        Odontologo odontologoAInsertar4 = new Odontologo("odontologo4@gmail.com", passCifradaUser, "Andrés", "Soto", "51238945", LocalDate.of(1985, 9, 28), Genero.Masculino, 32058641L, domicilioOdontologo4, rolOdontologo, "GHI567", Especialidad.ESPECIALIDAD_ENDODONCISTA, "");
+        Odontologo odontologoAInsertar4 = new Odontologo("odontologo4@gmail.com", passCifradaUser, "Andrea", "Soto", "51238945", LocalDate.of(1985, 9, 28), Genero.Femenino, 32058641L, domicilioOdontologo4, rolOdontologo, "GHI567", Especialidad.ESPECIALIDAD_ENDODONCISTA, "https://raw.githubusercontent.com/CesarMauricioRojas/odontotal-imagenes/main/dentist-4.jpg?token=GHSAT0AAAAAAB7VIMTWAURLO5TVVY6CFAJAZHWB2UA");
         odontologoEncontrado = odontologoRepository.findByEmail(odontologoAInsertar4.getEmail());
         if (odontologoEncontrado.isEmpty()) {
             try {
@@ -121,7 +121,7 @@ public class CargadoraDeDatos implements ApplicationRunner {
         }
 
         Domicilio domicilioOdontologo5 = new Domicilio("Calle 8","14","Chía","Cundinamarca");
-        Odontologo odontologoAInsertar5 = new Odontologo("odontologo5@gmail.com", passCifradaUser, "Alejandra", "Ramírez", "72458963", LocalDate.of(1983, 3, 8), Genero.Femenino, 31845990L, domicilioOdontologo5, rolOdontologo, "JKL456", Especialidad.ESPECIALIDAD_CIRUGIA_ORAL, "");
+        Odontologo odontologoAInsertar5 = new Odontologo("odontologo5@gmail.com", passCifradaUser, "Alejandro", "Ramírez", "72458963", LocalDate.of(1983, 3, 8), Genero.Masculino, 31845990L, domicilioOdontologo5, rolOdontologo, "JKL456", Especialidad.ESPECIALIDAD_CIRUGIA_ORAL, "https://raw.githubusercontent.com/CesarMauricioRojas/odontotal-imagenes/main/dentist-5.jpg?token=GHSAT0AAAAAAB7VIMTXPILW4J4XNEGVHFWWZHWB3FA");
         odontologoEncontrado = odontologoRepository.findByEmail(odontologoAInsertar5.getEmail());
         if (odontologoEncontrado.isEmpty()) {
             try {
@@ -132,7 +132,7 @@ public class CargadoraDeDatos implements ApplicationRunner {
         }
 
         Domicilio domicilioOdontologo6 = new Domicilio("Carrera 5","30","Bucaramanga","Santander");
-        Odontologo odontologoAInsertar6 = new Odontologo("odontologo6@gmail.com", passCifradaUser, "Carlos", "Gutiérrez", "92837465", LocalDate.of(1975, 11, 16), Genero.Masculino, 35048612L, domicilioOdontologo6, rolOdontologo, "MNO123", Especialidad.ESPECIALIDAD_PERIODONCISTA, "");
+        Odontologo odontologoAInsertar6 = new Odontologo("odontologo6@gmail.com", passCifradaUser, "Carlos", "Gutiérrez", "92837465", LocalDate.of(1975, 11, 16), Genero.Masculino, 35048612L, domicilioOdontologo6, rolOdontologo, "MNO123", Especialidad.ESPECIALIDAD_PERIODONCISTA, "https://raw.githubusercontent.com/CesarMauricioRojas/odontotal-imagenes/main/dentist-6.jpg?token=GHSAT0AAAAAAB7VIMTX7NCNPWODBPXZJOYAZHWB3ZQ");
         odontologoEncontrado = odontologoRepository.findByEmail(odontologoAInsertar6.getEmail());
         if (odontologoEncontrado.isEmpty()) {
             try {

@@ -48,7 +48,7 @@ const Login = () => {
 
       Swal.fire({
         title: "Inicio de Sesión",
-        text: `Inicio de Sesión realizado con exito.`,
+        text: `Inicio de sesión realizado con éxito.`,
         icon: "success",
         showCancelButton: false,
         confirmButtonColor: "#3085d6",

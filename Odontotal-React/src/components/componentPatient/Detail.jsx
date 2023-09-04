@@ -17,7 +17,7 @@ const Detail = () => {
     },
     {
       image: <FontAwesomeIcon icon={faCreditCard} />,
-      title: "Metodos de pago",
+      title: "Métodos de pago",
       description:
         "Ofrecemos varios métodos de pago para adaptarnos a las necesidades individuales de nuestros pacientes.",
     },
@@ -29,7 +29,7 @@ const Detail = () => {
     },
     {
       image: <FontAwesomeIcon icon={faCalendarDays} />,
-      title: "Horario de atencion",
+      title: "Horario de atención",
       description:
         "Ofrecemos una amplia gama de horarios de atención, incluyendo fines de semana y días feriados.",
     },

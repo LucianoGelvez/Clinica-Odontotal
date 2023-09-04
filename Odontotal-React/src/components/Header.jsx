@@ -105,7 +105,7 @@ const Header = () => {
                   className="navbar_container_collapse_nav-navDropdown"
                   href={routes.AboutUs}
                 >
-                  Conocenos
+                  Conócenos
                 </Nav.Link>
               </>
             )}
@@ -148,18 +148,18 @@ const Header = () => {
                 </NavDropdown>
                 <hr />
                 <NavDropdown
-                  title="Odontologo"
+                  title="Odontólogo"
                   id="basic-nav-dropdown"
                   className="navbar_container_collapse_nav-navDropdown"
                 >
                   <NavDropdown.Item href={routes.AddDentistAdmin}>
                     {" "}
-                    Añadir Odontologo
+                    Añadir Odontólogo
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
                   <NavDropdown.Item href={routes.ListDentistAdmin}>
                     {" "}
-                    Listar Odontologos
+                    Listar Odontólogos
                   </NavDropdown.Item>
                 </NavDropdown>
                 <hr />

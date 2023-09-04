@@ -7,6 +7,7 @@ import Info from "../../components/componentPatient/Info";
 import solicitarValidacionCuenta from "../pages_patient/solicitarValidacionCuenta";
 import { ContextGlobal } from "../../components/utils/global.context";
 import DentistHome from "../../images/dentista.png";
+import Spline from '@splinetool/react-spline'
 
 const Home = () => {
   const { user, jwt } = useContext(ContextGlobal);
@@ -20,6 +21,7 @@ const Home = () => {
   return (
     <div className="container-home">
       <div className="container-home-img">
+        <Spline scene="https://prod.spline.design/YxMk1K6lLYojD18p/scene.splinecode" />
         <div className="home-second-container">
           <p className="text-initial">
             "Tu Salud Oral es Nuestra Prioridad: Líderes en Cuidado Dental para

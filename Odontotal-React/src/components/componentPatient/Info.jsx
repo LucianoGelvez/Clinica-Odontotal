@@ -11,7 +11,7 @@ const Info = () => {
         <div className="information-container_contact">
           <h2>CONTACTO</h2>
           <h3>
-            Dejanos tu informacion y nos pondremos en contacto en el menor
+            Dejanos tu información y nos pondremos en contacto en el menor
             tiempo posible
           </h3>
 

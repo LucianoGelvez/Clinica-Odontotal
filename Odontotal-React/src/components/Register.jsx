@@ -227,7 +227,7 @@ const Register = () => {
                   type="number"
                   className="form-control"
                   id="telefono"
-                  placeholder="Ingrese el telefono"
+                  placeholder="Ingrese el teléfono"
                   name="telefono"
                   value={formData.telefono}
                   onChange={handleInputChange}

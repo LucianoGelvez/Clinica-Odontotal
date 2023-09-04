@@ -120,7 +120,7 @@ const AddPatientAdmin = () => {
               </div>
               <div className="form-group">
                 <label className="control-label" htmlFor="documento">
-                  documento:
+                  Documento:
                 </label>
                 <input
                   type="text"
@@ -141,7 +141,7 @@ const AddPatientAdmin = () => {
                   type="text"
                   className="form-control"
                   id="password"
-                  placeholder="Ingrese el contraseña"
+                  placeholder="Ingrese la contraseña"
                   name="password"
                   value={formData.password}
                   onChange={handleInputChange}
@@ -150,13 +150,13 @@ const AddPatientAdmin = () => {
               </div>
               <div className="form-group">
                 <label className="control-label" htmlFor="fechaNacimiento">
-                  FechaNacimiento:
+                  Fecha de nacimiento:
                 </label>
                 <input
                   type="date"
                   className="form-control"
                   id="fechaNacimiento"
-                  placeholder="Ingrese el fechaNacimiento"
+                  placeholder="Ingrese la fecha de nacimiento"
                   name="fechaNacimiento"
                   value={formData.fechaNacimiento}
                   onChange={handleInputChange}
@@ -185,13 +185,13 @@ const AddPatientAdmin = () => {
               </div>
               <div className="form-group">
                 <label className="control-label" htmlFor="telefono">
-                  Telefono:
+                  Teléfono:
                 </label>
                 <input
                   type="number"
                   className="form-control"
                   id="telefono"
-                  placeholder="Ingrese el fechaNacimiento"
+                  placeholder="Ingrese el teléfono"
                   name="telefono"
                   value={formData.telefono}
                   onChange={handleInputChange}
@@ -207,7 +207,7 @@ const AddPatientAdmin = () => {
                   type="email"
                   className="form-control"
                   id="email"
-                  placeholder="Ingrese el telefono"
+                  placeholder="Ingrese el email"
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
@@ -216,13 +216,13 @@ const AddPatientAdmin = () => {
               </div>
               <div className="form-group">
                 <label className="control-label" htmlFor="calle">
-                  calle:
+                  Calle:
                 </label>
                 <input
                   type="text"
                   className="form-control"
                   id="calle"
-                  placeholder="Ingrese el calle"
+                  placeholder="Ingrese la calle"
                   name="calle"
                   value={formData.calle}
                   onChange={handleInputChange}
@@ -231,13 +231,13 @@ const AddPatientAdmin = () => {
               </div>
               <div className="form-group">
                 <label className="control-label" htmlFor="numero">
-                  numero:
+                  Número:
                 </label>
                 <input
                   type="number"
                   className="form-control"
                   id="numero"
-                  placeholder="Ingrese el numero"
+                  placeholder="Ingrese el número"
                   name="numero"
                   value={formData.numero}
                   onChange={handleInputChange}
@@ -246,13 +246,13 @@ const AddPatientAdmin = () => {
               </div>
               <div className="form-group">
                 <label className="control-label" htmlFor="localidad">
-                  localidad:
+                  Localidad:
                 </label>
                 <input
                   type="text"
                   className="form-control"
                   id="localidad"
-                  placeholder="Ingrese el localidad"
+                  placeholder="Ingrese la localidad"
                   name="localidad"
                   value={formData.localidad}
                   onChange={handleInputChange}
@@ -261,13 +261,13 @@ const AddPatientAdmin = () => {
               </div>
               <div className="form-group">
                 <label className="control-label" htmlFor="provincia">
-                  provincia:
+                  Provincia:
                 </label>
                 <input
                   type="text"
                   className="form-control"
                   id="provincia"
-                  placeholder="Ingrese el provincia"
+                  placeholder="Ingrese la provincia"
                   name="provincia"
                   value={formData.provincia}
                   onChange={handleInputChange}

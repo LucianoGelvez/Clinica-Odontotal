@@ -509,7 +509,7 @@ const Profile = () => {
           </thead>
           <thead>
             <th id="nombre" className="especial">
-              Fecha Nacimiento
+              Fecha de nacimiento
             </th>
             {!showFechaDeNacimiento ? (
               <>
@@ -545,7 +545,7 @@ const Profile = () => {
           </thead>
           <thead>
             <th id="nombre" className="especial">
-              Genero
+              Género
             </th>
             {!showGenero ? (
               <>
@@ -626,7 +626,7 @@ const Profile = () => {
           </thead>
           {user.rol == "ODONTOLOGY" && (
             <thead>
-              <th className="especial">Matricula</th>
+              <th className="especial">Matrícula</th>
               {!showMatricula ? (
                 <>
                   {" "}
@@ -662,7 +662,7 @@ const Profile = () => {
             </thead>
           )}
           <thead>
-            <th className="especial">Telefono</th>
+            <th className="especial">Teléfono</th>
             {!showTelefono ? (
               <>
                 {" "}
@@ -783,7 +783,7 @@ const Profile = () => {
           </thead>
 
           <thead>
-            <th className="especial">Numero</th>
+            <th className="especial">Número</th>
             {!showNumero ? (
               <>
                 {" "}
