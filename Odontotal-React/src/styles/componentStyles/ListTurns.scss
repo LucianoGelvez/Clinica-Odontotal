@@ -1,0 +1,34 @@
+@import "colores.scss";
+
+section{
+    
+    table{
+        border: 1px solid $black;
+        box-shadow: 1px 1px 5px 1px ;
+        
+         thead{
+             tr{
+                 text-align: center;
+                 th{
+                     text-align: center;
+     
+                 }
+             }
+           }
+     
+     tbody{
+         tr{
+             td{
+                 text-align: center;
+                 .link-history{
+                
+                 }
+             }
+         }
+     }
+
+}
+}
+
+
+    

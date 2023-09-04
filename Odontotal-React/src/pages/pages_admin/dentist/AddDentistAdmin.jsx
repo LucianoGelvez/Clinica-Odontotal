@@ -1,131 +1,365 @@
-import React, { useContext, useState } from 'react';
-import NavbarAdmin from '../../../components/component_admin/NavbarAdmin';
-import Login from '../../../components/Login';
-import Register from '../../../components/Register';
-import { ContextGlobal } from '../../../components/utils/global.context';
+import React, { useContext, useState } from "react";
+import { ContextGlobal } from "../../../components/utils/global.context";
+import baseUrl from "../../../components/utils/baseUrl.json";
+import "../../../styles/pagesStyles/AddDentistAdmin.css";
+import Swal from "sweetalert2";
 
 const AddDentistAdmin = () => {
-
-  const {showLogin, showRegister, setShowLogin, setShowRegister, showDentist,setShowDentist } = useContext(ContextGlobal);
+  const { user, jwt } = useContext(ContextGlobal);
 
   const [formData, setFormData] = useState({
-    apellido: '',
-      nombre: '',
-      matricula: '',
-      email: '',
-      telefono: '',
-      especialidad: '',
+    apellido: "",
+    nombre: "",
+    email: "",
+    password: "",
+    documento: "",
+    fechaNacimiento: "",
+    genero: "",
+    telefono: "",
+    matricula: "",
+    urlImagen: "",
+    rol: "ODONTOLOGY",
+    especialidad: "",
+    calle: "",
+    numero: "",
+    localidad: "",
+    provincia: "",
   });
-  const [response, setResponse] = useState('');
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const url = 'http://localhost:8080/odontologos';
-    const settings = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    };
+  const [response, setResponse] = useState("");
 
-    fetch(url, settings)
-      .then((response) => response.json())
-      .then((data) => {
-        setResponse(data);
-        resetUploadForm();
-      })
-      .catch((error) => {
-        setResponse(error);
-        resetUploadForm();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const url = baseUrl.url + "/odontologos";
+    const confirmResult = await Swal.fire({
+      title: "Confirmar datos",
+      text: `¿Desea agregar el odontologo ${formData.nombre} ${formData.apellido}?`,
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Aceptar",
+      cancelButtonText: "Cancelar",
+    });
+
+    if (confirmResult.isConfirmed) {
+      try {
+        const response = await fetch(url, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${jwt}`,
+          },
+          body: JSON.stringify(formData),
+        });
+
+        if (response.ok) {
+          const responseData = await response.json();
+          console.log("Datos enviados correctamente");
+
+          Swal.fire({
+            title: "Odontologo agregado correctamente",
+            icon: "success",
+            showCancelButton: false,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Aceptar",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              resetUploadForm();
+            }
+          });
+        } else {
+          console.error("Error al enviar los datos");
+          Swal.fire({
+            icon: "error",
+            title: "Error al agregar odontologo",
+            text: "Por favor, verifique los campos nuevamente.",
+          });
+        }
+      } catch (error) {
+        console.error("Error en la conexión", error);
+      }
+    } else {
+      Swal.fire({
+        icon: "warning",
+        title: "No se puede agregar odontologo",
+        text: "Por favor complete todos los campos.",
       });
+    }
   };
 
   const resetUploadForm = () => {
     setFormData({
-      apellido: '',
-      nombre: '',
-      matricula: '',
-      email: '',
-      telefono: '',
-      especialidad: '',
+      apellido: "",
+      nombre: "",
+      email: "",
+      password: "",
+      documento: "",
+      fechaNacimiento: "",
+      genero: "",
+      telefono: "",
+      matricula: "",
+      urlImagen: "",
+      rol: "ODONTOLOGY",
+      especialidad: "",
+      calle: "",
+      numero: "",
+      localidad: "",
+      provincia: "",
     });
 
-    console.log(formData)
+    console.log(formData);
   };
-    console.log(response)
+  console.log(response);
   return (
     <div className="AddDentistAdmin">
-      <NavbarAdmin />
-
-      {showLogin && <Login/> }
-      {showRegister && <Register/> }
-      {!showLogin && !showRegister && !showDentist &&
-     
-      <div className="row">
-        <div
-          className="col-sm-7"
-          style={{
-            backgroundColor: '#e6fffa',
-            padding: '10px',
-            borderRadius: '3px',
-          }}
-        >
-          <h3>Agregar Odontologo</h3>
+      {user?.rol === "ADMIN" && (
+        <div className="row">
           <form onSubmit={handleSubmit}>
-            <div className="form-group">
-              <label className="control-label" htmlFor="apellido">Apellido:</label>
-              <input type="text"className="form-control" id="apellido" placeholder="Ingrese el apellido"
-               name="apellido" value={formData.apellido} onChange={handleInputChange} required/>
+            <h3>Agregar Odontologo</h3>
+            <div className="form-dentist-main">
+              <div className="form-group">
+                <label className="control-label" htmlFor="apellido">
+                  Apellido:
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="apellido"
+                  placeholder="Ingrese el apellido"
+                  name="apellido"
+                  value={formData.apellido}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label className="control-label" htmlFor="apellido">
+                  {" "}
+                  Nombre:
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="nombre"
+                  placeholder="Ingrese el nombre"
+                  name="nombre"
+                  value={formData.nombre}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label className="control-label" htmlFor="apellido">
+                  {" "}
+                  Email:
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="email"
+                  placeholder="Ingrese el email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label className="control-label" htmlFor="documento">
+                  {" "}
+                  Documento:
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="documento"
+                  placeholder="Ingrese el Documento"
+                  name="documento"
+                  value={formData.documento}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label className="control-label" htmlFor="password">
+                  Contraseña:
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="password"
+                  placeholder="Ingrese la contraseña"
+                  name="password"
+                  value={formData.password}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label className="control-label" htmlFor="fechaNacimiento">
+                  FechaNacimiento:
+                </label>
+                <input
+                  type="date"
+                  className="form-control"
+                  id="fechaNacimiento"
+                  placeholder="Ingrese el fechaNacimiento"
+                  name="fechaNacimiento"
+                  value={formData.fechaNacimiento}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label className="control-label" htmlFor="genero">
+                  {" "}
+                  Genero:
+                </label>
+
+                <select
+                  name="genero"
+                  id="genero"
+                  value={formData.genero}
+                  onChange={handleInputChange}
+                  required
+                >
+                  <option selected>Selecciona una especialidad</option>
+                  <option>Femenino</option>
+                  <option>Masculino</option>
+                  <option>NoBinario</option>
+                  <option>Transgenero</option>
+                  <option>Otro</option>
+                </select>
+              </div>
+              <div className="form-group">
+                <label className="control-label" htmlFor="telefono">
+                  {" "}
+                  Telefono:
+                </label>
+                <input
+                  type="number"
+                  className="form-control"
+                  id="telefono"
+                  placeholder="Ingrese el telefono"
+                  name="telefono"
+                  value={formData.telefono}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label className="control-label" htmlFor="matricula">
+                  {" "}
+                  Matricula:
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="matricula"
+                  placeholder="Ingrese el matricula"
+                  name="matricula"
+                  value={formData.matricula}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label className="control-label" htmlFor="especialidad">
+                  {" "}
+                  Especialidad:
+                </label>
+
+                <select
+                  name="especialidad"
+                  id="especialidad"
+                  value={formData.especialidad}
+                  onChange={handleInputChange}
+                  required
+                >
+                  <option selected>Selecciona una especialidad</option>
+                  <option>ESPECIALIDAD_ORTODONCISTA</option>
+                  <option>ESPECIALIDAD_PERIODONCISTA</option>
+                  <option>ESPECIALIDAD_ENDODONCISTA</option>
+                  <option>ESPECIALIDAD_ODONTOPEDIATRIA</option>
+                  <option>ESPECIALIDAD_CIRUGIA_ORAL</option>
+                  <option>ESPECIALIDAD_CIRUGIA_MAXILOFACIAL</option>
+                  <option>ESPECIALIDAD_PROTESISTA</option>
+                </select>
+              </div>
+
+              <div className="form-group">
+                <label className="control-label" htmlFor="calle">
+                  calle:
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="calle"
+                  placeholder="Ingrese el calle"
+                  name="calle"
+                  value={formData.calle}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label className="control-label" htmlFor="numero">
+                  numero:
+                </label>
+                <input
+                  type="number"
+                  className="form-control"
+                  id="numero"
+                  placeholder="Ingrese el numero"
+                  name="numero"
+                  value={formData.numero}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label className="control-label" htmlFor="localidad">
+                  localidad:
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="localidad"
+                  placeholder="Ingrese el localidad"
+                  name="localidad"
+                  value={formData.localidad}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label className="control-label" htmlFor="provincia">
+                  provincia:
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="provincia"
+                  placeholder="Ingrese el provincia"
+                  name="provincia"
+                  value={formData.provincia}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
             </div>
-            <div className="form-group">
-              <label className="control-label" htmlFor="apellido"> Nombre:</label>
-              <input type="text"className="form-control" id="nombre" placeholder="Ingrese el nombre"
-               name="nombre" value={formData.nombre} onChange={handleInputChange} required/>
-            </div>
-            <div className="form-group">
-              <label className="control-label" htmlFor="matricula"> Matricula:</label>
-              <input type="text"className="form-control" id="matricula" placeholder="Ingrese el matricula"
-               name="matricula" value={formData.matricula} onChange={handleInputChange} required/>
-            </div>
-            <div className="form-group">
-              <label className="control-label" htmlFor="apellido"> Email:</label>
-              <input type="text"className="form-control" id="email" placeholder="Ingrese el email"
-               name="email" value={formData.email} onChange={handleInputChange} required/>
-            </div>
-            <div className="form-group">
-              <label className="control-label" htmlFor="apellido"> telefono:</label>
-              <input type="text"className="form-control" id="telefono" placeholder="Ingrese el telefono"
-               name="telefono" value={formData.telefono} onChange={handleInputChange} required/>
-            </div>
-            <div className="form-group">
-              <label className="control-label" htmlFor="especialidad"> Especialidad:</label>
-              
-               <select name="especialidad" id="especialidad" value={formData.especialidad} onChange={handleInputChange} required>
-               <option selected>Selecciona una especialidad</option>
-                <option >ESPECIALIDAD_ORTODONCISTA</option>
-                <option >ESPECIALIDAD_PERIODONCISTA</option>
-                <option >ESPECIALIDAD_ENDODONCISTA</option>
-                <option >ESPECIALIDAD_ODONTOPEDIATRIA</option>
-                <option >ESPECIALIDAD_CIRUGIA_ORAL</option>
-                <option >ESPECIALIDAD_CIRUGIA_MAXILOFACIAL</option>
-                <option >ESPECIALIDAD_PROTESISTA</option>
-               </select>
-            </div>
-         
-         
-           
-           
-                <button>Cargar</button>
-                </form>
-                </div>
-                </div>
-          }
-                </div>
-                )}
-export default AddDentistAdmin
+            <button>Cargar</button>
+          </form>
+        </div>
+      )}
+    </div>
+  );
+};
+export default AddDentistAdmin;

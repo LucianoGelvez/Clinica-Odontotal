@@ -1,77 +1,112 @@
-import React, { useContext, useEffect, useState } from 'react'
-import NavbarPatient from '../../components/componentPatient/NavbarPatient'
-import { ContextGlobal } from '../../components/utils/global.context'
-import List from './List'
-import Login from '../../components/Login'
-import Register from '../../components/Register'
-
+import React, { useContext, useEffect, useState } from "react";
+import { ContextGlobal } from "../../components/utils/global.context";
+import List from "./List";
+import baseUrl from "../../components/utils/baseUrl.json";
+import Swal from "sweetalert2";
 
 const MyTurns = () => {
-  const usuarioEncontrado = localStorage.getItem('usuarioEncontrado')
-  const pacienteId = JSON.parse(localStorage.getItem("patient")).idPaciente // traer Id del paciente desde el LocalStorage
-  console.log(pacienteId);
-  const { information, showLogin, showRegister, setShowLogin, setShowRegister } = useContext(ContextGlobal);
+  const { jwt, user } = useContext(ContextGlobal);
 
-  const [data, serData] = useState(information);
-  const [edition, setedition] = useState(null);
+  const [dataTurn, setDataTurn] = useState([]);
 
   useEffect(() => {
-    //console.log("Information");
-    //console.log(information.filter(item => pacienteId === item.pacienteId))
-    //console.log("-----------");
-    serData(information.filter(item => pacienteId === item.pacienteId))
-  }, [information]);
-  
+    async function dataPersonalTurn() {
+      const urlList = baseUrl.url + `/turnos/turnosPaciente/${user.id}`;
+
+      const settings = {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${jwt}`,
+        },
+      };
+      try {
+        const response = await fetch(urlList, settings);
+        const data = await response.json();
+        setDataTurn(data);
+        console.log(data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    dataPersonalTurn();
+  }, []);
+
   const handleEditar = (item) => {
     setedition(item);
   };
-    
+
   const handleEliminar = (item) => {
-    
-    serData((prevState) => prevState.filter((x) => x.id !== item.id));
-    const url = "http://localhost:8080/turnos/" + item.id;
-    console.log(url)
-    const settings = {
-      method: "DELETE",
-    };
-    fetch(url, settings)
-      .then((response) => response.json())
-      .then((error) => console.log(error));
+    Swal.fire({
+      title: "¿Estás seguro?",
+      text: `Esta acción cancelará el turno de especialidad ${item.especialidad.replace(
+        "ESPECIALIDAD_",
+        ""
+      )} con ${item.nombreOdontologo} ${item.apellidoOdontologo} el día ${
+        item.fecha
+      } a las ${item.hora.slice(0, 5)}`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Aceptar",
+      cancelButtonText: "Cancelar",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteTurn(item);
+      }
+    });
   };
 
-  const handleGuardar = (item) => {
-    console.log(item)
-    console.log(item.id)
-    if (edition) {
-      serData((prevState) =>
-        prevState.map((x) => (x.id === item.id ? item : x))
-       
-      );
-      console.log(data)
-      console.log(data)
-      setedition(null);
-    } else {
-      serData((prevState) => [...prevState, { ...item, id: Date.now() }]);
+  const deleteTurn = async (item) => {
+    const url = baseUrl.url + "/turnos/" + item.id;
+
+    const setting = {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${jwt}`,
+      },
+    };
+    try {
+      const response = await fetch(url, setting);
+      if (response.ok) {
+        Swal.fire({
+          title: "¡Cancelado!",
+          text: "El turno ha sido cancelado.",
+          icon: "success",
+          showCancelButton: false,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Aceptar",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.location.reload();
+          } else {
+            window.location.reload();
+          }
+        });
+      } else {
+        console.error("Error al eliminar el turno");
+        Swal.fire({
+          icon: "error",
+          title: "Error al eliminar",
+          text: "Por favor, intente de nuevo.",
+        });
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
 
-  const handleCancelar = () => {
-    setedition(false)
-  }
-
   return (
-    <div style={{display: "flex", flexDirection: "column"}}>
-  
-      {usuarioEncontrado === 'true' && <NavbarPatient/>}
-      {showLogin && <Login/> }
-      {showRegister && <Register/> }
-      {!showLogin && !showRegister &&
-      
-        <List data={data} onEditar={handleEditar} onEliminar={handleEliminar} />
-      }
-     
+    <div style={{ display: "flex", flexDirection: "column" }}>
+      <List
+        data={dataTurn}
+        onEditar={handleEditar}
+        onEliminar={handleEliminar}
+      />
     </div>
   );
-}
+};
 
-export default MyTurns
+export default MyTurns;

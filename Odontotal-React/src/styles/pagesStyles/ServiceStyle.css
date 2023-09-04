@@ -1,64 +1,93 @@
-.service{
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Ubuntu&display=swap");
+.service {
   display: flex;
   flex-direction: column;
   align-items: center;
-  
+  background: linear-gradient(to top, rgba(0, 224, 202, 0.7058823529), rgba(4, 178, 217, 0.7058823529));
+  font-family: "Montserrat", sans-serif;
 }
-
-.service h1{
+.service h1 {
   margin-top: 50px;
   margin-bottom: 50px;
-  
+  color: #F9F9F9;
+  font-weight: 600;
+  font-size: "Montserrat", sans-serif;
 }
-
-.grid-container {
-  
+.service .grid-container {
   width: 80vw;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
 }
-
-.grid-container div {
-  background-color: aliceblue;
-  width: 30%;
+.service .grid-container div {
+  background-color: #f1f1f1;
+  flex-basis: 30%;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-bottom: 100px;
+  border-radius: 10px;
+  transition: all 1s ease;
 }
-
-.grid-container img {
+.service .grid-container div h3 {
+  text-align: center;
+}
+.service .grid-container div:hover {
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 5px 5px;
+  flex-basis: 31%;
+}
+.service .grid-container div img {
   height: 300px;
-  width: 100%; /* Hace que la imagen se ajuste a la altura fija del contenedor */
-  object-fit: cover; /* Ajusta la imagen para cubrir todo el contenedor */
+  width: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
   margin-bottom: 15px;
 }
-
-.grid-container p {
+.service .grid-container div p {
   margin-top: 5px;
-  width: 90%;
+  width: 20vw;
   text-align: justify;
 }
-
-/* Estilos para pantallas pequeñas */
+@media only screen and (max-width: 1023px) {
+  .service .grid-container div {
+    flex-basis: 45%;
+    transition: all 1s ease;
+  }
+  .service .grid-container div:hover {
+    flex-basis: 47%;
+  }
+  .service .grid-container div p {
+    width: 25vw;
+  }
+}
 @media only screen and (max-width: 767px) {
-  .grid-container{
-    border: 2px rgb(0, 136, 255) solid;
+  .service .grid-container {
+    border: 2px #00abf5 solid;
     flex-direction: column;
     align-items: center;
   }
-
-  .grid-container div {
-    border: 2px red solid;
-    background-color: aliceblue;
-    width: 80%;
+  .service .grid-container div {
+    flex-basis: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 100px;
+  }
+  .service .grid-container div:hover {
+    flex-basis: 52%;
+  }
+  .service .grid-container div p {
+    width: 80%;
   }
 }
-
-
-  
+@media only screen and (max-width: 473px) {
+  .service .grid-container div {
+    flex-basis: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .service .grid-container div:hover {
+    flex-basis: 82%;
+  }
+}/*# sourceMappingURL=ServiceStyle.css.map */

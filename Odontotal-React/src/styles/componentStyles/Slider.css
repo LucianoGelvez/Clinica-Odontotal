@@ -4,7 +4,7 @@
 }
 .container-first .carousel-container .carousel-container_item .carousel-container_item_img {
   width: 100%;
-  height: 90vh;
+  height: 60vh;
 }
 .container-first .carousel-container .carousel-container_item .carousel-container_text {
   font-size: 30px;
@@ -19,7 +19,7 @@
 }
 .container-first .carousel-container .carousel-container_item .firstText {
   position: absolute;
-  left: 13%;
+  left: 3%;
   opacity: 0.6;
 }
 .container-first .carousel-container .carousel-container_item .secondText {

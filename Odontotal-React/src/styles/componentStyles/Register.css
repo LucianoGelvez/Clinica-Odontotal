@@ -1,0 +1,113 @@
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0, 224, 202, 0.7058823529), rgba(4, 178, 217, 0.7058823529));
+}
+.login .row {
+  width: 100%;
+  align-items: center;
+}
+.login form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60%;
+  margin: 3% auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.login form img {
+  width: 30%;
+}
+.login form h2 {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #333;
+}
+.login form p {
+  text-align: center;
+}
+.login form .form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+}
+.login form .form-grid .form-group {
+  width: 80%;
+  margin: 8px auto;
+}
+.login form .form-grid .form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #555;
+}
+.login form .form-grid .form-group select {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 1rem;
+  color: #555;
+  height: 40px;
+}
+.login form .form-grid .form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  color: #333;
+  height: 40px;
+}
+.login form .form-grid .form-group input:focus {
+  outline: none;
+  border-color: #66afe9;
+  box-shadow: 0px 0px 5px rgba(102, 175, 233, 0.5);
+}
+.login form .show-password-button {
+  background-color: rgba(0, 0, 0, 0);
+  padding: 3px;
+  border: none;
+}
+.login form button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #fff;
+  background-color: #007bff;
+  cursor: pointer;
+  margin-top: 20px;
+}
+.login form button:hover {
+  background-color: #0069d9;
+}
+
+@media (max-width: 480px) {
+  .login form {
+    width: 90%;
+    margin: 5% auto;
+  }
+  .login form .form-grid {
+    display: flex;
+    flex-direction: column;
+  }
+}
+@media (max-width: 767px) and (min-width: 481px) {
+  .login form {
+    width: 90%;
+    margin: 3% auto;
+  }
+}
+@media (max-width: 1024px) and (min-width: 768px) {
+  .login form {
+    width: 80%;
+  }
+}/*# sourceMappingURL=Register.css.map */

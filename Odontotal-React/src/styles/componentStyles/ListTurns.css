@@ -1,0 +1,13 @@
+section table {
+  border: 1px solid rgba(0, 0, 0, 0.322);
+  box-shadow: 1px 1px 5px 1px;
+}
+section table thead tr {
+  text-align: center;
+}
+section table thead tr th {
+  text-align: center;
+}
+section table tbody tr td {
+  text-align: center;
+}/*# sourceMappingURL=ListTurns.css.map */

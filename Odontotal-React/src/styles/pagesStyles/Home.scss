@@ -1,59 +1,113 @@
-
-
-    
-    .line1{
-        color: #02AFF6;
-        width: 80%;
-        margin: 40px 10%;
+@import "../variables/colors";
+.container-home-img {
+  div {
+    canvas {
+      height: 50vh;
+      width: 100%;
     }
-    .text-initial{
-        display: flex;
-        justify-content: center;
-        text-align: center;
-        background-color: rgba($color: #00E0C8, $alpha: 0.1);
-        font-family: 'Montserrat', sans-serif;
-        margin: 20px 30px;
-        padding: 20px;
-        font-size: 14px;
-        border-radius: 10px;
-        
-        
-    }
-    .text-responsive{
-        background-color:rgba($color: #02AFF6, $alpha: 0.1);
-        display: flex;
-        justify-content: center;
-        text-align: center;
-        margin: 30px;
-        font-family: 'Montserrat', sans-serif;
-        display: none;
-    }
-    .line2{
-        color:#00E0C8;
-        width: 80%;
-        margin: 40px 10%;
-    }
-    .map{
-        
-        width:70% ;
-        height:40%; 
-        display: flex;
-        padding: 5px;
-        margin: 20px 15%;
-        
-    }
-    
+  }
+}
 
-    
-    
+.home-second-container {
+  display: flex;
+  background: radial-gradient($blueLight, $blueLight, $greenWater);
+  margin: 0 auto;
+  height: 40vh;
+}
+.img-home-dentist {
+  padding-top: 20px;
+  position: sticky;
+}
+.button-home {
+  height: 50px;
+  border-radius: 20px;
+  position: sticky;
+  top: 85%;
+  z-index: 1;
+  left: 40%;
+  border: none;
+  padding: 0 50px;
+}
+.text-initial {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  font-family: "Montserrat", sans-serif;
 
+  font-size: 35px;
+  position: sticky;
+  color: $white;
+  font-weight: bolder;
+  left: 10%;
+}
+.text-responsive {
+  background-color: rgba($color: $blueLight, $alpha: 0.1);
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin: 30px;
+  font-family: "Montserrat", sans-serif;
+  display: none;
+}
+.line2 {
+  color: $greenWater;
+  width: 80%;
+  margin: 40px 10%;
+}
 
+iframe {
+  width: 100%;
+}
 
 @media (max-width: 480px) {
-    .text-initial{
-        display: none;
+  .home-second-container {
+    height: 30vh;
+    display: flex;
+    background-image: url(../../images/collageazul.png);
+    background-size: cover;
+
+    .text-initial {
+      font-size: 20px;
+      width: 60%;
+      margin: 0 auto;
+      text-align: center;
     }
-    .text-responsive{
-        display: flex;
+    .img-home-dentist {
+      display: none;
     }
+  }
+}
+@media (max-width: 767px) and (min-width: 481px) {
+  .home-second-container {
+    height: 30vh;
+    display: flex;
+    background-image: url(../../images/collageazul.png);
+    background-size: cover;
+
+    .text-initial {
+      font-size: 20px;
+      width: 60%;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .img-home-dentist {
+      display: none;
+    }
+  }
+}
+@media (max-width: 1024px) and (min-width: 768px) {
+  .home-second-container {
+    height: 30vh;
+    .text-initial {
+      font-size: 20px;
+    }
+
+    .img-home-dentist {
+      padding-top: 20px;
+      position: sticky;
+    }
+  }
 }

@@ -1,0 +1,10 @@
+@import "colores.scss";
+
+.turn-container{
+    background: linear-gradient(to top, $greenLight, $greenDark);
+    height: 80vh;
+    display: flex;
+    overflow:scroll;
+    
+    
+}

@@ -1,0 +1,54 @@
+@import "colores.scss";
+
+
+.turns-list {
+  background: linear-gradient(
+    to top,
+    $greenLight,
+    $greenDark
+  );
+  width: 100vw;
+
+  .patient-information {
+    padding: 10px 10px 10px 10vw;
+    background-color: $white;
+
+    p {
+      margin-bottom: 3px;
+    }
+
+    span {
+      font-weight: bold;
+    }
+  }
+
+  h4 {
+    text-align: center;
+    margin-top: 30px;
+    position: sticky;
+    left: 0px;
+    background-color: $white;
+  }
+
+  .turns-patient {
+    height: 80vh;
+    width: 65vw;
+    overflow: auto;
+    margin: 40px auto 40px;
+    background-color: $white;
+
+    .row-titles {
+      position: sticky;
+      top: -1px;
+      background-color: $whiteMatte;
+    }
+
+    .center-input {
+      text-align: center;
+    }
+
+    .fecha {
+      color: $whiteMatte;
+    }
+  }
+}

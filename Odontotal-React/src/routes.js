@@ -15,5 +15,11 @@ export const routes = {
     AddDentalProsthetist:"/AgregarProtecistas",
     ListDentalProsthetist: "/ListaDeProtecistas",
     Login: "/IniciarSesion",
-    Register: "/Registro"
+    Register: "/Registro",
+    Profile: '/Perfil',
+    PatientHistory: '/HistorialDelPaciente',
+    TurnOdontology: '/TurnosDelOdontologo',
+    ValidateUser: "/usuario/validar/:id",
+    PatientHistory: "TurnosDelOdontologo/HistorialDelPaciente/:id",
+    EditTurn: "EditarTurno/:id"
 }

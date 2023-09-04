@@ -1,66 +1,85 @@
 .information-container {
-  width: 80vw;
+  width: 100%;
   display: flex;
   justify-content: space-between;
-  margin: 0 10vw;
-  padding: 10px;
+  margin: 30px auto 0px;
+  -webkit-clip-path: polygon(0 0, 50% 50px, 100% 0, 100% 100%, 0 100%);
+          clip-path: polygon(0 0, 50% 50px, 100% 0, 100% 100%, 0 100%);
+  color: black;
+  gap: 10px;
+  padding: 80px 30px;
+  background: radial-gradient(#04b2d9, #04b2d9, #00e0c8);
+  box-shadow: 1px 1px 60px 1px rgba(128, 128, 128, 0.1568627451);
+  border-bottom: 1px solid rgba(128, 128, 128, 0.007);
+  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.5058823529);
+  font-family: "Montserrat", sans-serif;
 }
-.information-container .information-container_aboutus {
-  width: 40%;
+.information-container .info-text-container {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-content: center;
-}
-.information-container .information-container_schedule {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  background-color: rgba(2, 175, 246, 0.3);
   text-align: center;
-  width: 20vw;
-  height: 100%;
-  padding: 15px;
-  border-radius: 10px;
+  justify-content: flex-end;
+  width: 50%;
+  gap: 10px;
+  padding-right: 100px;
 }
-.information-container .information-container_contact {
-  background-color: rgba(2, 175, 246, 0.3);
-  width: 25%;
+.information-container .info-text-container .information-container_schedule {
+  display: flex;
+  justify-content: start;
+  gap: 10px;
+  flex-direction: column;
+  text-align: center;
+  color: #04b2d9;
+  background-color: #f1f1f1;
+}
+.information-container .info-text-container .information-container_contact {
   height: 100%;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-end;
   font-size: 15px;
   padding: 15px;
-  border-radius: 10px;
+  color: white;
 }
-.information-container .information-container_contact .information-container_contact_location {
+.information-container .info-text-container .information-container_contact h3 {
+  align-items: flex-end;
+  justify-content: flex-end;
+  text-align: end;
+  font-size: 24px;
+  width: 80%;
+}
+.information-container .info-text-container .information-container_contact .information-container_contact_phone {
   display: flex;
-  margin: 10px;
   width: 100%;
-  justify-content: space-evenly;
+  font-size: 20px;
+  text-align: end;
+  justify-content: flex-end;
 }
-.information-container .information-container_contact .information-container_contact_location .contact-icon {
-  margin-top: 3px;
+.information-container .info-text-container .information-container_contact .information-container_contact_phone p {
+  margin: 0;
+  align-items: center;
 }
-.information-container .information-container_contact .information-container_contact_phone {
+.information-container .info-text-container .information-container_contact .information-container_contact_phone .contact-icon {
+  margin-right: 8px;
+  font-size: 30px;
+  align-items: end;
+}
+.information-container .info-text-container .information-container_contact .information-container_contact_email {
   display: flex;
-  margin: 10px;
   width: 100%;
-  justify-content: space-evenly;
+  font-size: 20px;
+  text-align: end;
+  justify-content: flex-end;
 }
-.information-container .information-container_contact .information-container_contact_phone .contact-icon {
-  margin-top: 4px;
+.information-container .info-text-container .information-container_contact .information-container_contact_email p {
+  margin: 0;
+  align-items: center;
 }
-.information-container .information-container_contact .information-container_contact_email {
-  display: flex;
-  margin: 10px;
-  width: 100%;
-  justify-content: space-evenly;
-}
-.information-container .information-container_contact .information-container_contact_email .contact-icon {
-  margin-top: 4px;
+.information-container .info-text-container .information-container_contact .information-container_contact_email .contact-icon {
+  margin-right: 8px;
+  font-size: 30px;
+  align-items: end;
 }
 
 @media (max-width: 480px) {
@@ -68,7 +87,34 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    justify-content: space-between;
+  }
+  .information-container .info-text-container {
+    width: 100%;
+    justify-content: center;
+    padding: 0;
+  }
+  .information-container .info-text-container .information-container_contact {
+    width: 100%;
+  }
+  .information-container .info-text-container .information-container_contact h2 {
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+  }
+  .information-container .info-text-container .information-container_contact h3 {
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+  }
+  .information-container .info-text-container .information-container_contact .information-container_contact_phone {
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+  }
+  .information-container .info-text-container .information-container_contact .information-container_contact_email {
+    text-align: center;
+    justify-content: center;
+    width: 100%;
   }
   .information-container .information-container_aboutus {
     width: 80%;
@@ -79,5 +125,55 @@
   }
   .information-container .information-container_contact {
     width: 80%;
+    text-align: center;
+  }
+}
+@media (max-width: 1024px) and (min-width: 768px) {
+  .information-container {
+    display: flex;
+    width: 100%;
+  }
+  .information-container .info-text-container {
+    width: 100%;
+    justify-content: center;
+  }
+  .information-container .info-text-container .information-container_contact {
+    width: 100%;
+  }
+}
+@media (max-width: 767px) and (min-width: 481px) {
+  .information-container {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+  }
+  .information-container .info-text-container {
+    width: 100%;
+    justify-content: center;
+    padding: 0;
+  }
+  .information-container .info-text-container .information-container_contact {
+    width: 100%;
+    text-align: center;
+  }
+  .information-container .info-text-container .information-container_contact h2 {
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+  }
+  .information-container .info-text-container .information-container_contact h3 {
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+  }
+  .information-container .info-text-container .information-container_contact .information-container_contact_phone {
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+  }
+  .information-container .info-text-container .information-container_contact .information-container_contact_email {
+    text-align: center;
+    justify-content: center;
+    width: 100%;
   }
 }/*# sourceMappingURL=Info.css.map */

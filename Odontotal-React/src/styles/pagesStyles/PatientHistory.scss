@@ -1,0 +1,99 @@
+@import "colores.scss";
+
+
+.patient-history-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  height: 80vh;
+  background-color: $white;
+  background: linear-gradient(to top, $greenLight, $greenDark);
+
+  .encabezado-ph {
+    text-align: center;
+    text-shadow: 1px 1px 1px $white;
+    border-top-left-radius: 1px solid $black;
+    padding: 10px;
+
+    width: 70%;
+    margin: 40px auto;
+  }
+  section {
+    width: 100%;
+
+    .patient-history-main {
+      margin: 0px auto 10px;
+      display: flex;
+      width: 70%;
+      background-color: $whiteMatte;
+      border: 1px solid $black;
+      padding: 10px;
+      box-shadow: 1px 1px 15px $grey;
+
+      details {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        margin: 0;
+        summary {
+          display: flex;
+          justify-content: space-around;
+          h4 {
+            text-align: center;
+            font-size: 16px;
+            span {
+              font-size: 18px;
+              font-weight: bolder;
+            }
+          }
+        }
+        .info-patientHistory {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 10px;
+          p {
+            padding: 10px;
+            text-align: justify;
+            background-color: $blueDark;
+            width: 100%;
+            margin: 0;
+            justify-content: space-around;
+            flex-direction: row;
+            span {
+              font-weight: bolder;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 480px) {
+  .patient-history-container {
+    section {
+      .patient-history-main {
+        width: 90%;
+
+        details {
+          summary {
+            flex-direction: column;
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 767px) and (min-width: 481px) {
+  .patient-history-container {
+    section {
+      .patient-history-main {
+        width: 90%;
+
+        details {
+          summary {
+          }
+        }
+      }
+    }
+  }
+}

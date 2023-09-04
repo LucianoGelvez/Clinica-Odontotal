@@ -1,61 +1,266 @@
-.container h2 {
-  margin-top: 10px;
+.team {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  margin-bottom: 60px;
+}
+.team h1 {
   text-align: center;
+  color: #f1f1f1;
+  margin-top: -480px;
 }
-.container .container_text {
-  background-color: rgba(63, 147, 183, 0.503);
-  border-radius: 10px;
-  margin-bottom: 10px;
+.team .team_branding {
+  width: 100vw;
+  display: flex;
+  justify-content: flex-start;
+  align-self: start;
+  align-content: flex-start;
+  align-items: start;
+  background: radial-gradient(#04b2d9, #04b2d9, #00e0c8);
+  height: 60vh;
+}
+.team .team_branding img {
+  width: 100%;
+  height: 60vh;
+  position: relative;
+}
+.team .container_text {
+  margin-top: 60px;
+  margin-bottom: 50px;
+  width: 100vw;
+  background: radial-gradient(#04b2d9, #04b2d9, #00e0c8);
   text-align: center;
+  display: flex;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  height: 20vh;
 }
-.container .container_text .container_text_desk {
-  font-size: medium;
+.team .container_text .container_text_desk {
+  text-align: justify;
+  font-size: 6px;
+  width: 80vw;
 }
-.container .container_text .container_text_responsive {
+.team .container_text .container_text_desk {
+  font-size: large;
+}
+.team .container_text .container_text_responsive {
   display: none;
 }
-.container .container_dentist {
-  margin-top: 2%;
+.team .row {
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  -moz-column-count: 4;
+       column-count: 4;
+  flex-wrap: wrap;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 70vw;
+  border: 1px solid rgba(82, 82, 82, 0.158);
+  border-radius: 5px;
+  box-shadow: 1px 10px 5px 1px rgba(82, 82, 82, 0.712);
 }
-.container .container_dentist .card-box {
-  padding: 0px;
-  border-radius: 3px;
-  margin-bottom: 20px;
+.team .row .container_dentist {
+  width: calc(33.33% - 0px);
+  padding: 10px;
 }
-.container .container_dentist .thumb-lg {
-  height: 150px;
-  width: 150px;
+.team .row .container_dentist .container_dentist_card .container_dentist_card_specific {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
 }
-.container .container_dentist .img-thumbnail {
-  margin-bottom: 100px;
-  padding: 0.25rem;
-  background-color: #fff;
-  border: 1px solid #dee2e6;
-  border-radius: 0.25rem;
-  max-width: 100%;
+.team .row .container_dentist .container_dentist_card .container_dentist_card_specific img {
+  width: 80%;
+  height: 70%;
+}
+.team .row .container_dentist .container_dentist_card .container_dentist_card_specific .container_dentist_card_specific_data_personal {
+  background-color: white;
+  width: auto;
   height: auto;
+  margin: -35% 10px 30% 15px;
+  padding-right: 20px;
+  padding-left: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
 }
-.container .container_dentist .text-pink {
-  margin-top: 100px;
-  color: #dd140a !important;
+.team .row .container_dentist .container_dentist_card .container_dentist_card_specific .container_dentist_card_specific_data_personal p {
+  font-size: 0.8vw;
 }
-.container .container_dentist .text-muted {
-  color: #059ce7 !important;
+.team .row .container_dentist .container_dentist_card .container_dentist_card_specific .container_dentist_card_specific_data_personal h4 {
+  font-size: 1.2vw;
 }
-.container .container_dentist h4 {
-  margin-top: 5%;
-  line-height: 22px;
-  font-size: 18px;
+.team .row .container_dentist .container_dentist_card .container_dentist_card_specific .container_dentist_card_specific_data_personal .footer-redes .footer-redes_icon {
+  color: grey;
+  font-size: 20px;
+  margin-right: 5px;
+}
+.team .row .container_dentist .container_dentist_card .container_dentist_card_specific .container_dentist_card_specific_data_personal .footer-redes .twitter {
+  color: rgba(2, 175, 246, 0.8);
+}
+.team .row .container_dentist .container_dentist_card .container_dentist_card_specific .container_dentist_card_specific_data_personal .footer-redes .fb {
+  color: rgba(0, 224, 200, 0.8);
+}
+.team .row .container_dentist .container_dentist_card .container_dentist_card_specific .container_dentist_card_specific_data_personal .footer-redes .insta {
+  color: rgba(2, 175, 246, 0.8);
+}
+.team .row .container_dentist .container_dentist_card .container_dentist_card_specific .container_dentist_card_specific_data_personal .footer-redes .whats {
+  color: rgba(0, 224, 200, 0.8);
 }
 
-@media screen and (max-width: 480px) {
-  .container .container_text .container_text_desk {
+@media screen and (max-width: 835px) {
+  .team {
+    margin-bottom: 60px;
+  }
+  .team h1 {
+    margin-top: -620px;
+    width: 80vw;
+  }
+  .team .team_branding {
+    width: 100vw;
+    align-items: start;
+    background: radial-gradient(#04b2d9, #04b2d9, #00e0c8);
+    height: 60vh;
+  }
+  .team .team_branding img {
+    width: 100%;
+    height: 60vh;
+    position: relative;
+  }
+  .team .row {
+    width: 100vw;
+    width: 90vw;
+    border: 1px solid rgba(82, 82, 82, 0.158);
+    border-radius: 5px;
+  }
+  .team .row .container_dentist {
+    width: 50%;
+    padding: 10px;
+  }
+  .team .row .container_dentist .container_dentist_card .container_dentist_card_specific {
+    margin: 0;
+    padding: 0;
+  }
+  .team .row .container_dentist .container_dentist_card .container_dentist_card_specific img {
+    width: 80%;
+  }
+  .team .row .container_dentist .container_dentist_card .container_dentist_card_specific .container_dentist_card_specific_data_personal {
+    width: 25vw;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 6px;
+    bottom: 50px;
+    text-align: center;
+  }
+  .team .row .container_dentist .container_dentist_card .container_dentist_card_specific .container_dentist_card_specific_data_personal .text-muted {
+    font-size: 2.5vw;
+  }
+  .team .row .container_dentist .container_dentist_card .container_dentist_card_specific .container_dentist_card_specific_data_personal h4 {
+    font-size: 2.8vw;
+  }
+  .team .container_text {
+    margin-bottom: 0px;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+  }
+  .team .container_text .container_text_desk {
+    text-align: justify;
+    font-size: 6px;
+    width: 80vw;
+  }
+  .team .container_text .container_text_desk {
     display: none;
   }
-  .container .container_text .container_text_responsive {
-    font-size: medium;
-    display: block;
+  .team .container_text .container_text_responsive {
+    display: flex;
+    width: 80vw;
+    margin-top: 15px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .team {
+    margin-bottom: 60px;
+  }
+  .team h1 {
+    margin-top: -1220px;
+    width: 80vw;
+  }
+  .team .team_branding {
+    width: 100vw;
+    align-items: start;
+    background: radial-gradient(#04b2d9, #04b2d9, #00e0c8);
+    height: 180vh;
+  }
+  .team .team_branding img {
+    width: 100%;
+    height: 60vh;
+    position: relative;
+  }
+  .team .row {
+    width: 100vw;
+    width: 90vw;
+    border: 1px solid rgba(82, 82, 82, 0.158);
+    border-radius: 5px;
+  }
+  .team .row .container_dentist {
+    width: 100vw;
+    padding: 10px;
+  }
+  .team .row .container_dentist .container_dentist_card .container_dentist_card_specific img {
+    width: 80%;
+    height: 70%;
+  }
+  .team .row .container_dentist .container_dentist_card .container_dentist_card_specific .container_dentist_card_specific_data_personal {
+    width: 50vw;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    padding: 6px;
+    bottom: 50px;
+    text-align: center;
+  }
+  .team .row .container_dentist .container_dentist_card .container_dentist_card_specific .container_dentist_card_specific_data_personal .text-muted {
+    font-size: 4vw;
+  }
+  .team .row .container_dentist .container_dentist_card .container_dentist_card_specific .container_dentist_card_specific_data_personal h4 {
+    font-size: 5.2vw;
+  }
+  .team .container_text {
+    margin-bottom: 0px;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+  }
+  .team .container_text .container_text_desk {
+    text-align: justify;
+    font-size: 6px;
+    width: 80vw;
+  }
+  .team .container_text .container_text_desk {
+    display: none;
+  }
+  .team .container_text .container_text_responsive {
+    display: flex;
+    width: 80vw;
+    margin-top: 15px;
   }
 }/*# sourceMappingURL=OurTeamStyle.css.map */

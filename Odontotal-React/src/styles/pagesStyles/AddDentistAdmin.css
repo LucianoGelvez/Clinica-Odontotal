@@ -1,0 +1,87 @@
+.AddDentistAdmin {
+  background: linear-gradient(to top, rgba(0, 224, 202, 0.7058823529), rgba(4, 178, 217, 0.7058823529));
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+.AddDentistAdmin .row {
+  width: 100%;
+}
+.AddDentistAdmin .row form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60%;
+  margin: 40px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 24px 35px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  gap: 10px;
+}
+.AddDentistAdmin .row form .form-dentist-main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  gap: 10px;
+}
+.AddDentistAdmin .row form .form-dentist-main .form-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.AddDentistAdmin .row form .form-dentist-main .form-group input {
+  height: 40px;
+}
+.AddDentistAdmin .row form .form-dentist-main .form-group select {
+  height: 40px;
+  border-radius: 5px;
+  color: grey;
+  border: 1px solid rgba(128, 128, 128, 0.411);
+}
+.AddDentistAdmin .row form button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #fff;
+  background-color: #007bff;
+  cursor: pointer;
+  margin-top: 20px;
+}
+.AddDentistAdmin .row form button:hover {
+  background-color: #0069d9;
+}
+
+@media (min-width: 200px) and (max-width: 480px) {
+  .AddDentistAdmin {
+    height: 100%;
+  }
+  .AddDentistAdmin .row form {
+    width: 90%;
+  }
+  .AddDentistAdmin .row form .form-dentist-main {
+    display: flex;
+    flex-direction: column;
+  }
+}
+@media (min-width: 481px) and (max-width: 770px) {
+  .AddDentistAdmin {
+    height: 100%;
+  }
+  .AddDentistAdmin .row form {
+    width: 90%;
+  }
+  .AddDentistAdmin .row form .form-dentist-main {
+    display: flex;
+    flex-direction: column;
+  }
+}
+@media (min-width: 771px) and (max-width: 1100px) {
+  .AddDentistAdmin .row form {
+    width: 80%;
+  }
+}/*# sourceMappingURL=AddDentistAdmin.css.map */
