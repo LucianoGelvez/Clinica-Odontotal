@@ -19,7 +19,7 @@
   display: flex;
   justify-content: center;
   text-align: center;
-  background-color: rgba(0, 224, 200, 0.1);
+  background-color: rgba(0, 224, 200, 0.1019607843);
   font-family: "Montserrat", sans-serif;
   margin: 10px auto;
   padding: 20px;
@@ -55,7 +55,7 @@
 .turns .information .contact .contact_frame .detail-image {
   display: flex;
   margin: 20px;
-  color: #02AFF6;
+  color: #02aff6;
   font-size: 50px;
 }
 .turns .information .contact .contact_frame .detail-title {

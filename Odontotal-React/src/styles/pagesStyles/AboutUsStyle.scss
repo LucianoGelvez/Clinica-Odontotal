@@ -1,288 +1,290 @@
+@import "colores.scss";
+
 .about-us {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Montserrat", sans-serif;
+
+  .about-primary-container {
+    background: radial-gradient($blueLight, #04b2d9, #00e0c8);
+    height: 40vh;
+    width: 100vw;
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .about-image {
+      height: 100%;
+      position: relative;
+      left: 10%;
+    }
+
+    .about-tittle {
+      position: relative;
+      right: 15%;
+      color: $white;
+      font-weight: bolder;
+    }
+  }
+
+  .about-second-container {
+    width: 80vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-top: 60px;
+
+    .about-us_text {
+      width: 60vw;
+      text-align: justify;
+
+      .our-history {
+        color: $blueLight;
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+      }
+
+      .text-history {
+        line-height: 30px;
+      }
+    }
+
+    .doctor-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .doctor-name {
+        font-weight: 600;
+      }
+
+      .doctor-portrait {
+        width: 15vw;
+        border: 1px solid $black;
+        border-radius: 5px;
+        box-shadow: 1px 1px 5px 1px $black;
+        margin-bottom: 15px;
+      }
+    }
+  }
+
+  .about-us_mission {
+    margin-top: 50px;
+    background: $blueLight;
+    color: $white;
+    height: 250px;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    padding-top: 40px;
+    box-shadow: 0px 5px 12px 2px $grey;
+
+    div {
+      width: 45%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .mission-value {
+        font-size: 1.8rem;
+        font-weight: 600;
+      }
+
+      .mission-text {
+        line-height: 25px;
+      }
+
+      p {
+        text-align: justify;
+        padding: 5px 20px;
+      }
+    }
+  }
+
+  .about-third-container {
+    margin-top: 60px;
+    margin-bottom: 50px;
+    width: 80vw;
+
+    .value-tittle {
+      color: $blueLight;
+      font-size: 1.8rem;
+    }
+
+    .value-description {
+      margin-top: 15px;
+      line-height: 30px;
+      text-align: justify;
+    }
+
+    .our-values {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+
+      .value-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 150px;
+        flex-basis: calc(15%);
+        margin: 10px;
+        border-radius: 10px;
+        transition: all 1s ease;
+
+        &:hover {
+          width: 170px;
+          flex-basis: calc(17%);
+          margin: 5px;
+          box-shadow: $black 0px 10px 20px;
+
+          .value-image {
+            color: $greenWater;
+            font-size: 75px;
+          }
+
+          p {
+            font-size: 1.1rem;
+            color: $greenWater;
+          }
+        }
+
+        p {
+          color: $greenWater;
+          font-weight: 600;
+          transition: all 1s ease;
+        }
+
+        .value-image {
+          color: $greenWater;
+          font-size: 70px;
+          transition: all 1s ease;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1023px) {
+  .about-primary-container {
+    height: 30vh;
+  }
+
+  .about-primary-container .about-image {
+    height: 90%;
+    position: relative;
+    top: 5%;
+  }
+
+  .about-second-container .about-us_text {
+    width: 55vw;
+  }
+
+  .doctor-portrait {
+    width: 20vw;
+  }
+
+  .about-us_mission {
+    padding-top: 20px;
+    height: 280px;
+  }
+
+  .about-third-container .our-values {
+    justify-content: space-evenly;
+  }
+
+  .about-third-container .our-values .value-container {
+    flex-basis: calc(30%);
+
+    &:hover {
+      flex-basis: calc(32%);
+    }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .about-primary-container {
+    height: 30vh;
+    background-image: url(../../images/Dental-Office.png);
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+
+    .about-tittle {
+      position: inherit;
+    }
+
+    .about-image {
+      display: none;
+    }
+  }
+
+  .about-second-container {
+    width: 80vw;
     flex-direction: column;
     align-items: center;
-    font-family: "Montserrat", sans-serif;
 
-    .about-primary-container {
-      background: radial-gradient(#04b2d9, #04b2d9, #00e0c8);
-      height: 40vh;
-      width: 100vw;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-  
-      .about-image {
-        height: 100%;
-        position: relative;
-        left: 10%;
-      }
-  
-      .about-tittle {
-        position: relative;
-        right: 15%;
-        color: white;
-        font-weight: bolder;
+    .about-us_text {
+      width: 100%;
+
+      .text-history {
+        line-height: 25px;
       }
     }
-  
-    .about-second-container {
-      width: 80vw;
-      display: flex;
-      justify-content: space-between;
-      align-items: start;
-      margin-top: 60px;
-  
-      .about-us_text {
-        width: 60vw;
-        text-align: justify;
-  
-        .our-history {
-          color: #02aff6;
-          font-size: 1.8rem;
-          margin-bottom: 15px;
-        }
-  
-        .text-history {
-          line-height: 30px;
-        }
-      }
-  
-      .doctor-info {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-  
-        .doctor-name {
-          font-weight: 600;
-        }
-  
-        .doctor-portrait {
-          width: 15vw;
-          border: 1px solid rgba(82, 82, 82, 0.158);
-          border-radius: 5px;
-          box-shadow: 1px 1px 5px 1px rgba(82, 82, 82, 0.712);
-          margin-bottom: 15px;
-        }
-      }
-    }
-  
-    .about-us_mission {
-      margin-top: 50px;
-      background: #04b2d9;
-      color: white;
-      height: 250px;
-      width: 100vw;
-      display: flex;
-      justify-content: center;
-      align-items: start;
-      padding-top: 40px;
-      box-shadow: 0px 5px 12px 2px rgba(122, 122, 122, 1);
-  
-      div {
-        width: 45%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-  
-        .mission-value {
-          font-size: 1.8rem;
-          font-weight: 600;
-        }
-  
-        .mission-text {
-          line-height: 25px;
-        }
-  
-        p {
-          text-align: justify;
-          padding: 5px 20px;
-        }
-      }
-    }
-  
-    .about-third-container {
-      margin-top: 60px;
-      margin-bottom: 50px;
-      width: 80vw;
-  
-      .value-tittle {
-        color: #02aff6;
-        font-size: 1.8rem;
-      }
-  
-      .value-description {
-        margin-top: 15px;
-        line-height: 30px;
-        text-align: justify;
-    }
-  
-      .our-values {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-  
-        .value-container {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          width: 150px;
-          flex-basis: calc(15%);
-          margin: 10px;
-          border-radius: 10px;
-          transition: all 1s ease;
-  
-          &:hover {
-            width: 170px;
-            flex-basis: calc(17%);
-            margin: 5px;
-            box-shadow: rgba(0, 0, 0, 0.3) 0px 10px 20px;
-  
-            .value-image {
-              color: #59d0ff;
-              font-size: 75px;
-            }
-  
-            p {
-              font-size: 1.1rem;
-              color: #59d0ff;
-            }
-          }
-  
-          p {
-            color: #02aff6;
-            font-weight: 600;
-            transition: all 1s ease;
-          }
-  
-          .value-image {
-            color: #02aff6;
-            font-size: 70px;
-            transition: all 1s ease;
-          }
-        }
-      }
-    }
-  }
-  
-  @media only screen and (max-width: 1023px) {
-    .about-primary-container {
-      height: 30vh;
-    }
-  
-    .about-primary-container .about-image {
-      height: 90%;
-      position: relative;
-      top: 5%;
-    }
-  
-    .about-second-container .about-us_text {
-      width: 55vw;
-    }
-  
+
     .doctor-portrait {
-      width: 20vw;
-    }
-  
-    .about-us_mission {
-      padding-top: 20px;
-      height: 280px;
-    }
-  
-    .about-third-container .our-values {
-      justify-content: space-evenly;
-    }
-  
-    .about-third-container .our-values .value-container {
-      flex-basis: calc(30%);
-  
-      &:hover {
-        flex-basis: calc(32%);
-      }
-    }
-  }
-  
-  @media only screen and (max-width: 767px) {
-    .about-primary-container {
-      height: 30vh;
-      background-image: url(../../images/Dental-Office.png);
-      background-size: cover;
-      display: flex;
-      justify-content: center;
-  
-      .about-tittle {
-        position: inherit;
-      }
-  
-      .about-image {
-        display: none;
-      }
-    }
-  
-    .about-second-container {
-      width: 80vw;
-      flex-direction: column;
-      align-items: center;
-  
-      .about-us_text {
-        width: 100%;
-  
-        .text-history {
-          line-height: 25px;
-        }
-      }
-  
-      .doctor-portrait {
-        margin-top: 20px;
-        width: 35vw;
-      }
-    }
-  
-    .about-us_mission {
-      height: 85vh;
-      padding-top: 0;
-      flex-direction: column;
-      justify-content: space-evenly;
-      align-items: center;
-  
-      div {
-        width: 90%;
-      }
-    }
-  
-    .about-third-container .value-description {
-      line-height: 25px;
-    }
-  
-    .about-third-container .our-values .value-container {
-      flex-basis: calc(40%);
-  
-      &:hover {
-        flex-basis: calc(43%);
-      }
-    }
-  }
-  @media only screen and (max-width: 479px) {
-    .about-second-container .doctor-portrait {
       margin-top: 20px;
-      width: 40vw;
-    }
-  
-    .about-us_mission {
-      height: 110vh;
-    }
-  
-    .about-third-container .our-values .value-container {
-      flex-basis: calc(70%);
-  
-      &:hover {
-        flex-basis: calc(73%);
-      }
+      width: 35vw;
     }
   }
-  
-  @media only screen and (max-width: 379px) {
-    .about-us_mission {
-      height: 130vh;
+
+  .about-us_mission {
+    height: 85vh;
+    padding-top: 0;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+    div {
+      width: 90%;
     }
   }
+
+  .about-third-container .value-description {
+    line-height: 25px;
+  }
+
+  .about-third-container .our-values .value-container {
+    flex-basis: calc(40%);
+
+    &:hover {
+      flex-basis: calc(43%);
+    }
+  }
+}
+@media only screen and (max-width: 479px) {
+  .about-second-container .doctor-portrait {
+    margin-top: 20px;
+    width: 40vw;
+  }
+
+  .about-us_mission {
+    height: 110vh;
+  }
+
+  .about-third-container .our-values .value-container {
+    flex-basis: calc(70%);
+
+    &:hover {
+      flex-basis: calc(73%);
+    }
+  }
+}
+
+@media only screen and (max-width: 379px) {
+  .about-us_mission {
+    height: 130vh;
+  }
+}

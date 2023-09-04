@@ -9,17 +9,10 @@ import image5 from '../../images/slider2.5.jpg'
 import image6 from '../../images/slider2.6.jpg'
 import '../../styles/componentStyles/SliderService.css'
 import { ContextGlobal } from '../utils/global.context'
-import { Link } from 'react-router-dom'
 
 const SliderService = () => {
 
 const {arrayService} = useContext(ContextGlobal)
-
-
-console.log(arrayService)
-console.log(arrayService)
-console.log(arrayService)
-console.log(arrayService)
 
     const responsive = {
         superLargeDesktop: {
@@ -50,7 +43,6 @@ console.log(arrayService)
             {arrayService.map((item, id)=>(
               <div key={id} className='container-slider-carousel_card'>
                 <a href={'/Servicio' +"#"+ item.id}>
-                {/* <Link to={`Servicio#${item.id}`}>Historial Paciente </Link>  */}
                  <img src={item.imgSrc} alt="" className='container-slider-carousel_card_img'/>
                 <span className='container-slider-carousel_card_span'>{item.title}</span>           
                 </a>

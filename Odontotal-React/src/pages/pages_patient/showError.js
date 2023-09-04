@@ -1,6 +1,6 @@
 import Swal from "sweetalert2";
 
-const showError = (error = 'Oops... Algo salió mal!') => {
+const showError = (error = "Oops... Algo salió mal!") => {
   Swal.fire({
     title: "Error",
     text: error,

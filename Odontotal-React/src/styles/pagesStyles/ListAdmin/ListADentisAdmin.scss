@@ -1,170 +1,172 @@
+@import "colores.scss";
+
 .main {
-    background: linear-gradient(to top, rgba(0, 224, 202, 0.7058823529), rgba(4, 178, 217, 0.7058823529));
+  background: linear-gradient(
+    to top,
+    $greenLight,
+    $greenDark
+  );
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: $white;
+
+  gap: 10px;
+  min-height: 78vh;
+  align-self: flex-start;
+  section {
+    margin: 0;
+    padding: 0;
+
+    align-self: flex-start;
+    margin: 6vh 0px 10vh 0px;
+    table {
+      border: 1px solid $whiteMatte;
+      border-radius: 5px;
+      background-color: $white;
+      box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+        rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+        rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+      gap: 10px;
+    }
+
+    th,
+    td {
+      text-align: center;
+    }
+    .actions {
+      width: 18vw;
+    }
+  }
+
+  .main_update {
     display: flex;
     justify-content: center;
-      padding: 10px;
+    align-items: center;
+    align-content: center;
+    min-height: 70vh;
+
+    .main_update__form {
+      width: 60%;
+      background-color: $white;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid $whiteMatte;
       border-radius: 5px;
-      background-color: #fff;
-    
+      background-color: $white;
+      box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+        rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+        rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
       gap: 10px;
-      min-height: 78vh;
-      align-self: flex-start;
-    section {
-      margin: 0;
-      padding: 0;
-                
-      align-self: flex-start;
-      margin: 6vh 0px 10vh 0px;
-      table{
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        width: 45%;
+        margin-right: 10px;
+        label {
+          display: block;
+          font-weight: bold;
+          margin-bottom: 5px;
+        }
 
-          border: 1px solid #ccc;
+        input[type="text"],
+        [type="date"],
+        [type="number"],
+        select {
+          width: 100%;
+          padding: 10px;
+          border: 1px solid $white;
           border-radius: 5px;
-          background-color: #fff;
-          box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-          gap: 10px;
+          font-size: 14px;
+        }
 
+        select {
+          appearance: none;
+          background: url("arrow-down.svg") no-repeat right center;
+          background-size: 20px;
+        }
 
+        button {
+          padding: 10px 20px;
+          background-color: $blue;
+          color: $white;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          font-size: 14px;
+
+          &.cancel-change {
+            background-color: $whiteMatte;
+            margin-left: 10px;
+          }
+        }
       }
+    }
+    .form_group__btn {
+      margin-top: 10px;
+      button {
+        padding: 10px 20px;
+        background-color:$greenDark;
+        color: $white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+        &:hover {
+          background-color: $greenDark;
+        }
 
-      th , td {
-        text-align: center;
-        // margin-right: 800px;
+        &.cancel-change {
+          background-color: red;
+          margin-left: 10px;
+
+          &:hover {
+            background-color: red;
+          }
+        }
       }
-      .actions{
-        // background-color: aqua;
-        width: 18vw;
     }
-    }
+  }
+}
 
+@media (max-width: 835px) {
+  .main {
+    section {
+      width: 100vw;
+      table {
+        border: 1px solid $grey;
+        border-radius: 5px;
+        background-color: $whiteMatte;
+        gap: 10px;
+        .none {
+          display: none;
+        }
+      }
+    }
 
     .main_update {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        align-content: center ;
-        min-height: 70vh;
+      width: 100vw;
+      margin: 0;
+      padding: 0;
+      .main_update__form {
+        width: 100%;
 
-        .main_update__form {
-          width: 60%;
-          background-color: #ffffff;
-          display: flex;
-          flex-wrap: wrap; 
-            justify-content: center;
-            margin: auto;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #fff;
-            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-            gap: 10px;
-          .form-group {
-             display: flex;
-             flex-direction: column;
-             width: 45%;
-             margin-right: 10px;
-            label {
-              display: block;
-              font-weight: bold;
-              margin-bottom: 5px;
-            }
-      
-            input[type="text"] , [type=date], [type=number],
-            select {
-              width: 100%;
-              padding: 10px;
-              border: 1px solid #ccc;
-              border-radius: 5px;
-              font-size: 14px;
-            }
-      
-            select {
-              appearance: none;
-              background: url('arrow-down.svg') no-repeat right center;
-              background-size: 20px;
-            }
-      
-            button {
-              padding: 10px 20px;
-              background-color: #007bff;
-              color: #ffffff;
-              border: none;
-              border-radius: 5px;
-              cursor: pointer;
-              font-size: 14px;
-      
-              &.cancel-change {
-                background-color: #ccc;
-                margin-left: 10px;
-              }
-            }
-
-          }
-        }
-        .form_group__btn{
-            margin-top: 10px;
-            button {
-                padding: 10px 20px;
-                background-color: #3e8e41;
-                color: #ffffff;
-                border: none;
-                border-radius: 5px;
-                cursor: pointer;
-                font-size: 14px;
-                &:hover{
-                    background-color: #40a142;
-                  }
-        
-                &.cancel-change {
-                  background-color: #b90000;
-                  margin-left: 10px;
-
-                  &:hover{
-                    background-color: #b20000;
-                  }
-                }
-              }
+        .form-group {
+          width: 42%;
         }
       }
-    }      
-
-@media (max-width:835px) {
-    .main {
-      section {
-        width: 100vw;
-            table{
-              
-                border: 1px solid #ccc;
-                border-radius: 5px;
-                background-color: #fff;
-                // box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-                gap: 10px;
-                // width: 20%;
-                .none {
-                  display: none;
-                }
-            }
-          }
-
-        .main_update {
-            width: 100vw;
-            margin: 0;
-            padding: 0;
-            .main_update__form {
-                width: 100%;
-
-                .form-group {
-                    width: 42%;
-
-                }
-            }
     }
-}
+  }
 }
 
-@media (max-width:480px) {
+@media (max-width: 480px) {
   .main {
     section {
       overflow: auto;
-      }
     }
+  }
 }

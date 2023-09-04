@@ -1,9 +1,9 @@
 import React from 'react'
-import profilePic from '../../images/profilePic.svg'
-import { Card } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebookSquare, faInstagramSquare, faWhatsappSquare } from '@fortawesome/free-brands-svg-icons'
 import { Link } from 'react-router-dom'
+import avatar from '../../images/avatar-dentista.jpg'
+
 const Dentist = (props) => {
 
   const especialidad = (props) => {
@@ -31,7 +31,12 @@ const Dentist = (props) => {
 
     <article className='container_dentist_card'>
       <div className='container_dentist_card_specific'>
-      <img src={props?.img} alt="nombre de odontologo" />
+      {props?.img ? (         
+                      <img src={props?.img} alt="imagen de odontologo" />
+                  ) : (      
+                      <img src={avatar} alt="imagen de odontologo" />      
+                  )}
+
       <div className='container_dentist_card_specific_data'>
       <div className="container_dentist_card_specific_data_personal">
             <h4>{props.nombre} {props.apellido}</h4>
@@ -49,7 +54,7 @@ const Dentist = (props) => {
 
         </div>
 
-  )
-}
+  );
+};
 
 export default Dentist

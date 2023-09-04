@@ -7,7 +7,7 @@
 .main-datail h2 {
   width: 40%;
   text-align: center;
-  color: #02AFF6;
+  color: #02aff6;
   margin: 40px auto;
   font-size: 30px;
 }
@@ -44,7 +44,7 @@
 .main-datail .detail-container .detail-box .detail-image {
   display: flex;
   margin: 10px;
-  color: #02AFF6;
+  color: #02aff6;
   font-size: 40px;
   align-items: center;
 }
@@ -57,7 +57,7 @@
   margin: 10px;
   font-weight: 600;
   text-align: center;
-  color: #02AFF6;
+  color: #02aff6;
 }
 .main-datail .detail-container .detail-box .detail-description {
   display: none;

@@ -1,78 +1,81 @@
+@import "colores.scss";
 
-section{
+section {
   width: 80%;
   align-self: center;
-table {
-    border-collapse: collapse; /* Combina las celdas que no tienen bordes definidos */
+  table {
+    border-collapse: collapse;
     width: 100%;
-    margin: 20px 0; /* Agrega un margen alrededor de la tabla */
-    font-family: sans-serif; /* Define una fuente adecuada para la tabla */
-    background-color: #f8f8f8; /* Establece un color de fondo para la tabla */
-    border: 1px solid #ddd; /* Agrega un borde a la tabla */
+    margin: 20px 0;
+    font-family: sans-serif;
+    background-color: $white;
+    border: 1px solid $whiteMatte;
   }
-  
-  th, td {
+
+  th,
+  td {
     text-align: left;
-    padding: 12px; /* Agrega un relleno a las celdas */
-    border: none; /* Elimina los bordes de las celdas */
+    padding: 12px;
+    border: none;
   }
-  
+
   tr:nth-child(even) {
-    background-color: #ebe8e8; /* Establece un color de fondo alternativo para las filas pares */
+    background-color: $whiteMatte;
   }
-  
+
   button {
-    background-color: #4CAF50; /* Agrega un color de fondo al botón */
-    color: white;
-    padding: 6px 14px; 
-    border: none; 
-    border-radius: 4px; 
+    background-color: $greenDark;
+    color: $white;
+    padding: 6px 14px;
+    border: none;
+    border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s ease; /* Agrega una transición al color de fondo */
+    transition: background-color 0.3s ease;
     margin-right: 10px;
-  
   }
-  .update{
+  .update {
     margin: 100px;
   }
-  
+
   button:hover {
-    background-color: #3e8e41; }
-  .btn-delete{
-    background-color: rgb(169, 28, 28);
+    background-color: $greenDark;
+  }
+  .btn-delete {
+    background-color: $red;
   }
   .btn-delete:hover {
-    background-color: red;
+    background-color: $orangeStrong;
   }
-  .cancel-change{
-    background-color: #353535;
+  .cancel-change {
+    background-color: $black;
   }
 }
-  @media only screen and (min-width: 768px) {
-    table {
-      margin: 50px 0; /* Aumenta el margen de la tabla */
-    }
-    
-    th, td {
-      padding: 16px; /* Aumenta el relleno de las celdas */
-    }
-    
-    button {
-      padding: 12px 20px; /* Aumenta el relleno del botón */
-    }
+@media only screen and (min-width: 768px) {
+  table {
+    margin: 50px 0;
   }
-  
-  /* Estilos para pantallas pequeñas */
-  @media only screen and (max-width: 767px) {
-    table {
-      font-size: 14px; /* Reduce el tamaño de fuente de la tabla */
-    }
-    
-    th, td {
-      padding: 10px; /* Reduce el relleno de las celdas */
-    }
-    
-    button {
-      padding: 8px 16px; /* Reduce el relleno del botón */
-    }
+
+  th,
+  td {
+    padding: 16px;
   }
+
+  button {
+    padding: 12px 20px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  table {
+    font-size: 14px;
+  }
+
+  th,
+  td {
+    padding: 10px;
+  }
+
+  button {
+    padding: 8px 16px;
+  }
+}

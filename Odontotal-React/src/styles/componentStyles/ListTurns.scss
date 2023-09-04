@@ -1,7 +1,9 @@
+@import "colores.scss";
+
 section{
     
     table{
-        border: 1px solid rgba(0, 0, 0, 0.322);
+        border: 1px solid $black;
         box-shadow: 1px 1px 5px 1px ;
         
          thead{

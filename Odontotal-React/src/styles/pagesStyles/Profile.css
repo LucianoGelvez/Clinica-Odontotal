@@ -336,7 +336,8 @@
 .general form table thead .complet {
   display: none;
 }
-.general form table thead th, .general form table thead td {
+.general form table thead th,
+.general form table thead td {
   width: 65vw;
   text-align: left;
 }
@@ -396,13 +397,17 @@
   width: 12vw;
   font-weight: bold;
 }
-.general form table input[type=text], .general form table input[type=date], .general form table select {
+.general form table input[type=text],
+.general form table input[type=date],
+.general form table select {
   padding: 5px;
   border: 1px solid #ccc;
   border-radius: 4px;
   width: 100%;
 }
-.general form table input[type=text]:focus, .general form table input[type=date]:focus, .general form table select:focus {
+.general form table input[type=text]:focus,
+.general form table input[type=date]:focus,
+.general form table select:focus {
   outline: none;
   border-color: #007bff;
 }
@@ -534,7 +539,8 @@
     align-items: center;
     align-self: center;
   }
-  .general form table thead th, .general form table thead td {
+  .general form table thead th,
+  .general form table thead td {
     width: 85vw;
     text-align: left;
   }
@@ -687,7 +693,8 @@
     align-items: center;
     align-self: center;
   }
-  .general form table thead th, .general form table thead td {
+  .general form table thead th,
+  .general form table thead td {
     width: 60vw;
     text-align: left;
   }

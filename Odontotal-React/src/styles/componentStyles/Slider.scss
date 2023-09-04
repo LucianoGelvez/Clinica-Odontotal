@@ -1,78 +1,65 @@
-.container-first{
+@import "colores.scss";
 
-
-.carousel-container{
+.container-first {
+  .carousel-container {
     display: flex;
     width: 100%;
-    .carousel-container_item{
-        
-
-    .carousel-container_item_img{
+    .carousel-container_item {
+      .carousel-container_item_img {
         width: 100%;
         height: 60vh;
+      }
+      .carousel-container_text {
+        font-size: 30px;
+        font-family: "Montserrat", sans-serif;
+        color: $black;
+        margin-top: 30%;
+        border-radius: 15px;
+        width: 50vh;
+        bottom: 40%;
+        right: 10%;
+        font-weight: bold;
+      }
+      .firstText {
+        position: absolute;
+        left: 3%;
+        opacity: 0.6;
+      }
+      .secondText {
+        position: absolute;
+        bottom: 65%;
+        right: 80vw;
+        opacity: 0.6;
+      }
+      .thirdText {
+        color: $whiteMatte;
+      }
     }
-    .carousel-container_text{
-                font-size: 30px;
-                font-family: 'Montserrat', sans-serif;
-                color: black;
-                margin-top: 30%;
-                border-radius: 15px;
-                width: 50vh;
-                bottom: 40%;
-                right: 10%;
-                font-weight: bold;
-                
-            }
-            .firstText{
-               position: absolute;
-               left: 3%;
-               opacity: 0.6;
-                
-            }
-            .secondText{
-                position: absolute;
-                bottom: 65%;
-                right: 80vw;
-                opacity: 0.6;
-            }
-            .thirdText{
-                color: aliceblue;
-            }
-}
-}
-.iconoWhats{
-    
+  }
+  .iconoWhats {
     position: fixed;
     font-size: 40px;
     bottom: 40%;
     left: 95%;
     top: 92%;
-    
-}
+  }
 }
 
 @media (max-width: 480px) {
-    .carousel-container{
-        display: inline-block;
+  .carousel-container {
+    display: inline-block;
+    height: 40vh;
+
+    .carousel-container_item {
+      background-color: $orange;
+
+      .carousel-container_item_img {
         height: 40vh;
-
-        .carousel-container_item{
-           background-color: orange;
-
-           .carousel-container_item_img{
-            height: 40vh;
-
-            
-           }
-           .carousel-container_text{
-                display: none;
-                color: black;
-                
-
-            }
-        }
-    
-    
-    
+      }
+      .carousel-container_text {
+        display: none;
+        color: $black;
+      }
     }
+  }
 }

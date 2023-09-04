@@ -1,3 +1,6 @@
+@import '../variables/colors';
+@import '../variables/fonts';
+
 .service {
   display: flex;
   flex-direction: column;
@@ -8,8 +11,9 @@
   h1 {
     margin-top: 50px;
     margin-bottom: 50px;
-    color: white;
-    text-shadow: 1px 1px 1px black;
+    color: $white;
+    font-weight: 600;
+    font-size: $montserrat;
   }
 
   .grid-container {
@@ -19,7 +23,7 @@
     justify-content: space-around;
 
     div {
-      background-color: aliceblue;
+      background-color: $whiteMatte;
       flex-basis: calc(30%);
       display: flex;
       flex-direction: column;
@@ -70,6 +74,7 @@
 
   @media only screen and (max-width: 767px) {
     .grid-container {
+      border: 2px $blueLight solid;
       flex-direction: column;
       align-items: center;
     }
