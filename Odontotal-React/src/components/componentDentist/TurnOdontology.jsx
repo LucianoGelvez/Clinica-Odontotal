@@ -23,7 +23,6 @@ const TurnOdontology = () => {
         const response = await fetch(urlList, settings);
         const data = await response.json();
         setDataTurn(data);
-        console.log(data);
       } catch (error) {
         console.log(error);
       }

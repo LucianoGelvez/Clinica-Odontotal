@@ -54,6 +54,8 @@ const ListDentalProsthetist = () => {
           }).then((result) => {
             if (result.isConfirmed) {
               window.location.pathname = "/ListaDeProtecistas";
+            }else{
+                window.location.pathname = "/ListaDeProtecistas";
             }
           });
         } else {

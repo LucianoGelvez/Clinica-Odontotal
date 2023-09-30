@@ -70,7 +70,7 @@ const Register = () => {
           confirmButtonText: "Aceptar",
         }).then((result) => {
           if (result.isConfirmed) {
-            console.log(responseData);
+  
             const retriesData = {
               initialTime: Date.now(),
               retries: 0,

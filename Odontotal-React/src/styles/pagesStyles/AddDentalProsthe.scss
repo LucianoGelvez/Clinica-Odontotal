@@ -1,8 +1,8 @@
-@import "colores.scss";
+@import "../variables/colors";
 
 .add-pros-container {
-  background: linear-gradient(to top, $greenDark, #04b2d9b4);
-  height: 80vh;
+  background: $background;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   form {
@@ -10,7 +10,8 @@
     flex-direction: column;
     align-items: center;
     width: 40%;
-    margin: auto;
+    height: 610px;
+    margin: 70px auto;
     padding: 20px;
     border: 1px solid $grey;
     border-radius: 5px;

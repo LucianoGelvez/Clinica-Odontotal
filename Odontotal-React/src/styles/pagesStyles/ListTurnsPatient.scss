@@ -1,13 +1,10 @@
-@import "colores.scss";
+@import "../variables/colors";
 
 
 .turns-list {
-  background: linear-gradient(
-    to top,
-    $greenLight,
-    $greenDark
-  );
+  background: $background;
   width: 100vw;
+  min-height: 90vh;
 
   .patient-information {
     padding: 10px 10px 10px 10vw;
@@ -31,8 +28,8 @@
   }
 
   .turns-patient {
-    height: 80vh;
-    width: 65vw;
+    width: 70vw;
+    max-height: 90vh;
     overflow: auto;
     margin: 40px auto 40px;
     background-color: $white;
@@ -51,4 +48,14 @@
       color: $whiteMatte;
     }
   }
+}
+
+@media screen and (max-width: 1024px) {
+  .turns-list {
+    
+    .turns-patient {
+      width: 90vw;
+    }
+  }
+
 }

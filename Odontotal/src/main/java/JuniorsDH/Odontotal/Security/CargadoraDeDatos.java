@@ -165,8 +165,8 @@ public class CargadoraDeDatos implements ApplicationRunner {
             }
         }
 
-        Optional<Protecista> protecistaEncontrado= protecistaRepository.findByEmail(odontologoAInsertar.getEmail());
         Protecista protecista1 = new Protecista("Lucho", "Partin", "AA221", "Protecista de cromo", 2613578, "lucho@gmail.com");
+        Optional<Protecista> protecistaEncontrado= protecistaRepository.findByEmail(protecista1.getEmail());
         if (protecistaEncontrado.isEmpty()) {
             try {
                 protecistaRepository.save(protecista1);
@@ -174,8 +174,9 @@ public class CargadoraDeDatos implements ApplicationRunner {
                 e.printStackTrace();
             }
         }
-        Optional<Protecista> protecistaEncontrado2= protecistaRepository.findByEmail(odontologoAInsertar.getEmail());
+
         Protecista protecista2 = new Protecista("Parco", "Suman", "23fdas", "Protecista de cromo", 64645, "Parco@gmail.com");
+        Optional<Protecista> protecistaEncontrado2= protecistaRepository.findByEmail(protecista2.getEmail());
         if (protecistaEncontrado2.isEmpty()) {
             try {
                 protecistaRepository.save(protecista2);
@@ -185,7 +186,7 @@ public class CargadoraDeDatos implements ApplicationRunner {
         }
 
         Protecista protecista3 = new Protecista("Hidalgo", "Curta", "323asd", "Protecista de acrilico", 465452, "Hidalgo@gmail.com");
-        Optional<Protecista> protecistaEncontrado3= protecistaRepository.findByEmail(odontologoAInsertar.getEmail());
+        Optional<Protecista> protecistaEncontrado3= protecistaRepository.findByEmail(protecista3.getEmail());
         if (protecistaEncontrado3.isEmpty()) {
             try {
                 protecistaRepository.save(protecista3);

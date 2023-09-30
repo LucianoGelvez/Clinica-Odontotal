@@ -5,8 +5,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 80vh;
-  background: linear-gradient(to top, rgba(0, 224, 202, 0.7058823529), rgba(4, 178, 217, 0.7058823529));
+  min-height: 80vh;
+  background: radial-gradient(#04b2d9, #04b2d9, #00e0c8);
   width: 100%;
 }
 .div-login .login form {
@@ -14,11 +14,11 @@
   flex-direction: column;
   align-items: center;
   width: 35%;
-  margin: 7% auto;
+  margin: 40px auto;
   padding: 20px;
-  border: 1px solid #ccc;
+  border: 1px solid #808080;
   border-radius: 5px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: #1F1A1B 0px 5px 15px;
 }
 .div-login .login form img {
   width: 50%;
@@ -27,7 +27,7 @@
   margin-bottom: 20px;
   font-size: 1.5rem;
   font-weight: 500;
-  color: #333;
+  color: #1F1A1B;
 }
 .div-login .login form .form-group {
   width: 100%;
@@ -52,8 +52,8 @@
 .div-login .login form .form-group input[type=email]:focus,
 .div-login .login form .form-group input[type=password]:focus {
   outline: none;
-  border-color: #66afe9;
-  box-shadow: 0px 0px 5px rgba(102, 175, 233, 0.5);
+  border-color: #00abf5;
+  box-shadow: 0px 0px 5px #0069d9;
 }
 .div-login .login form button[type=submit] {
   padding: 10px 20px;
@@ -61,15 +61,15 @@
   border-radius: 5px;
   font-size: 1rem;
   font-weight: 500;
-  color: #fff;
-  background-color: #007bff;
+  color: #F9F9F9;
+  background-color: #0069d9;
   cursor: pointer;
 }
 .div-login .login form button[type=submit]:hover {
   background-color: #0069d9;
 }
 .div-login .login form .show-password-button {
-  background-color: rgba(0, 0, 0, 0);
+  background-color: #1f1a1b;
   padding: 3px;
   border: none;
 }

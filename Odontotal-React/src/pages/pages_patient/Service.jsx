@@ -5,12 +5,9 @@ import { Link } from 'react-router-dom';
 
 const Service = () => {
   const { arrayService }  = useContext(ContextGlobal);
-  console.log(arrayService)
-
 
   return ( 
       <div className='service'>
-        {console.log(arrayService)}
         <h1>Servicios</h1>
         <div class="grid-container">
           {arrayService.map((item, id) =>(

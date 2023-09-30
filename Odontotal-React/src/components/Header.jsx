@@ -24,7 +24,6 @@ const Header = () => {
     window.location.pathname = "/";
   };
 
-  console.log(user);
   return (
     <Navbar expand="lg" className="navbar large">
       {(user?.rol != "ODONTOLOGY" || user?.rol == "ADMIN") && (
@@ -86,7 +85,8 @@ const Header = () => {
                     </NavDropdown>
                   </>
                 )}
-                <hr />
+                {user &&
+                <hr />}
                 <Nav.Link
                   className="navbar_container_collapse_nav-navDropdown"
                   href={routes.Service}
@@ -109,6 +109,10 @@ const Header = () => {
                 </Nav.Link>
               </>
             )}
+            {
+              (!user || user?.rol === "PATIENT") && 
+                <hr />
+            }
 
             {user?.rol === "ODONTOLOGY" && (
               <>

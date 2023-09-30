@@ -1,10 +1,7 @@
-@import "colores.scss";
+@import "../variables/colors";
 
 .turn-container{
-    background: linear-gradient(to top, $greenLight, $greenDark);
-    height: 80vh;
+    background: $background;
+    min-height: 80vh;
     display: flex;
-    overflow:scroll;
-    
-    
 }

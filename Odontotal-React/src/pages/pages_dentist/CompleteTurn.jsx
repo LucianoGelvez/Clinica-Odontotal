@@ -26,6 +26,7 @@ const CompleteTurn = ({ data, onEdit }) => {
         return dateA - dateB;
       })
     : [];
+
   return (
     <section>
       <table>
@@ -39,7 +40,7 @@ const CompleteTurn = ({ data, onEdit }) => {
           </tr>
         </thead>
         <tbody>
-          {sortedData !== "" && (
+          {sortedData[0] && (
             <>
               {sortedData.map((item) => (
                 <tr key={item.id}>
@@ -48,7 +49,7 @@ const CompleteTurn = ({ data, onEdit }) => {
                   </td>
                   <td>{item.documentoPaciente}</td>
                   <td>
-                    {item.fecha} {item.hora}
+                    {item.fecha} {item.hora.slice(0, -3)}
                   </td>
                   <td>
                     <button

@@ -87,14 +87,14 @@ public class PacienteController {
 
         // Checamos si la cuenta ya está validada
         logger.info("Validando cuenta del usuario: " + paciente.get());
-        if (paciente.get().getValidado() != null && paciente.get().getValidado()) {
+        if (paciente.get().getValidado() != null) {
             throw new BadRequestException("La cuenta ya está validada");
         }
 
         // Actualizamos el campo de validación de la cuenta en la base de datos
         PacienteDto pacienteDto = paciente.get();
         pacienteDto.setValidado(true);
-        pacienteDto = pacienteService.modificarPaciente(pacienteDto);
+        pacienteDto = pacienteService.modificarPacienteValidacion(pacienteDto);
         logger.info("Se validó la cuenta del paciente" + pacienteDto);
 
         // Enviamos correo de bienvenida

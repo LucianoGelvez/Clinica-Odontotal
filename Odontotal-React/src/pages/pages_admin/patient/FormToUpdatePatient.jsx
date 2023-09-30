@@ -48,7 +48,6 @@ const FormToUpdatePatient = ({
       fechaCreacion: fechaCreacion,
       password: password,
     };
-    console.log(formData);
 
     const url = baseUrl.url + `/pacientes`;
 

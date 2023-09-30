@@ -113,10 +113,8 @@ const AddDentistAdmin = () => {
       localidad: "",
       provincia: "",
     });
-
-    console.log(formData);
   };
-  console.log(response);
+
   return (
     <div className="AddDentistAdmin">
       {user?.rol === "ADMIN" && (

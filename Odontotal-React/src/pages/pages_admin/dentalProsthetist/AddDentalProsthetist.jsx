@@ -54,9 +54,7 @@ const AddDentalProsthetist = () => {
       especialidadProtecista: "",
     });
 
-    console.log(formData);
   };
-  console.log(response);
   return (
     <div>
       {user?.rol === "ADMIN" && (
@@ -145,7 +143,7 @@ const AddDentalProsthetist = () => {
             <div className="form-group">
               <label className="control-label" htmlFor="especialidadProtecista">
                 {" "}
-                Descripcion:
+                Descripción:
               </label>
               <textarea
                 className="form-control"

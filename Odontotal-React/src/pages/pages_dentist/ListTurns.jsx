@@ -1,16 +1,26 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import baseUrl from "../../components/utils/baseUrl.json";
 import { ContextGlobal } from "../../components/utils/global.context";
 import CompleteTurn from "./CompleteTurn";
 import FormTurn from "./FormTurn";
+import Spinner from "../../components/Spinner";
 
 const ListTurns = ({ data }) => {
   const { url, jwt } = useContext(ContextGlobal);
   const [edit, setEdit] = useState(false);
   const [dataPatient, setDataPatient] = useState([]);
+  const [showSpinner, setShowSpinner] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowSpinner(false);
+    }, 5000);
+    return () => clearTimeout(timer);
+  }, []);
+
   const seeDetails = (item) => {
-  const url = baseUrl.url + `/pacientes/${item.pacienteId}`;
-    
+    const url = baseUrl.url + `/pacientes/${item.pacienteId}`;
+
     const setting = {
       method: "GET",
       headers: {
@@ -52,9 +62,15 @@ const ListTurns = ({ data }) => {
           )}
         </>
       ) : (
-        <h1 style={{ margin: "40px" }}>
-          No tiene turnos asignados por el momento{" "}
-        </h1>
+        <>
+          {showSpinner ? (
+            <Spinner />
+          ) : (
+            <h2 style={{ textAlign: "center", margin: "50px auto" }}>
+              No tiene turnos agendados
+            </h2>
+          )}
+        </>
       )}
     </>
   );

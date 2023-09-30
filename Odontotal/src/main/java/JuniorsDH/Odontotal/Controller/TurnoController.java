@@ -74,6 +74,12 @@ public class TurnoController {
         return ResponseEntity.status(HttpStatus.OK).body(turnoModificado);
     }
 
+    @PutMapping("/completarTurno/{id}")
+    public ResponseEntity<TurnoDto> completarTurno(@RequestBody TurnoDto turno) throws Exception {
+        TurnoDto turnoModificado = turnoService.modificarTurno(turno);
+        return ResponseEntity.status(HttpStatus.OK).body(turnoModificado);
+    }
+
     @GetMapping("/turnosPaciente/{id}")
     public ResponseEntity<List<TurnoDto>> historialPaciente(@PathVariable Long id) throws ResourceNotFoundException {
         return ResponseEntity.ok(turnoService.listarTurnoPaciente(id));

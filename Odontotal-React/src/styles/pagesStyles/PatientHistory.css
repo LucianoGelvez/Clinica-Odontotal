@@ -3,13 +3,13 @@
   flex-direction: column;
   gap: 5px;
   height: 80vh;
-  background-color: #f1f1f1;
-  background: linear-gradient(to top, rgba(0, 224, 202, 0.7058823529), rgba(4, 178, 217, 0.7058823529));
+  background-color: #F9F9F9;
+  background: radial-gradient(#04b2d9, #04b2d9, #00e0c8);
 }
 .patient-history-container .encabezado-ph {
   text-align: center;
-  text-shadow: 1px 1px 1px white;
-  border-top-left-radius: 1px solid black;
+  text-shadow: 1px 1px 1px #F9F9F9;
+  border-top-left-radius: 1px solid #1F1A1B;
   padding: 10px;
   width: 70%;
   margin: 40px auto;
@@ -21,10 +21,10 @@
   margin: 0px auto 10px;
   display: flex;
   width: 70%;
-  background-color: rgba(255, 255, 255, 0.842);
-  border: 1px solid rgba(128, 128, 128, 0.13);
+  background-color: #f1f1f1;
+  border: 1px solid #1F1A1B;
   padding: 10px;
-  box-shadow: 1px 1px 15px grey;
+  box-shadow: 1px 1px 15px #808080;
 }
 .patient-history-container section .patient-history-main details {
   width: 100%;
@@ -52,7 +52,7 @@
 .patient-history-container section .patient-history-main details .info-patientHistory p {
   padding: 10px;
   text-align: justify;
-  background-color: rgba(4, 178, 217, 0.2);
+  background-color: #00356e;
   width: 100%;
   margin: 0;
   justify-content: space-around;

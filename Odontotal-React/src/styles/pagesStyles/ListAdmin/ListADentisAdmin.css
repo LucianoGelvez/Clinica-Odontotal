@@ -1,10 +1,10 @@
 .main {
-  background: linear-gradient(to top, rgba(0, 224, 202, 0.7058823529), rgba(4, 178, 217, 0.7058823529));
+  background: radial-gradient(#04b2d9, #04b2d9, #00e0c8);
   display: flex;
   justify-content: center;
   padding: 10px;
   border-radius: 5px;
-  background-color: #fff;
+  background-color: #F9F9F9;
   gap: 10px;
   min-height: 78vh;
   align-self: flex-start;
@@ -12,13 +12,14 @@
 .main section {
   margin: 0;
   padding: 0;
+  overflow: auto;
   align-self: flex-start;
   margin: 6vh 0px 10vh 0px;
 }
 .main section table {
-  border: 1px solid #ccc;
+  border: 1px solid #f1f1f1;
   border-radius: 5px;
-  background-color: #fff;
+  background-color: #F9F9F9;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   gap: 10px;
 }
@@ -38,15 +39,15 @@
 }
 .main .main_update .main_update__form {
   width: 60%;
-  background-color: #ffffff;
+  background-color: #F9F9F9;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin: auto;
+  margin: 30px auto;
   padding: 20px;
-  border: 1px solid #ccc;
+  border: 1px solid #f1f1f1;
   border-radius: 5px;
-  background-color: #fff;
+  background-color: #F9F9F9;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   gap: 10px;
 }
@@ -67,7 +68,7 @@
 .main .main_update .main_update__form .form-group select {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #F9F9F9;
   border-radius: 5px;
   font-size: 14px;
 }
@@ -80,15 +81,15 @@
 }
 .main .main_update .main_update__form .form-group button {
   padding: 10px 20px;
-  background-color: #007bff;
-  color: #ffffff;
+  background-color: #0069d9;
+  color: #F9F9F9;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 14px;
 }
 .main .main_update .main_update__form .form-group button.cancel-change {
-  background-color: #ccc;
+  background-color: #f1f1f1;
   margin-left: 10px;
 }
 .main .main_update .form_group__btn {
@@ -97,31 +98,32 @@
 .main .main_update .form_group__btn button {
   padding: 10px 20px;
   background-color: #3e8e41;
-  color: #ffffff;
+  color: #F9F9F9;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 14px;
 }
 .main .main_update .form_group__btn button:hover {
-  background-color: #40a142;
+  background-color: #3e8e41;
 }
 .main .main_update .form_group__btn button.cancel-change {
-  background-color: #b90000;
+  background-color: red;
   margin-left: 10px;
 }
 .main .main_update .form_group__btn button.cancel-change:hover {
-  background-color: #b20000;
+  background-color: red;
 }
 
 @media (max-width: 835px) {
   .main section {
     width: 100vw;
+    overflow: auto;
   }
   .main section table {
-    border: 1px solid #ccc;
+    border: 1px solid #808080;
     border-radius: 5px;
-    background-color: #fff;
+    background-color: #f1f1f1;
     gap: 10px;
   }
   .main section table .none {

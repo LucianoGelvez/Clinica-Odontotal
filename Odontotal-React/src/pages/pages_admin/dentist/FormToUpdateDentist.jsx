@@ -138,7 +138,7 @@ const FormToUpdateDentist = ({
           />
         </div>
         <div className="form-group">
-          <label htmlFor="telefono">Telefono personal:</label>
+          <label htmlFor="telefono">Teléfono personal:</label>
           <input
             type="text"
             id="telefono"
@@ -147,7 +147,7 @@ const FormToUpdateDentist = ({
           />
         </div>
         <div className="form-group">
-          <label htmlFor="genero">Genero:</label>
+          <label htmlFor="genero">Género:</label>
           <input
             type="text"
             id="genero"
@@ -165,7 +165,7 @@ const FormToUpdateDentist = ({
           />
         </div>
         <div className="form-group">
-          <label htmlFor="matricula">Matricula:</label>
+          <label htmlFor="matricula">Matrícula:</label>
           <input
             type="text"
             id="matricula"
@@ -183,7 +183,7 @@ const FormToUpdateDentist = ({
           />
         </div>
         <div className="form-group">
-          <label htmlFor="numero">Numero:</label>
+          <label htmlFor="numero">Número:</label>
           <input
             type="text"
             id="numero"

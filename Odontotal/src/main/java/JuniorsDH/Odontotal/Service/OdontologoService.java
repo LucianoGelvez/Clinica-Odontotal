@@ -74,11 +74,15 @@ public class OdontologoService {
 
     public OdontologoDto modificarOdontologo (OdontologoDto odontologoDto)throws ResourceNotFoundException{
         Odontologo odontologoModificado;
-        Optional<Odontologo> odontoloaModificar= odontologoRepository.findById(odontologoDto.getId());
-        if (odontoloaModificar.isPresent()){
+        Optional<Odontologo> odontologoaModificar= odontologoRepository.findById(odontologoDto.getId());
+        if (odontologoaModificar.isPresent()){
+            if(!odontologoDto.getPassword().equals(odontologoaModificar.get().getPassword()) && odontologoDto.getPassword() != null){
+                BCryptPasswordEncoder cifradorContrasena= new BCryptPasswordEncoder();
+                odontologoDto.setPassword(cifradorContrasena.encode(odontologoDto.getPassword()));
+            }
             if(odontologoDto.getPassword() == null)
             {
-                odontologoDto.setPassword(odontoloaModificar.get().getPassword());
+                odontologoDto.setPassword(odontologoaModificar.get().getPassword());
             }
             odontologoModificado= odontologoRepository.save(odontologoDtoAOdontologo(odontologoDto));
         }else {
@@ -139,6 +143,7 @@ public class OdontologoService {
         respuesta.setGenero(odontologo.getGenero().name());
         respuesta.setTelefono(odontologo.getTelefono());
         respuesta.setRol(odontologo.getRol().getRol());
+        respuesta.setPassword(odontologo.getPassword());
         return  respuesta;
     }
 
@@ -168,7 +173,7 @@ public class OdontologoService {
 
     public void uploadImageProfile(MultipartFile file, Long id) {
         Odontologo odontologo = odontologoRepository.findById(id).get();
-        String bucketName = "odontotal-images";
+        String bucketName = "odontotal-imagenes";
         String uniqueFilename = "profile/" + id + ".png";
         String s3Url = "https://" + bucketName + ".s3" + ".amazonaws.com/" + uniqueFilename;
 

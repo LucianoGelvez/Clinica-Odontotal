@@ -23,7 +23,6 @@ const Profile = () => {
   const [numero, setNumero] = useState("");
   const [localidad, setLocalidad] = useState("");
   const [provincia, setProvincia] = useState("");
-  const [validado, setValidado] = useState(user.validado);
   const [urlImagen, setUrlImagen] = useState(user.urlImagen);
   const [fechaNacimiento, setFechaNacimiento] = useState("");
   const [changeImage, setChangeImage] = useState(false);
@@ -85,7 +84,6 @@ const Profile = () => {
         }
 
         const data = await response.json();
-        console.log(data);
         setData(data);
         localStorage.setItem("user", JSON.stringify(data));
       } catch (error) {
@@ -179,8 +177,7 @@ const Profile = () => {
       localidad: localidad,
       provincia: provincia,
       urlImagen: urlImagen,
-      password: password,
-      validado: validado
+      password: password
     };
 
     let url;
@@ -206,11 +203,10 @@ const Profile = () => {
       },
       body: JSON.stringify(formData),
     };
-    console.log(formData);
 
     fetch(url, settings).then((response) => {
       if (response.ok) {
-        Swal.fire("La modificacion fue exitosa");
+        Swal.fire("La modificación fue exitosa");
         setTimeout(() => {
           window.location.reload();
         }, 1500);
@@ -249,7 +245,7 @@ const Profile = () => {
     })
       .then((response) => {
         if (response.ok) {
-          Swal.fire("La modificacion fue exitosa");
+          Swal.fire("La modificación fue exitosa");
           console.log("Image uploaded successfully");
           localStorage.setItem("user", JSON.stringify(""));
           setTimeout(() => {
@@ -311,12 +307,10 @@ const Profile = () => {
         }
       })
       .then((data) => {
-        console.log(data);
         const updatedData = {
           ...data,
         };
         setData(updatedData);
-        console.log(profileData);
       })
       .catch((error) => {
         console.error(error);
@@ -360,12 +354,18 @@ const Profile = () => {
               ref={buttonRef}
               onClick={() => handleActivateButton(setChangeImage)}
             >
-              Change image
+              Cambiar Imagen
             </button>
-            <p>
-              Tu imagen se expondra a nuestros usuarios para generar confiaza en
-              los pacientes
+            {
+              user.rol === "ODONTOLOGY" ?
+              <p>
+                Tu imagen se expondrá a nuestros usuarios para generar confiaza en
+                los pacientes
+              </p> :
+              <p>
+              Si lo deseas puedes subir o cambiar tu imagen
             </p>
+            }
           </div>
         ) : (
           <div className="profile_image">
@@ -375,11 +375,10 @@ const Profile = () => {
               ref={buttonRef}
               onClick={() => setChangeImage(true)}
             >
-              Change image
+              Cambiar Imagen
             </button>
             <p>
-              Por favor coloca una imagen personal, lo mas profesional que
-              puedas para general en los pacientes
+              Tu imagen se expondrá a nuestros usuarios para generar confiaza en los pacientes
             </p>
           </div>
         )}
@@ -409,9 +408,9 @@ const Profile = () => {
                     className="profile_change_pic_delete"
                     onClick={deleteImage}
                   >
-                    Delete
+                    Eliminar
                   </button>
-                  <button onClick={handleSaveChanges}>Save changes</button>
+                  <button onClick={handleSaveChanges}>Guardar</button>
                 </article>
               </div>
             ) : (
@@ -702,7 +701,7 @@ const Profile = () => {
               {!showEspecialidad ? (
                 <>
                   {" "}
-                  <td> {dataPesonal.especialidad}</td>
+                  <td> {dataPesonal?.especialidad?.replace("ESPECIALIDAD_","").replace("_"," ")}</td>
                   <button
                     className="edit"
                     onClick={() => handleActivateButton(setShowEspecialidad)}
@@ -720,13 +719,13 @@ const Profile = () => {
                       onChange={(e) => setEspecialidad(e.target.value)}
                       required
                     >
-                      <option>ESPECIALIDAD_ORTODONCISTA</option>
-                      <option>ESPECIALIDAD_PERIODONCISTA</option>
-                      <option>ESPECIALIDAD_ENDODONCISTA</option>
-                      <option>ESPECIALIDAD_ODONTOPEDIATRIA</option>
-                      <option>ESPECIALIDAD_CIRUGIA_ORAL</option>
-                      <option>ESPECIALIDAD_CIRUGIA_MAXILOFACIAL</option>
-                      <option>ESPECIALIDAD_PROTESISTA</option>
+                      <option value="ESPECIALIDAD_ORTODONCISTA">ORTODONCISTA</option>
+                      <option value="ESPECIALIDAD_PERIODONCISTA">PERIODONCISTA</option>
+                      <option value="ESPECIALIDAD_ENDODONCISTA">ENDODONCISTA</option>
+                      <option value="ESPECIALIDAD_ODONTOPEDIATRIA">ODONTOPEDIATRIA</option>
+                      <option value="ESPECIALIDAD_CIRUGIA_ORAL">CIRUGIA ORAL</option>
+                      <option value="ESPECIALIDAD_CIRUGIA_MAXILOFACIAL">CIRUGIA MAXILOFACIAL</option>
+                      <option value="ESPECIALIDAD_PROTESISTA">PROTESISTA</option>
                     </select>
                   </label>
                   <button

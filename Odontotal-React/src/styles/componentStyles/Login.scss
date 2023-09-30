@@ -1,4 +1,4 @@
-@import "colores.scss";
+@import "../variables/colors";
 
 .div-login {
   width: 100%;
@@ -6,8 +6,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80vh;
-    background: linear-gradient(to top, $greenLight, $greenDark);
+    min-height: 80vh;
+    background: $background;
     width: 100%;
 
     form {
@@ -15,7 +15,7 @@
       flex-direction: column;
       align-items: center;
       width: 35%;
-      margin: 7% auto;
+      margin: 40px auto;
       padding: 20px;
       border: 1px solid $grey;
       border-radius: 5px;

@@ -149,22 +149,7 @@ const AddTurnAdmin = () => {
     setHorasTurnosFiltrados(horasFiltradas);
   }, [turnoEncontrado.fecha, turnsOdontology, turnsPatient]);
 
-  useEffect(() => {
-    console.log(formData);
-    console.log(selectedDoctor);
-    console.log(turnsOdontology);
-    console.log(turnsPatient);
-    console.log(horasTurnosFiltrados);
-  }, [
-    formData,
-    selectedSpecialty,
-    turnoEncontrado,
-    selectedDoctor,
-    especilistaFiltrado,
-    turnsOdontology,
-    turnsPatient,
-    horasTurnosFiltrados,
-  ]);
+
 
   const handleInputChangeDocument = (selectedOption) => {
     setFormData({
@@ -291,7 +276,7 @@ const AddTurnAdmin = () => {
       hora: formData.hora,
       pacienteId: formData.pacienteId,
     };
-    console.log(formSend);
+
     if (
       formData.hora !== "" &&
       formData.odontologoId !== "" &&

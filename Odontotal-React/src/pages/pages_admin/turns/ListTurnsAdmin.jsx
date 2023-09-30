@@ -78,19 +78,7 @@ const ListTurnsAdmin = () => {
   return (
     <div className="main">
       {(user?.rol === "ADMIN" || user?.rol === "ODONTOLOGY") && (
-        <>
-          {data.length != 0 ? (
-            <List
-              data={data}
-              onEditar={handleEditar}
-              onEliminar={handleEliminar}
-            />
-          ) : (
-            <h1 style={{ margin: "40px" }}>
-              No tienen Turnos asignados por el momento{" "}
-            </h1>
-          )}
-        </>
+        <List data={data} onEditar={handleEditar} onEliminar={handleEliminar} />
       )}
     </div>
   );

@@ -1,23 +1,19 @@
-@import "colores.scss";
+@import "../../variables/colors";
 
 .main {
-  background: linear-gradient(
-    to top,
-    $greenLight,
-    $greenDark
-  );
+  background: $background;
   display: flex;
   justify-content: center;
   padding: 10px;
   border-radius: 5px;
   background-color: $white;
-
   gap: 10px;
   min-height: 78vh;
   align-self: flex-start;
   section {
     margin: 0;
     padding: 0;
+    overflow: auto;
 
     align-self: flex-start;
     margin: 6vh 0px 10vh 0px;
@@ -53,7 +49,7 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      margin: auto;
+      margin: 30px auto;
       padding: 20px;
       border: 1px solid $whiteMatte;
       border-radius: 5px;
@@ -137,6 +133,7 @@
   .main {
     section {
       width: 100vw;
+      overflow: auto;
       table {
         border: 1px solid $grey;
         border-radius: 5px;

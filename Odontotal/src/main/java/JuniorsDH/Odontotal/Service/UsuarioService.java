@@ -70,6 +70,10 @@ public class UsuarioService implements UserDetailsService {
         Usuario usuarioModificado;
         Optional<Usuario> usuarioaModificar= usuarioRepository.findById(usuarioDto.getId());
         if (usuarioaModificar.isPresent()){
+            if(!usuarioDto.getPassword().equals(usuarioaModificar.get().getPassword()) && usuarioDto.getPassword() != null){
+                BCryptPasswordEncoder cifradorContrasena= new BCryptPasswordEncoder();
+                usuarioDto.setPassword(cifradorContrasena.encode(usuarioDto.getPassword()));
+            }
             if(usuarioDto.getPassword() == null)
             {
                 usuarioDto.setPassword(usuarioaModificar.get().getPassword());
@@ -153,6 +157,7 @@ public class UsuarioService implements UserDetailsService {
         respuesta.setProvincia(usuario.getDomicilio().getProvincia());
         respuesta.setRol(usuario.getRol().getRol());
         respuesta.setUrlImagen(usuario.getUrlImagen());
+        respuesta.setPassword(usuario.getPassword());
         return  respuesta;
     }
 
@@ -178,7 +183,7 @@ public class UsuarioService implements UserDetailsService {
 
     public void uploadImageProfile(MultipartFile file, Long id) {
         Usuario user = usuarioRepository.findById(id).get();
-        String bucketName = "odontotal-images";
+        String bucketName = "odontotal-imagenes";
         String uniqueFilename = "profile/" + id + ".png";
         String s3Url = "https://" + bucketName + ".s3." + ".amazonaws.com/" + uniqueFilename;
 

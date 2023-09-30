@@ -1,7 +1,7 @@
-@import "colores.scss";
+@import "../variables/colors";
 
 .AddDentistAdmin {
-  background: linear-gradient(to top, #00e0cab4, $greenDark);
+  background: $background;
   height: 100%;
   display: flex;
   justify-content: center;

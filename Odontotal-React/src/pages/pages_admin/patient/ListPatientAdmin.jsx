@@ -70,14 +70,10 @@ const ListPatientAdmin = () => {
   };
 
   const handleGuardar = (item) => {
-    console.log(item);
-    console.log(item.idPaciente);
     if (edition) {
       serData((prevState) =>
         prevState.map((x) => (x.idPaciente === item.idPaciente ? item : x))
       );
-      console.log(data);
-      console.log(data);
       setedition(null);
     } else {
       serData((prevState) => [...prevState, { ...item, id: Date.now() }]);

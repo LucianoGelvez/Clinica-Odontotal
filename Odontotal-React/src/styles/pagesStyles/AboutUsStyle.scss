@@ -1,4 +1,4 @@
-@import "colores.scss";
+@import "../variables/colors.scss";
 
 .about-us {
   display: flex;
@@ -61,9 +61,9 @@
 
       .doctor-portrait {
         width: 15vw;
-        border: 1px solid $black;
+        border: 1px solid rgba(82, 82, 82, 0.158);
         border-radius: 5px;
-        box-shadow: 1px 1px 5px 1px $black;
+        box-shadow: 1px 1px 5px 1px rgba(82, 82, 82, 0.712);
         margin-bottom: 15px;
       }
     }
@@ -138,7 +138,7 @@
           width: 170px;
           flex-basis: calc(17%);
           margin: 5px;
-          box-shadow: $black 0px 10px 20px;
+          box-shadow: rgba(0, 0, 0, 0.3) 0px 10px 20px;
 
           .value-image {
             color: $greenWater;
@@ -168,123 +168,146 @@
 }
 
 @media only screen and (max-width: 1023px) {
-  .about-primary-container {
-    height: 30vh;
-  }
+  .about-us {
+    .about-primary-container {
+      height: 30vh;
 
-  .about-primary-container .about-image {
-    height: 90%;
-    position: relative;
-    top: 5%;
-  }
+      .about-image {
+        height: 90%;
+        position: relative;
+        top: 5%;
+      }
+    }
 
-  .about-second-container .about-us_text {
-    width: 55vw;
-  }
+    .about-second-container {
+      .about-us_text {
+        width: 55vw;
+      }
+      .doctor-info {
+        .doctor-portrait {
+          width: 20vw;
+        }
+      }
+    }
 
-  .doctor-portrait {
-    width: 20vw;
-  }
+    .about-us_mission {
+      padding-top: 20px;
+      height: 280px;
+    }
 
-  .about-us_mission {
-    padding-top: 20px;
-    height: 280px;
-  }
+    .about-third-container {
+      .our-values {
+        justify-content: space-evenly;
 
-  .about-third-container .our-values {
-    justify-content: space-evenly;
-  }
+        .value-container {
+          flex-basis: 30%;
 
-  .about-third-container .our-values .value-container {
-    flex-basis: calc(30%);
-
-    &:hover {
-      flex-basis: calc(32%);
+          &:hover {
+            flex-basis: 32%;
+          }
+        }
+      }
     }
   }
 }
 
 @media only screen and (max-width: 767px) {
-  .about-primary-container {
-    height: 30vh;
-    background-image: url(../../images/Dental-Office.png);
-    background-size: cover;
-    display: flex;
-    justify-content: center;
+  .about-us {
+    .about-primary-container {
+      height: 200px;
+      background-image: url(../../images/Dental-Office.png);
+      background-size: cover;
+      display: flex;
+      justify-content: center;
 
-    .about-tittle {
-      position: inherit;
-    }
+      .about-tittle {
+        position: inherit;
+      }
 
-    .about-image {
-      display: none;
-    }
-  }
-
-  .about-second-container {
-    width: 80vw;
-    flex-direction: column;
-    align-items: center;
-
-    .about-us_text {
-      width: 100%;
-
-      .text-history {
-        line-height: 25px;
+      .about-image {
+        display: none;
       }
     }
 
-    .doctor-portrait {
-      margin-top: 20px;
-      width: 35vw;
+    .about-second-container {
+      width: 80vw;
+      flex-direction: column;
+      align-items: center;
+
+      .about-us_text {
+        width: 100%;
+
+        .text-history {
+          line-height: 25px;
+        }
+      }
+
+      .doctor-info {
+        .doctor-portrait {
+          margin-top: 20px;
+          width: 35vw;
+        }
+      }
+    }
+
+    .about-us_mission {
+      height: 520px;
+      padding-top: 0;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+
+      div {
+        width: 90%;
+      }
+    }
+
+    .about-third-container {
+      .value-description {
+        line-height: 25px;
+      }
+      .our-values {
+        .value-container {
+          flex-basis: calc(40%);
+          &:hover {
+            flex-basis: calc(43%);
+          }
+        }
+      }
+    }
+  }
+  @media only screen and (max-width: 479px) {
+    .about-us {
+      .about-second-container {
+        .doctor-info {
+          .doctor-portrait {
+            margin-top: 20px;
+            width: 40vw;
+          }
+        }
+      }
+
+      
+
+      .about-third-container {
+        .our-values {
+          .value-container {
+            flex-basis: calc(70%);
+
+            &:hover {
+              flex-basis: calc(73%);
+            }
+          }
+        }
+      }
     }
   }
 
-  .about-us_mission {
-    height: 85vh;
-    padding-top: 0;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-
-    div {
-      width: 90%;
+  @media only screen and (max-width: 379px) {
+    .about-us {
+      .about-us_mission {
+        height: 700px;
+      }
     }
-  }
-
-  .about-third-container .value-description {
-    line-height: 25px;
-  }
-
-  .about-third-container .our-values .value-container {
-    flex-basis: calc(40%);
-
-    &:hover {
-      flex-basis: calc(43%);
-    }
-  }
-}
-@media only screen and (max-width: 479px) {
-  .about-second-container .doctor-portrait {
-    margin-top: 20px;
-    width: 40vw;
-  }
-
-  .about-us_mission {
-    height: 110vh;
-  }
-
-  .about-third-container .our-values .value-container {
-    flex-basis: calc(70%);
-
-    &:hover {
-      flex-basis: calc(73%);
-    }
-  }
-}
-
-@media only screen and (max-width: 379px) {
-  .about-us_mission {
-    height: 130vh;
   }
 }

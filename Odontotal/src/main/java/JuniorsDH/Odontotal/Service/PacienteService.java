@@ -74,16 +74,40 @@ public class PacienteService {
         Paciente pacienteModificado;
         Optional<Paciente> pacienteaModificar= pacienteRepository.findById(pacienteDto.getId());
 
-        BCryptPasswordEncoder cifradorContrasena= new BCryptPasswordEncoder();
-        pacienteDto.setPassword(cifradorContrasena.encode(pacienteDto.getPassword()));
-
         if (pacienteaModificar.isPresent()){
+            if(!pacienteDto.getPassword().equals(pacienteaModificar.get().getPassword()) && pacienteDto.getPassword() != null){
+                BCryptPasswordEncoder cifradorContrasena= new BCryptPasswordEncoder();
+                pacienteDto.setPassword(cifradorContrasena.encode(pacienteDto.getPassword()));
+            }
+
+            if(pacienteDto.getFechaCreacion() == null)
+            {
+                pacienteDto.setFechaCreacion(pacienteaModificar.get().getFechaCreacion());
+            }
+
+            if(pacienteDto.getValidado() == null)
+            {
+                pacienteDto.setValidado(pacienteaModificar.get().getValidado());
+            }
+
             pacienteModificado=  pacienteRepository.save(pacienteDtoAPaciente(pacienteDto) );
         }else {
             throw new ResourceNotFoundException("Error. No se encontro el paciente para actualizar");
         }
         return pacienteApacienteDTO(pacienteModificado);
 
+    }
+
+    public PacienteDto modificarPacienteValidacion (PacienteDto pacienteDto)throws ResourceNotFoundException{
+        Paciente pacienteModificado;
+        Optional<Paciente> pacienteaModificar= pacienteRepository.findById(pacienteDto.getId());
+
+        if (pacienteaModificar.isPresent()){
+            pacienteModificado=  pacienteRepository.save(pacienteDtoAPaciente(pacienteDto) );
+        }else {
+            throw new ResourceNotFoundException("Error. No se encontro el paciente para validar");
+        }
+        return pacienteApacienteDTO(pacienteModificado);
     }
 
     public void  eliminarPaciente (Long id) throws ResourceNotFoundException {
@@ -168,7 +192,7 @@ public class PacienteService {
 
     public void uploadImageProfile(MultipartFile file, Long id) {
         Paciente paciente = pacienteRepository.findById(id).get();
-        String bucketName = "odontotal-images";
+        String bucketName = "odontotal-imagenes";
         String uniqueFilename = "profile/" + id + ".png";
         String s3Url = "https://" + bucketName + ".s3" + ".amazonaws.com/" + uniqueFilename;
 

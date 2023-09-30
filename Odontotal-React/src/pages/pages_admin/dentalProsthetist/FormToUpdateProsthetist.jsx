@@ -67,6 +67,8 @@ const FormToUpdateProsthetist = ({
           }).then((result) => {
             if (result.isConfirmed) {
               window.location.pathname = "/ListaDeProtecistas";
+            }else{
+                window.location.pathname = "/ListaDeProtecistas";
             }
           });
         } else {
@@ -126,7 +128,7 @@ const FormToUpdateProsthetist = ({
         </div>
         <div className="form-group">
           <label>
-            Matricula:
+            Matrícula:
             <input
               type="text"
               value={matricula}
@@ -136,7 +138,7 @@ const FormToUpdateProsthetist = ({
         </div>
         <div className="form-group">
           <label>
-            Telefono:
+            Teléfono:
             <input
               type="text"
               value={telefono}

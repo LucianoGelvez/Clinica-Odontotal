@@ -9,7 +9,7 @@ const ListTurns = ({ data }) => {
 
   const seeDetails = (item) => {
     const url = baseUrl.url + `/pacientes/${item.pacienteId}`;
-    console.log(url);
+  
     const setting = {
       method: "GET",
       headers: {
@@ -21,9 +21,6 @@ const ListTurns = ({ data }) => {
       try {
         const data = await response.json();
         setDataPatient(data);
-        console.log(data);
-        console.log(data);
-        console.log(dataPatient);
       } catch (error) {
         console.log(error);
       }

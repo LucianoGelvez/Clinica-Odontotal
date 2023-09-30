@@ -113,11 +113,6 @@ const Login = () => {
                 onChange={handleInputChange}
                 required
               />
-              <button
-                type="button"
-                className="show-password-button"
-                onClick={handleShowPassword}
-              ></button>
             </div>
           </div>
           <button type="submit">Iniciar sesión</button>

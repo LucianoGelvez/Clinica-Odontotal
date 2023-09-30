@@ -220,8 +220,10 @@ const Turns = () => {
               confirmButtonText: "Aceptar",
             }).then((result) => {
               if (result.isConfirmed) {
-                console.log(responseData);
-                resetUploadForm();
+                window.location.href='/MisTurnos'
+                
+              }else{
+                window.location.href='/MisTurnos'
               }
             });
           } else {
@@ -246,7 +248,6 @@ const Turns = () => {
   };
 
   const resetUploadForm = () => {
-    window.location.reload();
     setFormData({
       odontologoId: "",
       fecha: "",

@@ -1,9 +1,9 @@
-@import "colores.scss";
+@import "../variables/colors";
 .main-add-turn {
   width: 100%;
   .add-container {
-    background: linear-gradient(to top, $greenDark, $greenDark);
-    height: 80vh;
+    background: $background;
+    min-height: 78vh;
     display: flex;
     justify-content: center;
 
@@ -12,7 +12,8 @@
       flex-direction: column;
       align-items: center;
       width: 30%;
-      margin: auto;
+      height: 460px;
+      margin: 80px auto;
       padding: 20px;
       border: 1px solid $GreyLight;
       border-radius: 5px;

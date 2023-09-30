@@ -1,6 +1,5 @@
 @import "../variables/colors";
 @import "../variables/fonts";
-@import "colores.scss";
 .navbar {
   width: 90%;
   display: flex;
@@ -92,10 +91,11 @@
         align-items: center;
         align-self: center;
         img {
-          width: 3vw;
+          
           border-radius: 200px;
-          height: 3vw;
-          box-shadow: 1px 6px 6px $redDark;
+          width: 45px;
+        height: 45px;
+        
         }
       }
 
@@ -112,11 +112,12 @@
         overflow: hidden;
         transition-duration: 0.3s;
         box-shadow: 2px 2px 10px $black;
-        background-color: $greenLight;
+        background-color: $greenWater;
         align-items: center;
         justify-content: center;
         align-self: center;
         margin-left: 20px;
+        font-size: 16px;
 
         .sign {
           width: 400%;
@@ -224,6 +225,9 @@
           }
           .profile_image {
             display: none;
+          }
+          .Btn{
+            margin: 10px auto 0;
           }
         }
       }

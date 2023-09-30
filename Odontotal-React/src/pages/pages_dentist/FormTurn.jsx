@@ -46,7 +46,7 @@ const FormTurn = ({ data, onCancelar, informacionCompleta, jwt }) => {
       trabajoRealizado: trabajoRealizado,
     };
 
-    const url = baseUrl.url + `/turnos/`;
+    const url = baseUrl.url + `/turnos/completarTurno/${formData.id}`;
     const settings = {
       method: "PUT",
       headers: {
@@ -58,13 +58,15 @@ const FormTurn = ({ data, onCancelar, informacionCompleta, jwt }) => {
 
     fetch(url, settings).then((response) => {
       if (response.ok) {
-        Swal.fire("La modificacion fue exitosa");
-        setTimeout(() => {
-          window.location.reload();
-        }, 800);
+        Swal.fire("La modificación fue exitosa").then((result) => {
+          if (result.isConfirmed) {
+            window.location.reload();
+          }else{
+            window.location.reload();
+          }
+        });
       } else {
-        console.log(formData);
-        console.log("Error al actualizar el protecista");
+        console.log("Error al actualizar los datos del turno");
       }
     });
   };
@@ -73,9 +75,7 @@ const FormTurn = ({ data, onCancelar, informacionCompleta, jwt }) => {
     e.preventDefault();
     onCancelar();
   };
-
-  // Busca la informacion correspondiente a la tabla sin la fila que se está editando
-  const informacionFila = informacionCompleta.filter((item) => item.id !== id);
+  
 
   return (
     <section className="table-container">
@@ -92,18 +92,18 @@ const FormTurn = ({ data, onCancelar, informacionCompleta, jwt }) => {
           </tr>
         </thead>
         <tbody>
-          {informacionFila.map((item) => (
+          {informacionCompleta.map((item) => (
             <tr key={item.id}>
               <td>{item.nombrePaciente}</td>
               <td>{item.apellidoPaciente}</td>
               <td>{item.documentoPaciente}</td>
               <td>
-                {item.fecha} {item.hora}
+                {item.fecha} {item.hora.slice(0, -3)}
               </td>
               <td>
                 {item.nombreOdontologo} {item.apellidoOdontologo}
               </td>
-              <td>{especialidad}</td>
+              <td>{especialidad.replace("ESPECIALIDAD_","").replace("_"," ")}</td>
               <td></td>
             </tr>
           ))}
@@ -117,7 +117,6 @@ const FormTurn = ({ data, onCancelar, informacionCompleta, jwt }) => {
           <label>Motivo de la visita del paciente:</label>
           <textarea
             className="editable_motive"
-            style={{ height: "40%" }}
             type="text"
             value={motivo}
             onChange={(e) => setMotivo(e.target.value)}
