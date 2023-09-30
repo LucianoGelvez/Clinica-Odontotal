@@ -14,11 +14,6 @@ const SliderService = () => {
 
 const {arrayService} = useContext(ContextGlobal)
 
-console.log(arrayService)
-console.log(arrayService)
-console.log(arrayService)
-console.log(arrayService)
-
     const responsive = {
         superLargeDesktop: {
           // the naming can be any, depends on you.
@@ -45,11 +40,14 @@ console.log(arrayService)
     <div className='container-slider'>
         
         <Carousel responsive={responsive} className='container-slider-carousel'>
-            {arrayService.map((item, index)=>(
-              <div key={index} className='container-slider-carousel_card'>
+            {arrayService.map((item, id)=>(
+              <div key={id} className='container-slider-carousel_card'>
+                <a href={'/Servicio' +"#"+ item.id}>
                  <img src={item.imgSrc} alt="" className='container-slider-carousel_card_img'/>
-                <span className='container-slider-carousel_card_span'>{item.title}</span>
-              </div>
+                <span className='container-slider-carousel_card_span'>{item.title}</span>           
+                </a>
+        
+                </div>
             ))}
 
         </Carousel>

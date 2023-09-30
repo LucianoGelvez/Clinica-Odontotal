@@ -8,7 +8,7 @@ import {
   faHandshake,
   faPeopleCarryBox,
   faPeopleGroup,
-  faHandFist
+  faHandFist,
 } from "@fortawesome/free-solid-svg-icons";
 
 const AboutUs = () => {

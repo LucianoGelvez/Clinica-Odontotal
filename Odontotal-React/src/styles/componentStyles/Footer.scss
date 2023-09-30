@@ -1,5 +1,7 @@
+@import "colores.scss";
+
 .footer {
-    background-color: rgba($color: #F1F1F1, $alpha: 0.7);
+    background-color: rgba($color: $whiteMatte, $alpha: 0.7);
     font-size: 30px;
     display: flex;
     align-items: center;
@@ -29,25 +31,25 @@
 
     .footer-redes {
         .footer-redes_icon {
-            color: grey;
+            color: $grey;
             font-size: 40px;
             margin-right: 5px;
         }
 
         .twitter {
-            color: rgba($color: #02AFF6, $alpha: 0.8);
+            color: rgba($color: $blueLight, $alpha: 0.8);
         }
 
         .fb {
-            color: rgba($color: #00E0C8, $alpha: 0.8);
+            color: rgba($color: $greenLight, $alpha: 0.8);
         }
 
         .insta {
-            color: rgba($color: #02AFF6, $alpha: 0.8);
+            color: rgba($color: $blueLight, $alpha: 0.8);
         }
 
         .whats {
-            color: rgba($color: #00E0C8, $alpha: 0.8);
+            color: rgba($color: $greenLight, $alpha: 0.8);
         }
 
     }

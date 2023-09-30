@@ -7,7 +7,7 @@
 .main-datail h2 {
   width: 40%;
   text-align: center;
-  color: #02AFF6;
+  color: #00abf5;
   margin: 40px auto;
   font-size: 30px;
 }
@@ -30,13 +30,13 @@
   padding: 20px;
   justify-content: center;
   align-items: center;
-  box-shadow: 5px 5px 10px 0px rgba(150, 150, 150, 0.459);
+  box-shadow: 5px 5px 10px 0px #808080;
   margin: 0px auto;
   height: 100%;
   transition: background-color 1s ease-in;
 }
 .main-datail .detail-container .detail-box:hover {
-  background-color: rgba(146, 146, 146, 0.1450980392);
+  background-color: rgba(0, 0, 0, 0.083);
 }
 .main-datail .detail-container .detail-box:hover .detail-description {
   display: flex;
@@ -44,7 +44,7 @@
 .main-datail .detail-container .detail-box .detail-image {
   display: flex;
   margin: 10px;
-  color: #02AFF6;
+  color: #00abf5;
   font-size: 40px;
   align-items: center;
 }
@@ -57,7 +57,7 @@
   margin: 10px;
   font-weight: 600;
   text-align: center;
-  color: #02AFF6;
+  color: #00abf5;
 }
 .main-datail .detail-container .detail-box .detail-description {
   display: none;

@@ -2,7 +2,7 @@
   width: 100%;
 }
 .container-slider-main h2 {
-  color: #02AFF6;
+  color: #02aff6;
   text-align: center;
   margin-top: 20px;
   margin-bottom: 40px;
@@ -17,10 +17,10 @@
   margin: 0 auto;
 }
 .container-slider-main .container-slider .react-multi-carousel-list .react-multiple-carousel__arrow--right {
-  background-color: #02AFF6;
+  background-color: #02aff6;
 }
 .container-slider-main .container-slider .react-multi-carousel-list .react-multiple-carousel__arrow--left {
-  background-color: #02AFF6;
+  background-color: #02aff6;
 }
 .container-slider-main .container-slider .react-multi-carousel-list .react-multi-carousel-track .react-multi-carousel-item {
   width: 200px;
@@ -43,7 +43,7 @@
   filter: opacity(0.5);
 }
 .container-slider-main .container-slider .container-slider-carousel .container-slider-carousel_card .container-slider-carousel_card_span {
-  background-color: #02AFF6;
+  background-color: #02aff6;
   color: white;
   position: absolute;
   padding: 10px;
