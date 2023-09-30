@@ -1,40 +1,42 @@
-.div-login{
+@import "../variables/colors";
+
+.div-login {
   width: 100%;
   .login {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80vh;
-    background: linear-gradient(to top, #00e0cab4, #04b2d9b4);
+    min-height: 80vh;
+    background: $background;
     width: 100%;
-    
+
     form {
       display: flex;
       flex-direction: column;
       align-items: center;
       width: 35%;
-      margin: 7% auto;
+      margin: 40px auto;
       padding: 20px;
-      border: 1px solid #ccc;
+      border: 1px solid $grey;
       border-radius: 5px;
-      
-      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
-      img{
+      box-shadow: $black 0px 5px 15px;
+
+      img {
         width: 50%;
       }
-      
+
       h2 {
         margin-bottom: 20px;
         font-size: 1.5rem;
         font-weight: 500;
-        color: #333;
+        color: $black;
       }
-      
+
       .form-group {
         width: 100%;
         margin-bottom: 15px;
-        
+
         label {
           display: block;
           margin-bottom: 5px;
@@ -42,75 +44,71 @@
           font-weight: 500;
           color: #555;
         }
-        
+
         input[type="email"],
         input[type="password"] {
           width: 100%;
           padding: 10px;
-          border: 1px solid #ccc;
+          border: 1px solid $GreyLight;
           border-radius: 5px;
           font-size: 1rem;
           color: #333;
-          
+
           &:focus {
             outline: none;
-            border-color: #66afe9;
-            box-shadow: 0px 0px 5px rgba(102,175,233,0.5);
+            border-color: $blueLight;
+            box-shadow: 0px 0px 5px $blue;
           }
         }
       }
-      
+
       button[type="submit"] {
         padding: 10px 20px;
         border: none;
         border-radius: 5px;
         font-size: 1rem;
         font-weight: 500;
-        color: #fff;
-        background-color: #007bff;
+        color: $white;
+        background-color: $blue;
         cursor: pointer;
-        
+
         &:hover {
-          background-color: #0069d9;
+          background-color: $blue;
         }
       }
-      .show-password-button{
-        background-color: transparentize($color: #00000000, $amount: 0);
+      .show-password-button {
+        background-color: transparentize($color: $black, $amount: 0);
         padding: 3px;
         border: none;
       }
     }
   }
 }
-@media (max-width:480px) {
-  .div-login{
-    .login{
-      form{
+@media (max-width: 480px) {
+  .div-login {
+    .login {
+      form {
         width: 90%;
       }
     }
   }
+}
+@media (max-width: 767px) and (min-width: 481px) {
+  .div-login {
+    .login {
+      form {
+        width: 80%;
+      }
+    }
   }
-  @media (max-width:767px) and (min-width:481px) {
-    .div-login{
-      .login{
-        form{
-          width: 80%;
-        }
+}
+
+@media (max-width: 1024px) and (min-width: 768px) {
+  .div-login {
+    .login {
+      form {
+        width: 50%;
       }
     }
-    }
-
-    @media (max-width:1024px) and (min-width:768px) {
-      .div-login{
-        .login{
-          form{
-            width: 50%;
-          }
-        }
-      }
-      }
-
-  
-
-  
+  }
+}

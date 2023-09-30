@@ -5,7 +5,7 @@
 
 .home-second-container {
   display: flex;
-  background: radial-gradient(#04b2d9, #04b2d9, #00e0c8);
+  background: radial-gradient(#00abf5, #00abf5, #00e0c8);
   margin: 0 auto;
   height: 40vh;
 }
@@ -35,13 +35,13 @@
   font-family: "Montserrat", sans-serif;
   font-size: 35px;
   position: sticky;
-  color: white;
+  color: #F9F9F9;
   font-weight: bolder;
   left: 10%;
 }
 
 .text-responsive {
-  background-color: rgba(2, 175, 246, 0.1);
+  background-color: rgba(0, 171, 245, 0.1);
   display: flex;
   justify-content: center;
   text-align: center;
@@ -51,7 +51,7 @@
 }
 
 .line2 {
-  color: #00E0C8;
+  color: #00e0c8;
   width: 80%;
   margin: 40px 10%;
 }

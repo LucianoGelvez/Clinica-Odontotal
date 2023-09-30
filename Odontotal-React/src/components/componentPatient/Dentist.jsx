@@ -1,5 +1,9 @@
 import React from 'react'
-import profilePic from '../../images/profilePic.svg'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFacebookSquare, faInstagramSquare, faWhatsappSquare } from '@fortawesome/free-brands-svg-icons'
+import { Link } from 'react-router-dom'
+import avatar from '../../images/avatar-dentista.jpg'
+
 const Dentist = (props) => {
 
   const especialidad = (props) => {
@@ -7,7 +11,7 @@ const Dentist = (props) => {
       case "ESPECIALIDAD_ORTODONCISTA":
         return "ORTODONCISTA";
       case "ESPECIALIDAD_CIRUGIA_MAXILOFACIAL":
-        return "CIRUGIA MAXILOFACIAL";
+        return "MAXILOFACIAL";
       case "ESPECIALIDAD_ODONTOPEDIATRIA":
         return "ODONTOPEDIATRIA";
       case "ESPECIALIDAD_ENDODONCISTA":
@@ -24,21 +28,33 @@ const Dentist = (props) => {
   
   return (
         <div className='container_dentist'>
-        {props?.img ? 
-          <div >
-            <img className='bring' src={props?.img} />
-          </div> :
-          <div >
-            <img  src={profilePic}/>
-          </div>
-        }
-          <div className="profilePic">
+
+    <article className='container_dentist_card'>
+      <div className='container_dentist_card_specific'>
+      {props?.img ? (         
+                      <img src={props?.img} alt="imagen de odontologo" />
+                  ) : (      
+                      <img src={avatar} alt="imagen de odontologo" />      
+                  )}
+
+      <div className='container_dentist_card_specific_data'>
+      <div className="container_dentist_card_specific_data_personal">
             <h4>{props.nombre} {props.apellido}</h4>
             <p className="text-muted">{especialidad(props.especialidad)}</p>
-          </div>
+            <div className='footer-redes'>
+          <Link><FontAwesomeIcon icon={faFacebookSquare} className='footer-redes_icon fb'/></Link>
+          <Link><FontAwesomeIcon icon={faInstagramSquare} className='footer-redes_icon insta'/></Link>
+          <Link><FontAwesomeIcon icon={faWhatsappSquare} className='footer-redes_icon whats'/></Link>
+
+      </div>
+      </div>
+      </div>
+      </div>    
+    </article>
+
         </div>
 
-  )
-}
+  );
+};
 
 export default Dentist

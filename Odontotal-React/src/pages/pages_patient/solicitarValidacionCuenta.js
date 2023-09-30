@@ -7,16 +7,15 @@ const solicitarValidacionCuenta = async (user, jwt) => {
   const config = {
     method: "GET",
     headers: {
-      "Authorization": `Bearer ${jwt}`,
+      Authorization: `Bearer ${jwt}`,
     },
   };
 
-  // Se obtiene el usuario desde la base de datos para evitar que el usuario pueda evitar la validación de su cuenta modificando el localStorage
   try {
     const response = await fetch(`${baseUrl.url}/pacientes/${user.id}`, config);
     user = await response.json();
   } catch (_) {
-    showError('Error al cargar los datos del usuario');
+    showError("Error al cargar los datos del usuario");
   }
 
   if (!user?.validado) {
@@ -28,7 +27,7 @@ const solicitarValidacionCuenta = async (user, jwt) => {
         const response = await fetch(`${baseUrl.url}/pacientes/${user.id}`, {
           method: "DELETE",
           headers: {
-            "Authorization": `Bearer ${jwt}`,
+            Authorization: `Bearer ${jwt}`,
           },
         });
         if (response.status === 200) {
@@ -42,30 +41,31 @@ const solicitarValidacionCuenta = async (user, jwt) => {
       html = `
         <p>Lo sentimos, pero tu cuenta ha sido eliminada por no haberla validado a tiempo.</p>
         <p>Si deseas seguir usando la aplicación, puedes crear una nueva cuenta.</p>
-      `
+      `;
       Swal.fire({
         title: "Validación de cuenta",
         html: html,
         icon: "error",
         showCancelButton: true,
         confirmButtonText: "Crear nueva cuenta",
-      })
-        .then((result) => {
-          localStorage.removeItem("user");
-          localStorage.removeItem("jwt");
+      }).then((result) => {
+        localStorage.removeItem("user");
+        localStorage.removeItem("jwt");
 
-          if (result.isConfirmed) {
-            window.location.href = "/Registro";
-            return;
-          }
+        if (result.isConfirmed) {
+          window.location.href = "/Registro";
+          return;
+        }
 
-          window.location.href = "/";
-        });
+        window.location.href = "/";
+      });
     } else {
       html = `
         <p>Para poder seguir usando la aplicación, es necesario que valides tu cuenta.</p>
         <p>Recuerda que cuentas con 48 horas para validar tu cuenta, de lo contrario, tu cuenta será eliminada.</p>
-        <p>Tiempo restante: ${Math.round(48 - Math.abs(fechaCreacion - now) / 36e5)} horas</p>
+        <p>Tiempo restante: ${Math.round(
+          48 - Math.abs(fechaCreacion - now) / 36e5
+        )} horas</p>
         <p>Si no recibiste el correo de validación, puedes solicitar uno nuevo dando click en el botón de <b>Enviar correo de validación</b></p>
       `;
       Swal.fire({
@@ -83,7 +83,10 @@ const solicitarValidacionCuenta = async (user, jwt) => {
               icon: "info",
               showConfirmButton: false,
             });
-            const response = await fetch(`${baseUrl.url}/mail/validacion/${user.id}`, config);
+            const response = await fetch(
+              `${baseUrl.url}/mail/validacion/${user.id}`,
+              config
+            );
             if (response.status == 200) {
               Swal.fire({
                 title: "Correo enviado",
@@ -94,7 +97,7 @@ const solicitarValidacionCuenta = async (user, jwt) => {
               });
             }
           } catch (_) {
-            showError('Oops... Algo salió mal!');
+            showError("Oops... Algo salió mal!");
           }
         }
       });

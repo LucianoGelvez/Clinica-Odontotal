@@ -1,21 +1,36 @@
+.table-container h2 {
+  margin-top: 40px;
+}
+.table-container table {
+  width: 90%;
+}
+.table-container table th {
+  text-align: center;
+}
+.table-container table td {
+  text-align: center;
+}
 .table-container .editable {
-  height: 30vh;
+  height: 300px;
   width: 70%;
+  margin-bottom: 40px;
   display: flex;
   justify-content: center;
   flex-direction: column;
 }
 .table-container .editable .editable_motive {
   padding: 0.5%;
-  height: 40%;
+  height: 200px;
   resize: none;
   overflow: auto;
+  margin: 10px 10px 20px 10px;
 }
 .table-container .editable .editable_worktodone {
   padding: 0.5%;
-  height: 40%;
+  height: 200px;
   resize: none;
   overflow: auto;
+  margin: 10px;
 }
 .table-container .editable div {
   margin-top: 2%;
@@ -28,7 +43,7 @@
   justify-content: center;
 }
 .table-container .editable div .cancel-change:hover {
-  background-color: black;
+  background-color: #1F1A1B;
 }
 
 @media screen and (max-width: 480px) {
@@ -57,7 +72,7 @@
     width: 98vw;
   }
   .table-container table {
-    border: 2px solid black;
+    border: 2px solid #1F1A1B;
     width: 100%;
     border-collapse: collapse;
   }
@@ -66,15 +81,11 @@
   }
   .table-container .editable .editable_motive {
     padding: 0.5%;
-    height: 40%;
     resize: none;
     overflow: auto;
-    margin: 10px;
   }
   .table-container .editable .editable_worktodone {
-    margin: 10px;
     padding: 0.5%;
-    height: 40%;
     resize: none;
     overflow: auto;
   }

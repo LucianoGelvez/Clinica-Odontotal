@@ -1,10 +1,11 @@
 .turns-list {
-  background: linear-gradient(to top, rgba(0, 224, 202, 0.7058823529), rgba(4, 178, 217, 0.7058823529));
+  background: radial-gradient(#04b2d9, #04b2d9, #00e0c8);
   width: 100vw;
+  min-height: 90vh;
 }
 .turns-list .patient-information {
   padding: 10px 10px 10px 10vw;
-  background-color: #ffffff;
+  background-color: #F9F9F9;
 }
 .turns-list .patient-information p {
   margin-bottom: 3px;
@@ -17,23 +18,29 @@
   margin-top: 30px;
   position: sticky;
   left: 0px;
-  background-color: #ffffff;
+  background-color: #F9F9F9;
 }
 .turns-list .turns-patient {
-  height: 80vh;
-  width: 65vw;
+  width: 70vw;
+  max-height: 90vh;
   overflow: auto;
   margin: 40px auto 40px;
-  background-color: #ffffff;
+  background-color: #F9F9F9;
 }
 .turns-list .turns-patient .row-titles {
   position: sticky;
   top: -1px;
-  background-color: #ebe8e8;
+  background-color: #f1f1f1;
 }
 .turns-list .turns-patient .center-input {
   text-align: center;
 }
 .turns-list .turns-patient .fecha {
-  color: #ebe8e8;
+  color: #f1f1f1;
+}
+
+@media screen and (max-width: 1024px) {
+  .turns-list .turns-patient {
+    width: 90vw;
+  }
 }/*# sourceMappingURL=ListTurnsPatient.css.map */
