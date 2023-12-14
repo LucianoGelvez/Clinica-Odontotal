@@ -1,11 +1,11 @@
 .form-customer-container {
-  width: 40%;
+  width: 30%;
   background-color: rgba(241, 241, 241, 0.662745098);
   padding: 50px;
   border-radius: 10px;
-  box-shadow: 1px 1px 5px #f1f1f1;
+  box-shadow: 1px 1px 5px #F9F9F9;
   margin: 0 auto;
-  border: 1px solid rgba(241, 241, 241, 0.4666666667);
+  border: 1px solid #808080;
   font-family: "Montserrat", sans-serif;
 }
 .form-customer-container form {
@@ -15,15 +15,16 @@
 }
 .form-customer-container form input {
   border-radius: 5px;
-  border: 1px solid rgba(128, 128, 128, 0.589);
+  border: 1px solid #808080;
 }
 .form-customer-container form textarea {
   border-radius: 5px;
-  border: 1px solid rgba(128, 128, 128, 0.589);
+  border: 1px solid #808080;
+  height: 120px;
 }
 .form-customer-container form .button-submit {
   background: linear-gradient(to right, #00c1cf, #007e7e);
-  color: white;
+  color: #F9F9F9;
   padding: 5px;
   width: 40%;
   margin: 10px auto 0;
@@ -32,8 +33,8 @@
   transition: background 5s ease-in-out;
 }
 .form-customer-container form .button-submit:hover {
-  background: #f1f1f1;
-  color: black;
+  background: #F9F9F9;
+  color: #1F1A1B;
 }
 
 @media (max-width: 480px) {

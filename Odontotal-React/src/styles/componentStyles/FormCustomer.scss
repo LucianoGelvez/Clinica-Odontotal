@@ -1,8 +1,8 @@
-@import "colores.scss";
+@import "../variables/colors.scss";
 
 .form-customer-container {
-  width: 40%;
-  background-color: $grey;
+  width: 30%;
+  background-color: $whitheMatteSecond;
   padding: 50px;
   border-radius: 10px;
   box-shadow: 1px 1px 5px $white;
@@ -22,6 +22,7 @@
     textarea {
       border-radius: 5px;
       border: 1px solid $grey;
+      height: 120px;
     }
     .button-submit {
       background: linear-gradient(to right, #00c1cf, #007e7e);

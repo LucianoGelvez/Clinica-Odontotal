@@ -14,7 +14,7 @@
 .team .container_text {
   margin-top: 60px;
   margin-bottom: 50px;
-  width: 100vw;
+  width: 100%;
   background: radial-gradient(#04b2d9, #04b2d9, #00e0c8);
   text-align: center;
   display: flex;

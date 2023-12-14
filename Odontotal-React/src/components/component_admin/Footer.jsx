@@ -19,8 +19,8 @@ const Footer = () => {
 
       <div className="footer-rules">
         <h2 className="footer-rules_text">Derechos reservados</h2>
-        <h3 className="footer-rules_text">Junior DH</h3>
-        <h4 className="footer-rules_text">2023</h4>
+        <h3 className="footer-rules_text">DigitalArco</h3>
+        <h4 className="footer-rules_text">© 2023</h4>
       </div>
 
       <div className="footer-redes">

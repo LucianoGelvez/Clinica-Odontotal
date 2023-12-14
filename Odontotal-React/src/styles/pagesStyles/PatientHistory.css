@@ -52,7 +52,7 @@
 .patient-history-container section .patient-history-main details .info-patientHistory p {
   padding: 10px;
   text-align: justify;
-  background-color: #00356e;
+  background-color: rgba(91, 194, 238, 0.4745098039);
   width: 100%;
   margin: 0;
   justify-content: space-around;

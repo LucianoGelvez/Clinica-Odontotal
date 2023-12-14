@@ -31,6 +31,7 @@ const PatientHistory = () => {
         const response = await fetch(url, setting);
         const data = await response.json();
         setDataTurns(data);
+        console.log(data);
       } catch (error) {
         console.log(error);
       }
@@ -86,11 +87,11 @@ const PatientHistory = () => {
                   <div className="info-patientHistory">
                     <p>
                       <span>Motivo de la visita</span>
-                      <br /> {item.reasonForTurn}
+                      <br /> {item.motivo}
                     </p>
                     <p>
                       <span>Resultado de la visita</span>
-                      <br /> {item.whatWasDone}
+                      <br /> {item.trabajoRealizado}
                     </p>
                   </div>
                 </details>

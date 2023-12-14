@@ -7,7 +7,7 @@
 .about-us .about-primary-container {
   background: radial-gradient(#00abf5, #04b2d9, #00e0c8);
   height: 40vh;
-  width: 100vw;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -62,7 +62,7 @@
   background: #00abf5;
   color: #F9F9F9;
   height: 250px;
-  width: 100vw;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: start;

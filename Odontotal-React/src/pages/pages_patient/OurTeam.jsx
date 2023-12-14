@@ -1,17 +1,19 @@
 import "../../styles/pagesStyles/OurTeamStyle.css";
 import Dentist from "../../components/componentPatient/Dentist";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { ContextGlobal } from "../../components/utils/global.context";
+import Spinner from "../../components/Spinner"
 
 const OurTeam = () => {
   const { information } = useContext(ContextGlobal);
+  const [showSpinner, setShowSpinner] = useState(true);
 
   return (
     <div className="team">
       <div className="team_branding"></div>
       <h1>Nuestro personal calificado nos distingue</h1>
       <div className="row">
-        {(information != null || information != {}) &&
+        {(information) ?
           information.map((dentist) => {
             return (
               <Dentist
@@ -22,7 +24,9 @@ const OurTeam = () => {
                 especialidad={dentist.especialidad}
               />
             );
-          })}
+          }):  
+            <Spinner />
+        }
       </div>
       <div className="container_text">
         <p className="container_text_desk">
